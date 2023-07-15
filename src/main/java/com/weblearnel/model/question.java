@@ -23,7 +23,7 @@ public class question {
     @Id
     @Column(name = "qu_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int question_id;
+    private long question_id;
     @Column(name = "qu_content")
     private String qu_content;
     @Column(name = "qu_answer")
@@ -41,7 +41,7 @@ public class question {
     @Column(name = "qu_type")
     private String qu_type;
     @Column(name = "id_topic")
-    private int id_topic;
+    private long id_topic;
     @Column(name = "id_level")
-    private int id_level;
+    private long id_level;
 }
