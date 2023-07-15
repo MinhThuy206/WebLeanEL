@@ -19,13 +19,14 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "topic")
-public class topic {
+public class Topic {
     @Id
-    @Column(name = "topic_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long tp_id;
-    @Column(name = "topic_name")
-    private String tp_name;
-    @Column(name = "topic_description")
-    private String tp_description;
+    private long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
+    private String description;
 }

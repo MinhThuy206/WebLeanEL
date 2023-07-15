@@ -2,12 +2,7 @@ package com.weblearnel.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -23,33 +18,37 @@ import lombok.ToString;
 @ToString
 
 @Entity
-@Table(name="result")
+@Table(name = "result")
 public class Result {
     @Id
-    @Column(name = "rs_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long resultId;
+    private long resultId;
 
     @Column(name = "us_id")
-    long userId;
+    private long userId;
 
-    @Column(name = "ex_id")
-    long examId;
+    @Column(name = "exam_id")
+    private long examId;
 
-    @Column(name = "wd_id")
-    long wordId;
+    @Column(name = "word_id")
+    private long wordId;
 
-    @Column(name = "rs_score")
-    int resultScore;
+    @Column(name = "score")
+    private Integer Score;
 
-    @Column(name = "rs_datetime", columnDefinition = "DATETIME")
-    LocalDateTime  resultDatetime;
+    @Column(name = "datetime", columnDefinition = "DATETIME")
+    private LocalDateTime resultDatetime;
 
     @Column(name = "rs_flag")
-    int resultFlag;
+    private Integer resultFlag;
 
     @Column(name = "rs_type")
-    int resultType;
-    
+    private Integer resultType;
+
+    @ManyToOne
+    private Word word;
+
+    @ManyToOne
+    private Exam exam;
 
 }

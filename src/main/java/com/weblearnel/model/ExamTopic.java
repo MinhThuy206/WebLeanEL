@@ -1,11 +1,6 @@
 package com.weblearnel.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -21,19 +16,25 @@ import lombok.ToString;
 @ToString
 
 @Entity
-@Table(name="exam_topic")
+@Table(name = "exam_topic")
 public class ExamTopic {
     @Id
-    @Column(name = "et_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long examTopicId;
+    private long Id;
 
     @Column(name = "ex_id")
-    long examId;
+    private long examId;
 
     @Column(name = "tp_id")
-    long topicId;
+    private long topicId;
 
-    @Column(name = "et_topic_percent")
-    int examTopicPercent;
+    @Column(name = "topic_percent")
+    private Integer TopicPercent;
+
+    @ManyToOne
+    private Exam exam;
+
+    @ManyToOne
+    private Topic topic;
+
 }
