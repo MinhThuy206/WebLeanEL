@@ -1,5 +1,6 @@
 package com.weblearnel.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,16 +12,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Getter
 @Setter
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "topic")
+public class topic {
     @Id
+    @Column(name = "topic_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String name;
+    private long tp_id;
+    @Column(name = "topic_name")
+    private String tp_name;
+    @Column(name = "topic_description")
+    private String tp_description;
 }
