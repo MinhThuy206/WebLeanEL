@@ -28,16 +28,16 @@ public class Result {
     @Id
     @Column(name = "rs_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int resultId;
+    long resultId;
 
     @Column(name = "us_id")
-    int userId;
+    long userId;
 
     @Column(name = "ex_id")
-    int examId;
+    long examId;
 
     @Column(name = "wd_id")
-    int wordId;
+    long wordId;
 
     @Column(name = "rs_score")
     int resultScore;

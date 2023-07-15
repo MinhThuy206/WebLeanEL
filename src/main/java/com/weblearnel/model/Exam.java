@@ -28,7 +28,7 @@ public class Exam {
     @Id
     @Column(name = "ex_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int examId;
+    long examId;
 
     @Column(name = "ex_question_no")
     int examQuestionNo;

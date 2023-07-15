@@ -26,13 +26,13 @@ public class ExamTopic {
     @Id
     @Column(name = "et_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int examTopicId;
+    long examTopicId;
 
     @Column(name = "ex_id")
-    int examId;
+    long examId;
 
     @Column(name = "tp_id")
-    int topicId;
+    long topicId;
 
     @Column(name = "et_topic_percent")
     int examTopicPercent;
