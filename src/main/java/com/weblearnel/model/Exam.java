@@ -30,16 +30,16 @@ public class Exam {
     @Id
     @Column(name = "ex_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long examId;
+    private long examId;
 
     @Column(name = "ex_question_no")
-    int examQuestionNo;
+    private int examQuestionNo;
 
     @Column(name = "ex_time", columnDefinition = "DATETIME")
-    LocalDateTime  examTime;
+    private LocalDateTime  examTime;
 
     @Column(name = "lv_id")
-    int levelId;
+    private int levelId;
 
     @OneToMany(mappedBy = "examId")
     private List<ExamTopic> examTopics;

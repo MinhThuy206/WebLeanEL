@@ -1,10 +1,21 @@
 package com.weblearnel.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.ArrayList;
 import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -39,7 +50,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "created_date")
+    @Column(name = "created_date", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
     private Date createDate;
 
     @Column(name = "status")
@@ -51,16 +62,16 @@ public class User {
     @Column(name = "level")
     private Integer level;
 
-    private Role getERole(){
-        return Role.getRole(this.role);
-    }
+    // private Role getERole(){
+    //     return Role.getRole(this.role);
+    // }
 
     @Column(name="role")
     private Integer role;
 
-    private void setERole(Role role){
-        this.setRole(role.getValue());
-    }
+    // private void setERole(Role role){
+    //     this.setRole(role.getValue());
+    // }
 
     @OneToMany
     private ArrayList<Logs> logs;

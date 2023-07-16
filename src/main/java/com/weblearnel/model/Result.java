@@ -2,7 +2,13 @@ package com.weblearnel.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -34,16 +40,16 @@ public class Result {
     private long wordId;
 
     @Column(name = "score")
-    private Integer Score;
+    private int Score;
 
     @Column(name = "datetime", columnDefinition = "DATETIME")
     private LocalDateTime resultDatetime;
 
     @Column(name = "rs_flag")
-    private Integer resultFlag;
+    private int resultFlag;
 
     @Column(name = "rs_type")
-    private Integer resultType;
+    private int resultType;
 
     @ManyToOne
     private Word word;

@@ -1,9 +1,19 @@
 package com.weblearnel.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -21,7 +31,7 @@ public class Logs {
     private String name;
 
     @Column(name = "status")
-    private Integer status;
+    private int status;
 
     @Column(name = "datetime")
     private LocalDate dateTime;
@@ -30,7 +40,7 @@ public class Logs {
     private long user_id;
 
     @Column(name="role")
-    private Integer role;
+    private int role;
 
     @ManyToOne
     private User user;
