@@ -1,12 +1,14 @@
 package com.weblearnel.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,5 +40,9 @@ public class Exam {
 
     @Column(name = "lv_id")
     int levelId;
+
+    @OneToMany(mappedBy = "examId")
+    private List<ExamTopic> examTopics;
+
 
 }
