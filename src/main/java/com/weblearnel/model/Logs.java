@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+// import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name ="log")
+@Table(name = "log")
 public class Logs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +39,10 @@ public class Logs {
     @Column(name = "user_id")
     private long user_id;
 
-    @Column(name="role")
+    @Column(name = "role")
     private int role;
 
-    @ManyToOne
-    private User user;
+    // @ManyToOne
+    // private Users user;
 
 }

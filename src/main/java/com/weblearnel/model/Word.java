@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -49,8 +48,8 @@ public class Word {
     @Column(name = "topic_id")
     private int topic_id;
 
-    @ManyToOne
-    private Topic topic;
+    // @ManyToOne
+    // private Topic topic;
 
     @OneToMany
     private ArrayList<Result> results;

@@ -31,11 +31,11 @@ public class ExamTopic {
 
     @ManyToOne
     @JoinColumn(name = "ex_id")
-    private long examId;
+    private Exam examId;
 
     @ManyToOne
     @JoinColumn(name = "tp_id")
-    private long topicId;
+    private Topic topicId;
 
     @Column(name = "topic_percent")
     private Integer TopicPercent;

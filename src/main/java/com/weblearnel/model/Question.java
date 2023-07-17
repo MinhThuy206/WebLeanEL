@@ -13,7 +13,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -44,8 +43,8 @@ public class Question {
     @Column(name = "option4")
     private String option4;
 
-    @Column(name = "explain")
-    private String explain;
+    @Column(name = "explanation")
+    private String explanation;
 
     @Column(name = "type")
     private String type;

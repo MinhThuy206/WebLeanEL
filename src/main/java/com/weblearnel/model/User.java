@@ -1,7 +1,8 @@
 package com.weblearnel.model;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="user", uniqueConstraints = {
+@Table(name = "user", uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
@@ -63,20 +64,19 @@ public class User {
     private Integer level;
 
     // private Role getERole(){
-    //     return Role.getRole(this.role);
+    // return Role.getRole(this.role);
     // }
 
-    @Column(name="role")
+    @Column(name = "role")
     private Integer role;
 
     // private void setERole(Role role){
-    //     this.setRole(role.getValue());
+    // this.setRole(role.getValue());
     // }
 
     @OneToMany
-    private ArrayList<Logs> logs;
+    private List<Logs> logs;
 
     @OneToMany
-    private ArrayList<Result> results;
+    private List<Result> results;
 }
-
