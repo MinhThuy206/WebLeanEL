@@ -1,0 +1,45 @@
+### Add User
+POST localhost:8080/user/
+Content-Type: application/json;
+
+{
+    "username": "Thuy",
+    "password" : "020602",
+    "fullname" : "Do Bich Thuy",
+    "address" : "Hai Phong",
+    "mobile" : "0379371432",
+    "email" : "dothibichthuy_t65@hus.edu.vn",
+    "status" : 1,
+    "level" : 2
+
+}
+
+
+### List User
+GET localhost:8080/user/findAllUsers
+Accept: application/json
+
+
+### Update User
+< {%
+    request.variables.set("id", "2")
+%}
+PUT localhost:8080/product/update?id={{id}}
+Content-Type: application/json
+
+{
+  "name": "Asus",
+  "price": 134.5,
+  "url": "YY",
+  "year": 2020
+}
+
+###  Update User
+< {%
+    request.variables.set("id", "3")
+%}
+DELETE localhost:8080/product/{{id}}
+
+
+
+

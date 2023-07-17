@@ -15,7 +15,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @Data
@@ -37,6 +36,6 @@ public class Level {
     @OneToMany
     private ArrayList<Exam> exams;
 
-    @OneToMany
-    private ArrayList<Question> questions;
+    // @OneToMany
+    // private ArrayList<Question> questions;
 }
