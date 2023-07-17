@@ -2,13 +2,7 @@ package com.weblearnel.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -28,16 +22,7 @@ import lombok.ToString;
 public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long resultId;
-
-    @Column(name = "us_id")
-    private long userId;
-
-    @Column(name = "exam_id")
-    private long examId;
-
-    @Column(name = "word_id")
-    private long wordId;
+    private long id;
 
     @Column(name = "score")
     private int Score;
@@ -52,9 +37,15 @@ public class Result {
     private int resultType;
 
     @ManyToOne
+    @JoinColumn(name="word_id", referencedColumnName = "id")
     private Word word;
 
     @ManyToOne
+    @JoinColumn(name="exam_id", referencedColumnName = "id")
     private Exam exam;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", referencedColumnName = "id")
+    private User user;
 
 }

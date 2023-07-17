@@ -30,20 +30,14 @@ public class ExamTopic {
     private long Id;
 
     @ManyToOne
-    @JoinColumn(name = "ex_id")
-    private long examId;
+    @JoinColumn(name = "ex_id", referencedColumnName = "id")
+    private Exam examId;
 
     @ManyToOne
-    @JoinColumn(name = "tp_id")
-    private long topicId;
+    @JoinColumn(name = "tp_id", referencedColumnName = "id" )
+    private Topic topicId;
 
     @Column(name = "topic_percent")
-    private Integer TopicPercent;
-
-    @ManyToOne
-    private Exam exam;
-
-    @ManyToOne
-    private Topic topic;
+    private double TopicPercent;
 
 }

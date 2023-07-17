@@ -56,22 +56,19 @@ public class User {
     @Column(name = "status")
     private Integer status;
 
-    @Column(name = "group_id")
-    private Integer group_id;
-
     @Column(name = "level")
     private Integer level;
 
-    // private Role getERole(){
-    //     return Role.getRole(this.role);
-    // }
+     private Role getERole(){
+         return Role.getRole(this.role);
+     }
 
     @Column(name="role")
     private Integer role;
 
-    // private void setERole(Role role){
-    //     this.setRole(role.getValue());
-    // }
+     private void setERole(Role role){
+         this.setRole(role.getValue());
+     }
 
     @OneToMany
     private ArrayList<Logs> logs;

@@ -25,6 +25,7 @@ import lombok.Setter;
 public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @Column(name = "name")
