@@ -8,15 +8,14 @@ Content-Type: application/json;
     "fullname" : "Do Bich Thuy",
     "address" : "Hai Phong",
     "mobile" : "0379371432",
-    "email" : "dothibichthuy_t65@hus.edu.vn",
+    "email" : "dothibichthuy_t667@hus.edu.vn",
     "status" : 1,
     "level" : 2
-
 }
 
 
 ### List User
-GET localhost:8080/user/findAllUsers
+GET localhost:8080/user/
 Accept: application/json
 
 

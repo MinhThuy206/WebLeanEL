@@ -21,7 +21,7 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    @GetMapping("/findAllUsers")
+    @GetMapping("/")
     public List<User> findUsers() {
         return userService.findUsers();
     }
@@ -30,8 +30,6 @@ public class UserController {
     public User findUser(@PathVariable int id) {
         return userService.findUser(id);
     }
-
-
 
     @PutMapping("/{id}")
     public void updateUser(@PathVariable("id") int id, @RequestBody User user) {
