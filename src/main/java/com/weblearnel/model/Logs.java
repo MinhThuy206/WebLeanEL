@@ -19,6 +19,7 @@ import lombok.Setter;
 public class Logs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "log_id")
     private long id;
 
     @Column(name = "username")
@@ -33,8 +34,8 @@ public class Logs {
     @Column(name="role")
     private int role;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_user_id", referencedColumnName = "user_id")
     private User user;
 
 }

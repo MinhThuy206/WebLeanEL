@@ -1,7 +1,9 @@
 package com.weblearnel.model;
 
 import java.util.ArrayList;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @Data
@@ -25,6 +28,7 @@ import lombok.Setter;
 public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lv_id")
     private long id;
 
     @Column(name = "name")
@@ -33,12 +37,12 @@ public class Level {
     @Column(name = "description")
     private String description;
 
-    // @OneToMany(mappedBy = "level")
-    // private ArrayList<Exam> exams;
+    @JsonIgnore
+    @OneToMany(mappedBy = "level")
+    private Set<Exam> exams;
 
-    @OneToMany
-    private ArrayList<Question> questions;
+    @JsonIgnore
+    @OneToMany(mappedBy = "level")
+    private Set<Question> questions;
 
-    // @OneToMany
-    // private ArrayList<Question> questions;
 }

@@ -2,7 +2,9 @@ package com.weblearnel.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,14 +25,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user", uniqueConstraints = {
+@Table(name="user", uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name ="user_id")
     private long id;
 
     @Column(name = "username")
@@ -60,20 +62,23 @@ public class User {
     @Column(name = "level")
     private Integer level;
 
-    private Role getERole() {
-        return Role.getRole(this.role);
-    }
+     private Role getERole(){
+         return Role.getRole(this.role);
+     }
 
-    @Column(name = "role")
+    @Column(name="role")
     private Integer role;
 
-    private void setERole(Role role) {
-        this.setRole(role.getValue());
-    }
+     private void setERole(Role role){
+         this.setRole(role.getValue());
+     }
 
-    @OneToMany
-    private ArrayList<Logs> logs;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Logs> logs;
 
-    // @OneToMany(mappedBy = "user")
-    // private ArrayList<Result> results;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Result> results;
 }
+

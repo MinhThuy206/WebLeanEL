@@ -32,12 +32,13 @@ public class ExamTopic {
     private long examTopicId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ex_id", referencedColumnName = "ex_id")
+    @JoinColumn(name = "fk_ex_id", referencedColumnName = "ex_id")
     private Exam exam;
 
-    // @ManyToOne
-    // @JoinColumn(name = "tp_id", referencedColumnName = "id" )
-    // private Topic topicId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_tp_id", referencedColumnName = "tp_id")
+    private Topic topic;
+
 
     @Column(name = "topic_percent")
     private double topicPercent;
