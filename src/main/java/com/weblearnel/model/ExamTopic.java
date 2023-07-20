@@ -35,17 +35,17 @@ public class ExamTopic {
     @JoinColumn(name = "fk_ex_id", referencedColumnName = "ex_id")
     private Exam exam;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_tp_id", referencedColumnName = "tp_id")
-    private Topic topic;
-
+    // @ManyToOne
+    // @JoinColumn(name = "tp_id", referencedColumnName = "id" )
+    // private Topic topicId;
 
     @Column(name = "topic_percent")
     private double topicPercent;
 
     public void assignExam(Exam examToAssign) {
         this.exam = examToAssign;
-        ExamTopic examTopic = examToAssign.getExamTopics().stream().filter(x -> x.getExamTopicId() == this.examTopicId).findFirst().orElse(null);
+        ExamTopic examTopic = examToAssign.getExamTopics().stream().filter(x -> x.getExamTopicId() == this.examTopicId)
+                .findFirst().orElse(null);
         examToAssign.getExamTopics().add(examTopic);
     }
 

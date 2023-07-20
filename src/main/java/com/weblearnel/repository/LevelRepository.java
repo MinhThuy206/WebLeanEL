@@ -1,9 +1,9 @@
-package com.weblearnel.repository;
+// package com.weblearnel.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.weblearnel.model.Level;
+// import com.weblearnel.model.Level;
 
-public interface LevelRepository extends JpaRepository<Level, Long> {
+// public interface LevelRepository extends JpaRepository<Level, Long> {
 
-}
+// }
