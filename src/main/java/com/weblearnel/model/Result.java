@@ -2,7 +2,15 @@ package com.weblearnel.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -22,12 +30,13 @@ import lombok.ToString;
 public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "rs_id")
+    private long resultid;
 
     @Column(name = "score")
     private int Score;
 
-    @Column(name = "datetime", columnDefinition = "DATETIME")
+    @Column(name = "datetime", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
     private LocalDateTime resultDatetime;
 
     @Column(name = "rs_flag")
@@ -36,16 +45,24 @@ public class Result {
     @Column(name = "rs_type")
     private int resultType;
 
-    @ManyToOne
-    @JoinColumn(name="word_id", referencedColumnName = "id")
-    private Word word;
+    // @ManyToOne
+    // @JoinColumn(name="word_id")
+    // private Word word;
 
-    @ManyToOne
-    @JoinColumn(name="exam_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="ex_id", referencedColumnName = "ex_id") // id = id in the exam table
     private Exam exam;
 
-    @ManyToOne
-    @JoinColumn(name="user_id", referencedColumnName = "id")
-    private User user;
+    // @ManyToOne
+    // @JoinColumn(name="user_id")
+    // private User user;
+
+    public void assignExam(Exam examToAssign) {
+        this.exam = examToAssign;
+        Result result = examToAssign.getResults().stream().filter(x -> x.getResultid() == this.resultid).findFirst().orElse(null);
+        examToAssign.getResults().add(result);
+    }
+
+    
 
 }

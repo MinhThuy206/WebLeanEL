@@ -2,7 +2,15 @@ package com.weblearnel.model;
 
 import java.util.ArrayList;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -19,6 +27,7 @@ import lombok.Setter;
 public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @Column(name = "name")
@@ -41,7 +50,7 @@ public class Word {
 
 
     @ManyToOne
-    @JoinColumn(name = "topic_id", referencedColumnName = "id")
+    @JoinColumn(name = "topic_id")
     private Topic topic;
 
     @OneToMany

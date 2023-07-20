@@ -23,13 +23,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="user", uniqueConstraints = {
+@Table(name = "user", uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @Column(name = "username")
@@ -59,21 +60,20 @@ public class User {
     @Column(name = "level")
     private Integer level;
 
-     private Role getERole(){
-         return Role.getRole(this.role);
-     }
+    private Role getERole() {
+        return Role.getRole(this.role);
+    }
 
-    @Column(name="role")
+    @Column(name = "role")
     private Integer role;
 
-     private void setERole(Role role){
-         this.setRole(role.getValue());
-     }
+    private void setERole(Role role) {
+        this.setRole(role.getValue());
+    }
 
     @OneToMany
     private ArrayList<Logs> logs;
 
-    @OneToMany
-    private ArrayList<Result> results;
+    // @OneToMany(mappedBy = "user")
+    // private ArrayList<Result> results;
 }
-

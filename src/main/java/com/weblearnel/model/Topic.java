@@ -1,13 +1,10 @@
 package com.weblearnel.model;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +31,6 @@ public class Topic {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "topicId")
-    private List<ExamTopic> examTopic;
+    // @OneToMany(mappedBy = "topicId")
+    // private List<ExamTopic> examTopic;
 }

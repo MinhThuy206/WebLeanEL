@@ -33,8 +33,11 @@ public class Level {
     @Column(name = "description")
     private String description;
 
+    // @OneToMany(mappedBy = "level")
+    // private ArrayList<Exam> exams;
+
     @OneToMany
-    private ArrayList<Exam> exams;
+    private ArrayList<Question> questions;
 
     // @OneToMany
     // private ArrayList<Question> questions;

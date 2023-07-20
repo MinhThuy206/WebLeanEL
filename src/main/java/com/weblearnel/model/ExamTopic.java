@@ -1,5 +1,6 @@
 package com.weblearnel.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,17 +28,24 @@ import lombok.ToString;
 public class ExamTopic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    @Column(name = "et_id")
+    private long examTopicId;
 
-    @ManyToOne
-    @JoinColumn(name = "ex_id", referencedColumnName = "id")
-    private Exam examId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ex_id", referencedColumnName = "ex_id")
+    private Exam exam;
 
-    @ManyToOne
-    @JoinColumn(name = "tp_id", referencedColumnName = "id" )
-    private Topic topicId;
+    // @ManyToOne
+    // @JoinColumn(name = "tp_id", referencedColumnName = "id" )
+    // private Topic topicId;
 
     @Column(name = "topic_percent")
-    private double TopicPercent;
+    private double topicPercent;
+
+    public void assignExam(Exam examToAssign) {
+        this.exam = examToAssign;
+        ExamTopic examTopic = examToAssign.getExamTopics().stream().filter(x -> x.getExamTopicId() == this.examTopicId).findFirst().orElse(null);
+        examToAssign.getExamTopics().add(examTopic);
+    }
 
 }
