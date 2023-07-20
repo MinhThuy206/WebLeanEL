@@ -1,13 +1,10 @@
 package com.weblearnel.model;
 
-import java.util.ArrayList;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +22,7 @@ import lombok.Setter;
 public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "level_id")
     private long id;
 
     @Column(name = "name")
@@ -36,8 +34,8 @@ public class Level {
     // @OneToMany(mappedBy = "level")
     // private ArrayList<Exam> exams;
 
-    @OneToMany
-    private ArrayList<Question> questions;
+    // @OneToMany
+    // private ArrayList<Question> questions;
 
     // @OneToMany
     // private ArrayList<Question> questions;

@@ -32,7 +32,7 @@ public class ExamTopic {
     private long examTopicId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ex_id", referencedColumnName = "ex_id")
+    @JoinColumn(name = "fk_ ex_id", referencedColumnName = "ex_id")
     private Exam exam;
 
     // @ManyToOne
@@ -44,7 +44,8 @@ public class ExamTopic {
 
     public void assignExam(Exam examToAssign) {
         this.exam = examToAssign;
-        ExamTopic examTopic = examToAssign.getExamTopics().stream().filter(x -> x.getExamTopicId() == this.examTopicId).findFirst().orElse(null);
+        ExamTopic examTopic = examToAssign.getExamTopics().stream().filter(x -> x.getExamTopicId() == this.examTopicId)
+                .findFirst().orElse(null);
         examToAssign.getExamTopics().add(examTopic);
     }
 

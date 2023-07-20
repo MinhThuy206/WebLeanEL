@@ -1,11 +1,11 @@
-services:
-  db:
-    image: mariadb:latest
-    restart: always
-    environment:
-      MYSQL_DATABASE: ''
-      MYSQL_USER: 'minhthuy'
-      MYSQL_PASSWORD: '020602'
-      MYSQL_ROOT_PASSWORD: '020602'
-    ports:
-      - 3306:3306
+# services:
+#   db:
+#     image: mariadb:latest
+#     restart: always
+#     environment:
+#       MYSQL_DATABASE: ''
+#       MYSQL_USER: 'minhthuy'
+#       MYSQL_PASSWORD: '020602'
+#       MYSQL_ROOT_PASSWORD: '020602'
+#     ports:
+#       - 3306:3306

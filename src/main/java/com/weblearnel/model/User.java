@@ -1,6 +1,5 @@
 package com.weblearnel.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -8,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -30,7 +28,7 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private long id;
 
     @Column(name = "username")
@@ -71,8 +69,8 @@ public class User {
         this.setRole(role.getValue());
     }
 
-    @OneToMany
-    private ArrayList<Logs> logs;
+    // @OneToMany
+    // private ArrayList<Logs> logs;
 
     // @OneToMany(mappedBy = "user")
     // private ArrayList<Result> results;

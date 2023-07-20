@@ -22,7 +22,7 @@ import lombok.Setter;
 public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "topic_id")
     private long id;
 
     @Column(name = "name")

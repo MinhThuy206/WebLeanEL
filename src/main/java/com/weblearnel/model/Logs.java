@@ -33,8 +33,8 @@ public class Logs {
     @Column(name="role")
     private int role;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    // @ManyToOne
+    // @JoinColumn(name = "user_id", referencedColumnName = "id")
+    // private User user;
 
 }
