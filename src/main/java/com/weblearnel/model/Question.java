@@ -1,10 +1,13 @@
 package com.weblearnel.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,11 +51,21 @@ public class Question {
     @Column(name = "type")
     private String type;
 
-    // @ManyToOne
-    // @JoinColumn(name = "fk_topic_id", referencedColumnName = "topic_id")
-    // private Topic topics;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_topic_id", referencedColumnName = "topic_id")
+    private Topic topic;
 
-    // @ManyToOne
-    // @JoinColumn(name = "fk_level_id", referencedColumnName = "level_id")
-    // private Level level;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_level_id", referencedColumnName = "level_id")
+    private Level level;
+
+    public void assignLevel(Level levelToAssign) {
+        this.level = levelToAssign;
+        levelToAssign.getQuestions().add(this);
+    }
+
+    public void assignTopic(Topic topicToAssign) {
+        this.topic = topicToAssign;
+        topicToAssign.getQuestions().add(this);
+    }
 }
