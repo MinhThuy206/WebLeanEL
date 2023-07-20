@@ -32,7 +32,7 @@ public class ExamTopic {
     private long examTopicId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_ ex_id", referencedColumnName = "ex_id")
+    @JoinColumn(name = "fk_ex_id", referencedColumnName = "ex_id")
     private Exam exam;
 
     // @ManyToOne
