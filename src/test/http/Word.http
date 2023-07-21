@@ -1,0 +1,51 @@
+### Add Word
+POST localhost:8080/word/
+Content-Type: application/json;
+
+{
+  "name": "Hello",
+  "pronounce": "həˈlō",
+  "imageUrl" : "https://www.google.com.vn/search?tbm=isch&q=hello#imgrc=q_PXOpLiakuFYM",
+  "mean": "Xin chào",
+  "attribute": "noun",
+  "example" : "Hello Thuy! My name is Hue",
+  "topic" : {
+    "tp_id": 1,
+    "name": "communication",
+    "description": "XXX"
+  }
+}
+
+### List word
+GET localhost:8080/word/
+Accept: application/json
+
+### Get One word
+< {%
+    request.variables.set("id", "1")
+%}
+GET localhost:8080/word/{{id}}
+
+
+### Update word
+< {%
+    request.variables.set("id", "1")
+%}
+PUT localhost:8080/word/{{id}}
+Content-Type: application/json
+
+{
+  "name": "Hello",
+  "pronounce": "həˈlō",
+  "image_url" : "https://www.google.com.vn/search?tbm=isch&q=hello#imgrc=q_PXOpLiakuFYM",
+  "mean": "Helloo",
+  "attributes": "noun",
+  "example" : "Hello Thuy! My name is Hue",
+  "fk_tp_id" : 2
+}
+
+###  Delete User
+< {%
+    request.variables.set("id", "1")
+%}
+DELETE localhost:8080/word/{{id}}

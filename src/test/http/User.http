@@ -3,15 +3,15 @@ POST localhost:8080/user/
 Content-Type: application/json;
 
 {
-    "address" : "Hai Phong",
-    "email" : "dothibichthuy_t68@hus.edu.vn",
-    "fullname" : "Do Bich Thuy",
-    "level" : 2,
-    "mobile" : "0379371432",
-    "username": "Thuy",
-    "password" : "020602",
-    "role" : 0,
-    "status" : 1
+  "address": "Hai Phong",
+  "email": "dothibichthuy_t65@hus.edu.vn",
+  "fullname": "Do Bich Thuy",
+  "level": 2,
+  "mobile": "0379371432",
+  "username": "Thuy124",
+  "password": "020602",
+  "role": 0,
+  "status": 1
 }
 
 
@@ -19,26 +19,38 @@ Content-Type: application/json;
 GET localhost:8080/user/
 Accept: application/json
 
-
-### Update User
-< {%
-    request.variables.set("id", "2")
-%}
-PUT localhost:8080/product/update?id={{id}}
-Content-Type: application/json
-
-{
-  "name": "Asus",
-  "price": 134.5,
-  "url": "YY",
-  "year": 2020
-}
-
-###  Update User
+### Get One User
+### Delete Product
 < {%
     request.variables.set("id", "3")
 %}
-DELETE localhost:8080/product/{{id}}
+GET localhost:8080/user/{{id}}
+
+
+### Update User
+< {%
+    request.variables.set("id", "3")
+%}
+PUT localhost:8080/user/{{id}}
+Content-Type: application/json
+
+{
+  "address": "Hai Phong",
+  "email": "dothibichthuy_t69@hus.edu.vn",
+  "fullname": "Do Bich Thuy",
+  "level": 2,
+  "mobile": "0379371432",
+  "username": "Thuy124",
+  "password": "020602",
+  "role": 0,
+  "status": 1
+}
+
+###  Delete User
+< {%
+    request.variables.set("id", "3")
+%}
+DELETE localhost:8080/user/{{id}}
 
 
 
