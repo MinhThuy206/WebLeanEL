@@ -1,17 +1,15 @@
 package com.weblearnel.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.weblearnel.model.User;
 import com.weblearnel.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    
+
     @Autowired
     private UserService userService;
 
@@ -21,25 +19,28 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    // get all users
     @GetMapping("/")
-    public List<User> findUsers() {
-        return userService.findUsers();
+    public List<User> getAllUser() {
+        return userService.getAllUsers();
     }
 
+    // find user by id
     @GetMapping("/{id}")
-    public User findUser(@PathVariable int id) {
-        return userService.findUser(id);
+    public User findUser(@PathVariable long id) {
+        return userService.getOneUser(id);
     }
 
+    // update user
     @PutMapping("/{id}")
-    public void updateUser(@PathVariable("id") int id, @RequestBody User user) {
-        user.setId(id);
-        userService.updateUser(user);
+    public User updateUser(@PathVariable("id") long id, @RequestBody User user) {
+        return userService.updateUser(user, id);
     }
 
+    // delete user
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable int id) {
-        userService.deleteUser(id);
+    public boolean deleteUser(@PathVariable long id) {
+        return userService.deleteUser(id);
     }
 }
 
