@@ -35,9 +35,9 @@ public class ExamTopic {
     @JoinColumn(name = "fk_ex_id", referencedColumnName = "ex_id")
     private Exam exam;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_tp_id", referencedColumnName = "tp_id")
-    private Topic topic;
+    // @ManyToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "fk_tp_id", referencedColumnName = "tp_id")
+    // private Topic topic;
 
 
     @Column(name = "topic_percent")
