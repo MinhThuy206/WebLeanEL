@@ -1,8 +1,6 @@
 package com.weblearnel.model;
 
-import java.util.ArrayList;
 import java.util.Set;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

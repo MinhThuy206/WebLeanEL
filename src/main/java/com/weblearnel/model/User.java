@@ -1,6 +1,5 @@
 package com.weblearnel.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 
@@ -75,7 +74,7 @@ public class User {
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
-    private Set<Logs> logs;
+    private Set<Log> logs;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
