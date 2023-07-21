@@ -28,7 +28,7 @@ public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tp_id")
-    private long id;
+    private long topicId;
 
     @Column(name = "name")
     private String name;
@@ -36,8 +36,10 @@ public class Topic {
     @Column(name = "description")
     private String description;
 
-    // @OneToMany(mappedBy = "topicId")
-    // private List<ExamTopic> examTopic;
+    @JsonIgnore
+    @OneToMany(mappedBy = "topic")
+    private Set<ExamTopic> examTopic;
+
     @JsonIgnore
     @OneToMany(mappedBy = "topic")
     private Set<Question> questions;

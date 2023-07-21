@@ -36,8 +36,9 @@ public class Level {
     @Column(name = "description")
     private String description;
 
-    // @OneToMany(mappedBy = "level")
-    // private ArrayList<Exam> exams;
+    @JsonIgnore
+    @OneToMany(mappedBy = "level")
+    private Set<Exam> exams;
 
     // @OneToMany
     // private ArrayList<Question> questions;
