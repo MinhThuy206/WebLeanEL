@@ -1,11 +1,10 @@
 package com.weblearnel.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -43,10 +42,12 @@ public class Word {
     @Column(name = "example")
     private String example;
 
-    // @ManyToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "fk_topic_id", referencedColumnName = "topic_id")
-    // private Topic topic;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_tp_id", referencedColumnName = "tp_id")
+    private Topic topic;
 
-    // @OneToMany
-    // private ArrayList<Result> results;
+    @JsonIgnore
+    @OneToMany(mappedBy = "word")
+    private Set<Result> results;
+
 }

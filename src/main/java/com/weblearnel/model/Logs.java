@@ -2,12 +2,7 @@ package com.weblearnel.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -20,10 +15,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "log")
+@Table(name ="log")
 public class Logs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "log_id")
     private long id;
 
     @Column(name = "username")
@@ -35,11 +31,11 @@ public class Logs {
     @Column(name = "datetime")
     private LocalDate dateTime;
 
-    @Column(name = "role")
+    @Column(name="role")
     private int role;
 
-    // @ManyToOne
-    // @JoinColumn(name = "user_id", referencedColumnName = "id")
-    // private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_user_id", referencedColumnName = "user_id")
+    private User user;
 
 }

@@ -5,13 +5,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -27,7 +21,7 @@ import lombok.ToString;
 @ToString
 
 @Entity
-@Table(name = "exam")
+@Table(name="exam")
 public class Exam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +32,7 @@ public class Exam {
     private int examQuestionNo;
 
     @Column(name = "ex_time", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
-    private LocalDateTime examTime;
+    private LocalDateTime  examTime;
 
     @JsonIgnore
     @OneToMany(mappedBy = "exam")
@@ -48,7 +42,7 @@ public class Exam {
     @OneToMany(mappedBy = "exam")
     private Set<Result> results;
 
-    // @ManyToOne
-    // @JoinColumn(name = "level_id", referencedColumnName = "id")
-    // private Level level;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_lv_id", referencedColumnName = "lv_id") // id = id in the exam table
+    private Level level;
 }

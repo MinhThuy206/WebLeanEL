@@ -30,7 +30,7 @@ import lombok.ToString;
 public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "result_id")
+    @Column(name = "rs_id")
     private long resultid;
 
     @Column(name = "score")
@@ -45,23 +45,21 @@ public class Result {
     @Column(name = "rs_type")
     private int resultType;
 
-    // @ManyToOne
-    // @JoinColumn(name = "fk_word_id", referencedColumnName = "word_id")
-    // private Word word;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_word_id", referencedColumnName = "word_id") // id = id in the exam table
+    private Word word;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_ex_id", referencedColumnName = "ex_id") // id = id in the exam table
+    @JoinColumn(name="fk_ex_id", referencedColumnName = "ex_id") // id = id in the exam table
     private Exam exam;
 
-    // @ManyToOne
-    // @JoinColumn(name="fk_user_id", referencedColumnName = "user_id")
-    // private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_user_id", referencedColumnName = "user_id") // id = id in the exam table
+    private User user;
 
     public void assignExam(Exam examToAssign) {
         this.exam = examToAssign;
-        Result result = examToAssign.getResults().stream().filter(x -> x.getResultid() == this.resultid).findFirst()
-                .orElse(null);
+        Result result = examToAssign.getResults().stream().filter(x -> x.getResultid() == this.resultid).findFirst().orElse(null);
         examToAssign.getResults().add(result);
     }
-
 }

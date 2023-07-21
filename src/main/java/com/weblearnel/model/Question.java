@@ -1,19 +1,12 @@
 package com.weblearnel.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,11 +14,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "question")
+@Table(name = "questions")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long question_id;
+    @Column(name = "question_id")
+    private long id;
 
     @Column(name = "content")
     private String content;
@@ -45,27 +39,17 @@ public class Question {
     @Column(name = "option4")
     private String option4;
 
-    @Column(name = "explanation")
-    private String explanation;
+    @Column(name = "explain")
+    private String explain;
 
     @Column(name = "type")
     private String type;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_topic_id", referencedColumnName = "topic_id")
-    private Topic topic;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_level_id", referencedColumnName = "level_id")
+    @JoinColumn(name = "fk_lv_id", referencedColumnName = "lv_id")
     private Level level;
 
-    public void assignLevel(Level levelToAssign) {
-        this.level = levelToAssign;
-        levelToAssign.getQuestions().add(this);
-    }
-
-    public void assignTopic(Topic topicToAssign) {
-        this.topic = topicToAssign;
-        topicToAssign.getQuestions().add(this);
-    }
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_tp_id", referencedColumnName = "tp_id")
+    private Topic topic;
 }

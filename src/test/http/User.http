@@ -3,14 +3,15 @@ POST localhost:8080/user/
 Content-Type: application/json;
 
 {
+    "address" : "Hai Phong",
+    "email" : "dothibichthuy_t68@hus.edu.vn",
+    "fullname" : "Do Bich Thuy",
+    "level" : 2,
+    "mobile" : "0379371432",
     "username": "Thuy",
     "password" : "020602",
-    "fullname" : "Do Bich Thuy",
-    "address" : "Hai Phong",
-    "mobile" : "0379371432",
-    "email" : "dothibichthuy_t667@hus.edu.vn",
-    "status" : 1,
-    "level" : 2
+    "role" : 0,
+    "status" : 1
 }
 
 
