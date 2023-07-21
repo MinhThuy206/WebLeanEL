@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.weblearnel.model.Level;
-import com.weblearnel.service.LevelService;
+import com.weblearnel.model.Topic;
+import com.weblearnel.service.TopicService;
 
 @RestController
-public class LevelController {
+public class TopicController {
     @Autowired
-    private LevelService levelService;
+    private TopicService topicService;
 
-    @GetMapping("/levels")
-    public List<Level> getLevels() {
-        return levelService.getLevels();
+    @GetMapping("/topics")
+    public List<Topic> getAllTopics() {
+        return topicService.getTopics();
     }
 
-    @PostMapping("/levels")
-    public void addLevel(@RequestBody Level level) {
-        levelService.addLevel(level);
+    @PostMapping("/topics")
+    public void addTopic(@RequestBody Topic topic) {
+        topicService.addTopic(topic);
     }
 }

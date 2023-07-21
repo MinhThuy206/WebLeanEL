@@ -1,9 +1,9 @@
-// package com.weblearnel.repository;
+package com.weblearnel.repository;
 
-// import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-// import com.weblearnel.model.Question;
+import com.weblearnel.model.Question;
 
-// public interface QuestionRepository extends JpaRepository<Question, Long> {
+public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-// }
+}
