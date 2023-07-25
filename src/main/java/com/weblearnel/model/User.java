@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,14 +25,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="user", uniqueConstraints = {
+@Table(name = "user", uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="user_id")
+    @Column(name = "user_id")
     private long id;
 
     @Column(name = "username")
@@ -61,16 +62,30 @@ public class User {
     @Column(name = "level")
     private Integer level;
 
-     private Role getERole(){
-         return Role.getRole(this.role);
-     }
+    @Column(name = "enabled")
+    Boolean enabled = false;
 
-    @Column(name="role")
+    private Role getERole() {
+        return Role.getRole(this.role);
+    }
+
+    @Column(name = "role")
     private Integer role;
 
-     private void setERole(Role role){
-         this.setRole(role.getValue());
-     }
+    private void setERole(Role role) {
+        this.setRole(role.getValue());
+    }
+
+    public User(String username, String password, String fullname, String address, String mobile, String email,
+            Integer level) {
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.address = address;
+        this.mobile = mobile;
+        this.email = email;
+        this.level = level;
+    }
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
@@ -80,4 +95,3 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Result> results;
 }
-
