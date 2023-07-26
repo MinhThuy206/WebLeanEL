@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Form Example</title>
+</head>
+<body>
+    <form action="/submitWord" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:required="required">
+        <br>
+        <label for="mean">Mean:</label>
+        <input type="text" id="mean" name="mean" th:required="required">
+        <br>
+        <label for="attributes">Attributes:</label>
+        <input type="text" id="attributes" name="attributes" th:required="required">
+        <br>
+        <label for="example">Example:</label>
+        <input type="text" id="example" name="example" th:required="required">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

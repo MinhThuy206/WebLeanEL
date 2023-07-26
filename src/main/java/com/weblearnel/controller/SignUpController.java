@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.weblearnel.model.User;
+import com.weblearnel.model.Word;
 import com.weblearnel.registration.RegistrationService;
+import com.weblearnel.service.WordService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -16,6 +18,9 @@ import jakarta.servlet.http.HttpServletRequest;
 public class SignUpController {
     @Autowired
     private RegistrationService registrationService;
+
+    @Autowired
+    private WordService wordService;
 
     @GetMapping("/users/showForm")
     public String showForm() {
@@ -37,4 +42,22 @@ public class SignUpController {
         
         return "redirect:/users/showForm";
     }
+    @GetMapping("/admin/createWord")
+    public String wordForm() {
+        return "wordForm";
+    }
+
+    @PostMapping("/submitWord")
+    public String submitWordForm(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        String mean = request.getParameter("mean");
+        String attributes = request.getParameter("attributes");
+        String example = request.getParameter("example");
+        String imageUrl = "static/images/" + name + ".jpg";
+        String pronounce = "static/audio/" + name + ".mp3";
+        Word word = new Word(name, mean, attributes, example, imageUrl, pronounce);
+        wordService.addWord(word);
+        return "redirect:/admin/createWord";
+    }
+
 }

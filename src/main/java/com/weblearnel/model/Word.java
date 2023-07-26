@@ -1,8 +1,19 @@
 package com.weblearnel.model;
 
 import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -33,6 +44,15 @@ public class Word {
 
     @Column(name = "mean")
     private String mean;
+
+    public Word(String name, String pronounce, String imageUrl, String mean, String attribute, String example) {
+        this.name = name;
+        this.pronounce = pronounce;
+        this.imageUrl = imageUrl;
+        this.mean = mean;
+        this.attribute = attribute;
+        this.example = example;
+    }
 
     @Column(name = "attributes")
     private String attribute;
