@@ -51,12 +51,12 @@ public class SignUpController {
     }
     @GetMapping("/admin/{topic_name}/createWord")
     public String wordForm(@PathVariable("topic_name") String topic_name, Model model) {
-        model.addAttribute("topic_name", topic_name);
+        model.addAttribute("topicName", topic_name);
         return "wordForm";
     }
 
-    @PostMapping("/submitWord")
-    public String submitWordForm(HttpServletRequest request) {
+    @PostMapping("/admin/{topic_name}/submitWord")
+    public String submitWordForm(HttpServletRequest request, @PathVariable("topic_name") String topic_name) {
         String name = request.getParameter("name");
         String mean = request.getParameter("mean");
         String attributes = request.getParameter("attributes");
@@ -64,10 +64,10 @@ public class SignUpController {
         String imageUrl = "static/images/" + name + ".jpg";
         String pronounce = "static/audio/" + name + ".mp3";
         Word word = new Word(name, mean, attributes, example, imageUrl, pronounce);
-        Topic topic = topicService.getTopicByName(request.getParameter("topic_name"));
+        Topic topic = topicService.getTopicByName(topic_name);
         word.assignTopic(topic);
         wordService.addWord(word);
-        return "redirect:/admin/createWord";
+        return "redirect:/admin/" + topic_name + "/createWord";
     }
 
     @GetMapping("/admin/createTopic")

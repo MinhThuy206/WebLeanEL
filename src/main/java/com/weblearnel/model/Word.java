@@ -68,8 +68,17 @@ public class Word {
     @OneToMany(mappedBy = "word")
     private Set<Result> results;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_level_id", referencedColumnName = "level_id")
+    private Level level;
+
     public void assignTopic(Topic topicToAssign) {
         this.topic = topicToAssign;
-        topicToAssign.getWords().add(this);
+        // topicToAssign.getWords().add(this);
+    }
+
+    public void assignLevel(Level levelToAssign) {
+        this.level = levelToAssign;
+        // levelToAssign.getQuestions().add(this);
     }
 }

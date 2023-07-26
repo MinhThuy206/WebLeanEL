@@ -49,4 +49,8 @@ public class Level {
     @JsonIgnore
     @OneToMany(mappedBy = "level")
     private Set<Question> questions;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "level")
+    private Set<Word> words;
 }
