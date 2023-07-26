@@ -24,4 +24,8 @@ public class TopicService {
     public void addTopic(Topic topic) {
         topicRepository.save(topic);
     }
+
+    public Topic getTopicByName(String topicName) {
+        return topicRepository.findByName(topicName);
+    }
 }

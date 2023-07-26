@@ -2,13 +2,17 @@ package com.weblearnel.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.weblearnel.model.Topic;
 import com.weblearnel.model.User;
 import com.weblearnel.model.Word;
 import com.weblearnel.registration.RegistrationService;
+import com.weblearnel.service.TopicService;
 import com.weblearnel.service.WordService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +25,9 @@ public class SignUpController {
 
     @Autowired
     private WordService wordService;
+
+    @Autowired
+    private TopicService topicService;
 
     @GetMapping("/users/showForm")
     public String showForm() {
@@ -42,8 +49,9 @@ public class SignUpController {
         
         return "redirect:/users/showForm";
     }
-    @GetMapping("/admin/createWord")
-    public String wordForm() {
+    @GetMapping("/admin/{topic_name}/createWord")
+    public String wordForm(@PathVariable("topic_name") String topic_name, Model model) {
+        model.addAttribute("topic_name", topic_name);
         return "wordForm";
     }
 
@@ -56,8 +64,25 @@ public class SignUpController {
         String imageUrl = "static/images/" + name + ".jpg";
         String pronounce = "static/audio/" + name + ".mp3";
         Word word = new Word(name, mean, attributes, example, imageUrl, pronounce);
+        Topic topic = topicService.getTopicByName(request.getParameter("topic_name"));
+        word.assignTopic(topic);
         wordService.addWord(word);
         return "redirect:/admin/createWord";
+    }
+
+    @GetMapping("/admin/createTopic")
+    public String topicForm() {
+        return "topicForm";
+    }
+
+    @PostMapping("/admin/submitTopic")
+    public String submitTopicForm(HttpServletRequest request) {
+        String topic_name = request.getParameter("name");
+        String description = request.getParameter("description");
+        Topic topic = new Topic(topic_name, description);
+        topicService.addTopic(topic);
+        
+        return "redirect:/admin/" + topic_name + "/createWord";
     }
 
 }

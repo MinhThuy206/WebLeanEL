@@ -36,6 +36,13 @@ public class Topic {
     @Column(name = "description")
     private String description;
 
+    
+
+    public Topic(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     @JsonIgnore
     @OneToMany(mappedBy = "topic")
     private Set<ExamTopic> examTopic;
@@ -43,4 +50,10 @@ public class Topic {
     @JsonIgnore
     @OneToMany(mappedBy = "topic")
     private Set<Question> questions;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "topic")
+    private Set<Word> words;
+
+    
 }

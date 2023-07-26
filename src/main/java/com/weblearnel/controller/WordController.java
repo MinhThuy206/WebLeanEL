@@ -61,6 +61,11 @@ public class WordController {
         return wordService.deleteWord(id);
     }
 
+    @PutMapping("/{word_id}/topic/{topic_id}")
+    public Word assignTopicToWord(@PathVariable("word_id") long word_id, @PathVariable("topic_id") long topic_id) {
+        return wordService.assignExamToResult(word_id, topic_id);
+    }
+
     // @GetMapping(
     //     value = "/image/{filename}",
     //     produces = MediaType.IMAGE_JPEG_VALUE

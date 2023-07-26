@@ -94,4 +94,8 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Result> results;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<TopicPassed> topicsPassed;
 }

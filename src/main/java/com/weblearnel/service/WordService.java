@@ -2,10 +2,13 @@ package com.weblearnel.service;
 
 import java.util.List;
 
-import com.weblearnel.model.Word;
-import com.weblearnel.repository.WordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.weblearnel.model.Topic;
+import com.weblearnel.model.Word;
+import com.weblearnel.repository.TopicRepository;
+import com.weblearnel.repository.WordRepository;
 
 @Service
 public class WordService {
@@ -13,6 +16,8 @@ public class WordService {
     @Autowired
     private WordRepository wordRepository;
 
+    @Autowired
+    private TopicRepository topicRepository;
     //add word
     public Word addWord(Word word) {
         if (word != null) {
@@ -56,6 +61,13 @@ public class WordService {
             return true;
         }
         return false;
+    }
+
+    public Word assignExamToResult(long word_id, long topic_id) {
+        Word word = wordRepository.findById(word_id).get();
+        Topic topic = topicRepository.findById(topic_id).get();
+        word.assignTopic(topic);
+        return wordRepository.save(word);
     }
 }
 

@@ -68,4 +68,8 @@ public class Word {
     @OneToMany(mappedBy = "word")
     private Set<Result> results;
 
+    public void assignTopic(Topic topicToAssign) {
+        this.topic = topicToAssign;
+        topicToAssign.getWords().add(this);
+    }
 }
