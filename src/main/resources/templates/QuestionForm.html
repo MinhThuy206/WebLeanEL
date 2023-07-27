@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Form Example</title>
+</head>
+<body>
+    <h2>Creating a new word for topic: <span th:text="${topicName}"></span></h2>
+
+    <form th:action="@{/admin/{topicName}/submitQuestion(topicName=${topicName})}" method="post">
+    <!-- <form action="/admin/submitQuestion" method="post"> -->
+        <label for="content">Content:</label>
+        <input type="text" id="content" name="content" th:required="required">
+        <br>
+        <label for="option1">Option1:</label>
+        <input type="text" id="description" name="option1" th:required="required">
+        <br>
+        <label for="option2">Option2:</label>
+        <input type="text" id="description" name="option2" th:required="required">
+        <br>
+        <label for="option3">Option3:</label>
+        <input type="text" id="description" name="option3" th:required="required">
+        <br>
+        <label for="option4">Option4:</label>
+        <input type="text" id="description" name="option4" th:required="required">
+        <br>
+        <label for="answer">Answer:</label>
+        <input type="number" id="answer" name="answer" th:required="required">
+        <br>
+        <label for="explain">Explain:</label>
+        <input type="text" id="explain" name="explain" th:required="required">
+        <br>
+        <label for="type">Type:</label>
+        <input type="number" id="type" name="type" th:required="required">
+        <br>
+        <!-- <label for="description">Description:</label>
+        <input type="text" id="description" name="description" th:required="required">
+        <br> -->
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

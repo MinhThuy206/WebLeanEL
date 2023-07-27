@@ -69,5 +69,9 @@ public class WordService {
         word.assignTopic(topic);
         return wordRepository.save(word);
     }
+
+    public Word getWordByName(String content) {
+        return wordRepository.findByName(content);
+    }
 }
 
