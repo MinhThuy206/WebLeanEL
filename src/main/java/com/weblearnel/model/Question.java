@@ -49,7 +49,20 @@ public class Question {
     private String explanation;
 
     @Column(name = "type")
-    private String type;
+    private int type;
+    
+
+    public Question(String content, String answer, String option1, String option2, String option3, String option4,
+            String explanation, int type2) {
+        this.content = content;
+        this.answer = answer;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.option4 = option4;
+        this.explanation = explanation;
+        this.type = type2;
+    }
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_topic_id", referencedColumnName = "tp_id")
@@ -61,11 +74,15 @@ public class Question {
 
     public void assignLevel(Level levelToAssign) {
         this.level = levelToAssign;
-        levelToAssign.getQuestions().add(this);
+        // levelToAssign.getQuestions().add(this);
     }
 
     public void assignTopic(Topic topicToAssign) {
         this.topic = topicToAssign;
-        topicToAssign.getQuestions().add(this);
+        // topicToAssign.getQuestions().add(this);
+    }
+
+    public Question(String content2, String option12, String option22, String option32, String option42, int answer2,
+            String explain, int type2) {
     }
 }

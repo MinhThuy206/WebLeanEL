@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.weblearnel.model.Level;
+import com.weblearnel.model.Question;
 import com.weblearnel.model.Topic;
 import com.weblearnel.model.User;
 import com.weblearnel.model.Word;
 import com.weblearnel.registration.RegistrationService;
+import com.weblearnel.service.QuestionService;
 import com.weblearnel.service.TopicService;
 import com.weblearnel.service.WordService;
 
@@ -28,6 +31,9 @@ public class SignUpController {
 
     @Autowired
     private TopicService topicService;
+
+    @Autowired
+    private QuestionService questionService;
 
     // Render form tạo user
     @GetMapping("/users/showForm")
@@ -87,9 +93,38 @@ public class SignUpController {
         String topic_name = request.getParameter("name");
         String description = request.getParameter("description");
         Topic topic = new Topic(topic_name, description);
-        topicService.addTopic(topic);
-        
+        if(topicService.getTopicByName(topic_name) == null) {
+            topicService.addTopic(topic);
+        } 
         return "redirect:/admin/" + topic_name + "/createWord";
     }
 
+    @GetMapping("/admin/{topic_name}/createQuestion")
+    public String questionForm(@PathVariable("topic_name") String topic_name, Model model) {
+        model.addAttribute("topicName", topic_name);
+        return "QuestionForm";
+    }
+
+    @PostMapping("/admin/{topic_name}/submitQuestion")
+    public String submitQuestionForm(HttpServletRequest request, @PathVariable("topic_name") String topic_name) {
+        String content = request.getParameter("content");
+        String option1 = request.getParameter("option1");
+        String option2 = request.getParameter("option2");
+        String option3 = request.getParameter("option3");
+        String option4 = request.getParameter("option4");
+        String answer = request.getParameter("answer");
+        String explain = request.getParameter("explain");
+        int type = Integer.parseInt(request.getParameter("type"));
+
+        Question question = new Question(content, option1, option2, option3, option4, answer, explain, type);
+        Topic topic = topicService.getTopicByName(topic_name);
+        question.assignTopic(topic);
+        if (content == wordService.getWordByName(content).getName()) {
+            Word word = wordService.getWordByName(content);
+            Level level = word.getLevel();
+            question.assignLevel(level);
+        }
+        questionService.addQuestion(question);
+        return "redirect:/admin/" + topic_name + "/createQuestion";
+    }
 }
