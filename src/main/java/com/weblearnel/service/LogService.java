@@ -1,13 +1,12 @@
 package com.weblearnel.service;
 
-import com.weblearnel.model.Log;
-import com.weblearnel.model.Word;
-import com.weblearnel.repository.LogRepository;
-import com.weblearnel.repository.WordRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.weblearnel.model.Log;
+import com.weblearnel.repository.LogRepository;
 
 @Service
 public class LogService {
@@ -30,6 +29,10 @@ public class LogService {
     //find log
     public Log getOneLog(long id) {
         return logRepository.findById(id).get();
+    }
+
+    public Log updateLog(long id, Log log) {
+        return logRepository.save(log);
     }
 
 }

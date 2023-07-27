@@ -1,6 +1,7 @@
 package com.weblearnel.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -96,6 +98,7 @@ public class User {
     private Set<Result> results;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private Set<TopicPassed> topicsPassed;
+    @ManyToMany(mappedBy = "users")
+    // @JoinTable(name = "topic_passed")
+    private Set<TopicPassed> topicsPassed = new HashSet<>();
 }

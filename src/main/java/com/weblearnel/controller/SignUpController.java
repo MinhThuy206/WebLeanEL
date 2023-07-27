@@ -29,11 +29,13 @@ public class SignUpController {
     @Autowired
     private TopicService topicService;
 
+    // Render form tạo user
     @GetMapping("/users/showForm")
     public String showForm() {
         return "test";
     }
 
+    // Xử lý form tạo user và redirect về trang tạo user
     @PostMapping("/submitForm")
     public String submitForm(HttpServletRequest request) {
         String username = request.getParameter("username");
@@ -49,12 +51,15 @@ public class SignUpController {
         
         return "redirect:/users/showForm";
     }
+
+    // Render form tạo word
     @GetMapping("/admin/{topic_name}/createWord")
     public String wordForm(@PathVariable("topic_name") String topic_name, Model model) {
         model.addAttribute("topicName", topic_name);
         return "wordForm";
     }
 
+    // Xử lý form tạo word và redirect về trang tạo word
     @PostMapping("/admin/{topic_name}/submitWord")
     public String submitWordForm(HttpServletRequest request, @PathVariable("topic_name") String topic_name) {
         String name = request.getParameter("name");
@@ -70,11 +75,13 @@ public class SignUpController {
         return "redirect:/admin/" + topic_name + "/createWord";
     }
 
+    // Render form tạo topic
     @GetMapping("/admin/createTopic")
     public String topicForm() {
         return "topicForm";
     }
 
+    // Xử lý form tạo topic và redirect về trang tạo word cho topic đó
     @PostMapping("/admin/submitTopic")
     public String submitTopicForm(HttpServletRequest request) {
         String topic_name = request.getParameter("name");
