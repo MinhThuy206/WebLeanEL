@@ -1,5 +1,6 @@
 package com.weblearnel.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -67,6 +68,11 @@ public class User {
     @Column(name = "enabled")
     Boolean enabled = false;
 
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDateTime tokenCreationDate;
+
+    private String token;
+
     private Role getERole() {
         return Role.getRole(this.role);
     }
@@ -87,6 +93,14 @@ public class User {
         this.mobile = mobile;
         this.email = email;
         this.level = level;
+    }
+
+    public LocalDateTime getTokenCreationDate() {
+        return tokenCreationDate;
+    }
+
+    public void setTokenCreationDate(LocalDateTime tokenCreationDate) {
+        this.tokenCreationDate = tokenCreationDate;
     }
 
     @JsonIgnore

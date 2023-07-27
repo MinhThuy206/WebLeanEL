@@ -19,7 +19,7 @@ public class UserService {
     @Autowired
     private ConfirmationTokenService confirmationTokenService;
 
-    //add word
+    // add word
     public User addUser(User user) {
         if (user != null) {
             return userRepository.save(user);
@@ -32,7 +32,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    //find word
+    // find word
     public User getOneUser(long id) {
         return userRepository.findById(id).get();
     }
@@ -70,7 +70,7 @@ public class UserService {
     public String signUpUser(User user) {
         boolean userExists = userRepository.findByUsername(user.getUsername()).isPresent();
         boolean emailExists = userRepository.findByEmail(user.getEmail()).isPresent();
-        if(userExists) {
+        if (userExists) {
             throw new IllegalStateException("user already exists");
         }
         if (emailExists) {
@@ -79,13 +79,14 @@ public class UserService {
         userRepository.save(user);
 
         String token = UUID.randomUUID().toString();
-        ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(), LocalDateTime.now().plusMinutes(15), user);
+        ConfirmationToken confirmationToken = new ConfirmationToken(token, LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15), user);
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
         // String link = "http://localhost:8080/tokens/confirm?token=" + token;
-        // String to =  emailService.buildEmail(user.getUsername(), link);
+        // String to = emailService.buildEmail(user.getUsername(), link);
         // emailService.send(user.getEmail(), to);
-        
+
         return token;
     }
 
