@@ -38,4 +38,8 @@ public class Log {
     @JoinColumn(name = "fk_user_id", referencedColumnName = "user_id")
     private User user;
 
+    public void assignUser(User UserToAssign) {
+        this.user = UserToAssign;
+        UserToAssign.getLogs().add(this);
+    }
 }
