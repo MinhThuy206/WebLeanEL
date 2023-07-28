@@ -33,11 +33,11 @@
                         <div id="login-box" style="height: 220px;" class="col-md-6">
                             <h3 class="text-center m-3">Your Registered Email</h3>
                             <div class="alert alert-success" role="alert">
-                                we have sent an OTP to your registered email
+                                we have sent an OTP to your registered email <span th:text="${email}"></span>
                             </div>
-                            <form method="post" action="" th:action="@{/send-otp}">
+                            <form method="post" action="" th:action="@{/verify-otp}">
                                 <div class="form-group">
-                                    <input name="otp" required="required" type="text" placeholder="Enter OTP here" class="form-control">
+                                    <input name="otp" required="required" type="number" placeholder="Enter OTP here" class="form-control">
                                 </div>
                                 <div class="container text-center">
                                     <button class="btn btn- success">Verity</button>

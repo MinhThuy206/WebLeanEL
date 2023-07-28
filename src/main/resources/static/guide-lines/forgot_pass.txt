@@ -1,0 +1,8 @@
+b1: vào login click forgot pass
+b2: render forgot html
+b3:nhập email, , send email kèm otp ,render veirfy-otp html, add model attributes email, otp-sent
+cho verify html
+b4: nhập otp, clcik verify
+b5: check otp đúng thì render resetPassword html, sai nhập lại otp 
+b6: nhập pass mới trong reset html
+b7: get user = email, update pass render login html

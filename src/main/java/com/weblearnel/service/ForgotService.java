@@ -1,4 +1,15 @@
-// package com.weblearnel.service;
+package com.weblearnel.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.weblearnel.email.EmailSender;
+import com.weblearnel.model.User;
+import com.weblearnel.repository.UserRepository;
+
+import lombok.AllArgsConstructor;
 
 // import java.time.Duration;
 // import java.time.LocalDateTime;
@@ -11,12 +22,33 @@
 // import com.weblearnel.model.User;
 // import com.weblearnel.repository.ForgotRepository;
 
-// @Service
-// public class ForgotService {
+@Service
+@AllArgsConstructor
+public class ForgotService {
+    @Autowired
+    private UserRepository userRepository;
+    private final EmailSender emailSender;
+
+    public String sendOTP(String user_email, int otp) {
+        // int otp = new Random().nextInt(10001, 999999);
+        Optional<User> user = userRepository.findByEmail(user_email);
+        if (user.isPresent()) {
+            User user1 = user.get();
+            // user1.setOtp(otp);
+            // userRepository.save(user1);
+            String name = user1.getUsername();
+            String mail = emailSender.buildEmailResetPassword(name, otp);
+            emailSender.send(user_email,mail);
+            return "verify_otp";
+        }
+        else{
+            return "Invalid email id.";
+        }
+        // return null;
+    }
 // private static final long EXPIRE_TOKEN = 30;
 
-// @Autowired
-// private ForgotRepository forgotRepository;
+
 
 // public String forgotPass(String email) {
 // Optional<User> userOptional =
@@ -74,4 +106,4 @@
 // return diff.toMinutes() >= EXPIRE_TOKEN;
 // }
 
-// }
+}
