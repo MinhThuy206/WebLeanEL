@@ -23,15 +23,16 @@ public class RegistrationService {
     private final EmailSender emailSender;
 
     public String register( User user) {
-        boolean isValidEmail = emailValidator.
-                test(user.getEmail());
+        boolean isValidEmail = emailValidator.test(user.getEmail());
 
         if (!isValidEmail) {
             throw new IllegalStateException("email not valid");
         }
 
-        String token = userService.signUpUser(user);
+        String token = userService.signUpUser(user); // tạo token
 
+        // gửi email kèm token khi click  vào trc khi token hết hạn sẽ tạo get request để confirm token
+        // và active user
         String link = "http://localhost:8082/api/v1/registration/confirm?token=" + token;
         emailSender.send(
                 user.getEmail(),
@@ -40,6 +41,7 @@ public class RegistrationService {
         return token;
     }
 
+    // Xác nhận token đã hết hạn chưa, đã được confirm chưa
     @Transactional
     public String confirmToken(String token) {
         ConfirmationToken confirmationToken = confirmationTokenService

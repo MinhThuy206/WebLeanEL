@@ -66,7 +66,7 @@ public class UserService {
         }
         return false;
     }
-
+    // 
     public String signUpUser(User user) {
         boolean userExists = userRepository.findByUsername(user.getUsername()).isPresent();
         boolean emailExists = userRepository.findByEmail(user.getEmail()).isPresent();

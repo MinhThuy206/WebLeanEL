@@ -52,7 +52,7 @@ public class SignUpController {
         String address = request.getParameter("address");
         int level = Integer.parseInt(request.getParameter("level"));
         User user = new User(username, password, fullname,address,phone, email, level);
-        registrationService.register(user);
+        registrationService.register(user); // đăng ký user mới vào database
         
         
         return "redirect:/users/showForm";

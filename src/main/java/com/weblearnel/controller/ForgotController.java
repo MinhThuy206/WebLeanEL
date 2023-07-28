@@ -24,7 +24,7 @@ public class ForgotController {
         String response = forgotservice.forgotPass(email);
 
         if (!response.startsWith("Invalid")) {
-            response = "http://localhost:8080/reset-password?token=" + response;
+            response = "http://localhost:8082/reset-password?token=" + response;
         }
         return response;
     }
