@@ -1,10 +1,7 @@
 package com.weblearnel.controller;
 
-import ch.qos.logback.core.model.Model;
 import com.weblearnel.model.User;
-import com.weblearnel.registration.RegistrationService;
 import com.weblearnel.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 public class SignInController {
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private User userBean;
 
     @GetMapping("/user/login")
     public String ShowsignIn() {
@@ -39,12 +33,4 @@ public class SignInController {
         return "login";
     }
 
-
-//    @GetMapping("/login")
-//    public String login(@ModelAttribute("user") User user){
-//        System.out.println(user.getId());
-//        System.out.println(user.getPassword());
-//
-//
-//    }
 }
