@@ -36,7 +36,7 @@ public class UserController {
     @PostMapping("/update")
     public String updateUser(@PathVariable("id") long id, @RequestBody User user) {
         userService.updateUser(user, id);
-        return "updateProfile";
+        return "/updateProfile";
     }
 
     // delete user
