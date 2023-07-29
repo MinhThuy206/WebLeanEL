@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>UpdateProfile</title>
+</head>
+<body>
+<form action="/user/update" method="post">
+  <label for="name">UserName:</label>
+  <input type="text" id="name" name="username" th:required="required">
+  <br>
+  <label for="password">Password:</label>
+  <input type="text" id="password" name="password" th:required="required">
+  <br>
+  <label for="fullname">FullName:</label>
+  <input type="text" id="fullname" name="fullname" th:required="required">
+  <br>
+  <label for="phone">Phone:</label>
+  <input type="text" id="phone" name="phone" th:required="required">
+  <br>
+  <label for="address">address:</label>
+  <input type="text" id="address" name="address" th:required="required">
+  <br>
+  <br>
+  <p style="border: 1px darkgrey solid"><a href="index.html">Submit</a> </p>
+
+</form>
+</body>
+</html>
