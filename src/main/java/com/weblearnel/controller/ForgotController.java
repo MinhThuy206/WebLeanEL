@@ -20,7 +20,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 
-// import com.weblearnel.service.ForgotService;
 
 // @RestController
 @Controller
@@ -29,7 +28,6 @@ public class ForgotController {
     @Autowired
     private ForgotService forgotService;
     private UserRepository userRepository;
-    // private UserService userService;
     private final Map<String, Integer> otpStorage = new HashMap<>();
     
     // render forgot password page
@@ -38,22 +36,20 @@ public class ForgotController {
         return "forgot";
     }
 
+    // send otp to email, lưu email - otp vào session
     @PostMapping("/send-otp")
     public String sendOTP(@RequestParam("email") String email, Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.setAttribute("email", email);
         int otp = new Random().nextInt(10001, 999999);
-        // model.addAttribute("sent_otp", otp);
         model.addAttribute("email", email);
         otpStorage.put(email, otp);
         return forgotService.sendOTP(email, otp);
         // return "verify_otp";
     }
-    
+    // lấy otp trong session, verify otp gửi email cho reset password html 
     @PostMapping("/verify-otp")
     public String verifyOTP(@RequestParam("otp") int otp, HttpServletRequest request, Model model)  {
-        // int temp = model.getAttribute("sent_otp").hashCode();
-        // int sent_otp = Integer.parseInt(request.getParameter("sent_otp"));
         HttpSession session = request.getSession();
         String email = session.getAttribute("email").toString();
         int sent_otp = otpStorage.get(email);
@@ -63,10 +59,9 @@ public class ForgotController {
         } else {
             return "verify_otp";
         }
-        // System.out.println("OTP: " + otp);
-        // return "reset_password";
     }
 
+    // update password gọi user từ email, set password mới, save user
     @PostMapping("/updatePassword")
     public String updatePassword(
         @RequestParam("newPassword") String password, 
@@ -87,9 +82,7 @@ public class ForgotController {
         } else {
             return "resetPassword";
         }
-        // System.out.println("Password: " + password);
-        // System.out.println("Confirm Password: " + confirmPassword);
-        // return "login";
+        
     }
 
 
