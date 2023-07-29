@@ -2,11 +2,12 @@ package com.weblearnel.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.weblearnel.model.User;
 import com.weblearnel.service.UserService;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
@@ -26,15 +27,16 @@ public class UserController {
     }
 
     // find user by id
-    @GetMapping("/{id}")
-    public User findUser(@PathVariable long id) {
-        return userService.getOneUser(id);
-    }
+//    @GetMapping("/{id}")
+//    public User findUser(@PathVariable long id) {
+//        return userService.getOneUser(id);
+//    }
 
     // update user
-    @PutMapping("/{id}")
-    public User updateUser(@PathVariable("id") long id, @RequestBody User user) {
-        return userService.updateUser(user, id);
+    @PostMapping("/update")
+    public String updateUser(@PathVariable("id") long id, @RequestBody User user) {
+        userService.updateUser(user, id);
+        return "updateProfile";
     }
 
     // delete user
@@ -42,5 +44,6 @@ public class UserController {
     public boolean deleteUser(@PathVariable long id) {
         return userService.deleteUser(id);
     }
+
 }
 

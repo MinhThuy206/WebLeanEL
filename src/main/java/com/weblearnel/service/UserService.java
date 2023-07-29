@@ -2,14 +2,14 @@ package com.weblearnel.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.weblearnel.model.ConfirmationToken;
 import com.weblearnel.model.User;
 import com.weblearnel.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
@@ -32,9 +32,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    // find word
-    public User getOneUser(long id) {
-        return userRepository.findById(id).get();
+    // find user
+    public User getUser(String username) {
+        return userRepository.findByUsername(username).get();
     }
 
     // update word
@@ -42,16 +42,10 @@ public class UserService {
         if (user != null) {
             User user1 = userRepository.getReferenceById(id);
             user1.setUsername(user.getUsername());
-            user1.setEmail(user.getEmail());
             user1.setAddress(user.getAddress());
-            user1.setLevel(user.getLevel());
             user1.setFullname(user.getFullname());
-            user1.setRole(user.getRole());
-            user1.setLogs(user.getLogs());
-            user1.setCreateDate(user.getCreateDate());
             user1.setPassword(user.getPassword());
             user1.setMobile(user.getMobile());
-            user1.setStatus(user.getStatus());
             return userRepository.save(user1);
         }
         return null;
@@ -66,7 +60,6 @@ public class UserService {
         }
         return false;
     }
-    // 
     public String signUpUser(User user) {
         boolean userExists = userRepository.findByUsername(user.getUsername()).isPresent();
         boolean emailExists = userRepository.findByEmail(user.getEmail()).isPresent();
