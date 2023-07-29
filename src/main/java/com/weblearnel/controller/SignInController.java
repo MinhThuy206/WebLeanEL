@@ -22,10 +22,10 @@ public class SignInController {
         User user = userService.getUser(username);
         if(!user.getPassword().equals(password)){
             System.out.println("login thanh cong");
-            return "/index";
+            return "index";
         }
         System.out.println("login that bai");
-        return "/login";
+        return "login";
     }
 
     @GetMapping("/logout")
