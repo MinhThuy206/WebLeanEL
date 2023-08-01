@@ -29,11 +29,13 @@ public class ExamTopicController {
         examTopicService.addExamTopic(examTopic);
     }
 
+    // gán exam cho examtopic
     @PutMapping("/examtopics/{et_id}/exams/{exam_id}")
     public ExamTopic assignExamToExamTopic(@PathVariable("et_id") long et_id, @PathVariable("exam_id") long exam_id) {
         return examTopicService.assignExamToExamTopic(et_id, exam_id);
     }
 
+    // tìm exam của examtopic
     @GetMapping("/examtopics/{et_id}/exams")
     public Exam findExamFromExamTopic(@PathVariable("et_id") long et_id) {
         return examTopicService.findExamFromResult(et_id);

@@ -1,5 +1,6 @@
 package com.weblearnel.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,4 +21,9 @@ public interface UserRepository extends JpaRepository<User, Long>{
     @Modifying
     @Query(value = "UPDATE user u SET u.enabled = TRUE WHERE u.email = ?1", nativeQuery = true)
     void enableUser(String email);
+
+    String getUser = "SELECT * FROM user u WHERE u.user_id IN ";
+    String getUserID = "(SELECT user_id FROM user_topic_passed utp WHERE utp.topic_passed_id = ?1)";
+    @Query(value = getUser + getUserID, nativeQuery = true)
+    List<User> findUsersFromTopicPassed(Long topicPassed_id);
 }

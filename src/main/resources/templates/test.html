@@ -1,33 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Form Example</title>
+    <title>Test Topics</title>
 </head>
 <body>
-    <form action="/submitForm" method="post">
-        <label for="name">UserName:</label>
-        <input type="text" id="name" name="username" th:required="required">
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" th:required="required">
-        <br>
-        <label for="password">Password:</label>
-        <input type="text" id="password" name="password" th:required="required">
-        <br>
-        <label for="fullname">FullName:</label>
-        <input type="text" id="fullname" name="fullname" th:required="required">
-        <br>
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" th:required="required">
-        <br>
-        <label for="address">address:</label>
-        <input type="text" id="address" name="address" th:required="required">
-        <br>
-        
-        <label for="status">Level:</label>
-        <input type="number" id="name" name="level" th:required="required">
-        <br>
-        <input type="submit" value="Submit">
-    </form>
+    <h1>Test Topics</h1>
+    <ul>
+        <!-- Using Thymeleaf to loop through the topicsOfTest and display each topic name -->
+        <li th:each="topic : ${topicsOfTest}" th:text="${topic}"></li>
+    </ul>
 </body>
 </html>

@@ -38,7 +38,7 @@ public class SignUpController {
     // Render form tạo user
     @GetMapping("/users/showForm")
     public String showForm() {
-        return "test";
+        return "signup";
     }
 
     // Xử lý form tạo user và redirect về trang tạo user
@@ -61,7 +61,7 @@ public class SignUpController {
     // Render form tạo word
     @GetMapping("/admin/{topic_name}/createWord")
     public String wordForm(@PathVariable("topic_name") String topic_name, Model model) {
-        model.addAttribute("topicName", topic_name);
+        model.addAttribute("topicName", topic_name);// thêm topic để biết từ dc tạo thuộc topic nào
         return "wordForm";
     }
 
@@ -76,9 +76,9 @@ public class SignUpController {
         String pronounce = "static/audio/" + name + ".mp3";
         Word word = new Word(name, mean, attributes, example, imageUrl, pronounce);
         Topic topic = topicService.getTopicByName(topic_name);
-        word.assignTopic(topic);
-        wordService.addWord(word);
-        return "redirect:/admin/" + topic_name + "/createWord";
+        word.assignTopic(topic); // gán topic cho word
+        wordService.addWord(word); // thêm word vào database
+        return "redirect:/admin/" + topic_name + "/createWord"; // redirect về trang tạo word
     }
 
     // Render form tạo topic

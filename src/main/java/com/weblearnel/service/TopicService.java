@@ -28,4 +28,8 @@ public class TopicService {
     public Topic getTopicByName(String topicName) {
         return topicRepository.findByName(topicName);
     }
+
+    public Topic getTopicById(Long topic_id) {
+        return topicRepository.findById(topic_id).orElse(null);
+    }
 }

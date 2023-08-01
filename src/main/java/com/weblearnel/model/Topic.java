@@ -55,5 +55,8 @@ public class Topic {
     @OneToMany(mappedBy = "topic")
     private Set<Word> words;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "topic")
+    private Set<TopicPassed> topicPassed;
     
 }

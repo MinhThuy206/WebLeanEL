@@ -39,11 +39,13 @@ public class QuestionController {
         return questionService.assignLevelToQuestion(q_id, level_id);
     }
 
+    // tìm topic của câu hỏi
     @GetMapping("/questions/{q_id}/topic")
     public Topic findTopicFromQuestion(@PathVariable("q_id") Long q_id) {
         return questionService.findTopicFromQuestion(q_id);
     }
 
+    // gán topic cho câu hỏi
     @PostMapping("/questions/{q_id}/topic/{topic_id}")
     public Question assignTopicToQuestion(@PathVariable("q_id") Long q_id,
             @PathVariable("topic_id") Long topic_id) {

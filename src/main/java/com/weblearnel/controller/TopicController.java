@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.weblearnel.model.Topic;
 import com.weblearnel.service.TopicService;
 
+import lombok.AllArgsConstructor;
+
 @RestController
+@AllArgsConstructor
 public class TopicController {
     @Autowired
     private TopicService topicService;
@@ -25,4 +28,6 @@ public class TopicController {
     public void addTopic(@RequestBody Topic topic) {
         topicService.addTopic(topic);
     }
+
+    
 }
