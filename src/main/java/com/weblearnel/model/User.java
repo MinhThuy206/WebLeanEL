@@ -115,4 +115,9 @@ public class User {
     @ManyToMany(mappedBy = "users")
     // @JoinTable(name = "topic_passed")
     private Set<TopicPassed> topicsPassed = new HashSet<>();
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "users")
+    // @JoinTable(name = "topic_passed")
+    private Set<Topic> topics = new HashSet<>();
 }

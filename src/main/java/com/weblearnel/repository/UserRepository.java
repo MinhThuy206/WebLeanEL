@@ -26,4 +26,9 @@ public interface UserRepository extends JpaRepository<User, Long>{
     String getUserID = "(SELECT user_id FROM user_topic_passed utp WHERE utp.topic_passed_id = ?1)";
     @Query(value = getUser + getUserID, nativeQuery = true)
     List<User> findUsersFromTopicPassed(Long topicPassed_id);
+
+    String getUsers = "SELECT * FROM user u WHERE u.user_id IN ";
+    String getUsersID = "(SELECT user_id FROM user_topic utp WHERE utp.tp_id = ?1)";
+    @Query(value = getUsers + getUsersID, nativeQuery = true)
+    List<User> findUsersFromTopic(Long topic_id);
 }

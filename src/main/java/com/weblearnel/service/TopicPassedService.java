@@ -35,11 +35,11 @@ public class TopicPassedService {
     }
 
     
-    public TopicPassed assignUserToTopicPassed(Long topicPassed_id, Long topic_id) {
-        if(topicPassedRepository.checkRecordExist(topicPassed_id, topic_id) == 0) {
+    public TopicPassed assignUserToTopicPassed(Long topicPassed_id, Long user_id) {
+        if(topicPassedRepository.checkRecordExist(topicPassed_id, user_id) == 0) {
             Set<User> userSet = null;
             TopicPassed topicPassed = topicPassedRepository.findById(topicPassed_id).orElse(null);
-            User user = userRepository.findById(topic_id).orElse(null);
+            User user = userRepository.findById(user_id).orElse(null);
             userSet = topicPassed.getUsers();
             userSet.add(user);
             topicPassed.setUsers(userSet);

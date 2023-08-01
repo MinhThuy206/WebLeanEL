@@ -14,7 +14,7 @@ public interface TopicPassedRepository extends JpaRepository<TopicPassed, Long>{
     List<TopicPassed> findByUsers(Long user_id);
 
    String checkRecordExist = "SELECT COUNT(*) AS row_count FROM user_topic_passed ";
-   String condition = "WHERE user_id = ?2 AND topic_passed_id = ?1;";
+   String condition = "WHERE user_id = ?2 AND topic_passed_id = ?1";
    @Query(value = checkRecordExist + condition, nativeQuery = true)
     int checkRecordExist(Long topic_passed_id, Long user_id);
 }
