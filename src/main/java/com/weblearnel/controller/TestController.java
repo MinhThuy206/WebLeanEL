@@ -1,6 +1,5 @@
 package com.weblearnel.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +10,10 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class TestController {
-    @Autowired
+    // @Autowired
     // private TopicPassedService topicPassedService;
 
-    @GetMapping("/test/{user_id}")
+    @GetMapping("/exam/{user_id}")
     public String test(@PathVariable Long user_id, Model model){
         // lấy topic đã pass của user gán vào model
         // List<TopicPassed> topicsOfTest = topicPassedService.findTopicPassedFromUser(user_id);
@@ -24,9 +23,12 @@ public class TestController {
 
         //     System.out.println(topicsOfTest.get(i).getTopic().getName());
         // }
-        return "test";
+        return "test-eng1";
     }
 
-
+    @GetMapping("/exam")
+    public String levelTest(){
+        return "exam/test";
+    }
 
 }
