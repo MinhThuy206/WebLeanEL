@@ -60,9 +60,9 @@ public class Topic {
     @OneToMany(mappedBy = "topic")
     private Set<Word> words;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "topic")
-    private Set<TopicPassed> topicPassed;
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "topic")
+    // private Set<TopicPassed> topicPassed;
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

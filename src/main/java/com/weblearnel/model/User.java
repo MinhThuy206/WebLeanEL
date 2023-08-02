@@ -111,10 +111,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Result> results;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "users")
-    // @JoinTable(name = "topic_passed")
-    private Set<TopicPassed> topicsPassed = new HashSet<>();
+    // @JsonIgnore
+    // @ManyToMany(mappedBy = "users")
+    // // @JoinTable(name = "topic_passed")
+    // private Set<TopicPassed> topicsPassed = new HashSet<>();
 
     @JsonIgnore
     @ManyToMany(mappedBy = "users")
