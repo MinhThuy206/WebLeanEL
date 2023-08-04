@@ -1,4 +1,4 @@
-package com.weblearnel.controller;
+package com.weblearnel.controller.rest;
 
 import java.util.List;
 
@@ -29,16 +29,11 @@ public class UserController {
     }
 
     // get all users
-    @GetMapping("")
+    @GetMapping("/")
     public List<User> getAllUser() {
         return userService.getAllUsers();
     }
 
-    // find user by id
-//    @GetMapping("/{id}")
-//    public User findUser(@PathVariable long id) {
-//        return userService.getOneUser(id);
-//    }
 
     // update user
     @PostMapping("/update")

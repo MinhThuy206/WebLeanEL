@@ -1,4 +1,4 @@
-package com.weblearnel.controller;
+package com.weblearnel.controller.view;
 
 import java.util.HashMap;
 import java.util.Map;

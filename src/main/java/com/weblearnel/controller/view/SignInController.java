@@ -1,4 +1,4 @@
-package com.weblearnel.controller;
+package com.weblearnel.controller.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.weblearnel.controller;
+package com.weblearnel.controller.view;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

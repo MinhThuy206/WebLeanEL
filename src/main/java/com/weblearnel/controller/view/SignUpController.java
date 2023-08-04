@@ -1,4 +1,4 @@
-package com.weblearnel.controller;
+package com.weblearnel.controller.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,9 +53,9 @@ public class SignUpController {
         int level = Integer.parseInt(request.getParameter("level"));
         User user = new User(username, password, fullname,address,phone, email, level);
         registrationService.register(user); // đăng ký user mới vào database
+
         
-        
-        return "redirect:/users/showForm";
+        return "redirect:/users/login";
     }
 
     // Render form tạo word

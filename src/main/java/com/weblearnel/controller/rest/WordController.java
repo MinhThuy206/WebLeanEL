@@ -1,4 +1,4 @@
-package com.weblearnel.controller;
+package com.weblearnel.controller.rest;
 
 import java.io.IOException;
 import java.util.List;
