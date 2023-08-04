@@ -39,7 +39,8 @@ public class ForgotService {
             String name = user1.getUsername();
             String mail = emailSender.buildEmailResetPassword(name, otp);
             emailSender.send(user_email,mail);
-            return "verify_otp";
+            //return "verify-otp";
+            return "authentication/two-steps";
         }
         else{
             return "Invalid email id.";

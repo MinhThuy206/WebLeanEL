@@ -33,7 +33,8 @@ public class ForgotController {
     // render forgot password page
     @GetMapping("/forgot-password")
     public String showForm() {
-        return "forgot";
+        // return "forgot";
+        return "authentication/password-reset";
     }
 
     // send otp to email, lưu email - otp vào session
