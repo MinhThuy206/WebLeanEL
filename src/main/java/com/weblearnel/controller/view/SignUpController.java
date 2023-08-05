@@ -55,7 +55,7 @@ public class SignUpController {
         registrationService.register(user); // đăng ký user mới vào database
 
         
-        return "redirect:/users/login";
+        return "redirect:/user/login";
     }
 
     // Render form tạo word
