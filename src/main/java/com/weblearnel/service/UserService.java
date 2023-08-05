@@ -37,6 +37,10 @@ public class UserService {
         return userRepository.findByUsername(username).get();
     }
 
+    public User getUserById(long id){
+        return userRepository.findById(id).get();
+    }
+
     // update word
     public User updateUser(User user, long id) {
         if (user != null) {
