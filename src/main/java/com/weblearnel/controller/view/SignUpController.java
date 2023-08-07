@@ -1,11 +1,14 @@
 package com.weblearnel.controller.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.weblearnel.model.Level;
@@ -38,24 +41,38 @@ public class SignUpController {
     // Render form tạo user
     @GetMapping("/users/showForm")
     public String showForm() {
-        return "signup";
+        return "authentication/sign-up";
     }
 
     // Xử lý form tạo user và redirect về trang tạo user
     @PostMapping("/submitForm")
-    public String submitForm(HttpServletRequest request) {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String fullname = request.getParameter("fullname");
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
-        int level = Integer.parseInt(request.getParameter("level"));
-        User user = new User(username, password, fullname,address,phone, email, level);
-        registrationService.register(user); // đăng ký user mới vào database
-
+    public ResponseEntity<String> submitForm(@RequestBody User user) {
+        try {
+            String username = user.getUsername();
+            String password = user.getPassword();
+            String email = user.getEmail();
+            String fullname = user.getFullname();
+            String phone = "0123456789";
+            // String phone = request.getParameter("phone");
+            // String address = request.getParameter("address");
+            // int level = Integer.parseInt(request.getParameter("level"));
+            String address = "Hà Nội";
+            int level = 1;
+            User newUser = new User(username, password, fullname,address,phone, email, level);
+            registrationService.register(newUser); // đăng ký user mới vào database
+            System.out.println("Đăng ký thành công");
+            // String redirectUrl = "{\"redirect\": \"" + "/user/login" + "\"}";
+            // return ResponseEntity.ok(redirectUrl);
+            return ResponseEntity.ok("redirect:/user/login");
+        } catch (Exception e) {
+            System.out.println("Đăng ký thất bại");
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error submitting the form: " + e.getMessage());
+            // return ResponseEntity.ok("redirect:/user/login");
+        }
         
-        return "redirect:/user/login";
+    // public String submitForm(HttpServletRequest request) {
+        
     }
 
     // Render form tạo word

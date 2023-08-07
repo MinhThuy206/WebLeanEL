@@ -13,6 +13,9 @@ var KTSignupGeneral = function() {
     var submitButton;
     var validator;
     var passwordMeter;
+    var iconMessage = "success";
+    var textMessage ="You have successfully registered!";
+    var waitTime;
 
     // Handle form
     var handleForm  = function(e) {
@@ -110,6 +113,55 @@ var KTSignupGeneral = function() {
                     // Disable button to avoid multiple click 
                     submitButton.disabled = true;
 
+                    var formData = {
+                        fullname: $("input[name=fullname]").val(),
+                        username: $("input[name=username]").val(),
+                        email: $("input[name=email]").val(),
+                        password: $("input[name=password]").val(),
+                        confirmPassword: $("input[name=confirm-password]").val(),
+                        toc: $("input[name=toc]").is(":checked"),
+                    };
+                    var redirectUrl = "";
+
+                    fetch("/submitForm", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                    .then(response => response.text()
+                        // => {
+                        // if (!response.ok) {
+                        //     throw new Error("Network response was not ok.");
+                        // }
+                    //     return response.json();
+                    // }
+                    )
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
+                            // Extract the URL from the response and perform the redirection
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                            waitTime = 5000;
+                        } else {
+                            console.log("data: " + data);
+                            textMessage = data;
+                            iconMessage = "error";
+                            waitTime = 1500;
+                            // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                            // Swal.fire({
+                            //     text: data,
+                            //     icon: "error",
+                            //     buttonsStyling: false,
+                            //     confirmButtonText: "Try Again!",
+                            //     customClass: {
+                            //         confirmButton: "btn btn-primary"
+                            //     }
+                            // });
+                        }
+                    }) 						
+                    
                     // Simulate ajax request
                     setTimeout(function() {
                         // Hide loading indication
@@ -120,8 +172,9 @@ var KTSignupGeneral = function() {
 
                         // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                         Swal.fire({
-                            text: "You have successfully reset your password!",
-                            icon: "success",
+                            
+                            text: textMessage,
+                            icon: iconMessage,
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
                             customClass: {
@@ -132,9 +185,14 @@ var KTSignupGeneral = function() {
                                 form.reset();  // reset form                    
                                 passwordMeter.reset();  // reset password meter
                                 //form.submit();
+                                // window.location.href = '/user/login';
+                                if(iconMessage == "success") {
+                                    window.location.href = redirectUrl;
+                                }
+
                             }
                         });
-                    }, 1500);   						
+                    }, 1500);  
                 } else {
                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({
