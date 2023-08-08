@@ -6,14 +6,14 @@
 	<head>
 		<base href="../../static/">
 		<title>EWord - Sign in</title>
-		<link rel="canonical" href="Https://preview.keenthemes.com/metronic8" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="canonical" th:href="@{Https://preview.keenthemes.com/metronic8}" />
+		<link rel="shortcut icon" th:href="@{/assets/media/logos/favicon.ico}" />
 		<!--begin::Fonts-->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700}" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
-		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/css/style.bundle.css}" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -30,8 +30,8 @@
 						<!--begin::Content-->
 						<div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
 							<!--begin::Logo-->
-							<a href="index.html" class="py-9 mb-5">
-								<img alt="Logo" src="assets/media/logos/logo-4.png" class="h-100px" />
+							<a th:href="@{index.html}" class="py-9 mb-5">
+								<img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="h-100px" />
 							</a>
 							<!--end::Logo-->
 							<!--begin::Title-->
@@ -65,7 +65,7 @@
 									<!--end::Title-->
 									<!--begin::Link-->
 									<div class="text-gray-400 fw-bold fs-4">New Here?
-									<a href="authentication/sign-up.html" class="link-primary fw-bolder">Create an Account</a></div>
+									<a th:href="@{/users/showForm}" class="link-primary fw-bolder">Create an Account</a></div>
 									<!--end::Link-->
 								</div>
 								<!--begin::Heading-->
@@ -87,7 +87,7 @@
 										<label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
 										<!--end::Label-->
 										<!--begin::Link-->
-										<a href="authentication/password-reset.html" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
+										<a th:href="@{/forgot-password}" class="link-primary fs-6 fw-bolder">Forgot Password ?</a>
 										<!--end::Link-->
 									</div>
 									<!--end::Wrapper-->
@@ -110,11 +110,11 @@
 									<!--end::Separator-->
 									<!--begin::Google link-->
 									<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-									<img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Continue with Google</a>
+									<img alt="Logo" th:src="@{/assets/media/svg/brand-logos/google-icon.svg}" class="h-20px me-3" />Continue with Google</a>
 									<!--end::Google link-->
 									<!--begin::Google link-->
 									<a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
-									<img alt="Logo" src="assets/media/svg/brand-logos/facebook-4.svg" class="h-20px me-3" />Continue with Facebook</a>
+									<img alt="Logo" th:src="@{/assets/media/svg/brand-logos/facebook-4.svg}" class="h-20px me-3" />Continue with Facebook</a>
 									<!--end::Google link-->
 								</div>
 								<!--end::Actions-->
