@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 	<!--begin::Head-->
-	<head><base href="../../E-Word-Learning/">
+	<head>
+		<base href="../../static/">
 		<title>EWord - Sign in</title>
 		<link rel="canonical" href="Https://preview.keenthemes.com/metronic8" />
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
@@ -69,10 +72,10 @@
 								<!--begin::Input group-->
 								<div class="fv-row mb-10">
 									<!--begin::Label-->
-									<label class="form-label fs-6 fw-bolder text-dark">Email</label>
+									<label class="form-label fs-6 fw-bolder text-dark">User Name</label>
 									<!--end::Label-->
 									<!--begin::Input-->
-									<input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" />
+									<input class="form-control form-control-lg form-control-solid" type="text" name="username" autocomplete="off" />
 									<!--end::Input-->
 								</div>
 								<!--end::Input group-->
@@ -129,13 +132,15 @@
 		<!--end::Main-->
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
-		<script src="assets/plugins/global/plugins.bundle.js"></script>
-		<script src="assets/js/scripts.bundle.js"></script>
+		<script th:src="@{/assets/plugins/global/plugins.bundle.js}"></script>
+		<script th:src="@{/assets/js/scripts.bundle.js}"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="assets/js/custom/authentication/sign-in/general.js"></script>
+		<script th:src="@{/assets/js/custom/authentication/sign-in/general.js}"></script>
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
+		<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+
 	</body>
 	<!--end::Body-->
 </html>

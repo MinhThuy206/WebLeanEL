@@ -131,34 +131,16 @@ var KTSignupGeneral = function() {
                         body: JSON.stringify(formData)
                     })
                     .then(response => response.text()
-                        // => {
-                        // if (!response.ok) {
-                        //     throw new Error("Network response was not ok.");
-                        // }
-                    //     return response.json();
-                    // }
                     )
                     .then(data => {
                         if (data.startsWith("redirect:")) {
                             // Extract the URL from the response and perform the redirection
                             redirectUrl = data.substring("redirect:".length);
                             console.log("redirectUrl: " + redirectUrl);
-                            waitTime = 5000;
                         } else {
                             console.log("data: " + data);
                             textMessage = data;
                             iconMessage = "error";
-                            waitTime = 1500;
-                            // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                            // Swal.fire({
-                            //     text: data,
-                            //     icon: "error",
-                            //     buttonsStyling: false,
-                            //     confirmButtonText: "Try Again!",
-                            //     customClass: {
-                            //         confirmButton: "btn btn-primary"
-                            //     }
-                            // });
                         }
                     }) 						
                     

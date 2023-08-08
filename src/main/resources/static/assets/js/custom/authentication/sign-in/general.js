@@ -12,6 +12,8 @@ var KTSigninGeneral = function() {
     var form;
     var submitButton;
     var validator;
+    var iconMessage = "success";
+    var textMessage ="You have successfully logged in!";
 
     // Handle form
     var handleForm = function(e) {
@@ -61,7 +63,32 @@ var KTSigninGeneral = function() {
                     // Disable button to avoid multiple click 
                     submitButton.disabled = true;
                     
+                    var formData = {
+                        username: $("input[name=username]").val(),
+                        password: $("input[name=password]").val(),
+                    };
+                    var redirectUrl = "";
 
+                    fetch("/checklogin", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                    .then(response => response.text()
+                    )
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
+                            // Extract the URL from the response and perform the redirection
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                        } else {
+                            console.log("data: " + data);
+                            textMessage = data;
+                            iconMessage = "error";
+                        }
+                    }) 
                     // Simulate ajax request
                     setTimeout(function() {
                         // Hide loading indication
@@ -72,8 +99,8 @@ var KTSigninGeneral = function() {
 
                         // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                         Swal.fire({
-                            text: "You have successfully logged in!",
-                            icon: "success",
+                            text: textMessage,
+                            icon: iconMessage,
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
                             customClass: {
@@ -81,10 +108,16 @@ var KTSigninGeneral = function() {
                             }
                         }).then(function (result) {
                             if (result.isConfirmed) { 
-                                form.querySelector('[name="email"]').value= "";
-                                form.querySelector('[name="password"]').value= "";                                
+
+                                // form.querySelector('[name="email"]').value= "";
+                                // form.querySelector('[name="password"]').value= "";   
+                                form.reset();                             
                                 //form.submit(); // submit form
+                                if(iconMessage == "success") {
+                                    window.location.href = redirectUrl;
+                                }
                             }
+                            
                         });
                     }, 2000);   						
                 } else {
