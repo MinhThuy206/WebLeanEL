@@ -11,7 +11,9 @@ var KTSigninTwoSteps = function() {
     // Elements
     var form;
     var submitButton;
-
+    var iconMessage = "success";
+    var textMessage ="send otp successfully";
+    var waitTime;
     // Handle form
     var handleForm = function(e) {        
         // Handle form submit
@@ -30,6 +32,35 @@ var KTSigninTwoSteps = function() {
             if (validated === true) {
                 // Show loading indication
                 submitButton.setAttribute('data-kt-indicator', 'on');
+
+                var formdata = {
+                    otp: $("input[name=otp]").val(),
+                    email: $("input[name=email]").val()
+                };
+
+                var redirectUrl = "";
+
+                    fetch("/verify-otp", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formdata)
+                    })
+                    .then(response => response.text()
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
+                            // Extract the URL from the response and perform the redirection
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                            waitTime = 5000;
+                        } else {
+                            console.log("data: " + data);
+                            textMessage = data;
+                            iconMessage = "error";
+                            waitTime = 1500;
+                        }
+                    }))
 
                 // Disable button to avoid multiple click 
                 submitButton.disabled = true;

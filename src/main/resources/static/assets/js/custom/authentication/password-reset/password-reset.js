@@ -12,6 +12,9 @@ var KTPasswordResetGeneral = function() {
     var form;
     var submitButton;
 	var validator;
+    var iconMessage = "success";
+    var textMessage ="send otp successfully";
+    var waitTime;
 
     var handleForm = function(e) {
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
@@ -53,6 +56,34 @@ var KTPasswordResetGeneral = function() {
                     // Disable button to avoid multiple click 
                     submitButton.disabled = true;
 
+                    var formdata = {
+                        email: $("input[name=email]").val(),
+                    };
+
+                    var redirectUrl = "";
+
+                    fetch("/send-otp", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formdata)
+                    })
+                    .then(response => response.text()
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
+                            // Extract the URL from the response and perform the redirection
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                            waitTime = 5000;
+                        } else {
+                            console.log("data: " + data);
+                            textMessage = data;
+                            iconMessage = "error";
+                            waitTime = 1500;
+                        }
+                    }))
+
                     // Simulate ajax request
                     setTimeout(function() {
                         // Hide loading indication
@@ -63,8 +94,8 @@ var KTPasswordResetGeneral = function() {
 
                         // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                         Swal.fire({
-                            text: "You have successfully logged in!",
-                            icon: "success",
+                            text: textMessage,
+                            icon: iconMessage,
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
                             customClass: {
@@ -74,6 +105,10 @@ var KTPasswordResetGeneral = function() {
                             if (result.isConfirmed) { 
                                 form.querySelector('[name="email"]').value= "";                          
                                 //form.submit();
+                                form.reset(); // reset form
+                                if(iconMessage == "success") {
+                                    window.location.href = redirectUrl;}
+                                
                             }
                         });
                     }, 1500);   						
