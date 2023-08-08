@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <base th:href="@{../}">
+    <base href="../../static/">
     <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel
         by Keenthemes</title>
     <meta name="description"
@@ -18,20 +18,20 @@
     <meta property="og:url" content="https://keenthemes.com/metronic">
     <meta property="og:site_name" content="Keenthemes | Metronic">
     <link rel="canonical" th:href="@{Https://preview.keenthemes.com/metronic8}">
-    <link rel="shortcut icon" th:href="@{src/main/resources/static/assets/media/logos/favicon.ico}">
+    <link rel="shortcut icon" th:href="@{/assets/media/logos/favicon.ico}">
     <!--begin::Fonts-->
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700}">
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link th:href="@{src/main/resources/static/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css}" rel="stylesheet" type="text/css">
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
-    <link th:href="@{src/main/resources/static/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{src/main/resources/static/assets/css/style.bundle.css}" rel="stylesheet" type="text/css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link th:href="@{src/main/resources/static/exercise/style.css" rel="stylesheet" type="text/css">
-    <script src="https://kit.fontawesome.com/ff4db5a7f6.js" crossorigin="anonymous"></script>
-    <link th:href="@{src/main/resources/static/exercise/vendor/old_style.css" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/style.bundle.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+    <link th:href="@{/exercise/style.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{https://kit.fontawesome.com/ff4db5a7f6.js}" crossorigin="anonymous"></script>
+    <link th:href="@{/exercise/vendor/old_style.css}" rel="stylesheet" type="text/css">
 
     <style media="all" id="fa-v4-font-face">
         /*!
@@ -71474,8 +71474,8 @@
                         <!--begin::Header Logo-->
                         <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
                             <a th:href="@{index.html}">
-                                <img alt="Logo" src="assets/media/logos/logo-4.png" class="logo-default h-25px">
-                                <img alt="Logo" src="assets/media/logos/logo-5.png" class="logo-sticky h-25px">
+                                <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default h-25px">
+                                <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
                             </a>
                         </div>
                         <!--end::Header Logo-->
@@ -71507,11 +71507,11 @@
                                             </span>
                                             <div
                                                 class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-                                                <a th:href="@{src/main/resources/templates/learning/A1-A2.html}" class="menu-link py-3 active">
+                                                <a th:href="@{/learning/A1-A2.html}" class="menu-link py-3 active">
                                                     <span class="menu-title">A1
                                                         - A2 Vocabulary</span>
                                                 </a>
-                                                <a th:href="@{src/main/resources/templates/learning/B1-B2.html}" class="menu-link py-3">
+                                                <a th:href="@{/learning/B1-B2.html}" class="menu-link py-3">
                                                     <span class="menu-title">B1
                                                         - B2 Vocabulary</span>
                                                 </a>
@@ -71525,11 +71525,11 @@
                                             </span>
                                             <div
                                                 class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-                                                <a th:href="@{src/main/resources/templates/exam/overview.html}" class="menu-link py-3">
+                                                <a th:href="@{/exam/overview.html}" class="menu-link py-3">
                                                     <span class="menu-title">Exam
                                                         Overview</span>
                                                 </a>
-                                                <a th:href="@{src/main/resources/templates/exam/test.html}" class="menu-link py-3"><span
+                                                <a th:href="@{/exam/test.html}" class="menu-link py-3"><span
                                                         class="menu-title">Online
                                                         English level test</span></a>
                                             </div>
@@ -71698,7 +71698,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-1.jpg" alt>
+                                                                    <img th:src="@{/assets/media/avatars/150-1.jpg}" alt>
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71717,7 +71717,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-3.jpg" alt>
+                                                                    <img th:src="@{/assets/media/avatars/150-3.jpg}" alt>
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71736,7 +71736,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-8.jpg" alt>
+                                                                    <img th:src="@{/assets/media/avatars/150-8.jpg}" alt>
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71755,7 +71755,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-11.jpg" alt>
+                                                                    <img th:src="@{/assets/media/avatars/150-11.jpg}" alt>
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71774,7 +71774,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-12.jpg" alt>
+                                                                    <img th:src="@{/assets/media/avatars/150-12.jpg}" alt>
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71799,7 +71799,7 @@
                                                                 <div class="symbol symbol-40px me-4">
                                                                     <span class="symbol-label bg-light">
                                                                         <img class="w-20px h-20px"
-                                                                            src="assets/media/svg/brand-logos/volicity-9.svg"
+                                                                            th:src="@{/assets/media/svg/brand-logos/volicity-9.svg}"
                                                                             alt>
                                                                     </span>
                                                                 </div>
@@ -71822,7 +71822,7 @@
                                                                 <div class="symbol symbol-40px me-4">
                                                                     <span class="symbol-label bg-light">
                                                                         <img class="w-20px h-20px"
-                                                                            src="assets/media/svg/brand-logos/tvit.svg"
+                                                                            th:src="@{/assets/media/svg/brand-logos/tvit.svg}"
                                                                             alt>
                                                                     </span>
                                                                 </div>
@@ -71845,7 +71845,7 @@
                                                                 <div class="symbol symbol-40px me-4">
                                                                     <span class="symbol-label bg-light">
                                                                         <img class="w-20px h-20px"
-                                                                            src="assets/media/svg/misc/infography.svg"
+                                                                            th:src="@{/assets/media/svg/misc/infography.svg}"
                                                                             alt>
                                                                     </span>
                                                                 </div>
@@ -71869,7 +71869,7 @@
                                                                 <div class="symbol symbol-40px me-4">
                                                                     <span class="symbol-label bg-light">
                                                                         <img class="w-20px h-20px"
-                                                                            src="assets/media/svg/brand-logos/leaf.svg"
+                                                                            th:src="@{/assets/media/svg/brand-logos/leaf.svg}"
                                                                             alt>
                                                                     </span>
                                                                 </div>
@@ -71893,7 +71893,7 @@
                                                                 <div class="symbol symbol-40px me-4">
                                                                     <span class="symbol-label bg-light">
                                                                         <img class="w-20px h-20px"
-                                                                            src="assets/media/svg/brand-logos/tower.svg"
+                                                                            th:src="@{/assets/media/svg/brand-logos/tower.svg}"
                                                                             alt>
                                                                     </span>
                                                                 </div>
@@ -73287,7 +73287,7 @@
                                                         <!--begin::Illustration-->
                                                         <div class="text-center px-4">
                                                             <img class="mw-100 mh-200px" alt="metronic"
-                                                                src="assets/media/illustrations/sigma-1/1.png">
+                                                                th:src="@{/assets/media/illustrations/sigma-1/1.png}">
                                                         </div>
                                                         <!--end::Illustration-->
                                                     </div>
@@ -73726,7 +73726,7 @@
                                         <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
                                             data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                             data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
-                                            <img class="h-30px w-30px rounded" src="assets/media/avatars/150-25.jpg"
+                                            <img class="h-30px w-30px rounded" th:src="@{/assets/media/avatars/150-25.jpg}"
                                                 alt>
                                         </div>
                                         <!--begin::Menu-->
@@ -73739,7 +73739,7 @@
                                                 <div class="menu-content d-flex align-items-center px-3">
                                                     <!--begin::Avatar-->
                                                     <div class="symbol symbol-50px me-5">
-                                                        <img alt="Logo" src="assets/media/avatars/150-25.jpg">
+                                                        <img alt="Logo" th:src="@{/assets/media/avatars/150-25.jpg}">
                                                     </div>
                                                     <!--end::Avatar-->
                                                     <!--begin::Username-->
@@ -73761,7 +73761,7 @@
                                             <!--end::Menu separator-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
-                                                <a th:href="@{src/main/resources/templates/account/overview.html}" class="menu-link px-5">My
+                                                <a th:href="@{/account/overview.html}" class="menu-link px-5">My
                                                     Profile</a>
                                             </div>
                                             <div class="separator my-2"></div>
@@ -73774,54 +73774,54 @@
                                                         <span
                                                             class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
                                                             <img class="w-15px h-15px rounded-1 ms-2"
-                                                                src="assets/media/flags/united-states.svg"
+                                                                th:src="@{/assets/media/flags/united-states.svg}"
                                                                 alt></span></span>
                                                 </a>
                                                 <!--begin::Menu sub-->
                                                 <div class="menu-sub menu-sub-dropdown w-175px py-4" style>
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}"
+                                                        <a th:href="@{/account/settings.html}"
                                                             class="menu-link d-flex px-5 active">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
-                                                                    src="assets/media/flags/united-states.svg" alt>
+                                                                    th:src="@{/assets/media/flags/united-states.svg}" alt>
                                                             </span>English</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link d-flex px-5">
+                                                        <a th:href="@{/account/settings.html}" class="menu-link d-flex px-5">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
-                                                                    src="assets/media/flags/spain.svg" alt>
+                                                                    th:src="@{/assets/media/flags/united-states.svg}" alt>
                                                             </span>Spanish</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link d-flex px-5">
+                                                        <a th:href="@{/account/settings.html}" class="menu-link d-flex px-5">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
-                                                                    src="assets/media/flags/germany.svg" alt>
+                                                                    th:src="@{/assets/media/flags/germany.svg}" alt>
                                                             </span>German</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link d-flex px-5">
+                                                        <a th:href="@{/account/settings.html}" class="menu-link d-flex px-5">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
-                                                                    src="assets/media/flags/japan.svg" alt>
+                                                                    th:src="@{/assets/media/flags/japan.svg}" alt>
                                                             </span>Japanese</a>
                                                     </div>
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link d-flex px-5">
+                                                        <a th:href="@{/account/settings.html}" class="menu-link d-flex px-5">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
-                                                                    src="assets/media/flags/france.svg" alt>
+                                                                    th:src="@{/assets/media/flags/france.svg}" alt>
                                                             </span>French</a>
                                                     </div>
                                                     <!--end::Menu item-->
@@ -73831,13 +73831,13 @@
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5 my-1">
-                                                <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link px-5">Account
+                                                <a th:href="@{/account/settings.html}" class="menu-link px-5">Account
                                                     Settings</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
-                                                <a th:href="@{../WebLearnEL/src/main/resources/templates/authentication/sign-in.html}"
+                                                <a th:href="@{/users/showForm}"
                                                     class="menu-link px-5">Sign
                                                     Out</a>
                                             </div>
@@ -73961,7 +73961,7 @@
                                         <div id="questions" class="row">
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -73988,7 +73988,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74017,7 +74017,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74046,7 +74046,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74075,7 +74075,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74104,7 +74104,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74133,7 +74133,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74162,7 +74162,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74191,7 +74191,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74220,7 +74220,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74249,7 +74249,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -74278,7 +74278,7 @@
                                             </div>
                                             <div class="col-xs-6 col-md-4 col-lg-3">
                                                 <div class="card">
-                                                    <img src="https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg"
+                                                    <img th:src="@{https://gamedata.britishcouncil.org/sites/default/files/attachment/RS313_153029901-int.jpg}"
                                                         class="card-img-top" alt="">
                                                     <div class="card-body">
                                                         <div class="caption">
@@ -75641,7 +75641,7 @@
                                                 <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                                     data-bs-boundary="window" data-bs-placement="top" title=""
                                                     data-bs-original-title="Nina Nilson">
-                                                    <img src="assets/media/avatars/150-11.jpg" alt="img">
+                                                    <img th:src="@{/assets/media/avatars/150-11.jpg}" alt="img">
                                                 </div>
                                                 <!--end::User-->
                                             </div>
@@ -75669,12 +75669,12 @@
                                                     class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px pe-2">
                                                     <!--begin::User-->
                                                     <div class="symbol symbol-circle symbol-25px">
-                                                        <img src="assets/media/avatars/150-3.jpg" alt="img">
+                                                        <img th:src="@{/assets/media/avatars/150-3.jpg}" alt="img">
                                                     </div>
                                                     <!--end::User-->
                                                     <!--begin::User-->
                                                     <div class="symbol symbol-circle symbol-25px">
-                                                        <img src="assets/media/avatars/150-11.jpg" alt="img">
+                                                        <img th:src="@{/assets/media/avatars/150-11.jpg}" alt="img">
                                                     </div>
                                                     <!--end::User-->
                                                     <!--begin::User-->
@@ -75717,7 +75717,7 @@
                                                     class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px">
                                                     <!--begin::User-->
                                                     <div class="symbol symbol-circle symbol-25px">
-                                                        <img src="assets/media/avatars/150-5.jpg" alt="img">
+                                                        <img th:src="@{/assets/media/avatars/150-5.jpg}" alt="img">
                                                     </div>
                                                     <!--end::User-->
                                                     <!--begin::User-->
@@ -75790,7 +75790,7 @@
                                                 <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                                     data-bs-boundary="window" data-bs-placement="top" title=""
                                                     data-bs-original-title="Alan Nilson">
-                                                    <img src="assets/media/avatars/150-2.jpg" alt="img">
+                                                    <img th:src="@{/assets/media/avatars/150-2.jpg}" alt="img">
                                                 </div>
                                                 <!--end::User-->
                                             </div>
@@ -75843,7 +75843,7 @@
                                                 <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                                     data-bs-boundary="window" data-bs-placement="top" title=""
                                                     data-bs-original-title="Jan Hummer">
-                                                    <img src="assets/media/avatars/150-6.jpg" alt="img">
+                                                    <img th:src="@{/assets/media/avatars/150-6.jpg}" alt="img">
                                                 </div>
                                                 <!--end::User-->
                                             </div>
@@ -75858,7 +75858,7 @@
                                                 <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
                                                     <!--begin::Icon-->
                                                     <img alt="" class="w-30px me-3"
-                                                        src="assets/media/svg/files/pdf.svg">
+                                                        th:src="@{/assets/media/svg/files/pdf.svg}">
                                                     <!--end::Icon-->
                                                     <!--begin::Info-->
                                                     <div class="ms-1 fw-bold">
@@ -75879,7 +75879,7 @@
                                                 <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
                                                     <!--begin::Icon-->
                                                     <img alt="" class="w-30px me-3"
-                                                        src="assets/media/svg/files/doc.svg">
+                                                        th:src="@{/assets/media/svg/files/doc.svg}">
                                                     <!--end::Icon-->
                                                     <!--begin::Info-->
                                                     <div class="ms-1 fw-bold">
@@ -75900,7 +75900,7 @@
                                                 <div class="d-flex flex-aligns-center">
                                                     <!--begin::Icon-->
                                                     <img alt="" class="w-30px me-3"
-                                                        src="assets/media/svg/files/css.svg">
+                                                        th:src="@{/assets/media/svg/files/css.svg}">
                                                     <!--end::Icon-->
                                                     <!--begin::Info-->
                                                     <div class="ms-1 fw-bold">
@@ -75969,7 +75969,7 @@
                                                 <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                                     data-bs-boundary="window" data-bs-placement="top" title=""
                                                     data-bs-original-title="Nina Nilson">
-                                                    <img src="assets/media/avatars/150-11.jpg" alt="img">
+                                                    <img th:src="@{/assets/media/avatars/150-11.jpg}" alt="img">
                                                 </div>
                                                 <!--end::User-->
                                             </div>
@@ -76021,7 +76021,7 @@
                                                 <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                                     data-bs-boundary="window" data-bs-placement="top" title=""
                                                     data-bs-original-title="Marcus Dotson">
-                                                    <img src="assets/media/avatars/150-3.jpg" alt="img">
+                                                    <img th:src="@{/assets/media/avatars/150-3.jpg}" alt="img">
                                                 </div>
                                                 <!--end::User-->
                                             </div>
@@ -76037,7 +76037,7 @@
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper">
                                                         <img alt="img" class="rounded w-200px"
-                                                            src="assets/media/demos/demo1.png">
+                                                            th:src="@{/assets/media/demos/demo1.png}">
                                                     </div>
                                                     <!--end::Image-->
                                                     <!--begin::Link-->
@@ -76053,7 +76053,7 @@
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper">
                                                         <img alt="img" class="rounded w-200px"
-                                                            src="assets/media/demos/demo2.png">
+                                                            th:src="@{/assets/media/demos/demo2.png}">
                                                     </div>
                                                     <!--end::Image-->
                                                     <!--begin::Link-->
@@ -76069,7 +76069,7 @@
                                                     <!--begin::Image-->
                                                     <div class="overlay-wrapper">
                                                         <img alt="img" class="rounded w-200px"
-                                                            src="assets/media/demos/demo3.png">
+                                                            th:src="@{/assets/media/demos/demo3.png}">
                                                     </div>
                                                     <!--end::Image-->
                                                     <!--begin::Link-->
@@ -76184,7 +76184,7 @@
                                                 <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                                     data-bs-boundary="window" data-bs-placement="top" title=""
                                                     data-bs-original-title="Robert Rich">
-                                                    <img src="assets/media/avatars/150-14.jpg" alt="img">
+                                                    <img th:src="@{/assets/media/avatars/150-14.jpg}" alt="img">
                                                 </div>
                                                 <!--end::User-->
                                             </div>
@@ -76457,7 +76457,7 @@
                                     <div class="d-flex align-items-center mb-2">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-15.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-15.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Details-->
@@ -76496,7 +76496,7 @@
                                         <!--end::Details-->
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-26.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-26.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                     </div>
@@ -76520,7 +76520,7 @@
                                     <div class="d-flex align-items-center mb-2">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-15.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-15.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Details-->
@@ -76556,7 +76556,7 @@
                                         <!--end::Details-->
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-26.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-26.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                     </div>
@@ -76579,7 +76579,7 @@
                                     <div class="d-flex align-items-center mb-2">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-15.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-15.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Details-->
@@ -76620,7 +76620,7 @@
                                         <!--end::Details-->
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-26.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-26.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                     </div>
@@ -76643,7 +76643,7 @@
                                     <div class="d-flex align-items-center mb-2">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-15.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-15.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Details-->
@@ -76682,7 +76682,7 @@
                                         <!--end::Details-->
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-26.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-26.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                     </div>
@@ -76703,7 +76703,7 @@
                                     <div class="d-flex align-items-center mb-2">
                                         <!--begin::Avatar-->
                                         <div class="symbol symbol-35px symbol-circle">
-                                            <img alt="Pic" src="assets/media/avatars/150-15.jpg">
+                                            <img alt="Pic" th:src="@{/assets/media/avatars/150-15.jpg}">
                                         </div>
                                         <!--end::Avatar-->
                                         <!--begin::Details-->
@@ -76896,7 +76896,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo1.png" alt="demo" class="w-100">
+                                                    <img th:src="@{/assets/media/demos/demo1.png}" alt="demo" class="w-100">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
                                                     <a th:href="@{https://preview.keenthemes.com/metronic8/demo1}"
@@ -76912,7 +76912,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-success rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo2.png" alt="demo" class="w-100">
+                                                    <img th:src="@{/assets/media/demos/demo2.png}" alt="demo" class="w-100">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
                                                     <a th:href="@{https://preview.keenthemes.com/metronic8/demo2}"
@@ -76928,7 +76928,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo3.png" alt="demo" class="w-100">
+                                                    <img th:src="@{/assets/media/demos/demo3.png}" alt="demo" class="w-100">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
                                                     <a th:href="@{https://preview.keenthemes.com/metronic8/demo3}"
@@ -76944,7 +76944,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo4.png" alt="demo" class="w-100">
+                                                    <img th:src="@{/assets/media/demos/demo4.png}" alt="demo" class="w-100">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
                                                     <a th:href="@{https://preview.keenthemes.com/metronic8/demo4}"
@@ -76960,7 +76960,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo5.png" alt="demo" class="w-100">
+                                                    <img th:src="@{/assets/media/demos/demo5.png}" alt="demo" class="w-100">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
                                                     <a th:href="@{https://preview.keenthemes.com/metronic8/demo5}"
@@ -76976,7 +76976,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo6.png" alt="demo" class="w-100">
+                                                    <img th:src="@{/assets/media/demos/demo6.png}" alt="demo" class="w-100">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
                                                     <a th:href="@{https://preview.keenthemes.com/metronic8/demo6}"
@@ -76992,7 +76992,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo7.png" alt="demo" class="w-100">
+                                                    <img th:src="@{/assets/media/demos/demo7.png}" alt="demo" class="w-100">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
                                                     <a th:href="@{https://preview.keenthemes.com/metronic8/demo7}"
@@ -77008,7 +77008,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo8.png" alt="demo" class="w-100">
+                                                    <img th:src="@{/assets/media/demos/demo8.png}" alt="demo" class="w-100">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
                                                     <a th:href="@{https://preview.keenthemes.com/metronic8/demo8}"
@@ -77024,7 +77024,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo9.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo9.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77043,7 +77043,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo10.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo10.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77062,7 +77062,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo11.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo11.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77081,7 +77081,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo12.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo12.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77100,7 +77100,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo13.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo13.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77119,7 +77119,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo14.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo14.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77138,7 +77138,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo15.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo15.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77157,7 +77157,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo16.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo16.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77176,7 +77176,7 @@
                                             <div
                                                 class="overlay overflow-hidden position-relative border border-4 border-gray-200 rounded">
                                                 <div class="overlay-wrapper">
-                                                    <img src="assets/media/demos/demo17.png" alt="demo"
+                                                    <img th:src="@{/assets/media/demos/demo17.png}" alt="demo"
                                                         class="w-100 opacity-75">
                                                 </div>
                                                 <div class="overlay-layer bg-dark bg-opacity-10">
@@ -77246,7 +77246,7 @@
                             <!--end::Heading-->
                             <!--begin::Google Contacts Invite-->
                             <div class="btn btn-light-primary fw-bolder w-100 mb-8">
-                                <img alt="Logo" src="assets/media/svg/brand-logos/google-icon.svg"
+                                <img alt="Logo" th:src="@{/assets/media/svg/brand-logos/google-icon.svg}"
                                     class="h-20px me-3">Invite
                                 Gmail Contacts
                             </div>
@@ -77274,7 +77274,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-1.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-1.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -77566,7 +77566,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-26.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-26.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -77713,7 +77713,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-4.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-4.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -77859,7 +77859,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-15.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-15.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -78153,7 +78153,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-8.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-8.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -78593,7 +78593,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-6.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-6.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -78886,7 +78886,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-7.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-7.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -79179,7 +79179,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-17.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-17.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -79473,7 +79473,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-10.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-10.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -79618,7 +79618,7 @@
                                         <div class="d-flex align-items-center">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="assets/media/avatars/150-7.jpg">
+                                                <img alt="Pic" th:src="@{/assets/media/avatars/150-7.jpg}">
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Details-->
@@ -80499,11 +80499,11 @@
                                                         <!--begin::Card logos-->
                                                         <div
                                                             class="position-absolute translate-middle-y top-50 end-0 me-5">
-                                                            <img src="assets/media/svg/card-logos/visa.svg" alt=""
+                                                            <img th:src="@{/assets/media/svg/card-logos/visa.svg}" alt=""
                                                                 class="h-25px">
-                                                            <img src="assets/media/svg/card-logos/mastercard.svg" alt=""
+                                                            <img th:src="@{/assets/media/svg/card-logos/mastercard.svg}" alt=""
                                                                 class="h-25px">
-                                                            <img src="assets/media/svg/card-logos/american-express.svg"
+                                                            <img th:src="@{/assets/media/svg/card-logos/american-express.svg}"
                                                                 alt="" class="h-25px">
                                                         </div>
                                                         <!--end::Card logos-->
@@ -80993,7 +80993,7 @@
                                                 <!--end::Description-->
                                                 <!--begin::Illustration-->
                                                 <div class="text-center px-4 py-15">
-                                                    <img src="assets/media/illustrations/sigma-1/9.png" alt=""
+                                                    <img th:src="@{/assets/media/illustrations/sigma-1/9.png}" alt=""
                                                         class="w-100 mh-300px">
                                                 </div>
                                                 <!--end::Illustration-->
@@ -81799,18 +81799,18 @@
             <!--end::Main-->
             <!--begin::Javascript-->
             <!--begin::Global Javascript Bundle(used by all pages)-->
-            <script type="text/javascript" src="exercise/custom.js"></script>
-            <script src="assets/plugins/global/plugins.bundle.js"></script>
-            <script src="assets/js/scripts.bundle.js"></script>
+            <script type="text/javascript" th:src="@{/exercise/custom.js}"></script>
+            <script th:src="@{/assets/plugins/global/plugins.bundle.js}"></script>
+            <script th:src="@{/assets/js/scripts.bundle.js}"></script>
             <!--end::Global Javascript Bundle-->
             <!--begin::Page Vendors Javascript(used by this page)-->
-            <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+            <script th:src="@{/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js}"></script>
             <!--end::Page Vendors Javascript-->
             <!--begin::Page Custom Javascript(used by this page)-->
-            <script src="assets/js/custom/widgets.js"></script>
-            <script src="assets/js/custom/apps/chat/chat.js"></script>
-            <script src="assets/js/custom/modals/create-app.js"></script>
-            <script src="assets/js/custom/modals/upgrade-plan.js"></script>
+            <script th:src="@{/assets/js/custom/widgets.js}"></script>
+            <script th:src="@{/assets/js/custom/apps/chat/chat.js}"></script>
+            <script th:src="@{/assets/js/custom/modals/create-app.js}"></script>
+            <script th:src="@{/assets/js/custom/modals/upgrade-plan.js}"></script>
             <!--end::Page Custom Javascript-->
             <!--end::Javascript-->
 
