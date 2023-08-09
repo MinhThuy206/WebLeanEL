@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.weblearnel.model.Topic;
 import com.weblearnel.model.User;
+import com.weblearnel.model.Word;
 import com.weblearnel.repository.TopicRepository;
 import com.weblearnel.repository.UserRepository;
+import com.weblearnel.repository.WordRepository;
 
 @Service
 public class TopicService {
@@ -18,6 +20,9 @@ public class TopicService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private WordRepository wordRepository;
 
     public TopicService(TopicRepository topicRepository) {
         this.topicRepository = topicRepository;
@@ -59,5 +64,13 @@ public class TopicService {
 
     public List<User> findUsersFromTopic(Long topic_id) {
         return userRepository.findUsersFromTopic(topic_id);
+    }
+
+    public List<Word> findWordsFromTopic(Long topic_id) {
+        Topic topic = topicRepository.findById(topic_id).orElse(null);
+        if(topic != null) {
+            return wordRepository.findByTopic(topic_id);
+        }
+        return null;
     }
 }

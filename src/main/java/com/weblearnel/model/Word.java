@@ -44,8 +44,18 @@ public class Word {
 
     @Column(name = "mean")
     private String mean;
-
-    public Word(String name, String pronounce, String imageUrl, String mean, String attribute, String example) {
+    
+    @Column(name = "attributes")
+    private String attribute;
+    
+    @Column(name = "example")
+    private String example;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_tp_id", referencedColumnName = "tp_id")
+    private Topic topic;
+    
+    public Word(String name, String mean, String attribute, String example, String imageUrl, String pronounce) {
         this.name = name;
         this.pronounce = pronounce;
         this.imageUrl = imageUrl;
@@ -53,17 +63,6 @@ public class Word {
         this.attribute = attribute;
         this.example = example;
     }
-
-    @Column(name = "attributes")
-    private String attribute;
-
-    @Column(name = "example")
-    private String example;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_tp_id", referencedColumnName = "tp_id")
-    private Topic topic;
-
     @JsonIgnore
     @OneToMany(mappedBy = "word")
     private Set<Result> results;

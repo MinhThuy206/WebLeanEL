@@ -89,8 +89,8 @@ public class SignUpController {
         String mean = request.getParameter("mean");
         String attributes = request.getParameter("attributes");
         String example = request.getParameter("example");
-        String imageUrl = "static/images/" + name + ".jpg";
-        String pronounce = "static/audio/" + name + ".mp3";
+        String imageUrl = "/assets/images/" + name + ".jpg";
+        String pronounce = "/assets/audio/" + name + ".mp3";
         Word word = new Word(name, mean, attributes, example, imageUrl, pronounce);
         Topic topic = topicService.getTopicByName(topic_name);
         word.assignTopic(topic); // gán topic cho word

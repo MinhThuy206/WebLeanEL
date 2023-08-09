@@ -3,24 +3,32 @@ package com.weblearnel.controller.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.weblearnel.model.Topic;
 import com.weblearnel.model.User;
+import com.weblearnel.model.Word;
 import com.weblearnel.service.TopicService;
 
 import lombok.AllArgsConstructor;
 
-@RestController
+// @RestController
+@Controller
 @AllArgsConstructor
 public class TopicController {
     @Autowired
     private TopicService topicService;
+
+    @GetMapping("/topic")
+    public String getTopic() {
+        return "topic/topic1";
+    }
 
     @GetMapping("/topics")
     public List<Topic> getAllTopics() {
@@ -50,4 +58,13 @@ public class TopicController {
     public List<User> findUsersFromTopic(@PathVariable("topic_id") Long topic_id) {
         return topicService.findUsersFromTopic(topic_id);
     }
+
+    @GetMapping("/topic/{topic_id}/words")
+    public String findWordsFromTopic(@PathVariable("topic_id") Long topic_id, Model model) {
+        List<Word> words = topicService.findWordsFromTopic(topic_id);
+        model.addAttribute("wordList", words);
+        return "topic/topic1";
+    }
+
+    
 }

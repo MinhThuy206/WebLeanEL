@@ -1,7 +1,8 @@
 <html lang="en"><!--begin::Head-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <base th:href="@{../}">
+    <base href="../../static/">
     <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular &amp; Laravel
         by Keenthemes</title>
     <meta name="description"
@@ -17,18 +18,18 @@
     <meta property="og:url" content="https://keenthemes.com/metronic">
     <meta property="og:site_name" content="Keenthemes | Metronic">
     <link rel="canonical" th:href="@{Https://preview.keenthemes.com/metronic8}">
-    <link rel="shortcut icon" th:href="@{src/main/resources/static/assets/media/logos/favicon.ico}">
+    <link rel="shortcut icon" th:href="@{/assets/media/logos/favicon.ico}">
     <!--begin::Fonts-->
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700}">
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
-    <link th:href="@{src/main/resources/static/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css}" rel="stylesheet" type="text/css">
     <!--end::Page Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(used by all pages)-->
-    <link th:href="@{src/main/resources/static/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{src/main/resources/static/assets/css/style.bundle.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{src/main/resources/static/topic/style.css}" rel="stylesheet" type="text/css">
-    <script src="https://kit.fontawesome.com/ff4db5a7f6.js" crossorigin="anonymous"></script>
+    <link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/css/style.bundle.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/topic/style.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{https://kit.fontawesome.com/ff4db5a7f6.js}" crossorigin="anonymous"></script>
 
     <style media="all" id="fa-v4-font-face">
         /*!
@@ -71473,8 +71474,8 @@
                         <!--begin::Header Logo-->
                         <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
                             <a th:href="@{index.html}">
-                                <img alt="Logo" src="assets/media/logos/logo-4.png" class="logo-default h-25px">
-                                <img alt="Logo" src="assets/media/logos/logo-5.png" class="logo-sticky h-25px">
+                                <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default h-25px">
+                                <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
                             </a>
                         </div>
                         <!--end::Header Logo-->
@@ -71514,10 +71515,12 @@
                                                         <span class="menu-title">A1 - A2 Vocabulary</span>
                                                     </a>
                                                 </div> -->
-                                                <a th:href="@{src/main/resources/templates/learning/A1-A2.html}" class="menu-link py-3">
+                                                <a th:href="@{src/main/resources/templates/learning/A1-A2.html}"
+                                                    class="menu-link py-3">
                                                     <span class="menu-title">A1 - A2 Vocabulary</span>
                                                 </a>
-                                                <a th:href="@{src/main/resources/templates/learning/B1-B2.html}" class="menu-link py-3">
+                                                <a th:href="@{src/main/resources/templates/learning/B1-B2.html}"
+                                                    class="menu-link py-3">
                                                     <span class="menu-title">B1 - B2 Vocabulary</span>
                                                 </a>
                                             </div>
@@ -71531,11 +71534,13 @@
                                             <div
                                                 class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 
-                                                <a th:href="@{src/main/resources/templates/exam/overview.html}" class="menu-link py-3">
+                                                <a th:href="@{src/main/resources/templates/exam/overview.html}"
+                                                    class="menu-link py-3">
                                                     <span class="menu-title">Exam Overview</span>
                                                 </a>
-                                                <a th:href="@{src/main/resources/templates/exam/test.html}" class="menu-link py-3"><span
-                                                        class="menu-title">Online English level test</span></a>
+                                                <a th:href="@{src/main/resources/templates/exam/test.html}"
+                                                    class="menu-link py-3"><span class="menu-title">Online English level
+                                                        test</span></a>
                                             </div>
                                         </div>
 
@@ -71701,7 +71706,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-1.jpg" alt="">
+                                                                    <img th:src="@{/assets/media/avatars/150-1.jpg}" alt="">
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71719,7 +71724,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-3.jpg" alt="">
+                                                                    <img th:src="@{/assets/media/avatars/150-3.jpg}" alt="">
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71737,7 +71742,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-8.jpg" alt="">
+                                                                    <img th:src="@{/assets/media/avatars/150-8.jpg}" alt="">
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71755,7 +71760,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-11.jpg" alt="">
+                                                                    <img th:src="@{/assets/media/avatars/150-11.jpg}" alt="">
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -71773,7 +71778,7 @@
                                                                 class="d-flex text-dark text-hover-primary align-items-center mb-5">
                                                                 <!--begin::Symbol-->
                                                                 <div class="symbol symbol-40px me-4">
-                                                                    <img src="assets/media/avatars/150-12.jpg" alt="">
+                                                                    <img th:src="@{/assets/media/avatars/150-12.jpg}" alt="">
                                                                 </div>
                                                                 <!--end::Symbol-->
                                                                 <!--begin::Title-->
@@ -73167,7 +73172,8 @@
                                                     <!--end::Items-->
                                                     <!--begin::View more-->
                                                     <div class="py-3 text-center border-top">
-                                                        <a th:href="@{pages/profile/activity.html}"
+                                                        <!-- <a th:href="@{pages/profile/activity.html}" -->
+                                                            <a 
                                                             class="btn btn-color-gray-600 btn-active-color-primary">View
                                                             All
                                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
@@ -73471,7 +73477,7 @@
                                                     <!--end::Items-->
                                                     <!--begin::View more-->
                                                     <div class="py-3 text-center border-top">
-                                                        <a th:href="{pages/profile/activity.html}"
+                                                        <a 
                                                             class="btn btn-color-gray-600 btn-active-color-primary">View
                                                             All
                                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
@@ -73613,7 +73619,7 @@
                                         <!--end:Nav-->
                                         <!--begin::View more-->
                                         <div class="py-2 text-center border-top">
-                                            <a th:href="@{pages/profile/activity.html}"
+                                            <a 
                                                 class="btn btn-color-gray-600 btn-active-color-primary">View All
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                                 <span class="svg-icon svg-icon-5">
@@ -73674,7 +73680,8 @@
                                             <!--end::Menu separator-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
-                                                <a th:href="@{src/main/resources/templates/account/overview.html}" class="menu-link px-5">My Profile</a>
+                                                <a th:href="@{/account/overview.html}"
+                                                    class="menu-link px-5">My Profile</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -73714,7 +73721,8 @@
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link d-flex px-5">
+                                                        <a th:href="@{src/main/resources/templates/account/settings.html}"
+                                                            class="menu-link d-flex px-5">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
                                                                     src="assets/media/flags/spain.svg" alt="">
@@ -73723,7 +73731,8 @@
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link d-flex px-5">
+                                                        <a th:href="@{src/main/resources/templates/account/settings.html}"
+                                                            class="menu-link d-flex px-5">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
                                                                     src="assets/media/flags/germany.svg" alt="">
@@ -73732,7 +73741,8 @@
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link d-flex px-5">
+                                                        <a th:href="@{src/main/resources/templates/account/settings.html}"
+                                                            class="menu-link d-flex px-5">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
                                                                     src="assets/media/flags/japan.svg" alt="">
@@ -73741,7 +73751,8 @@
                                                     <!--end::Menu item-->
                                                     <!--begin::Menu item-->
                                                     <div class="menu-item px-3">
-                                                        <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link d-flex px-5">
+                                                        <a th:href="@{src/main/resources/templates/account/settings.html}"
+                                                            class="menu-link d-flex px-5">
                                                             <span class="symbol symbol-20px me-4">
                                                                 <img class="rounded-1"
                                                                     src="assets/media/flags/france.svg" alt="">
@@ -73754,7 +73765,8 @@
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5 my-1">
-                                                <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link px-5">Account
+                                                <a th:href="@{src/main/resources/templates/account/settings.html}"
+                                                    class="menu-link px-5">Account
                                                     Settings</a>
                                             </div>
                                             <!--end::Menu item-->
@@ -73834,7 +73846,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <!-- <tr>
                                                     <th scope="row">...</th>
                                                     <td>/.../</td>
                                                     <td>...</td>
@@ -73845,6 +73857,14 @@
                                                     <td>/.../</td>
                                                     <td>...</td>
                                                     <td>...</td>
+                                                </tr> -->
+                                                <tr th:each="item : ${wordList}">
+                                                    <th scope="row" th:text="${item.name}"></th>
+                                                    <td>
+                                                        <button  th:attr="onclick='playAudio(\'' + ${item.pronounce} + '\')'">Phát âm</button>
+                                                    </td>
+                                                    <td th:text="${item.attribute}"></td>
+                                                    <td th:text="${item.mean}"></td>
                                                 </tr>
 
                                             </tbody>
@@ -73854,37 +73874,41 @@
                                     <div class="sub-text">
                                         <h1>Exercise</h1>
                                         <p>Do you want to understand all new words?</p>
-                                        <a th:href="@{../WebLearnEL/src/main/resources/templates/exercise/test.html}" class="btn">
+                                        <a th:href="@{../WebLearnEL/src/main/resources/templates/exercise/test.html}"
+                                            class="btn">
                                             Let's doing your exercise
                                         </a>
                                     </div>
 
-        <div class="sub-text">
-            <h1>Exercise</h1>
-            <p>Are you ready to do your exercise? Let's start.</p>
-            <a th:href="@{../WebLearnEL/src/main/resources/templates/exercise/test.html}" class="btn">
-                Let's go!
-            </a>
-        </div>
+                                    <div class="sub-text">
+                                        <h1>Exercise</h1>
+                                        <p>Are you ready to do your exercise? Let's start.</p>
+                                        <a th:href="@{../WebLearnEL/src/main/resources/templates/exercise/test.html}"
+                                            class="btn">
+                                            Let's go!
+                                        </a>
+                                    </div>
 
-        <div class="sub-text">
-            <h1>Discussion</h1>
-            <p>Do you have an accessory that is special in some way? Tell us about it.</p>
-            <a th:href="@{../WebLearnEL/src/main/resources/templates/learning/A1-A2.html}" class="btn">
-                Try another vocabulary lesson
-            </a>
-        </div>
+                                    <div class="sub-text">
+                                        <h1>Discussion</h1>
+                                        <p>Do you have an accessory that is special in some way? Tell us about it.</p>
+                                        <a th:href="@{../WebLearnEL/src/main/resources/templates/learning/A1-A2.html}"
+                                            class="btn">
+                                            Try another vocabulary lesson
+                                        </a>
+                                    </div>
 
                                     <div class="sub-text">
                                         <h1>Language level</h1>
-                                        <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A2.html}" class="btn btn-green">
+                                        <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A2.html}"
+                                            class="btn btn-green">
                                             A2 - Pre-intermediate
                                         </a>
                                     </div>
 
                                     <div class="sub-text">
                                         <h1>Topics</h1>
-                                        <a th:href="@{}" class="btn btn-green">
+                                        <a th:href="${topicName}" class="btn btn-green">
                                             Accessories
                                         </a>
                                     </div>
@@ -73894,19 +73918,19 @@
                                         <h4>Our websites</h4>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{}">
+                                            <a >
                                                 Learn English Kids for children aged 5 to 12
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{}">
+                                            <a >
                                                 Learn English Teens for children aged 13 to 17
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{}">
+                                            <a>
                                                 Teaching English for teachers and teacher educators
                                             </a>
                                         </div>
@@ -73916,13 +73940,13 @@
                                         <h4>Help</h4>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{}">
+                                            <a >
                                                 Free online English test
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{}">
+                                            <a >
                                                 Sign up for more information about our courses
                                             </a>
                                         </div>
@@ -74050,7 +74074,7 @@
                                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                             data-bs-boundary="window" data-bs-placement="top" title=""
                                             data-bs-original-title="Nina Nilson">
-                                            <img src="assets/media/avatars/150-11.jpg" alt="img">
+                                            <img th:src="@{/assets/media/avatars/150-11.jpg}" alt="img">
                                         </div>
                                         <!--end::User-->
                                     </div>
@@ -74081,7 +74105,7 @@
                                             <!--end::User-->
                                             <!--begin::User-->
                                             <div class="symbol symbol-circle symbol-25px">
-                                                <img src="assets/media/avatars/150-11.jpg" alt="img">
+                                                <img th:src="@{/assets/media/avatars/150-11.jpg}" alt="img">
                                             </div>
                                             <!--end::User-->
                                             <!--begin::User-->
@@ -74258,7 +74282,8 @@
                                             <!--begin::Info-->
                                             <div class="ms-1 fw-bold">
                                                 <!--begin::Desc-->
-                                                <a th:href="@{#}" class="fs-6 text-hover-primary fw-bolder">Finance KPI App
+                                                <a th:href="@{#}" class="fs-6 text-hover-primary fw-bolder">Finance KPI
+                                                    App
                                                     Guidelines</a>
                                                 <!--end::Desc-->
                                                 <!--begin::Number-->
@@ -74276,7 +74301,8 @@
                                             <!--begin::Info-->
                                             <div class="ms-1 fw-bold">
                                                 <!--begin::Desc-->
-                                                <a th:href="@{#}" class="fs-6 text-hover-primary fw-bolder">Client UAT Testing
+                                                <a th:href="@{#}" class="fs-6 text-hover-primary fw-bolder">Client UAT
+                                                    Testing
                                                     Results</a>
                                                 <!--end::Desc-->
                                                 <!--begin::Number-->
@@ -74289,7 +74315,7 @@
                                         <!--begin::Item-->
                                         <div class="d-flex flex-aligns-center">
                                             <!--begin::Icon-->
-                                            <img alt="" class="w-30px me-3" src="assets/media/svg/files/css.svg">
+                                            <img alt="" class="w-30px me-3" th:src="@{/assets/media/svg/files/css.svg}">
                                             <!--end::Icon-->
                                             <!--begin::Info-->
                                             <div class="ms-1 fw-bold">
@@ -74342,7 +74368,8 @@
                                     <!--begin::Title-->
                                     <div class="fs-5 fw-bold mb-2">Task
                                         <a th:href="@{#}" class="text-primary fw-bolder me-1">#45890</a>merged with
-                                        <a th:href="@{#}" class="text-primary fw-bolder me-1">#45890</a>in “Ads Pro Admin
+                                        <a th:href="@{#}" class="text-primary fw-bolder me-1">#45890</a>in “Ads Pro
+                                        Admin
                                         Dashboard project:
                                     </div>
                                     <!--end::Title-->
@@ -74355,7 +74382,7 @@
                                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                             data-bs-boundary="window" data-bs-placement="top" title=""
                                             data-bs-original-title="Nina Nilson">
-                                            <img src="assets/media/avatars/150-11.jpg" alt="img">
+                                            <img th:src="@{/assets/media/avatars/150-11.jpg}" alt="img">
                                         </div>
                                         <!--end::User-->
                                     </div>
@@ -74499,7 +74526,8 @@
                                 <div class="pe-3 mb-5">
                                     <!--begin::Title-->
                                     <div class="fs-5 fw-bold mb-2">New case
-                                        <a th:href="@{#}" class="text-primary fw-bolder me-1">#67890</a>is assigned to you in
+                                        <a th:href="@{#}" class="text-primary fw-bolder me-1">#67890</a>is assigned to
+                                        you in
                                         Multi-platform Database Design project
                                     </div>
                                     <!--end::Title-->
@@ -74647,7 +74675,8 @@
                                 <div class="pe-3 mb-5">
                                     <!--begin::Title-->
                                     <div class="fs-5 fw-bold mb-2">New order
-                                        <a th:href="@{#}" class="text-primary fw-bolder me-1">#67890</a>is placed for Workshow
+                                        <a th:href="@{#}" class="text-primary fw-bolder me-1">#67890</a>is placed for
+                                        Workshow
                                         Planning &amp; Budget Estimation
                                     </div>
                                     <!--end::Title-->
@@ -74675,7 +74704,7 @@
             <!--end::Body-->
             <!--begin::Footer-->
             <div class="card-footer py-5 text-center" id="kt_activities_footer">
-                <a th:href="@{pages/profile/activity.html}" class="btn btn-bg-body text-primary">View All
+                <a  class="btn btn-bg-body text-primary">View All
                     Activities
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                     <span class="svg-icon svg-icon-3 svg-icon-primary">
@@ -74707,7 +74736,8 @@
                 <div class="card-title">
                     <!--begin::User-->
                     <div class="d-flex justify-content-center flex-column me-3">
-                        <a th:href="@{#}" class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian Cox</a>
+                        <a th:href="@{#}" class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian
+                            Cox</a>
                         <!--begin::Info-->
                         <div class="mb-0 lh-1">
                             <span class="badge badge-success badge-circle w-10px h-10px me-1"></span>
@@ -74856,7 +74886,8 @@
                                 <!--begin::Details-->
                                 <div class="me-3">
                                     <span class="text-muted fs-7 mb-1">5 mins</span>
-                                    <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+                                    <a th:href="@{#}"
+                                        class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
                                 </div>
                                 <!--end::Details-->
                                 <!--begin::Avatar-->
@@ -74912,7 +74943,8 @@
                                 <!--begin::Details-->
                                 <div class="me-3">
                                     <span class="text-muted fs-7 mb-1">2 Hours</span>
-                                    <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+                                    <a th:href="@{#}"
+                                        class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
                                 </div>
                                 <!--end::Details-->
                                 <!--begin::Avatar-->
@@ -74971,7 +75003,8 @@
                                 <!--begin::Details-->
                                 <div class="me-3">
                                     <span class="text-muted fs-7 mb-1">4 Hours</span>
-                                    <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+                                    <a th:href="@{#}"
+                                        class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
                                 </div>
                                 <!--end::Details-->
                                 <!--begin::Avatar-->
@@ -75027,7 +75060,8 @@
                                 <!--begin::Details-->
                                 <div class="me-3">
                                     <span class="text-muted fs-7 mb-1">Just now</span>
-                                    <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+                                    <a th:href="@{#}"
+                                        class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
                                 </div>
                                 <!--end::Details-->
                                 <!--begin::Avatar-->
@@ -75594,7 +75628,8 @@
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma
                                             Smith</a>
                                         <div class="fw-bold text-muted">e.smith@kpmg.com.au</div>
                                     </div>
@@ -75722,7 +75757,8 @@
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Melody
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Melody
                                             Macy</a>
                                         <div class="fw-bold text-muted">melody@altbox.com</div>
                                     </div>
@@ -75850,7 +75886,8 @@ Guest">
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Max
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Max
                                             Smith</a>
                                         <div class="fw-bold text-muted">max@kt.com</div>
                                     </div>
@@ -75979,7 +76016,8 @@ Edit">Can
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Sean
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Sean
                                             Bean</a>
                                         <div class="fw-bold text-muted">sean@dellito.com</div>
                                     </div>
@@ -76102,12 +76140,13 @@ Owner">
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="assets/media/avatars/150-15.jpg">
+                                        <img alt="Pic" th:src="@{/assets/media/avatars/150-15.jpg}">
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Brian
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Brian
                                             Cox</a>
                                         <div class="fw-bold text-muted">brian@exchange.com</div>
                                     </div>
@@ -76202,8 +76241,7 @@ Edit">Can
                                                 aria-disabled="false" aria-labelledby="select2-3xk2-container"
                                                 aria-controls="select2-3xk2-container"><span
                                                     class="select2-selection__rendered" id="select2-3xk2-container"
-                                                    role="textbox" aria-readonly="true" title="Can
-Edit">Can
+                                                    role="textbox" aria-readonly="true" title="Can Edit">Can
                                                     Edit</span><span class="select2-selection__arrow"
                                                     role="presentation"><b
                                                         role="presentation"></b></span></span></span><span
@@ -76236,7 +76274,8 @@ Edit">Can
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Mikaela
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Mikaela
                                             Collins</a>
                                         <div class="fw-bold text-muted">mikaela@pexcom.com</div>
                                     </div>
@@ -76359,12 +76398,13 @@ Owner">
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="assets/media/avatars/150-8.jpg">
+                                        <img alt="Pic" th:src="@{/assets/media/avatars/150-8.jpg}">
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Francis
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Francis
                                             Mitcham</a>
                                         <div class="fw-bold text-muted">f.mitcham@kpmg.com.au</div>
                                     </div>
@@ -76493,7 +76533,8 @@ Edit">Can
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Olivia
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Olivia
                                             Wild</a>
                                         <div class="fw-bold text-muted">olivia@corpmail.com</div>
                                     </div>
@@ -76621,7 +76662,8 @@ Owner">
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Neil
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Neil
                                             Owen</a>
                                         <div class="fw-bold text-muted">owen.neil@gmail.com</div>
                                     </div>
@@ -76744,12 +76786,13 @@ Guest">
                                 <div class="d-flex align-items-center">
                                     <!--begin::Avatar-->
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="assets/media/avatars/150-6.jpg">
+                                        <img alt="Pic" th:src="@{/assets/media/avatars/150-6.jpg}">
                                     </div>
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Dan
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Dan
                                             Wilson</a>
                                         <div class="fw-bold text-muted">dam@consilting.com</div>
                                     </div>
@@ -76878,7 +76921,8 @@ Edit">Can
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma
                                             Bold</a>
                                         <div class="fw-bold text-muted">emma@intenso.com</div>
                                     </div>
@@ -77006,7 +77050,8 @@ Owner">
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana
                                             Crown</a>
                                         <div class="fw-bold text-muted">ana.cf@limtel.com</div>
                                     </div>
@@ -77134,7 +77179,8 @@ Guest">
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Robert
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Robert
                                             Doe</a>
                                         <div class="fw-bold text-muted">robert@benko.com</div>
                                     </div>
@@ -77263,7 +77309,8 @@ Edit">Can
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">John
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">John
                                             Miller</a>
                                         <div class="fw-bold text-muted">miller@mapple.com</div>
                                     </div>
@@ -77392,7 +77439,8 @@ Edit">Can
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Lucy
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Lucy
                                             Kunic</a>
                                         <div class="fw-bold text-muted">lucy.m@fentech.com</div>
                                     </div>
@@ -77520,7 +77568,8 @@ Owner">
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ethan
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ethan
                                             Wilder</a>
                                         <div class="fw-bold text-muted">ethan@loop.com.au</div>
                                     </div>
@@ -77648,7 +77697,8 @@ Guest">
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana
+                                        <a th:href="@{#}"
+                                            class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana
                                             Crown</a>
                                         <div class="fw-bold text-muted">ana.cf@limtel.com</div>
                                     </div>
@@ -79643,17 +79693,17 @@ Edit">Can
     <!--end::Main-->
     <!--begin::Javascript-->
     <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
+    <script th:src="@{/assets/plugins/global/plugins.bundle.js}"></script>
+    <script th:src="@{/assets/js/scripts.bundle.js}"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
-    <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <script th:src="@{/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js}"></script>
     <!--end::Page Vendors Javascript-->
     <!--begin::Page Custom Javascript(used by this page)-->
-    <script src="assets/js/custom/widgets.js"></script>
-    <script src="assets/js/custom/apps/chat/chat.js"></script>
-    <script src="assets/js/custom/modals/create-app.js"></script>
-    <script src="assets/js/custom/modals/upgrade-plan.js"></script>
+    <script th:src="@{/assets/js/custom/widgets.js}"></script>
+    <script th:src="@{/assets/js/custom/apps/chat/chat.js}"></script>
+    <script th:src="@{/assets/js/custom/modals/create-app.js}"></script>
+    <script th:src="@{/assets/js/custom/modals/upgrade-plan.js}"></script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
 
@@ -79709,6 +79759,12 @@ Edit">Can
         <polyline id="SvgjsPolyline1003" points="0,0"></polyline>
         <path id="SvgjsPath1004" d="M0 0 "></path>
     </svg>
+    <script th:inline="javascript">
+        function playAudio(filePath) {
+            var audio = new Audio(filePath);
+            audio.play();
+        }
+    </script>
 </body><!--end::Body-->
 
 </html>
