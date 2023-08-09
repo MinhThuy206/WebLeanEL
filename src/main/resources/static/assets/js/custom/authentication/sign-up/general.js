@@ -142,39 +142,46 @@ var KTSignupGeneral = function() {
                             textMessage = data;
                             iconMessage = "error";
                         }
+
+                        setTimeout(function() {
+                            // Hide loading indication
+                            submitButton.removeAttribute('data-kt-indicator');
+    
+                            // Enable button
+                            submitButton.disabled = false;
+    
+                            // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                            Swal.fire({
+                                
+                                text: textMessage,
+                                icon: iconMessage,
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            }).then(function (result) {
+                                if (result.isConfirmed) { 
+                                    form.reset();  // reset form                    
+                                    passwordMeter.reset();  // reset password meter
+                                    
+                                    
+                                    //form.submit();
+                                    // window.location.href = '/user/login';
+                                    if(iconMessage == "success") {
+                                        window.location.href = redirectUrl;
+                                    } else {
+                                        textMessage ="You have successfully registered!";
+                                        iconMessage = "success";
+                                    }
+    
+                                }
+                            });
+                        }, 1500);
                     }) 						
                     
                     // Simulate ajax request
-                    setTimeout(function() {
-                        // Hide loading indication
-                        submitButton.removeAttribute('data-kt-indicator');
-
-                        // Enable button
-                        submitButton.disabled = false;
-
-                        // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                        Swal.fire({
-                            
-                            text: textMessage,
-                            icon: iconMessage,
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn btn-primary"
-                            }
-                        }).then(function (result) {
-                            if (result.isConfirmed) { 
-                                form.reset();  // reset form                    
-                                passwordMeter.reset();  // reset password meter
-                                //form.submit();
-                                // window.location.href = '/user/login';
-                                if(iconMessage == "success") {
-                                    window.location.href = redirectUrl;
-                                }
-
-                            }
-                        });
-                    }, 1500);  
+                      
                 } else {
                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({
