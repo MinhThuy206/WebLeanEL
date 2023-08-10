@@ -20,13 +20,13 @@ content="Metronic, bootstrap, bootstrap 5, Angular, VueJs, React, Laravel, admin
 content="Metronic - Bootstrap 5 HTML, VueJS, React, Angular &amp; Laravel Admin Dashboard Theme">
 <meta property="og:url" content="https://keenthemes.com/metronic">
 <meta property="og:site_name" content="Keenthemes | Metronic">
-<link rel="canonical" th:href="{Https://preview.keenthemes.com/metronic8}">
-<link rel="shortcut icon" th:href="{/assets/media/logos/favicon.ico}">
+<link rel="canonical" th:href="@{Https://preview.keenthemes.com/metronic8}">
+<link rel="shortcut icon" th:href="@{/assets/media/logos/favicon.ico}">
 <!--begin::Fonts-->
-<link rel="stylesheet" th:href="{https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700}">
+<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700}">
 <!--end::Fonts-->
 <!--begin::Page Vendor Stylesheets(used by this page)-->
-<link th:href="{/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css}" rel="stylesheet" type="text/css">
+<link th:href="@{/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css}" rel="stylesheet" type="text/css">
 <!--end::Page Vendor Stylesheets-->
 <!--begin::Global Stylesheets Bundle(used by all pages)-->
 <link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css">
@@ -71477,7 +71477,7 @@ style="animation-duration: 0.3s;">
 <!--end::Heaeder menu toggle-->
 <!--begin::Header Logo-->
 <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
-<a th:href="{index.html}">
+<a th:href="@{index.html}">
 	<img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default h-25px">
 	<img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
 </a>
@@ -71500,14 +71500,14 @@ style="animation-duration: 0.3s;">
 	id="#kt_header_menu" data-kt-menu="true">
 	<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
 	class="menu-item here menu-lg-down-accordion me-lg-1">
-	<a class="menu-link active py-3" th:href="{index.html}">
+	<a class="menu-link active py-3" th:href="@{index.html}">
 		<span class="menu-title">Home</span>
 		<span class="menu-arrow d-lg-none"></span>
 	</a>
 	<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
 	kt-hidden-height="108" style="">
 	<div class="menu-item">
-		<a class="menu-link active py-3" th:href="{index.html}">
+		<a class="menu-link active py-3" th:href="@{index.html}">
 			<span class="menu-icon">
 				<!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
 				<span class="svg-icon svg-icon-2">
@@ -71527,7 +71527,7 @@ style="animation-duration: 0.3s;">
 	</a>
 </div>
 <div class="menu-item">
-	<a class="menu-link py-3" th:href="{dashboards/aside.html}">
+	<a class="menu-link py-3" th:href="@{dashboards/aside.html}">
 		<span class="menu-icon">
 			<!--begin::Svg Icon | path: icons/duotune/general/gen009.svg-->
 			<span class="svg-icon svg-icon-2">
@@ -71547,7 +71547,7 @@ style="animation-duration: 0.3s;">
 </a>
 </div>
 <div class="menu-item">
-<a class="menu-link py-3" th:href="{landing.html}">
+<a class="menu-link py-3" th:href="@{landing.html}">
 	<span class="menu-icon">
 		<!--begin::Svg Icon | path: icons/duotune/communication/com001.svg-->
 		<span class="svg-icon svg-icon-2">
@@ -71651,7 +71651,7 @@ class="menu-item menu-lg-down-accordion me-lg-1">
 <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px"
 style="">
 <div class="menu-item">
-<a class="menu-link py-3" th:href="{documentation/base/utilities.html}"
+<a class="menu-link py-3" th:href="@{documentation/base/utilities.html}"
 title="" data-bs-toggle="tooltip" data-bs-trigger="hover"
 data-bs-dismiss="click" data-bs-placement="right"
 data-bs-original-title="Check out over 200 in-house components, plugins and ready for use solutions">
@@ -71674,7 +71674,7 @@ fill="black"></path>
 </a>
 </div>
 <div class="menu-item">
-<a class="menu-link py-3" th:href="{documentation/getting-started.html}"
+<a class="menu-link py-3" th:href="@{documentation/getting-started.html}"
 title="" data-bs-toggle="tooltip" data-bs-trigger="hover"
 data-bs-dismiss="click" data-bs-placement="right"
 data-bs-original-title="Check out the complete documentation">
@@ -71698,7 +71698,7 @@ fill="black"></path>
 </div>
 <div class="menu-item">
 <a class="menu-link py-3"
-th:href="{https://preview.keenthemes.com/metronic8/demo2/layout-builder.html}"
+th:href="@{https://preview.keenthemes.com/metronic8/demo2/layout-builder.html}"
 title="" data-bs-toggle="tooltip" data-bs-trigger="hover"
 data-bs-dismiss="click" data-bs-placement="right"
 data-bs-original-title="Build your layout, preview and export HTML for server side integration">
@@ -71722,7 +71722,7 @@ fill="black"></path>
 </div>
 <div class="menu-item">
 <a class="menu-link py-3"
-th:href="{documentation/getting-started/changelog.html}">
+th:href="@{documentation/getting-started/changelog.html}">
 <span class="menu-icon">
 <!--begin::Svg Icon | path: icons/duotune/coding/cod003.svg-->
 <span class="svg-icon svg-icon-2">
@@ -71902,7 +71902,7 @@ fill="black"></path>
 data-kt-search-element="category-title">Users</h3>
 <!--end::Category title-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -71920,7 +71920,7 @@ Manager</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -71938,7 +71938,7 @@ Engineer</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -71956,7 +71956,7 @@ Designer</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -71974,7 +71974,7 @@ Director</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -71996,7 +71996,7 @@ Administrator</span>
 data-kt-search-element="category-title">Customers</h3>
 <!--end::Category title-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72018,7 +72018,7 @@ Design</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72041,7 +72041,7 @@ Development</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72064,7 +72064,7 @@ class="fs-7 fw-bold text-muted">Administration</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72086,7 +72086,7 @@ class="fs-7 fw-bold text-muted">Marketing</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72113,7 +72113,7 @@ Adwords</span>
 data-kt-search-element="category-title">Projects</h3>
 <!--end::Category title-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72146,7 +72146,7 @@ Themes</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72182,7 +72182,7 @@ Planning</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72216,7 +72216,7 @@ Discussion</span>
 </a>
 <!--end::Item-->
 <!--begin::Item-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="d-flex text-dark text-hover-primary align-items-center mb-5">
 <!--begin::Symbol-->
 <div class="symbol symbol-40px me-4">
@@ -72291,7 +72291,7 @@ Launch</span>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="d-flex flex-column">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bold">BoomApp
 by Keenthemes</a>
 <span class="fs-7 text-muted fw-bold">#45789</span>
@@ -72324,7 +72324,7 @@ fill="black"></path>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="d-flex flex-column">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bold">"Kept
 API Project Meeting</a>
 <span class="fs-7 text-muted fw-bold">#84050</span>
@@ -72357,7 +72357,7 @@ fill="black"></path>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="d-flex flex-column">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bold">"KPI
 Monitoring App Launch</a>
 <span class="fs-7 text-muted fw-bold">#84250</span>
@@ -72390,7 +72390,7 @@ fill="black"></path>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="d-flex flex-column">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bold">Project
 Reference FAQ</a>
 <span class="fs-7 text-muted fw-bold">#67945</span>
@@ -72423,7 +72423,7 @@ fill="black"></path>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="d-flex flex-column">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bold">"FitPro
 App Development</a>
 <span class="fs-7 text-muted fw-bold">#84250</span>
@@ -72456,7 +72456,7 @@ fill="black"></path>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="d-flex flex-column">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bold">Shopix
 Mobile App</a>
 <span class="fs-7 text-muted fw-bold">#45690</span>
@@ -72476,7 +72476,7 @@ Mobile App</a>
 											<!--end::Symbol-->
 											<!--begin::Title-->
 											<div class="d-flex flex-column">
-												<a th:href="{#}"
+												<a th:href="@{#}"
 												class="fs-6 text-gray-800 text-hover-primary fw-bold">"Landing
 											UI Design" Launch</a>
 											<span class="fs-7 text-muted fw-bold">#24005</span>
@@ -72921,7 +72921,7 @@ Mobile App</a>
 										<button type="reset"
 										class="btn btn-sm btn-light fw-bolder btn-active-light-primary me-2"
 										data-kt-search-element="advanced-options-form-cancel">Cancel</button>
-										<a th:href="{/pages/search/horizontal.html}"
+										<a th:href="@{/pages/search/horizontal.html}"
 										class="btn btn-sm fw-bolder btn-primary"
 										data-kt-search-element="advanced-options-form-search">Search</a>
 									</div>
@@ -73100,7 +73100,7 @@ role="tabpanel">
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="mb-0 me-2">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
 Alice</a>
 <div class="text-gray-400 fs-7">Phase 1 development
@@ -73144,7 +73144,7 @@ Alice</a>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="mb-0 me-2">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bolder">HR
 Confidential</a>
 <div class="text-gray-400 fs-7">Confidential staff
@@ -73185,7 +73185,7 @@ documents</div>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="mb-0 me-2">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bolder">Company
 HR</a>
 <div class="text-gray-400 fs-7">Corporeate staff
@@ -73232,7 +73232,7 @@ profiles</div>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="mb-0 me-2">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
 Redux</a>
 <div class="text-gray-400 fs-7">New frontend admin
@@ -73273,7 +73273,7 @@ theme</div>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="mb-0 me-2">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bolder">Project
 Breafing</a>
 <div class="text-gray-400 fs-7">Product launch
@@ -73313,7 +73313,7 @@ status update</div>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="mb-0 me-2">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bolder">Banner
 ../static/assets/</a>
 <div class="text-gray-400 fs-7">Collection of banner
@@ -73354,7 +73354,7 @@ images</div>
 <!--end::Symbol-->
 <!--begin::Title-->
 <div class="mb-0 me-2">
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-6 text-gray-800 text-hover-primary fw-bolder">Icon
 ../static/assets/</a>
 <div class="text-gray-400 fs-7">Collection of SVG
@@ -73372,7 +73372,7 @@ icons</div>
 <!--end::Items-->
 <!--begin::View more-->
 <div class="py-3 text-center border-top">
-<a th:href="{/pages/profile/activity.html}"
+<a th:href="@{/pages/profile/activity.html}"
 class="btn btn-color-gray-600 btn-active-color-primary">View
 All
 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
@@ -73410,7 +73410,7 @@ about drive</div>
 <!--end::Text-->
 <!--begin::Action-->
 <div class="text-center mt-5 mb-9">
-<a th:href="{#}" class="btn btn-sm btn-primary px-6"
+<a th:href="@{#}" class="btn btn-sm btn-primary px-6"
 data-bs-toggle="modal"
 data-bs-target="#kt_modal_upgrade_plan">Upgrade</a>
 </div>
@@ -73441,7 +73441,7 @@ role="tabpanel">
 OK</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">New
 order</a>
 <!--end::Title-->
@@ -73461,7 +73461,7 @@ order</a>
 ERR</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">New
 customer</a>
 <!--end::Title-->
@@ -73481,7 +73481,7 @@ customer</a>
 OK</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">Payment
 process</a>
 <!--end::Title-->
@@ -73501,7 +73501,7 @@ process</a>
 WRN</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">Search
 query</a>
 <!--end::Title-->
@@ -73521,7 +73521,7 @@ query</a>
 OK</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">API
 connection</a>
 <!--end::Title-->
@@ -73541,7 +73541,7 @@ connection</a>
 OK</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">Database
 restore</a>
 <!--end::Title-->
@@ -73561,7 +73561,7 @@ restore</a>
 WRN</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">System
 update</a>
 <!--end::Title-->
@@ -73581,7 +73581,7 @@ update</a>
 WRN</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">Server
 OS update</a>
 <!--end::Title-->
@@ -73601,7 +73601,7 @@ OS update</a>
 WRN</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">API
 rollback</a>
 <!--end::Title-->
@@ -73621,7 +73621,7 @@ rollback</a>
 ERR</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">Refund
 process</a>
 <!--end::Title-->
@@ -73641,7 +73641,7 @@ process</a>
 ERR</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">Withdrawal
 process</a>
 <!--end::Title-->
@@ -73661,7 +73661,7 @@ process</a>
 ERR</span>
 <!--end::Code-->
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="text-gray-800 text-hover-primary fw-bold">Mail
 tasks</a>
 <!--end::Title-->
@@ -73676,7 +73676,7 @@ tasks</a>
 <!--end::Items-->
 <!--begin::View more-->
 <div class="py-3 text-center border-top">
-<a th:href="{/pages/profile/activity.html}"
+<a th:href="@{/pages/profile/activity.html}"
 class="btn btn-color-gray-600 btn-active-color-primary">View
 All
 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
@@ -73728,7 +73728,7 @@ fill="black"></path>
 				<div class="row g-0">
 					<!--begin:Item-->
 					<div class="col-6">
-						<a th:href="{/pages/projects/budget.html}"
+						<a th:href="@{/pages/projects/budget.html}"
 						class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end border-bottom">
 						<!--begin::Svg Icon | path: icons/duotune/finance/fin009.svg-->
 						<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
@@ -73750,7 +73750,7 @@ fill="black"></path>
 			<!--end:Item-->
 			<!--begin:Item-->
 			<div class="col-6">
-				<a th:href="{/pages/projects/settings.html}"
+				<a th:href="@{/pages/projects/settings.html}"
 				class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-bottom">
 				<!--begin::Svg Icon | path: icons/duotune/communication/com010.svg-->
 				<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
@@ -73772,7 +73772,7 @@ fill="black"></path>
 	<!--end:Item-->
 	<!--begin:Item-->
 	<div class="col-6">
-		<a th:href="{/pages/projects/list.html}"
+		<a th:href="@{/pages/projects/list.html}"
 		class="d-flex flex-column flex-center h-100 p-6 bg-hover-light border-end">
 		<!--begin::Svg Icon | path: icons/duotune/abstract/abs042.svg-->
 		<span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
@@ -73794,7 +73794,7 @@ fill="black"></path>
 <!--end:Item-->
 <!--begin:Item-->
 <div class="col-6">
-<a th:href="{/pages/projects/users.html}"
+<a th:href="@{/pages/projects/users.html}"
 class="d-flex flex-column flex-center h-100 p-6 bg-hover-light">
 <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
 <span class="svg-icon svg-icon-3x svg-icon-primary mb-2">
@@ -73818,7 +73818,7 @@ class="d-flex flex-column flex-center h-100 p-6 bg-hover-light">
 <!--end:Nav-->
 <!--begin::View more-->
 <div class="py-2 text-center border-top">
-<a th:href="{/pages/profile/activity.html}"
+<a th:href="@{/pages/profile/activity.html}"
 class="btn btn-color-gray-600 btn-active-color-primary">View All
 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 <span class="svg-icon svg-icon-5">
@@ -73867,7 +73867,7 @@ data-popper-placement="bottom-end">
 	<span
 	class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
 </div>
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
 </div>
 <!--end::Username-->
@@ -73879,7 +73879,7 @@ class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
 <!--end::Menu separator-->
 <!--begin::Menu item-->
 <div class="menu-item px-5">
-<a th:href="{/account/overview.html}" class="menu-link px-5">My Profile</a>
+<a th:href="@{/account/overview.html}" class="menu-link px-5">My Profile</a>
 </div>
 <!--end::Menu item-->
 <!--begin::Menu item-->
@@ -73897,7 +73897,7 @@ class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
 <!--begin::Menu item-->
 <div class="menu-item px-5" data-kt-menu-trigger="hover"
 data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
-<a th:href="{#}" class="menu-link px-5">
+<a th:href="@{#}" class="menu-link px-5">
 <span class="menu-title position-relative">Language
 <span
 class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
@@ -73909,7 +73909,7 @@ alt=""></span></span>
 <div class="menu-sub menu-sub-dropdown w-175px py-4" style="">
 <!--begin::Menu item-->
 <div class="menu-item px-3">
-<a th:href="{/account/settings.html}"
+<a th:href="@{/account/settings.html}"
 class="menu-link d-flex px-5 active">
 <span class="symbol symbol-20px me-4">
 	<img class="rounded-1"
@@ -73919,7 +73919,7 @@ class="menu-link d-flex px-5 active">
 <!--end::Menu item-->
 <!--begin::Menu item-->
 <div class="menu-item px-3">
-<a th:href="{/account/settings.html}" class="menu-link d-flex px-5">
+<a th:href="@{/account/settings.html}" class="menu-link d-flex px-5">
 	<span class="symbol symbol-20px me-4">
 		<img class="rounded-1"
 		src="../static/assets/media/flags/spain.svg" alt="">
@@ -73928,7 +73928,7 @@ class="menu-link d-flex px-5 active">
 <!--end::Menu item-->
 <!--begin::Menu item-->
 <div class="menu-item px-3">
-	<a th:href="{/account/settings.html}" class="menu-link d-flex px-5">
+	<a th:href="@{/account/settings.html}" class="menu-link d-flex px-5">
 		<span class="symbol symbol-20px me-4">
 			<img class="rounded-1"
 			src="../static/assets/media/flags/germany.svg" alt="">
@@ -73937,7 +73937,7 @@ class="menu-link d-flex px-5 active">
 	<!--end::Menu item-->
 	<!--begin::Menu item-->
 	<div class="menu-item px-3">
-		<a th:href="{/account/settings.html}" class="menu-link d-flex px-5">
+		<a th:href="@{/account/settings.html}" class="menu-link d-flex px-5">
 			<span class="symbol symbol-20px me-4">
 				<img class="rounded-1"
 				src="../static/assets/media/flags/japan.svg" alt="">
@@ -73946,7 +73946,7 @@ class="menu-link d-flex px-5 active">
 		<!--end::Menu item-->
 		<!--begin::Menu item-->
 		<div class="menu-item px-3">
-			<a th:href="{/account/settings.html}" class="menu-link d-flex px-5">
+			<a th:href="@{/account/settings.html}" class="menu-link d-flex px-5">
 				<span class="symbol symbol-20px me-4">
 					<img class="rounded-1"
 					src="../static/assets/media/flags/france.svg" alt="">
@@ -73959,13 +73959,13 @@ class="menu-link d-flex px-5 active">
 	<!--end::Menu item-->
 	<!--begin::Menu item-->
 	<div class="menu-item px-5 my-1">
-		<a th:href="{/account/settings.html}" class="menu-link px-5">Account
+		<a th:href="@{/account/settings.html}" class="menu-link px-5">Account
 		Settings</a>
 	</div>
 	<!--end::Menu item-->
 	<!--begin::Menu item-->
 	<div class="menu-item px-5">
-		<a th:href="{/authentication/sign-in.html}" class="menu-link px-5">Sign
+		<a th:href="@{/authentication/sign-in.html}" class="menu-link px-5">Sign
 		Out</a>
 	</div>
 	<!--end::Menu item-->
@@ -74005,7 +74005,7 @@ class="menu-link d-flex px-5 active">
 <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 	<!--begin::Item-->
 	<li class="breadcrumb-item text-white opacity-75">
-		<a th:href="{index.html}" class="text-white text-hover-primary">Home</a>
+		<a th:href="@{index.html}" class="text-white text-hover-primary">Home</a>
 	</li>
 	<!--end::Item-->
 	<!--begin::Item-->
@@ -74308,7 +74308,7 @@ data-kt-scroll-offset="5px" style="height: 223px;">
 <div
 class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5">
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-5 text-dark text-hover-primary fw-bold w-375px min-w-200px">Meeting
 with customer</a>
 <!--end::Title-->
@@ -74343,7 +74343,7 @@ with customer</a>
 </div>
 <!--end::Progress-->
 <!--begin::Action-->
-<a th:href="{#}" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+<a th:href="@{#}" class="btn btn-sm btn-light btn-active-light-primary">View</a>
 <!--end::Action-->
 </div>
 <!--end::Record-->
@@ -74351,7 +74351,7 @@ with customer</a>
 <div
 class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-0">
 <!--begin::Title-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="fs-5 text-dark text-hover-primary fw-bold w-375px min-w-200px">Project
 Delivery Preparation</a>
 <!--end::Title-->
@@ -74381,7 +74381,7 @@ Delivery Preparation</a>
 </div>
 <!--end::Progress-->
 <!--begin::Action-->
-<a th:href="{#}" class="btn btn-sm btn-light btn-active-light-primary">View</a>
+<a th:href="@{#}" class="btn btn-sm btn-light btn-active-light-primary">View</a>
 <!--end::Action-->
 </div>
 <!--end::Record-->
@@ -74472,7 +74472,7 @@ data-bs-original-title="Alan Nilson">
 <!--begin::Timeline heading-->
 <div class="mb-5 pe-3">
 <!--begin::Title-->
-<a th:href="{#}" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">3 New
+<a th:href="@{#}" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">3 New
 Incoming Project Files:</a>
 <!--end::Title-->
 <!--begin::Description-->
@@ -74503,7 +74503,7 @@ class="d-flex align-items-center border border-dashed border-gray-300 rounded mi
 <!--begin::Info-->
 <div class="ms-1 fw-bold">
 <!--begin::Desc-->
-<a th:href="{#}" class="fs-6 text-hover-primary fw-bolder">Finance KPI App
+<a th:href="@{#}" class="fs-6 text-hover-primary fw-bolder">Finance KPI App
 Guidelines</a>
 <!--end::Desc-->
 <!--begin::Number-->
@@ -74521,7 +74521,7 @@ Guidelines</a>
 <!--begin::Info-->
 <div class="ms-1 fw-bold">
 <!--begin::Desc-->
-<a th:href="{#}" class="fs-6 text-hover-primary fw-bolder">Client UAT Testing
+<a th:href="@{#}" class="fs-6 text-hover-primary fw-bolder">Client UAT Testing
 Results</a>
 <!--end::Desc-->
 <!--begin::Number-->
@@ -74539,7 +74539,7 @@ Results</a>
 <!--begin::Info-->
 <div class="ms-1 fw-bold">
 <!--begin::Desc-->
-<a th:href="{#}" class="fs-6 text-hover-primary fw-bolder">Finance
+<a th:href="@{#}" class="fs-6 text-hover-primary fw-bolder">Finance
 Reports</a>
 <!--end::Desc-->
 <!--begin::Number-->
@@ -74586,8 +74586,8 @@ Reports</a>
 <div class="pe-3 mb-5">
 <!--begin::Title-->
 <div class="fs-5 fw-bold mb-2">Task
-<a th:href="{#}" class="text-primary fw-bolder me-1">#45890</a>merged with
-<a th:href="{#}" class="text-primary fw-bolder me-1">#45890</a>in “Ads Pro Admin
+<a th:href="@{#}" class="text-primary fw-bolder me-1">#45890</a>merged with
+<a th:href="@{#}" class="text-primary fw-bolder me-1">#45890</a>in “Ads Pro Admin
 Dashboard project:
 </div>
 <!--end::Title-->
@@ -74672,7 +74672,7 @@ th:src="@{/assets/media/demos/demo1.png}">
 <!--end::Image-->
 <!--begin::Link-->
 <div class="overlay-layer bg-dark bg-opacity-10 rounded">
-<a th:href="{#}" class="btn btn-sm btn-primary btn-shadow">Explore</a>
+<a th:href="@{#}" class="btn btn-sm btn-primary btn-shadow">Explore</a>
 </div>
 <!--end::Link-->
 </div>
@@ -74687,7 +74687,7 @@ th:src="@{/assets/media/demos/demo2.png}">
 <!--end::Image-->
 <!--begin::Link-->
 <div class="overlay-layer bg-dark bg-opacity-10 rounded">
-<a th:href="{#}" class="btn btn-sm btn-primary btn-shadow">Explore</a>
+<a th:href="@{#}" class="btn btn-sm btn-primary btn-shadow">Explore</a>
 </div>
 <!--end::Link-->
 </div>
@@ -74702,7 +74702,7 @@ th:src="@{/assets/media/demos/demo3.png}">
 <!--end::Image-->
 <!--begin::Link-->
 <div class="overlay-layer bg-dark bg-opacity-10 rounded">
-<a th:href="{#}" class="btn btn-sm btn-primary btn-shadow">Explore</a>
+<a th:href="@{#}" class="btn btn-sm btn-primary btn-shadow">Explore</a>
 </div>
 <!--end::Link-->
 </div>
@@ -74744,7 +74744,7 @@ th:src="@{/assets/media/demos/demo3.png}">
 <div class="pe-3 mb-5">
 <!--begin::Title-->
 <div class="fs-5 fw-bold mb-2">New case
-<a th:href="{#}" class="text-primary fw-bolder me-1">#67890</a>is assigned to you in
+<a th:href="@{#}" class="text-primary fw-bolder me-1">#67890</a>is assigned to you in
 Multi-platform Database Design project
 </div>
 <!--end::Title-->
@@ -74756,7 +74756,7 @@ Multi-platform Database Design project
 	<div class="text-muted me-2 fs-7">Added at 4:23 PM by</div>
 	<!--end::Info-->
 	<!--begin::User-->
-	<a th:href="{#}" class="text-primary fw-bolder me-1">Alice Tan</a>
+	<a th:href="@{#}" class="text-primary fw-bolder me-1">Alice Tan</a>
 	<!--end::User-->
 </div>
 <!--end::Wrapper-->
@@ -74846,7 +74846,7 @@ to make sure the data integrity is OK</div>
 </div>
 <!--end::Content-->
 <!--begin::Action-->
-<a th:href="{#}"
+<a th:href="@{#}"
 class="btn btn-primary px-6 align-self-center text-nowrap">Proceed</a>
 <!--end::Action-->
 </div>
@@ -74892,7 +74892,7 @@ class="btn btn-primary px-6 align-self-center text-nowrap">Proceed</a>
 <div class="pe-3 mb-5">
 <!--begin::Title-->
 <div class="fs-5 fw-bold mb-2">New order
-<a th:href="{#}" class="text-primary fw-bolder me-1">#67890</a>is placed for Workshow
+<a th:href="@{#}" class="text-primary fw-bolder me-1">#67890</a>is placed for Workshow
 Planning &amp; Budget Estimation
 </div>
 <!--end::Title-->
@@ -74902,7 +74902,7 @@ Planning &amp; Budget Estimation
 <div class="text-muted me-2 fs-7">Placed at 4:23 PM by</div>
 <!--end::Info-->
 <!--begin::User-->
-<a th:href="{#}" class="text-primary fw-bolder me-1">Jimmy Bold</a>
+<a th:href="@{#}" class="text-primary fw-bolder me-1">Jimmy Bold</a>
 <!--end::User-->
 </div>
 <!--end::Description-->
@@ -74920,7 +74920,7 @@ Planning &amp; Budget Estimation
 <!--end::Body-->
 <!--begin::Footer-->
 <div class="card-footer py-5 text-center" id="kt_activities_footer">
-<a th:href="{/pages/profile/activity.html}" class="btn btn-bg-body text-primary">View All
+<a th:href="@{/pages/profile/activity.html}" class="btn btn-bg-body text-primary">View All
 Activities
 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 <span class="svg-icon svg-icon-3 svg-icon-primary">
@@ -74952,7 +74952,7 @@ style="width: 500px !important;">
 <div class="card-title">
 <!--begin::User-->
 <div class="d-flex justify-content-center flex-column me-3">
-	<a th:href="{#}" class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian Cox</a>
+	<a th:href="@{#}" class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian Cox</a>
 	<!--begin::Info-->
 	<div class="mb-0 lh-1">
 		<span class="badge badge-success badge-circle w-10px h-10px me-1"></span>
@@ -74981,13 +74981,13 @@ data-kt-menu="true">
 <!--end::Heading-->
 <!--begin::Menu item-->
 <div class="menu-item px-3">
-	<a th:href="{#}" class="menu-link px-3" data-bs-toggle="modal"
+	<a th:href="@{#}" class="menu-link px-3" data-bs-toggle="modal"
 	data-bs-target="#kt_modal_users_search">Add Contact</a>
 </div>
 <!--end::Menu item-->
 <!--begin::Menu item-->
 <div class="menu-item px-3">
-	<a th:href="{#}" class="menu-link flex-stack px-3" data-bs-toggle="modal"
+	<a th:href="@{#}" class="menu-link flex-stack px-3" data-bs-toggle="modal"
 	data-bs-target="#kt_modal_invite_friends">Invite Contacts
 	<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title=""
 	data-bs-original-title="Specify a contact email to send an invitation"
@@ -74998,7 +74998,7 @@ data-kt-menu="true">
 <!--begin::Menu item-->
 <div class="menu-item px-3" data-kt-menu-trigger="hover"
 data-kt-menu-placement="right-start" data-kt-menu-flip="left, center, top">
-<a th:href="{#}" class="menu-link px-3">
+<a th:href="@{#}" class="menu-link px-3">
 	<span class="menu-title">Groups</span>
 	<span class="menu-arrow"></span>
 </a>
@@ -75006,19 +75006,19 @@ data-kt-menu-placement="right-start" data-kt-menu-flip="left, center, top">
 <div class="menu-sub menu-sub-dropdown w-175px py-4">
 	<!--begin::Menu item-->
 	<div class="menu-item px-3">
-		<a th:href="{#}" class="menu-link px-3" data-bs-toggle="tooltip" title=""
+		<a th:href="@{#}" class="menu-link px-3" data-bs-toggle="tooltip" title=""
 		data-bs-original-title="Coming soon">Create Group</a>
 	</div>
 	<!--end::Menu item-->
 	<!--begin::Menu item-->
 	<div class="menu-item px-3">
-		<a th:href="{#}" class="menu-link px-3" data-bs-toggle="tooltip" title=""
+		<a th:href="@{#}" class="menu-link px-3" data-bs-toggle="tooltip" title=""
 		data-bs-original-title="Coming soon">Invite Members</a>
 	</div>
 	<!--end::Menu item-->
 	<!--begin::Menu item-->
 	<div class="menu-item px-3">
-		<a th:href="{#}" class="menu-link px-3" data-bs-toggle="tooltip" title=""
+		<a th:href="@{#}" class="menu-link px-3" data-bs-toggle="tooltip" title=""
 		data-bs-original-title="Coming soon">Settings</a>
 	</div>
 	<!--end::Menu item-->
@@ -75028,7 +75028,7 @@ data-kt-menu-placement="right-start" data-kt-menu-flip="left, center, top">
 <!--end::Menu item-->
 <!--begin::Menu item-->
 <div class="menu-item px-3 my-1">
-<a th:href="{#}" class="menu-link px-3" data-bs-toggle="tooltip" title=""
+<a th:href="@{#}" class="menu-link px-3" data-bs-toggle="tooltip" title=""
 data-bs-original-title="Coming soon">Settings</a>
 </div>
 <!--end::Menu item-->
@@ -75076,7 +75076,7 @@ style="height: 169px;">
 	<!--end::Avatar-->
 	<!--begin::Details-->
 	<div class="ms-3">
-		<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+		<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
 		Cox</a>
 		<span class="text-muted fs-7 mb-1">2 mins</span>
 	</div>
@@ -75101,7 +75101,7 @@ friends and family ?</div>
 <!--begin::Details-->
 <div class="me-3">
 	<span class="text-muted fs-7 mb-1">5 mins</span>
-	<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+	<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
 </div>
 <!--end::Details-->
 <!--begin::Avatar-->
@@ -75133,7 +75133,7 @@ been subscribed to a repository on GitHub.</div>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-3">
-	<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+	<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
 	Cox</a>
 	<span class="text-muted fs-7 mb-1">1 Hour</span>
 </div>
@@ -75157,7 +75157,7 @@ data-kt-element="message-text">Ok, Understood!</div>
 <!--begin::Details-->
 <div class="me-3">
 	<span class="text-muted fs-7 mb-1">2 Hours</span>
-	<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+	<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
 </div>
 <!--end::Details-->
 <!--begin::Avatar-->
@@ -75189,7 +75189,7 @@ requests!</div>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-3">
-	<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+	<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
 	Cox</a>
 	<span class="text-muted fs-7 mb-1">3 Hours</span>
 </div>
@@ -75216,7 +75216,7 @@ here:
 <!--begin::Details-->
 <div class="me-3">
 	<span class="text-muted fs-7 mb-1">4 Hours</span>
-	<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+	<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
 </div>
 <!--end::Details-->
 <!--begin::Avatar-->
@@ -75247,7 +75247,7 @@ data-kt-element="message-text">Most purchased Business courses during this sale!
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-3">
-	<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+	<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
 	Cox</a>
 	<span class="text-muted fs-7 mb-1">5 Hours</span>
 </div>
@@ -75272,7 +75272,7 @@ goals. Food and drinks provided</div>
 <!--begin::Details-->
 <div class="me-3">
 	<span class="text-muted fs-7 mb-1">Just now</span>
-	<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
+	<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary ms-1">You</a>
 </div>
 <!--end::Details-->
 <!--begin::Avatar-->
@@ -75303,7 +75303,7 @@ data-kt-element="message-text"></div>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-3">
-	<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
+	<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary me-1">Brian
 	Cox</a>
 	<span class="text-muted fs-7 mb-1">Just now</span>
 </div>
@@ -75801,7 +75801,7 @@ class="w-100 opacity-75">
 	<!--end::Title-->
 	<!--begin::Description-->
 	<div class="text-muted fw-bold fs-5">If you need more info, please check out
-		<a th:href="{#}" class="link-primary fw-bolder">FAQ Page</a>.
+		<a th:href="@{#}" class="link-primary fw-bolder">FAQ Page</a>.
 	</div>
 	<!--end::Description-->
 </div>
@@ -75839,7 +75839,7 @@ placeholder="Type or paste emails here"></textarea>
 				<!--end::Avatar-->
 				<!--begin::Details-->
 				<div class="ms-5">
-					<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma
+					<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma
 					Smith</a>
 					<div class="fw-bold text-muted">e.smith@kpmg.com.au</div>
 				</div>
@@ -75967,7 +75967,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Melody
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Melody
 Macy</a>
 <div class="fw-bold text-muted">melody@altbox.com</div>
 </div>
@@ -76095,7 +76095,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Max
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Max
 Smith</a>
 <div class="fw-bold text-muted">max@kt.com</div>
 </div>
@@ -76224,7 +76224,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Sean
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Sean
 Bean</a>
 <div class="fw-bold text-muted">sean@dellito.com</div>
 </div>
@@ -76352,7 +76352,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Brian
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Brian
 Cox</a>
 <div class="fw-bold text-muted">brian@exchange.com</div>
 </div>
@@ -76481,7 +76481,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Mikaela
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Mikaela
 Collins</a>
 <div class="fw-bold text-muted">mikaela@pexcom.com</div>
 </div>
@@ -76609,7 +76609,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Francis
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Francis
 Mitcham</a>
 <div class="fw-bold text-muted">f.mitcham@kpmg.com.au</div>
 </div>
@@ -76738,7 +76738,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Olivia
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Olivia
 Wild</a>
 <div class="fw-bold text-muted">olivia@corpmail.com</div>
 </div>
@@ -76866,7 +76866,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Neil
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Neil
 Owen</a>
 <div class="fw-bold text-muted">owen.neil@gmail.com</div>
 </div>
@@ -76994,7 +76994,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Dan
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Dan
 Wilson</a>
 <div class="fw-bold text-muted">dam@consilting.com</div>
 </div>
@@ -77123,7 +77123,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Emma
 Bold</a>
 <div class="fw-bold text-muted">emma@intenso.com</div>
 </div>
@@ -77251,7 +77251,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana
 Crown</a>
 <div class="fw-bold text-muted">ana.cf@limtel.com</div>
 </div>
@@ -77379,7 +77379,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Robert
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Robert
 Doe</a>
 <div class="fw-bold text-muted">robert@benko.com</div>
 </div>
@@ -77508,7 +77508,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">John
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">John
 Miller</a>
 <div class="fw-bold text-muted">miller@mapple.com</div>
 </div>
@@ -77637,7 +77637,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Lucy
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Lucy
 Kunic</a>
 <div class="fw-bold text-muted">lucy.m@fentech.com</div>
 </div>
@@ -77765,7 +77765,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ethan
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ethan
 Wilder</a>
 <div class="fw-bold text-muted">ethan@loop.com.au</div>
 </div>
@@ -77893,7 +77893,7 @@ class="dropdown-wrapper" aria-hidden="true"></span></span>
 <!--end::Avatar-->
 <!--begin::Details-->
 <div class="ms-5">
-<a th:href="{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana
+<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Ana
 Crown</a>
 <div class="fw-bold text-muted">ana.cf@limtel.com</div>
 </div>
@@ -79265,7 +79265,7 @@ name="card_name" value="Max Doe">
 		<div class="mb-13 text-center">
 			<h1 class="mb-3">Upgrade a Plan</h1>
 			<div class="text-muted fw-bold fs-5">If you need more info, please check
-				<a th:href="{#}" class="link-primary fw-bolder">Pricing Guidelines</a>.
+				<a th:href="@{#}" class="link-primary fw-bolder">Pricing Guidelines</a>.
 			</div>
 		</div>
 		<!--end::Heading-->
@@ -79273,10 +79273,10 @@ name="card_name" value="Max Doe">
 		<div class="d-flex flex-column">
 			<!--begin::Nav group-->
 			<div class="nav-group nav-group-outline mx-auto" data-kt-buttons="true">
-				<a th:href="{#}"
+				<a th:href="@{#}"
 				class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3 me-2 active"
 				data-kt-plan="month">Monthly</a>
-				<a th:href="{#}" class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3"
+				<a th:href="@{#}" class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3"
 				data-kt-plan="annual">Annual</a>
 			</div>
 			<!--end::Nav group-->
@@ -79407,7 +79407,7 @@ name="card_name" value="Max Doe">
 		<!--end::Description-->
 		<!--begin::Price-->
 		<div class="ms-5">
-			<a th:href="{#}" class="btn btn-sm btn-primary">Contact Us</a>
+			<a th:href="@{#}" class="btn btn-sm btn-primary">Contact Us</a>
 		</div>
 		<!--end::Price-->
 	</div>
