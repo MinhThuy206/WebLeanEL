@@ -20,7 +20,7 @@ var KTAccountSettingsProfileDetails = function () {
             form,
             {
                 fields: {
-                    fname: {
+                    fullname: {
                         validators: {
                             notEmpty: {
                                 message: 'Full Name  is required'
@@ -53,7 +53,7 @@ var KTAccountSettingsProfileDetails = function () {
                     })
                 }
             }
-        );
+            );
     }
 
     var handleForm = function () {
@@ -81,59 +81,59 @@ var KTAccountSettingsProfileDetails = function () {
                         },
                         body: JSON.stringify(formData)
                     })
-                        .then(response => response.text()
+                    .then(response => response.text()
                         )
-                        .then(data => {
-                            if (data.startsWith("redirect:")) {
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
                                 // Extract the URL from the response and perform the redirection
-                                redirectUrl = data.substring("redirect:".length);
-                                console.log("redirectUrl: " + redirectUrl);
-                            } else {
-                                console.log("data: " + data);
-                            }
-                        })
-                        setTimeout(function() {
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                        } else {
+                            console.log("data: " + data);
+                        }
+                    })
+                    setTimeout(function() {
                             // Hide loading indication
-                            submitButton.removeAttribute('data-kt-indicator');
+                        submitButton.removeAttribute('data-kt-indicator');
 
                             // Enable button
-                            submitButton.disabled = false;
+                        submitButton.disabled = false;
 
-                            swal.fire({
-                                text: "Thank you! You've updated your basic info",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-light-primary"
-                                }
-                            }).then(function (result) {
-                                if (result.isConfirmed) {
+                        swal.fire({
+                            text: "Thank you! You've updated your basic info",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn fw-bold btn-light-primary"
+                            }
+                        }).then(function (result) {
+                            if (result.isConfirmed) {
 
                                     // form.querySelector('[name="email"]').value= "";
                                     // form.querySelector('[name="password"]').value= "";
-                                    form.reset();
+                                form.reset();
                                     //form.submit(); // submit form
-                                    if(iconMessage == "success") {
-                                        window.location.href = redirectUrl;
-                                    }
+                                if(iconMessage == "success") {
+                                    window.location.href = redirectUrl;
                                 }
+                            }
 
-                            });
-                            }, 2000);
-                        } else {
-                            swal.fire({
-                                text: "Sorry, looks like there are some errors detected, please try again.",
-                                icon: "error",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-light-primary"
-                                }
-                            });
+                        });
+                    }, 2000);
+                } else {
+                    swal.fire({
+                        text: "Sorry, looks like there are some errors detected, please try again.",
+                        icon: "error",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok, got it!",
+                        customClass: {
+                            confirmButton: "btn fw-bold btn-light-primary"
                         }
                     });
-                });
+                }
+            });
+        });
     }
 
     // Public methods
@@ -141,7 +141,7 @@ var KTAccountSettingsProfileDetails = function () {
         init: function () {
             form = document.getElementById('kt_account_profile_details_form');
             submitButton = form.querySelector('#kt_account_profile_details_submit');
-
+            handleForm();
             initValidation();
         }
     }
