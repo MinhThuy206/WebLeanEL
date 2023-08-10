@@ -23,21 +23,7 @@ var KTAccountSettingsProfileDetails = function () {
                     fname: {
                         validators: {
                             notEmpty: {
-                                message: 'First name is required'
-                            }
-                        }
-                    },
-                    lname: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Last name is required'
-                            }
-                        }
-                    },
-                    company: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Company name is required'
+                                message: 'Full Name  is required'
                             }
                         }
                     },
@@ -48,31 +34,10 @@ var KTAccountSettingsProfileDetails = function () {
                             }
                         }
                     },
-                    country: {
+                    address: {
                         validators: {
                             notEmpty: {
-                                message: 'Please select a country'
-                            }
-                        }
-                    },
-                    timezone: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Please select a timezone'
-                            }
-                        }
-                    },
-                    'communication[]': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Please select at least one communication method'
-                            }
-                        }
-                    },
-                    language: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Please select a language'
+                                message: 'Address is required'
                             }
                         }
                     },
@@ -89,22 +54,6 @@ var KTAccountSettingsProfileDetails = function () {
                 }
             }
         );
-
-        // Select2 validation integration
-        $(form.querySelector('[name="country"]')).on('change', function() {
-            // Revalidate the color field when an option is chosen
-            validation.revalidateField('country');
-        });
-
-        $(form.querySelector('[name="language"]')).on('change', function() {
-            // Revalidate the color field when an option is chosen
-            validation.revalidateField('language');
-        });
-
-        $(form.querySelector('[name="timezone"]')).on('change', function() {
-            // Revalidate the color field when an option is chosen
-            validation.revalidateField('timezone');
-        });
     }
 
     var handleForm = function () {
@@ -113,30 +62,78 @@ var KTAccountSettingsProfileDetails = function () {
 
             validation.validate().then(function (status) {
                 if (status == 'Valid') {
+                    submitButton.setAttribute('data-kt-indicator', 'on');
 
-                    swal.fire({
-                        text: "Thank you! You've updated your basic info",
-                        icon: "success",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-light-primary"
+                    // Disable button to avoid multiple click
+                    submitButton.disabled = true;
+
+                    var formData = {
+                        fullname: $("input[name=fullname]").val(),
+                        mobile: $("input[name=mobile]").val(),
+                        address: $("input[name=address]").val
+                    };
+                    var redirectUrl = "";
+
+                    fetch("/{id}", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                        .then(response => response.text()
+                        )
+                        .then(data => {
+                            if (data.startsWith("redirect:")) {
+                                // Extract the URL from the response and perform the redirection
+                                redirectUrl = data.substring("redirect:".length);
+                                console.log("redirectUrl: " + redirectUrl);
+                            } else {
+                                console.log("data: " + data);
+                            }
+                        })
+                        setTimeout(function() {
+                            // Hide loading indication
+                            submitButton.removeAttribute('data-kt-indicator');
+
+                            // Enable button
+                            submitButton.disabled = false;
+
+                            swal.fire({
+                                text: "Thank you! You've updated your basic info",
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-light-primary"
+                                }
+                            }).then(function (result) {
+                                if (result.isConfirmed) {
+
+                                    // form.querySelector('[name="email"]').value= "";
+                                    // form.querySelector('[name="password"]').value= "";
+                                    form.reset();
+                                    //form.submit(); // submit form
+                                    if(iconMessage == "success") {
+                                        window.location.href = redirectUrl;
+                                    }
+                                }
+
+                            });
+                            }, 2000);
+                        } else {
+                            swal.fire({
+                                text: "Sorry, looks like there are some errors detected, please try again.",
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-light-primary"
+                                }
+                            });
                         }
                     });
-
-                } else {
-                    swal.fire({
-                        text: "Sorry, looks like there are some errors detected, please try again.",
-                        icon: "error",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-light-primary"
-                        }
-                    });
-                }
-            });
-        });
+                });
     }
 
     // Public methods
@@ -156,5 +153,5 @@ KTUtil.onDOMContentLoaded(function() {
 });
 
 /******/ })()
-;
+
 //# sourceMappingURL=profile-details.js.map

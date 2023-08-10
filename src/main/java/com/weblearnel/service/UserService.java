@@ -4,12 +4,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.weblearnel.model.ConfirmationToken;
 import com.weblearnel.model.User;
 import com.weblearnel.repository.UserRepository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Service
 public class UserService {
@@ -41,18 +46,15 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
-    // update word
-    public User updateUser(User user, long id) {
-        if (user != null) {
-            User user1 = userRepository.getReferenceById(id);
-            user1.setUsername(user.getUsername());
-            user1.setAddress(user.getAddress());
-            user1.setFullname(user.getFullname());
-            user1.setPassword(user.getPassword());
-            user1.setMobile(user.getMobile());
-            return userRepository.save(user1);
-        }
-        return null;
+    // update user
+    @Transactional
+    public User updateUser(long id, User user){
+        String fullname = user.getFullname();
+        String phone = user.getMobile();
+        String address = user.getAddress();
+
+        User newUser = new User(fullname, phone, address);
+        return userRepository.save(newUser);
     }
 
     // Delete word

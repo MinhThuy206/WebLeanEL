@@ -59,9 +59,6 @@ public class User {
     @Column(name = "created_date", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
     private Date createDate;
 
-    @Column(name = "status")
-    private Integer status;
-
     @Column(name = "level")
     private Integer level;
 
@@ -93,6 +90,12 @@ public class User {
         this.mobile = mobile;
         this.email = email;
         this.level = level;
+    }
+
+    public User(String fullname, String mobile, String address){
+        this.fullname = fullname;
+        this.mobile = mobile;
+        this.address = address;
     }
 
     public LocalDateTime getTokenCreationDate() {
