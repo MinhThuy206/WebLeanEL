@@ -14,7 +14,6 @@ var KTPasswordResetGeneral = function() {
 	var validator;
     var iconMessage = "success";
     var textMessage ="send otp successfully";
-    var waitTime;
 
     var handleForm = function(e) {
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
@@ -75,43 +74,42 @@ var KTPasswordResetGeneral = function() {
                             // Extract the URL from the response and perform the redirection
                             redirectUrl = data.substring("redirect:".length);
                             console.log("redirectUrl: " + redirectUrl);
-                            waitTime = 5000;
                         } else {
                             console.log("data: " + data);
                             textMessage = data;
                             iconMessage = "error";
-                            waitTime = 1500;
                         }
+                        setTimeout(function() {
+                            // Hide loading indication
+                            submitButton.removeAttribute('data-kt-indicator');
+    
+                            // Enable button
+                            submitButton.disabled = false;
+    
+                            // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                            Swal.fire({
+                                text: textMessage,
+                                icon: iconMessage,
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            }).then(function (result) {
+                                if (result.isConfirmed) { 
+                                    form.querySelector('[name="email"]').value= "";                          
+                                    //form.submit();
+                                    form.reset(); // reset form
+                                    if(iconMessage == "success") {
+                                        window.location.href = redirectUrl;}
+                                    
+                                }
+                            });
+                        }, 1500); 
                     }))
 
                     // Simulate ajax request
-                    setTimeout(function() {
-                        // Hide loading indication
-                        submitButton.removeAttribute('data-kt-indicator');
-
-                        // Enable button
-                        submitButton.disabled = false;
-
-                        // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                        Swal.fire({
-                            text: textMessage,
-                            icon: iconMessage,
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn btn-primary"
-                            }
-                        }).then(function (result) {
-                            if (result.isConfirmed) { 
-                                form.querySelector('[name="email"]').value= "";                          
-                                //form.submit();
-                                form.reset(); // reset form
-                                if(iconMessage == "success") {
-                                    window.location.href = redirectUrl;}
-                                
-                            }
-                        });
-                    }, 1500);   						
+                      						
                 } else {
                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({

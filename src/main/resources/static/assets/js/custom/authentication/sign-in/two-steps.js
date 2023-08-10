@@ -1,44 +1,55 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-var __webpack_exports__ = {};
-/*!*********************************************************************************************!*\
-  !*** ../../../themes/metronic/html/demo2/src/js/custom/authentication/sign-in/two-steps.js ***!
-  \*********************************************************************************************/
+    var __webpack_exports__ = {};
+    /*!*********************************************************************************************!*\
+      !*** ../../../themes/metronic/html/demo2/src/js/custom/authentication/sign-in/two-steps.js ***!
+      \*********************************************************************************************/
 
 
-// Class Definition
-var KTSigninTwoSteps = function() {
-    // Elements
-    var form;
-    var submitButton;
-    var iconMessage = "success";
-    var textMessage ="send otp successfully";
-    var waitTime;
-    // Handle form
-    var handleForm = function(e) {        
-        // Handle form submit
-        submitButton.addEventListener('click', function (e) {
-            e.preventDefault();
+    // Class Definition
+    var KTSigninTwoSteps = function () {
+        // Elements
+        var form;
+        var submitButton;
+        var iconMessage = "success";
+        var textMessage = "verify otp successfully";
+        var waitTime;
+        // Handle form
+        var handleForm = function (e) {
+            // Handle form submit
+            submitButton.addEventListener('click', function (e) {
+                e.preventDefault();
 
-            var validated = true;
+                var validated = true;
 
-            var inputs = [].slice.call(form.querySelectorAll('input[maxlength="1"]'));
-            inputs.map(function (input) {
-                if (input.value === '' || input.value.length === 0) {
-                    validated = false;
-                }
-            });
+                var inputs = [].slice.call(form.querySelectorAll('input[maxlength="1"]'));
+                inputs.map(function (input) {
+                    if (input.value === '' || input.value.length === 0) {
+                        validated = false;
+                    }
+                });
 
-            if (validated === true) {
-                // Show loading indication
-                submitButton.setAttribute('data-kt-indicator', 'on');
+                if (validated === true) {
+                    // Show loading indication
+                    submitButton.setAttribute('data-kt-indicator', 'on');
 
-                var formdata = {
-                    otp: $("input[name=otp]").val(),
-                    email: $("input[name=email]").val()
-                };
+                    var formdata = {
+                        // otp1: $("input[name=first]").val(),
+                        // otp2: $("input[name=second]").val(),
+                        // otp3: $("input[name=third]").val(),
+                        // otp4: $("input[name=fourth]").val(),
+                        // otp5: $("input[name=fifth]").val(),
+                        // otp6: $("input[name=sixth]").val(),
+                        otp: $("input[name=first]").val() +
+                            $("input[name=second]").val() +
+                            $("input[name=third]").val() +
+                            $("input[name=fourth]").val() +
+                            $("input[name=fifth]").val() +
+                            $("input[name=sixth]").val(),
+                        email: $("input[name=email]").val()
+                    };
 
-                var redirectUrl = "";
+                    var redirectUrl = "";
 
                     fetch("/verify-otp", {
                         method: "POST",
@@ -47,81 +58,84 @@ var KTSigninTwoSteps = function() {
                         },
                         body: JSON.stringify(formdata)
                     })
-                    .then(response => response.text()
-                    .then(data => {
-                        if (data.startsWith("redirect:")) {
-                            // Extract the URL from the response and perform the redirection
-                            redirectUrl = data.substring("redirect:".length);
-                            console.log("redirectUrl: " + redirectUrl);
-                            waitTime = 5000;
-                        } else {
-                            console.log("data: " + data);
-                            textMessage = data;
-                            iconMessage = "error";
-                            waitTime = 1500;
-                        }
-                    }))
+                        .then(response => response.text()
+                            .then(data => {
+                                if (data.startsWith("redirect:")) {
+                                    // Extract the URL from the response and perform the redirection
+                                    redirectUrl = data.substring("redirect:".length);
+                                    console.log("redirectUrl: " + redirectUrl);
+                                } else {
+                                    console.log("data: " + data);
+                                    textMessage = data;
+                                    iconMessage = "error";
+                                }
+                                setTimeout(function () {
+                                    // Hide loading indication
+                                    submitButton.removeAttribute('data-kt-indicator');
 
-                // Disable button to avoid multiple click 
-                submitButton.disabled = true;
+                                    // Enable button
+                                    submitButton.disabled = false;
 
-                // Simulate ajax request
-                setTimeout(function() {
-                    // Hide loading indication
-                    submitButton.removeAttribute('data-kt-indicator');
+                                    // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                                    Swal.fire({
+                                        text: textMessage,
+                                        icon: iconMessage,
+                                        buttonsStyling: false,
+                                        confirmButtonText: "Ok, got it!",
+                                        customClass: {
+                                            confirmButton: "btn btn-primary"
+                                        }
+                                    }).then(function (result) {
+                                        if (result.isConfirmed) {
+                                            inputs.map(function (input) {
+                                                input.value = '';
+                                            });
+                                        }
+                                        if (iconMessage == "success") {
+                                            window.location.replace(redirectUrl);
+                                        }
+                                    });
+                                }, 1000);
+                            }))
 
-                    // Enable button
-                    submitButton.disabled = false;
+                    // Disable button to avoid multiple click 
+                    submitButton.disabled = true;
 
-                    // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                    Swal.fire({
-                        text: "You have been successfully verified!",
-                        icon: "success",
+                    // Simulate ajax request
+
+                } else {
+                    swal.fire({
+                        text: "Please enter valid securtiy code and try again.",
+                        icon: "error",
                         buttonsStyling: false,
                         confirmButtonText: "Ok, got it!",
                         customClass: {
-                            confirmButton: "btn btn-primary"
+                            confirmButton: "btn fw-bold btn-light-primary"
                         }
-                    }).then(function (result) {
-                        if (result.isConfirmed) { 
-                            inputs.map(function (input) {
-                                input.value = '';
-                            });
-                        }
+                    }).then(function () {
+                        KTUtil.scrollTop();
                     });
-                }, 1000); 
-            } else {
-                swal.fire({
-                    text: "Please enter valid securtiy code and try again.",
-                    icon: "error",
-                    buttonsStyling: false,
-                    confirmButtonText: "Ok, got it!",
-                    customClass: {
-                        confirmButton: "btn fw-bold btn-light-primary"
-                    }
-                }).then(function() {
-                    KTUtil.scrollTop();
-                });
-            }
-        });
-    }
-
-    // Public functions
-    return {
-        // Initialization
-        init: function() {
-            form = document.querySelector('#kt_sing_in_two_steps_form');
-            submitButton = document.querySelector('#kt_sing_in_two_steps_submit');
-
-            handleForm();
+                }
+            });
         }
-    };
-}();
 
-// On document ready
-KTUtil.onDOMContentLoaded(function() {
-    KTSigninTwoSteps.init();
-});
-/******/ })()
-;
+        // Public functions
+        return {
+            // Initialization
+            init: function () {
+                form = document.querySelector('#kt_sing_in_two_steps_form');
+                submitButton = document.querySelector('#kt_sing_in_two_steps_submit');
+
+                handleForm();
+            }
+        };
+    }();
+
+    // On document ready
+    KTUtil.onDOMContentLoaded(function () {
+        KTSigninTwoSteps.init();
+    });
+    /******/
+})()
+    ;
 //# sourceMappingURL=two-steps.js.map
