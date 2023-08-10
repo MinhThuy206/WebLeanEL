@@ -13,6 +13,8 @@ var KTPasswordResetNewPassword = function() {
     var submitButton;
     var validator;
     var passwordMeter;
+    var textMessage = "You have successfully reset your password!";
+    var iconMessage = "success";
 
     var handleForm = function(e) {
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
@@ -83,33 +85,62 @@ var KTPasswordResetNewPassword = function() {
 
                     // Disable button to avoid multiple click 
                     submitButton.disabled = true;
+                    var formdata = {
+                        password: $("input[name=password]").val(),
+                        confirmPassword: $("input[name=confirm-password]").val()
+                        
+                    };
+                    var redirectUrl = "";
+                    fetch("/updatePassword", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formdata)
+                    })
+                    .then(response => response.text()
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
+                            // Extract the URL from the response and perform the redirection
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                        } else {
+                            console.log("data: " + data);
+                            textMessage = data;
+                            iconMessage = "error";
+                        }
+                        setTimeout(function() {
+                            // Hide loading indication
+                            submitButton.removeAttribute('data-kt-indicator');
+    
+                            // Enable button
+                            submitButton.disabled = false;
+    
+                            // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                            Swal.fire({
+                                text: textMessage,
+                                icon: iconMessage,
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            }).then(function (result) {
+                                if (result.isConfirmed) { 
+                                    form.querySelector('[name="password"]').value= "";   
+                                    form.querySelector('[name="confirm-password"]').value= "";      
+                                    passwordMeter.reset();  // reset password meter
+                                    form.reset();
+                                    //form.submit();
+                                }
+                                if(iconMessage == "success")
+                                    window.location.href = redirectUrl;
+                            });
+                        }, 1500);
+                    }));
 
                     // Simulate ajax request
-                    setTimeout(function() {
-                        // Hide loading indication
-                        submitButton.removeAttribute('data-kt-indicator');
-
-                        // Enable button
-                        submitButton.disabled = false;
-
-                        // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                        Swal.fire({
-                            text: "You have successfully reset your password!",
-                            icon: "success",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn btn-primary"
-                            }
-                        }).then(function (result) {
-                            if (result.isConfirmed) { 
-                                form.querySelector('[name="password"]').value= "";   
-                                form.querySelector('[name="confirm-password"]').value= "";      
-                                passwordMeter.reset();  // reset password meter
-                                //form.submit();
-                            }
-                        });
-                    }, 1500);   						
+                       						
                 } else {
                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({
