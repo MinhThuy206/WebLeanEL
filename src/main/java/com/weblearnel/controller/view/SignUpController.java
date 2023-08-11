@@ -44,6 +44,25 @@ public class SignUpController {
         return "authentication/sign-up";
     }
 
+    // Render trang chủ admin
+    @GetMapping("/admin")
+    public String adminPage() {
+        return "admin/home-page";
+    }
+
+    // Render form tạo topic
+    @GetMapping("/admin/createTopic")
+    public String topicForm() {
+        return "admin/topic-page";
+    }
+
+    // Render form chọn tạo question hay word
+    @GetMapping("/admin/{topic_name}/create")
+    public String createForm(@PathVariable("topic_name") String topic_name, Model model) {
+        model.addAttribute("topicName", topic_name);
+        return "admin/choice";
+    }
+
     // Xử lý form tạo user và redirect về trang tạo user
     @PostMapping("/submitForm")
     public ResponseEntity<String> submitForm(@RequestBody User user) {
@@ -84,7 +103,7 @@ public class SignUpController {
 
     // Xử lý form tạo word và redirect về trang tạo word
     @PostMapping("/admin/{topic_name}/submitWord")
-    public String submitWordForm(HttpServletRequest request, @PathVariable("topic_name") String topic_name) {
+    public String submitWordForm(HttpServletRequest request, @PathVariable("topic_name") String topic_name, Model model) {
         String name = request.getParameter("name");
         String mean = request.getParameter("mean");
         String attributes = request.getParameter("attributes");
@@ -95,25 +114,23 @@ public class SignUpController {
         Topic topic = topicService.getTopicByName(topic_name);
         word.assignTopic(topic); // gán topic cho word
         wordService.addWord(word); // thêm word vào database
+
         return "redirect:/admin/" + topic_name + "/createWord"; // redirect về trang tạo word
     }
 
-    // Render form tạo topic
-    @GetMapping("/admin/createTopic")
-    public String topicForm() {
-        return "topicForm";
-    }
+    
 
     // Xử lý form tạo topic và redirect về trang tạo word cho topic đó
     @PostMapping("/admin/submitTopic")
-    public String submitTopicForm(HttpServletRequest request) {
+    public String submitTopicForm(HttpServletRequest request, Model model) {
         String topic_name = request.getParameter("name");
         String description = request.getParameter("description");
         Topic topic = new Topic(topic_name, description);
         if(topicService.getTopicByName(topic_name) == null) {
             topicService.addTopic(topic);
         } 
-        return "redirect:/admin/" + topic_name + "/createWord";
+        model.addAttribute("topicName", topic_name);
+        return "redirect:/admin/" + topic_name + "/create";
     }
 
     @GetMapping("/admin/{topic_name}/createQuestion")

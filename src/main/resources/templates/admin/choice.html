@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 	<!--begin::Head-->
-	<head><base href="../../E-Word-Learning/">
+	<head>
+		<base href="../../static/">
 		<title>Choice | Admin</title>
 		<link rel="canonical" href="Https://preview.keenthemes.com/metronic8" />
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
@@ -9,9 +12,9 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
-		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="assets/style.css" rel="stylesheet" type="text/css">
+		<link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/css/style.bundle.css}" rel="stylesheet" type="text/css" />
+		<link th:href="@{/assets/style.css}" rel="stylesheet" type="text/css">
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -37,15 +40,16 @@
 							<div class="row">
 								<div class="col-xs-24 col-sm-24 col-md-12 col-lg-6">
 									<div class="ele-choice">
-										<a href="C:/Users/Acer/Documents/GitHub/E-Word-Learning/admin/new-word.html">
+										<a th:href="@{/admin/{topicName}/createWord(topicName=${topicName})}">
 											<i class="fa-solid fa-shield-halved"></i>
 											<h2>New word</h2>
+											<p>Topic Name: <span th:text="${topicName}"></span></p>
 										</a>
 									</div>
 								</div>
 								<div class="col-xs-24 col-sm-24 col-md-12 col-lg-6">
 									<div class="ele-choice">
-										<a href="C:/Users/Acer/Documents/GitHub/E-Word-Learning/admin/multi-choice.html">
+										<a href="/admin/multi-choice.html">
 											<i class="fa-solid fa-shield-halved"></i>
 											<h2>Multiple choice</h2>
 										</a>
@@ -56,7 +60,7 @@
 					</div> <!-- end popular-courses -->
 					<div class="w-lg-500px">
 						<div class="text-center">
-							<a href="C:/Users/Acer/Documents/GitHub/E-Word-Learning/admin/topic-page.html" class="btn btn-lg btn-back w-50 mb-5">Back</a>
+							<a href="/admin/topic-page.html" class="btn btn-lg btn-back w-50 mb-5">Back</a>
 						</div>
 					</div>					
 						<!--end::Wrapper-->
@@ -77,11 +81,11 @@
 		<!--end::Main-->
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
-		<script src="assets/plugins/global/plugins.bundle.js"></script>
-		<script src="assets/js/scripts.bundle.js"></script>
+		<script th:src="@{/assets/plugins/global/plugins.bundle.js}"></script>
+		<script th:src="@{/assets/js/scripts.bundle.js}"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="assets/js/custom/authentication/sign-in/general.js"></script>
+		<!-- <script th:src="@{/assets/js/custom/authentication/sign-in/general.js}"></script> -->
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
 	</body>
