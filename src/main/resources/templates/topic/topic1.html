@@ -73860,7 +73860,7 @@
                                                 <tr th:each="item : ${wordList}">
                                                     <th scope="row" th:text="${item.name}"></th>
                                                     <td>
-                                                        <button  th:attr="onclick='playAudio(\'' + ${item.pronounce} + '\')'">Phát âm</button>
+                                                        <button class="fa-solid fa-volume-high" th:attr="onclick='playAudio(\'' + ${item.pronounce} + '\')'">Phát âm</button>
                                                     </td>
                                                     <td th:text="${item.attribute}"></td>
                                                     <td th:text="${item.mean}"></td>
