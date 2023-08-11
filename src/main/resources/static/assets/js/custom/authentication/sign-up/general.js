@@ -1,5 +1,5 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
+/******/    "use strict";
 var __webpack_exports__ = {};
 /*!*******************************************************************************************!*\
   !*** ../../../themes/metronic/html/demo2/src/js/custom/authentication/sign-up/general.js ***!
@@ -13,41 +13,61 @@ var KTSignupGeneral = function() {
     var submitButton;
     var validator;
     var passwordMeter;
-    var iconMessage = "success";
-    var textMessage ="You have successfully registered!";
-    var waitTime;
+
+    function isValidPhoneNumber(phoneNumber) {
+  // Biểu thức chính quy để kiểm tra định dạng số điện thoại
+      var phoneRegex = /^[0-9]{10}$/;
+
+  // Kiểm tra giá trị với biểu thức chính quy
+      return phoneRegex.test(phoneNumber);
+  }
+
 
     // Handle form
     var handleForm  = function(e) {
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
         validator = FormValidation.formValidation(
-			form,
-			{
-				fields: {
-					'first-name': {
-						validators: {
-							notEmpty: {
-								message: 'First Name is required'
-							}
-						}
-                    },
-                    'last-name': {
-						validators: {
-							notEmpty: {
-								message: 'Last Name is required'
-							}
-						}
-					},
-					'email': {
+            form,
+            {
+                fields: {
+                    'fullname': {
                         validators: {
-							notEmpty: {
-								message: 'Email address is required'
-							},
+                            notEmpty: {
+                                message: 'Full Name is required'
+                            }
+                        }
+                    },
+                    'username': {
+                        validators: {
+                            notEmpty: {
+                                message: 'User Name is required'
+                            }
+                        }
+                    },
+                    'address': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Address is required'
+                            }
+                        }
+                    },
+                    'email': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Email address is required'
+                            },
                             emailAddress: {
-								message: 'The value is not a valid email address'
-							}
-						}
-					},
+                                message: 'The value is not a valid email address'
+                            }
+                        }
+                    },
+                    'phone': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Phone number is required'
+                            },
+                        }
+                    },
                     'password': {
                         validators: {
                             notEmpty: {
@@ -83,21 +103,21 @@ var KTSignupGeneral = function() {
                             }
                         }
                     }
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger({
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger({
                         event: {
                             password: false
                         }  
                     }),
-					bootstrap: new FormValidation.plugins.Bootstrap5({
+                    bootstrap: new FormValidation.plugins.Bootstrap5({
                         rowSelector: '.fv-row',
                         eleInvalidClass: '',
                         eleValidClass: ''
                     })
-				}
-			}
-		);
+                }
+            }
+        );
 
         // Handle form submit
         submitButton.addEventListener('click', function (e) {
@@ -106,82 +126,38 @@ var KTSignupGeneral = function() {
             validator.revalidateField('password');
 
             validator.validate().then(function(status) {
-		        if (status == 'Valid') {
+                if (status == 'Valid') {
                     // Show loading indication
                     submitButton.setAttribute('data-kt-indicator', 'on');
 
                     // Disable button to avoid multiple click 
                     submitButton.disabled = true;
 
-                    var formData = {
-                        fullname: $("input[name=fullname]").val(),
-                        username: $("input[name=username]").val(),
-                        email: $("input[name=email]").val(),
-                        password: $("input[name=password]").val(),
-                        confirmPassword: $("input[name=confirm-password]").val(),
-                        toc: $("input[name=toc]").is(":checked"),
-                    };
-                    var redirectUrl = "";
-
-                    fetch("/submitForm", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(formData)
-                    })
-                    .then(response => response.text()
-                    )
-                    .then(data => {
-                        if (data.startsWith("redirect:")) {
-                            // Extract the URL from the response and perform the redirection
-                            redirectUrl = data.substring("redirect:".length);
-                            console.log("redirectUrl: " + redirectUrl);
-                        } else {
-                            console.log("data: " + data);
-                            textMessage = data;
-                            iconMessage = "error";
-                        }
-
-                        setTimeout(function() {
-                            // Hide loading indication
-                            submitButton.removeAttribute('data-kt-indicator');
-    
-                            // Enable button
-                            submitButton.disabled = false;
-    
-                            // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                            Swal.fire({
-                                
-                                text: textMessage,
-                                icon: iconMessage,
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            }).then(function (result) {
-                                if (result.isConfirmed) { 
-                                    form.reset();  // reset form                    
-                                    passwordMeter.reset();  // reset password meter
-                                    
-                                    
-                                    //form.submit();
-                                    // window.location.href = '/user/login';
-                                    if(iconMessage == "success") {
-                                        window.location.href = redirectUrl;
-                                    } else {
-                                        textMessage ="You have successfully registered!";
-                                        iconMessage = "success";
-                                    }
-    
-                                }
-                            });
-                        }, 1500);
-                    }) 						
-                    
                     // Simulate ajax request
-                      
+                    setTimeout(function() {
+                        // Hide loading indication
+                        submitButton.removeAttribute('data-kt-indicator');
+
+                        // Enable button
+                        submitButton.disabled = false;
+
+                        // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                        Swal.fire({
+                            text: "You have successfully reset your password!",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn btn-primary"
+                            }
+                        }).then(function (result) {
+                            if (result.isConfirmed) { 
+                                form.reset();  // reset form                    
+                                passwordMeter.reset();  // reset password meter
+                                //form.submit();
+                            }
+                        });
+                    }, 1500);                           
                 } else {
                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({
@@ -194,7 +170,7 @@ var KTSignupGeneral = function() {
                         }
                     });
                 }
-		    });
+            });
         });
 
         // Handle password input
