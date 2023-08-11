@@ -22,7 +22,7 @@ public class UpdateProfileController {
     }
 
     @GetMapping("/update/{id}")
-    public String viewProfile(@PathVariable Long id, Model model) {
+    public String viewProfile(@PathVariable Long id,  Model model) {
         User user = userService.getUserById(id);
         if (user == null) {
             return "redirect:/index"; // Return an error page if user not found
@@ -31,13 +31,13 @@ public class UpdateProfileController {
         return "account/settings";
     }
 
-    @PostMapping("/{id}")
-    public String updateProfile(@PathVariable Long id, @ModelAttribute User updatedUser) {
+    @PutMapping("/{id}")
+    public String updateProfile(@PathVariable Long id, @RequestBody User newUser) {
         User user = userService.getUserById(id);
         if (user == null) {
-            return "index"; // Return an error page if user not found
+            return "index";
         }
-        userService.updateUser(id, updatedUser);
+        userService.updateUser(id, newUser);
         return "redirect:/account/overview";
     }
 }
