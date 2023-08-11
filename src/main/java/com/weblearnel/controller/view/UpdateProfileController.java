@@ -16,8 +16,13 @@ public class UpdateProfileController {
     private UserService userService;
 
 
+    @GetMapping("/showViewUser")
+    public String showView(){
+        return "account/overview";
+    }
+
     @GetMapping("/update/{id}")
-    public String editProfile(@PathVariable Long id, Model model) {
+    public String viewProfile(@PathVariable Long id, Model model) {
         User user = userService.getUserById(id);
         if (user == null) {
             return "redirect:/index"; // Return an error page if user not found
@@ -32,7 +37,6 @@ public class UpdateProfileController {
         if (user == null) {
             return "index"; // Return an error page if user not found
         }
-
         userService.updateUser(id, updatedUser);
         return "redirect:/account/overview";
     }
