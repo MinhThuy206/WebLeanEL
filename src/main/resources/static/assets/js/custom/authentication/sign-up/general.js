@@ -17,6 +17,14 @@ var KTSignupGeneral = function() {
     var textMessage ="You have successfully registered!";
     var waitTime;
 
+    function isValidPhoneNumber(phoneNumber) {
+  // Biểu thức chính quy để kiểm tra định dạng số điện thoại
+      var phoneRegex = /^[0-9]{10}$/;
+
+  // Kiểm tra giá trị với biểu thức chính quy
+      return phoneRegex.test(phoneNumber);
+  }
+
     // Handle form
     var handleForm  = function(e) {
         // Init form validation rules. For more info check the FormValidation plugin's official documentation:https://formvalidation.io/
@@ -58,7 +66,7 @@ var KTSignupGeneral = function() {
                     'phone': {
                         validators: {
                             notEmpty: {
-                                message: 'Email address is required'
+                                message: 'Phone number is required'
                             },
                             callback: {
                             message: 'Please enter a valid phone number',
@@ -67,6 +75,7 @@ var KTSignupGeneral = function() {
                                     return isValidPhoneNumber(input.value);
                                 }
                             }
+                        }
                         }
                     },
                     'password': {
@@ -230,14 +239,6 @@ var KTSignupGeneral = function() {
     var validatePassword = function() {
         return  (passwordMeter.getScore() === 100);
     }
-
-    function isValidPhoneNumber(phoneNumber) {
-  // Biểu thức chính quy để kiểm tra định dạng số điện thoại
-      var phoneRegex = /^[0-9]{10}$/;
-
-  // Kiểm tra giá trị với biểu thức chính quy
-      return phoneRegex.test(phoneNumber);
-  }
 
     // Public functions
     return {
