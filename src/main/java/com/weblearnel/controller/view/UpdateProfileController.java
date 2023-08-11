@@ -1,13 +1,16 @@
 package com.weblearnel.controller.view;
 
-import com.weblearnel.model.User;
-import com.weblearnel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.weblearnel.model.User;
+import com.weblearnel.service.UserService;
 
 @Controller
 @RequestMapping
@@ -16,8 +19,10 @@ public class UpdateProfileController {
     private UserService userService;
 
 
-    @GetMapping("/showViewUser")
-    public String showView(){
+    @GetMapping("/showViewUser/{user_id}")
+    public String showView(@PathVariable("user_id") Long id, Model model){
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
         return "account/overview";
     }
 
