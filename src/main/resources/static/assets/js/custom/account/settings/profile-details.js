@@ -70,12 +70,12 @@ var KTAccountSettingsProfileDetails = function () {
                     var formData = {
                         fullname: $("input[name=fullname]").val(),
                         mobile: $("input[name=mobile]").val(),
-                        address: $("input[name=address]").val
+                        address: $("input[name=address]").val()
                     };
                     var redirectUrl = "";
 
-                    fetch("/{id}", {
-                        method: "POST",
+                    fetch("/${id}", {
+                        method: "PUT",
                         headers: {
                             "Content-Type": "application/json"
                         },
