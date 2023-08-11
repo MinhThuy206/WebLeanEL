@@ -38,7 +38,7 @@ public class UserController {
     // update user
     @PostMapping("/update")
     public String updateUser(@PathVariable("id") long id, @RequestBody User user) {
-        userService.updateUser(user, id);
+        userService.updateUser(id, user);
         return "updateProfile";
     }
 

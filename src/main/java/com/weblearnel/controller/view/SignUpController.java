@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.weblearnel.model.Level;
 import com.weblearnel.model.Question;
 import com.weblearnel.model.Topic;
 import com.weblearnel.model.User;
@@ -98,7 +97,7 @@ public class SignUpController {
     @GetMapping("/admin/{topic_name}/createWord")
     public String wordForm(@PathVariable("topic_name") String topic_name, Model model) {
         model.addAttribute("topicName", topic_name);// thêm topic để biết từ dc tạo thuộc topic nào
-        return "wordForm";
+        return "admin/new-word";
     }
 
     // Xử lý form tạo word và redirect về trang tạo word
@@ -133,19 +132,21 @@ public class SignUpController {
         return "redirect:/admin/" + topic_name + "/create";
     }
 
+    // Render form tạo question
     @GetMapping("/admin/{topic_name}/createQuestion")
     public String questionForm(@PathVariable("topic_name") String topic_name, Model model) {
         model.addAttribute("topicName", topic_name);
-        return "QuestionForm";
+        
+        return "admin/multi-choice";
     }
 
     @PostMapping("/admin/{topic_name}/submitQuestion")
     public String submitQuestionForm(HttpServletRequest request, @PathVariable("topic_name") String topic_name) {
         String content = request.getParameter("content");
-        String option1 = request.getParameter("option1");
-        String option2 = request.getParameter("option2");
-        String option3 = request.getParameter("option3");
-        String option4 = request.getParameter("option4");
+        String option1 = request.getParameter("opt1");
+        String option2 = request.getParameter("opt2");
+        String option3 = request.getParameter("opt3");
+        String option4 = request.getParameter("opt4");
         String answer = request.getParameter("answer");
         String explain = request.getParameter("explain");
         int type = Integer.parseInt(request.getParameter("type"));
@@ -153,11 +154,14 @@ public class SignUpController {
         Question question = new Question(content, option1, option2, option3, option4, answer, explain, type);
         Topic topic = topicService.getTopicByName(topic_name);
         question.assignTopic(topic);
-        if (content == wordService.getWordByName(content).getName()) {
-            Word word = wordService.getWordByName(content);
-            Level level = word.getLevel();
-            question.assignLevel(level);
-        }
+        System.out.println(answer);
+        // Word word = wordService.getWordByName(answer);
+        // System.out.println(word.getName());
+        // if (answer == wordService.getWordByName(answer).getName()) {
+        //     Word word = wordService.getWordByName(answer);
+        //     Level level = word.getLevel();
+        //     question.assignLevel(level);
+        // }
         questionService.addQuestion(question);
         return "redirect:/admin/" + topic_name + "/createQuestion";
     }

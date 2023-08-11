@@ -23,7 +23,7 @@ public class TestController {
 
         //     System.out.println(topicsOfTest.get(i).getTopic().getName());
         // }
-        return "test-eng1";
+        return "exam/test-eng1";
     }
 
     @GetMapping("/exam")

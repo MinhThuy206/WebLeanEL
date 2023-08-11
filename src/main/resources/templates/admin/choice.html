@@ -6,10 +6,10 @@
 	<head>
 		<base href="../../static/">
 		<title>Choice | Admin</title>
-		<link rel="canonical" href="Https://preview.keenthemes.com/metronic8" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="canonical" th:href="@{Https://preview.keenthemes.com/metronic8}" />
+		<link rel="shortcut icon" th:href="@{/assets/media/logos/favicon.ico}" />
 		<!--begin::Fonts-->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700}" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css" />
@@ -21,13 +21,13 @@
 	<!--begin::Body-->
 	<body id="kt_body" class="bg-body" >
 		<!--begin::Main-->
-		<div class="d-flex flex-column flex-root" style="background-image: url(assets/images_home/BackGr.png)">
+		<div class="d-flex flex-column flex-root" style="background-image: url(/assets/images_home/BackGr.png)">
 			<!--begin::Authentication - Sign-in -->
 			<div class="d-center flex-column flex-lg-row flex-column-fluid py-10">
 				<!--begin::Body-->
 				<div class="text-center mb-10">
 					<a class="py-10 mb-6">
-						<img alt="Logo" src="assets/media/logos/logo-4.png" class="h-100px" />
+						<img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="h-100px" />
 					</a>
 				</div>
 				<div class="d-flex flex-column flex-lg-row-fluid py-10">
@@ -49,7 +49,7 @@
 								</div>
 								<div class="col-xs-24 col-sm-24 col-md-12 col-lg-6">
 									<div class="ele-choice">
-										<a href="/admin/multi-choice.html">
+										<a th:href="@{/admin/{topicName}/createQuestion(topicName=${topicName})}">
 											<i class="fa-solid fa-shield-halved"></i>
 											<h2>Multiple choice</h2>
 										</a>
@@ -60,7 +60,7 @@
 					</div> <!-- end popular-courses -->
 					<div class="w-lg-500px">
 						<div class="text-center">
-							<a href="/admin/topic-page.html" class="btn btn-lg btn-back w-50 mb-5">Back</a>
+							<a th:href="@{/admin/createTopic}" class="btn btn-lg btn-back w-50 mb-5">Back</a>
 						</div>
 					</div>					
 						<!--end::Wrapper-->
