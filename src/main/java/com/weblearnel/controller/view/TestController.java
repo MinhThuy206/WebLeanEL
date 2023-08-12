@@ -31,4 +31,14 @@ public class TestController {
         return "exam/test";
     }
 
+    @GetMapping("/exam/a1a2")
+    public String levelTestA1(){
+        return "learning/A1-A2";
+    }
+
+    @GetMapping("/exam/b1b2")
+    public String levelTestA2(){
+        return "learning/B1-B2";
+    }
+
 }
