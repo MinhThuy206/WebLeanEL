@@ -4,16 +4,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.weblearnel.model.ConfirmationToken;
 import com.weblearnel.model.User;
 import com.weblearnel.repository.UserRepository;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Service
@@ -44,6 +41,10 @@ public class UserService {
 
     public User getUserById(long id){
         return userRepository.findById(id).get();
+    }
+
+    public User getUserByEmail(String username){
+        return userRepository.findByEmail(username).get();
     }
 
     // update user

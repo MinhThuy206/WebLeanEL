@@ -28,12 +28,19 @@ public class UserController {
         return userService.addUser(user);
     }
 
+    // get user by id
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable("id") long id) {
+        return userService.getUserById(id);
+    }
+
     // get all users
     @GetMapping("/")
     public List<User> getAllUser() {
         return userService.getAllUsers();
     }
 
+    // @PutMapping("/{id}")
 
     // update user
     @PostMapping("/update")

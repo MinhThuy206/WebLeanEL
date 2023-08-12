@@ -5100,12 +5100,12 @@
 													<!--end::Avatar-->
 													<!--begin::Username-->
 													<div class="d-flex flex-column">
-														<div class="fw-bolder d-flex align-items-center fs-5">Max Smith
+														<div class="fw-bolder d-flex align-items-center fs-5">[[${user.fullname}]]
 															<span
 																class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
 														</div>
 														<a th:href="@{#}"
-															class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
+															class="fw-bold text-muted text-hover-primary fs-7">[[${user.email}]]</a>
 													</div>
 													<!--end::Username-->
 												</div>
@@ -5293,8 +5293,8 @@
 												<!--begin::Name-->
 												<div class="d-flex align-items-center mb-2">
 													<a th:href="@{#}"
-														class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">Max
-														Smith</a>
+														class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">
+														[[${user.fullname}]]</a>
 													<a th:href="@{#}">
 														<!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
 														<span class="svg-icon svg-icon-1 svg-icon-primary">
@@ -5347,8 +5347,8 @@
 																	fill="black"></path>
 															</svg>
 														</span>
-														<!--end::Svg Icon-->SF, Bay Area</a>
-													<a th:href="@{#}"
+														<!--end::Svg Icon-->[[${user.address}]]/a>
+													<a th:href="@{#}" id="emailLink"
 														class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
 														<!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
 														<span class="svg-icon svg-icon-4 me-1">
@@ -5362,7 +5362,7 @@
 																	fill="black"></path>
 															</svg>
 														</span>
-														<!--end::Svg Icon-->max@kt.com</a>
+														<!--end::Svg Icon-->[[${user.email}]]</a>
 												</div>
 												<!--end::Info-->
 											</div>
@@ -5405,7 +5405,7 @@
 															<i class="fa-solid fa-bolt-lightning"></i>
 															<!--end::Svg Icon-->
 															<div class="fs-2 fw-bolder counted" data-kt-countup="true"
-																data-kt-countup-value="75">75</div>
+																data-kt-countup-value="75">[[${user.level}]]</div>
 														</div>
 														<!--end::Number-->
 														<!--begin::Label-->
@@ -5510,10 +5510,10 @@
 											<div class="col-lg-8">
 												<!--begin::Image input-->
 												<div class="image-input image-input-outline" data-kt-image-input="true"
-													style="background-image: url(assets/media/avatars/blank.png)">
+													style="background-image: url(/assets/media/avatars/blank.png)">
 													<!--begin::Preview existing avatar-->
 													<div class="image-input-wrapper w-125px h-125px"
-														style="background-image: url(assets/media/avatars/150-26.jpg)">
+														style="background-image: url(/assets/media/avatars/150-26.jpg)">
 													</div>
 													<!--end::Preview existing avatar-->
 													<!--begin::Label-->
@@ -5563,7 +5563,7 @@
 											<div class="col-lg-8 fv-row fv-plugins-icon-container">
 												<input type="text" name="fullname"
 													class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-													placeholder="Full name">
+													placeholder="Full name" th:placeholder="${user.fullname}">
 												<div class="fv-plugins-message-container invalid-feedback">
 												</div>
 											</div>
@@ -5584,7 +5584,7 @@
 											<div class="col-lg-8 fv-row fv-plugins-icon-container">
 												<input type="tel" name="phone"
 													class="form-control form-control-lg form-control-solid"
-													placeholder="Phone number" >
+													placeholder="Phone number" th:placeholder="${user.mobile}">
 												<div class="fv-plugins-message-container invalid-feedback"></div>
 											</div>
 											<!--end::Col-->
@@ -5599,7 +5599,7 @@
 											<div class="col-lg-8 fv-row fv-plugins-icon-container">
 												<input type="text" name="address"
 												class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-												placeholder="Address">
+												placeholder="Address" th:placeholder="${user.address}">
 												<div class="fv-plugins-message-container invalid-feedback">
 												</div>
 											</div>
@@ -5641,9 +5641,9 @@
 									<!--begin::Email Address-->
 									<div class="d-flex flex-wrap align-items-center">
 										<!--begin::Label-->
-										<div id="kt_signin_email">
+										<div id="kt_signin_email" data-user-email="${user.email}">
 											<div class="fs-6 fw-bolder mb-1">Email Address</div>
-											<div class="fw-bold text-gray-600">support@keenthemes.com</div>
+											<div class="fw-bold text-gray-600" name="email">[[${user.email}]]</div>
 										</div>
 										<!--end::Label-->
 										<!--begin::Edit-->
@@ -5661,7 +5661,7 @@
 															<input type="email"
 																class="form-control form-control-lg form-control-solid"
 																id="emailaddress" placeholder="Email Address"
-																name="emailaddress" value="support@keenthemes.com">
+																name="emailaddress" th:placeholder="${user.email}">
 															<div class="fv-plugins-message-container invalid-feedback">
 															</div>
 														</div>
@@ -5670,7 +5670,7 @@
 														<div class="fv-row mb-0 fv-plugins-icon-container">
 															<label for="confirmemailpassword"
 																class="form-label fs-6 fw-bolder mb-3">Confirm
-																Password</label>
+																Email</label>
 															<input type="password"
 																class="form-control form-control-lg form-control-solid"
 																name="confirmemailpassword" id="confirmemailpassword">
@@ -7945,9 +7945,8 @@
 									<!--end::Avatar-->
 									<!--begin::Details-->
 									<div class="ms-5">
-										<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Max
-											Smith</a>
-										<div class="fw-bold text-muted">max@kt.com</div>
+										<a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">[[${user.fullname}]]</a>
+										<div class="fw-bold text-muted">[[${user.email}]]</div>
 									</div>
 									<!--end::Details-->
 								</div>
@@ -10902,6 +10901,8 @@
 	<script th:src="@{/assets/js/custom/apps/chat/chat.js}"></script>
 	<script th:src="@{/assets/js/custom/modals/create-app.js}"></script>
 	<script th:src="@{/assets/js/custom/modals/upgrade-plan.js}"></script>
+	
+	
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 

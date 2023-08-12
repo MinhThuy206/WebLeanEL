@@ -9,6 +9,8 @@ var __webpack_exports__ = {};
 // Class definition
 var KTAccountSettingsSigninMethods = function () {
     // Private functions
+    var iconMessage = "success";
+    var textMessage = "Thank you! You've updated your password";
     var initSettings = function () {
 
         // UI elements
@@ -98,15 +100,68 @@ var KTAccountSettingsSigninMethods = function () {
 
             validation.validate().then(function (status) {
                 if (status == 'Valid') {
-                    swal.fire({
-                        text: "Sent password reset. Please check your email",
-                        icon: "success",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn font-weight-bold btn-light-primary"
+                    // const userEmailDiv = document.getElementById('kt_signin_email');
+                    // const userEmail = userEmailDiv.getAttribute('data-user-email');
+                    
+                    
+                    var formData = {
+                        // fullname: $("input[name=fullname]").val(),
+                        // mobile: $("input[name=phone]").val(),
+                        // address: $("input[name=address]").val(),
+                        email: $("input[name=emailaddress]").val(), 
+                        // email: userEmail
+                    };
+                    var userId = /*[[${user.id}]]*/ 'default-value-if-user.id-is-null';
+                    var redirectUrl = "";
+
+                    fetch("/update", {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
+                                // Extract the URL from the response and perform the redirection
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                        } else {
+                            console.log("data: " + data);
+                            textMessage = data;
+                            iconMessage = "error";
                         }
-                    });
+                        setTimeout(function() {
+                            // Hide loading indication
+                        submitButton.removeAttribute('data-kt-indicator');
+
+                            // Enable button
+                        submitButton.disabled = false;
+
+                        swal.fire({
+                            text: "Thank you! You've updated your basic info",
+                            icon: "success",
+                            buttonsStyling: false,
+                            confirmButtonText: "Ok, got it!",
+                            customClass: {
+                                confirmButton: "btn fw-bold btn-light-primary"
+                            }
+                        }).then(function (result) {
+                            if (result.isConfirmed) {
+
+                                    // form.querySelector('[name="email"]').value= "";
+                                    // form.querySelector('[name="password"]').value= "";
+                                form.reset();
+                                    //form.submit(); // submit form
+                                if(iconMessage == "success") {
+                                    window.location.href = redirectUrl;
+                                }
+                            }
+
+                        });
+                    }, 2000);
+                    })
                 } else {
                     swal.fire({
                         text: "Sorry, looks like there are some errors detected, please try again.",

@@ -1,6 +1,8 @@
 package com.weblearnel.controller.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +12,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.weblearnel.model.User;
+import com.weblearnel.repository.UserRepository;
 import com.weblearnel.service.UserService;
+
+import lombok.AllArgsConstructor;
 
 @Controller
 @RequestMapping
+@AllArgsConstructor
 public class UpdateProfileController {
     @Autowired
     private UserService userService;
+
+    private UserRepository userRepository;
+
 
 
     @GetMapping("/showViewUser/{user_id}")
@@ -36,14 +45,31 @@ public class UpdateProfileController {
         return "account/settings";
     }
 
-    @PutMapping("/{id}")
-    public String updateProfile(@PathVariable Long id, @RequestBody User newUser) {
-        User user = userService.getUserById(id);
-        if (user == null) {
-            return "index";
+    @PutMapping("/update")
+    public ResponseEntity<String> updateProfile(@RequestBody User newUser) {
+        try {
+            User user = userService.getUserByEmail(newUser.getEmail());
+            System.out.println(newUser.getEmail());
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            } 
+            user.setFullname(newUser.getFullname());
+            user.setMobile(newUser.getMobile());
+            user.setAddress(newUser.getAddress());
+            userRepository.save(user);
+        // User user = userService.getUserById(id);
+        // if (user == null) {
+        //     return "index";
+        // }
+        // userService.updateUser(id, newUser);
+            String redirectUrl = "/showViewUser/" + user.getId();
+            return ResponseEntity.ok("redirect:" + redirectUrl);
+        } catch (Exception e) {
+            System.out.println("Cập nhật thất bại");
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error submitting the form: " + e.getMessage());
         }
-        userService.updateUser(id, newUser);
-        return "redirect:/account/overview";
+        
     }
 }
 
