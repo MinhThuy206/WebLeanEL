@@ -73867,12 +73867,11 @@ data-popper-placement="bottom-end">
 <!--begin::Username-->
 <div class="d-flex flex-column">
 <div class="fw-bolder d-flex align-items-center fs-5">
-    <span th:text="${user.fullname}"></span>
+    [[${user.fullname}]]
 	<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
 </div>
 <a th:href="@{#}"
-class="fw-bold text-muted text-hover-primary fs-7">
-    <span th:text="${user.email}"></span>
+class="fw-bold text-muted text-hover-primary fs-7">[[${user.email}]]
 </a>
 </div>
 <!--end::Username-->
@@ -73884,7 +73883,7 @@ class="fw-bold text-muted text-hover-primary fs-7">
 <!--end::Menu separator-->
 <!--begin::Menu item-->
 <div class="menu-item px-5">
-<a th:href="@{http://localhost:8080/showViewUser}" class="menu-link px-5">My Profile</a>
+<a th:href="@{/showViewUser/{user_id}(user_id=${user.id})}" class="menu-link px-5">My Profile</a>
 </div>
 <!--end::Menu item-->
 <!--begin::Menu item-->
@@ -73964,13 +73963,13 @@ class="menu-link d-flex px-5 active">
 	<!--end::Menu item-->
 	<!--begin::Menu item-->
 	<div class="menu-item px-5 my-1">
-		<a th:href="@{http://localhost:8080/update/${user.id}}" class="menu-link px-5">Account
+		<a th:href="@{/update/{user_id}(user_id=${user.id})}" class="menu-link px-5">Account
 		Settings</a>
 	</div>
 	<!--end::Menu item-->
 	<!--begin::Menu item-->
 	<div class="menu-item px-5">
-		<a th:href="@{http://localhost:8080/logout}" class="menu-link px-5">Sign
+		<a th:href="@{/user/login}" class="menu-link px-5">Sign
 		Out</a>
 	</div>
 	<!--end::Menu item-->

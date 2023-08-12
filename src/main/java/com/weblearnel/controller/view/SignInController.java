@@ -5,10 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.weblearnel.model.User;
 import com.weblearnel.service.UserService;
@@ -24,10 +21,11 @@ public class SignInController {
         return "authentication/sign-in";
     }
 
-    @GetMapping("/index")
-    public String index() {
+    @GetMapping("/index/{user_id}")
+    public String index(@PathVariable("user_id") Long id, Model model) {
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
         System.out.println("index");
-
         return "index";
     }
 
@@ -40,7 +38,8 @@ public class SignInController {
             if(userCheck.getPassword().equals(password)){
                 System.out.println("login thanh cong");
                 model.addAttribute("user", userCheck);
-                return ResponseEntity.ok("redirect:/index");
+                String redirectUrl = "/index/" + user.getId();
+                return ResponseEntity.ok("redirect:" + redirectUrl);
             }
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Login failed");
         } catch (Exception e) {
@@ -50,9 +49,5 @@ public class SignInController {
         }
     }
 
-    @GetMapping("/logout")
-    public String logout(){
-        return "login";
-    }
 
 }
