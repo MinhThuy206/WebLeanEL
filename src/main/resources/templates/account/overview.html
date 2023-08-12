@@ -6502,7 +6502,7 @@
 											<!--end::Menu separator-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5">
-												<a th:href="@{http://localhost:8080/showViewUser}" class="menu-link px-5">My Profile</a>
+												<a th:href="@{/showViewUser/{user_id}(user_id=${user.id})}" class="menu-link px-5">My Profile</a>
 											</div>
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
@@ -6876,7 +6876,7 @@
                                 </div>
                                 <!--end::Card title-->
                                 <!--begin::Action-->
-                                <a th:href="@{http://localhost:8080/update/{id}}" class="btn btn-primary align-self-center">Edit
+                                <a th:href="@{/update/{user_id}(user_id=${user.id})}" class="btn btn-primary align-self-center">Edit
                                     Profile</a>
                                 <!--end::Action-->
                             </div>
