@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -41,8 +42,6 @@ public class Topic {
     @Column(name = "description")
     private String description;
 
-    
-
     public Topic(String name, String description) {
         this.name = name;
         this.description = description;
@@ -60,9 +59,14 @@ public class Topic {
     @OneToMany(mappedBy = "topic")
     private Set<Word> words;
 
-    // @JsonIgnore
-    // @OneToMany(mappedBy = "topic")
-    // private Set<TopicPassed> topicPassed;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_lv_id", referencedColumnName = "level_id") // id = id in the exam table
+    private Level level;
+
+    public void assignLevel(Level levelToAssign) {
+        this.level = levelToAssign;
+        // level.getTopics().add(this);
+    }
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

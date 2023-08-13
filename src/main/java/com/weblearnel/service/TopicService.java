@@ -73,4 +73,8 @@ public class TopicService {
         }
         return null;
     }
+
+    public List<Topic> findTopicFromLevel(Long level_id) {
+        return topicRepository.findByLevel(level_id);
+    }
 }

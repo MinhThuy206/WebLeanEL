@@ -22,4 +22,7 @@ public interface TopicRepository extends JpaRepository<Topic, Long> {
    @Query(value = checkRecordExist + condition, nativeQuery = true)
     int checkRecordExist(Long topic_id, Long user_id);
 
+    @Query(value = "SELECT * FROM topic t WHERE t.fk_lv_id = ?1", nativeQuery = true)
+    List<Topic> findByLevel(Long level_id);
+
 }

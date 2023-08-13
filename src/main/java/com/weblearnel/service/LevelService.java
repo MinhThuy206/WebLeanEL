@@ -24,4 +24,8 @@ public class LevelService {
     public void addLevel(Level level) {
         levelRepository.save(level);
     }
+
+    public Level getLevelById(Long level) {
+        return levelRepository.findById(level).get();
+    }
 }

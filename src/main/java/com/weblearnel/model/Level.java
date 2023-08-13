@@ -40,11 +40,9 @@ public class Level {
     @OneToMany(mappedBy = "level")
     private Set<Exam> exams;
 
-    // @OneToMany
-    // private ArrayList<Question> questions;
-
-    // @OneToMany
-    // private ArrayList<Question> questions;
+    @JsonIgnore
+    @OneToMany(mappedBy = "level")
+    private Set<Topic> topics;
 
     @JsonIgnore
     @OneToMany(mappedBy = "level")

@@ -73922,14 +73922,17 @@
                                     </div>
                                     <div class="view-content">
                                         <h1>Choose a vocabulary lesson</h1>
-                                        <div class="row">
+                                        <div class="row" th:each="topic : ${topics}">
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <a th:href="@{/topic/topic1.html}"><img th:src="@{/assets/images_home/content_img_1.jpg}"
-                                                        class="img-fuild" alt=""></a>
+                                                <a th:href="@{/topic/{topic_id}/words(topic_id=${topic.topicId})}">
+                                                    <img th:src="@{/assets/images_home/content_img_1.jpg}" class="img-fuild" alt="">
+                                                </a>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
-                                                <h2><a th:href="@{/topic/topic1.html}">Title</a></h2>
-                                                <p>Descreption Title</p>
+                                                <h2>
+                                                    <a th:href="@{/topic/{topic_id}/words(topic_id=${topic.topicId})}" th:text="${topic.name}"></a>
+                                                </h2>
+                                                <p th:text="${topic.description}"></p>
                                             </div>
                                         </div>
                                     </div>
