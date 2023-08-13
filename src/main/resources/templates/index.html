@@ -71535,11 +71535,11 @@ height: 200%;
                                             <div
                                                 class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 
-                                                <a th:href="@{src/main/resources/templates/exam/overview.html}"
+                                                <a th:href="@{/exam/overview/{user_id}(user_id=${user.id})}"
                                                     class="menu-link py-3">
                                                     <span class="menu-title">Exam Overview</span>
                                                 </a>
-                                                <a th:href="@{src/main/resources/templates/exam/test.html}"
+                                                <a th:href="@{/exam/test/{user_id}(user_id=${user.id})}"
                                                     class="menu-link py-3"><span class="menu-title">Online English level
                                                         test</span></a>
                                             </div>

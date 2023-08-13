@@ -117,5 +117,25 @@ $(function () {
     });
     // end:Task scripts
 
+    function checkAnswerFromDatabase(questionIndex, userAnswer, callback) {
+        const query = `SELECT answer FROM question WHERE question_id = ?`;
+        connection.query(query, [question_id], (error, results) => {
+            if (error) {
+                callback(error, null);
+                return;
+            }
+
+            if (results.length === 0) {
+                callback(null, false);
+                return;
+            }
+
+            const answer = results[0].answer;
+            callback(null, userAnswer === answer);
+        });
+    }
+
+
 });
+
 
