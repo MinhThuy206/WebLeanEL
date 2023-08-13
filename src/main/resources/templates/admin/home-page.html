@@ -6,10 +6,10 @@
 	<head>
 		<base href="../../static/">
 		<title>Admin | Home</title>
-		<link rel="canonical" href="Https://preview.keenthemes.com/metronic8" />
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<link rel="canonical" th:href="@{Https://preview.keenthemes.com/metronic8}" />
+		<link rel="shortcut icon" th:href="@{/assets/media/logos/favicon.ico}" />
 		<!--begin::Fonts-->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700}" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css" />
@@ -21,7 +21,7 @@
 	<!--begin::Body-->
 	<body id="kt_body" class="bg-body" >
 		<!--begin::Main-->
-		<div class="d-flex flex-column flex-root" style="background-image: url(assets/images_home/BackGr.png)">
+		<div class="d-flex flex-column flex-root" style="background-image: url(/assets/images_home/BackGr.png)">
 			<!--begin::Authentication - Sign-in -->
 			<div class="d-center flex-column flex-lg-row flex-column-fluid py-10">
 				<!--begin::Body-->
@@ -48,7 +48,7 @@
 								</div>
 								<div class="col-xs-24 col-sm-24 col-md-12 col-lg-6">
 									<div class="ele-choice">
-										<a href="">
+										<a >
 											<i class="fa-solid fa-shield-halved"></i>
 											<h2>History</h2>
 										</a>
@@ -59,7 +59,7 @@
 					</div> <!-- end popular-courses -->
 					<div class="w-lg-500px">
 						<div class="text-center">
-							<a href="/admin/login-admin.html" class="btn btn-lg btn-back w-50 mb-5">Logout</a>
+							<a th:href="@{/admin/login-admin.html}" class="btn btn-lg btn-back w-50 mb-5">Logout</a>
 						</div>
 					</div>					
 						<!--end::Wrapper-->
