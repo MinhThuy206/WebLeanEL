@@ -34,7 +34,7 @@ public class Result {
     private long resultid;
 
     @Column(name = "score")
-    private int Score;
+    private double score;
 
     @Column(name = "datetime", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
     private LocalDateTime resultDatetime;
@@ -44,6 +44,10 @@ public class Result {
 
     @Column(name = "rs_type")
     private int resultType;
+
+    public Result(double score){
+        this.score = score;
+    }
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="fk_word_id", referencedColumnName = "word_id") // id = id in the exam table

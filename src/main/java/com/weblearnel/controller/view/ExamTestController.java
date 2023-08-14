@@ -1,23 +1,30 @@
 package com.weblearnel.controller.view;
 
+import com.weblearnel.model.Result;
 import com.weblearnel.model.User;
-import com.weblearnel.service.ExamService;
+import com.weblearnel.model.Answer;
+import com.weblearnel.service.AnswerService;
+import com.weblearnel.service.ResultService;
 import com.weblearnel.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @AllArgsConstructor
 public class ExamTestController {
     @Autowired
-    private ExamService examService;
+    private AnswerService answerService;
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ResultService resultService;
 
     @GetMapping("/exam/overview/{user_id}")
     public String showExamOverView(@PathVariable Long user_id, Model model){
@@ -86,6 +93,22 @@ public class ExamTestController {
     public String Eng3Test(@PathVariable Long user_id, Model model){
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
+        return "/exam/test-eng3";
+    }
+
+    @PostMapping("/exam/submit/{user_id}")
+    public String submitExam(@RequestBody List<Answer> userAnswers, @PathVariable Long user_id, Model model){
+        double score = answerService.checkAnswers(userAnswers, user_id );
+        Result result = new Result(score);
+        resultService.addResult(result);
+
+        model.addAttribute("score", score);
+        return "redirect:/exam/test-eng3";
+    }
+
+    @GetMapping("exam/result")
+    public String showResult(@RequestParam int score, Model model) {
+        model.addAttribute("score", score);
         return "/exam/test-eng3";
     }
 }
