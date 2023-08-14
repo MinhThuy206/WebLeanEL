@@ -10,7 +10,7 @@ var __webpack_exports__ = {};
 var KTAccountSettingsSigninMethods = function () {
     // Private functions
     var iconMessage = "success";
-    var textMessage = "Thank you! You've updated your password";
+    var textMessage = "Thank you! You've updated your sign-in methods";
     var initSettings = function () {
 
         // UI elements
@@ -54,7 +54,14 @@ var KTAccountSettingsSigninMethods = function () {
             passwordEditEl.classList.toggle('d-none');
         }
     }
+    var userEmail = "";
+        document.addEventListener('DOMContentLoaded', function () {
+            const emailLink = document.getElementById('emailLink');
+            userEmail = emailLink.textContent.trim();
 
+            console.log('Email:', email);
+            // You can use the email value in your JavaScript code
+        });
     var handleChangeEmail = function (e) {
         var validation;
 
@@ -109,7 +116,7 @@ var KTAccountSettingsSigninMethods = function () {
                         // mobile: $("input[name=phone]").val(),
                         // address: $("input[name=address]").val(),
                         email: $("input[name=emailaddress]").val(), 
-                        // email: userEmail
+                        email: userEmail
                     };
                     var userId = /*[[${user.id}]]*/ 'default-value-if-user.id-is-null';
                     var redirectUrl = "";
@@ -140,8 +147,8 @@ var KTAccountSettingsSigninMethods = function () {
                         submitButton.disabled = false;
 
                         swal.fire({
-                            text: "Thank you! You've updated your basic info",
-                            icon: "success",
+                            text: textMessage,
+                            icon: iconMessage,
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
                             customClass: {
@@ -233,15 +240,52 @@ var KTAccountSettingsSigninMethods = function () {
 
             validation.validate().then(function (status) {
                 if (status == 'Valid') {
-                    swal.fire({
-                        text: "Sent password reset. Please check your email",
-                        icon: "success",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn font-weight-bold btn-light-primary"
+                    var formdata = {
+                        currentPassword: $("input[name=currentpassword]").val(),
+                        password: $("input[name=newpassword]").val(),
+                        confirmPassword: $("input[name=confirmpassword]").val()
+                        
+                    };
+                    var redirectUrl = "";
+                    fetch("/updatePassword", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formdata)
+                    })
+                    .then(response => response.text()
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
+                            // Extract the URL from the response and perform the redirection
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                        } else {
+                            console.log("data: " + data);
+                            textMessage = data;
+                            iconMessage = "error";
                         }
-                    });
+                        setTimeout(function() {
+                            // Hide loading indication
+                            submitButton.removeAttribute('data-kt-indicator');
+    
+                            // Enable button
+                            submitButton.disabled = false;
+    
+                            // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                            swal.fire({
+                                text: textMessage,
+                                icon: iconMessage,
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light-primary"
+                                }
+                            });
+                            
+                        }, 1500);
+                    }));
+                    
                 } else {
                     swal.fire({
                         text: "Sorry, looks like there are some errors detected, please try again.",
