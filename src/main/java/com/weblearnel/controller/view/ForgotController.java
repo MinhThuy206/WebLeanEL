@@ -111,12 +111,40 @@ public class ForgotController {
     @PostMapping("/updatePassword")
     public ResponseEntity<String> updatePassword(HttpSession session, @RequestBody Map<String, Object> requestBody) {
         try {
+            String email = session.getAttribute("email").toString();
+            Optional<User> user = userRepository.findByEmail(email);
             String password = requestBody.get("password").toString();
             String confirmPassword = requestBody.get("confirmPassword").toString();
+
+            if(requestBody.containsKey("currentPassword")) {
+                String currentPassword = requestBody.get("currentPassword").toString();
+                if (user.isPresent()) {
+                    User user1 = user.get();
+                    if (user1.getPassword().equals(currentPassword)) {
+                        
+                        if (password.equals(confirmPassword)) {
+                            user1.setPassword(password);
+                            userRepository.save(user1);
+                            return ResponseEntity.ok("redirect:/user/login");
+                        } else {
+                            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                    .body("Error submitting the form: " + "confirm password không đúng");
+                        }
+                    } else {
+                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                .body("Error submitting the form: " + "current password không đúng");
+                    }
+                } else {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                            .body("Error submitting the form: " + "user không tồn tại");
+                }
+            }
+            // String password = requestBody.get("password").toString();
+            // String confirmPassword = requestBody.get("confirmPassword").toString();
             if (password.equals(confirmPassword)) {
                 // session = request.getSession();
-                String email = session.getAttribute("email").toString();
-                Optional<User> user = userRepository.findByEmail(email);
+                // String email = session.getAttribute("email").toString();
+                // Optional<User> user = userRepository.findByEmail(email);
                 if (user.isPresent()) {
                     User user1 = user.get();
                     user1.setPassword(password);
