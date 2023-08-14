@@ -19,7 +19,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class TestController {
 
-
     @Autowired
     private TopicService topicService;
 
@@ -27,25 +26,26 @@ public class TestController {
     private UserService userService;
 
     @GetMapping("/exam/{user_id}")
-    public String test(@PathVariable Long user_id, Model model){
+    public String test(@PathVariable Long user_id, Model model) {
         // lấy topic đã pass của user gán vào model
-        // List<TopicPassed> topicsOfTest = topicPassedService.findTopicPassedFromUser(user_id);
+        // List<TopicPassed> topicsOfTest =
+        // topicPassedService.findTopicPassedFromUser(user_id);
         // for (int i = 0; i < topicsOfTest.size(); i++) {
-        //     String topicName = topicsOfTest.get(i).getTopic().getName();
-        //     model.addAttribute("topicsOfTest" + String.valueOf(i), topicName);
+        // String topicName = topicsOfTest.get(i).getTopic().getName();
+        // model.addAttribute("topicsOfTest" + String.valueOf(i), topicName);
 
-        //     System.out.println(topicsOfTest.get(i).getTopic().getName());
+        // System.out.println(topicsOfTest.get(i).getTopic().getName());
         // }
         return "exam/test-eng1";
     }
 
     @GetMapping("/exam")
-    public String levelTest(){
+    public String levelTest() {
         return "exam/test";
     }
 
-    @GetMapping("/exam/{user_id}/a1a2")
-    public String levelTestA1(@PathVariable("user_id") Long user_id, Model model){
+    @GetMapping("/learning/a1a2/{user_id}")
+    public String levelTestA1(@PathVariable("user_id") Long user_id, Model model) {
         long level = 1;
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
@@ -54,8 +54,8 @@ public class TestController {
         return "learning/A1-A2";
     }
 
-    @GetMapping("/exam/{user_id}/b1b2")
-    public String levelTestA2(@PathVariable("user_id") Long user_id, Model model){
+    @GetMapping("/learning/b1b2/{user_id}")
+    public String levelTestA2(@PathVariable("user_id") Long user_id, Model model) {
         long level = 2;
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
@@ -65,8 +65,12 @@ public class TestController {
     }
 
     @GetMapping("/exercise")
-    public String exercise(){
+    public String exercise() {
         return "exam/test";
     }
 
+    @GetMapping("/exam/t")
+    public String t() {
+        return "exam/t";
+    }
 }

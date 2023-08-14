@@ -71491,7 +71491,7 @@
         <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
         id="#kt_header_menu" data-kt-menu="true">
         <div class="menu-item me-lg-1">
-            <a th:href="@{/index/{user_id}(user_id=${user.id})}" class="menu-link py-3">
+            <a th:href="@{index.html}" class="menu-link py-3">
                 <span class="menu-title">Home</span>
             </a>
         </div>
@@ -71510,10 +71510,10 @@
                                                         <span class="menu-title">A1 - A2 Vocabulary</span>
                                                     </a>
                                                 </div> -->
-                                                <a th:href="@{/learning/a1a2/{user_id}(user_id=${user.id})}" class="menu-link py-3">
+                                                <a th:href="@{/learning/A1-A2.html}" class="menu-link py-3">
                                                     <span class="menu-title">A1 - A2 Vocabulary</span>
                                                 </a>
-                                                <a th:href="@{/learning/b1b2/{user_id}(user_id=${user.id})}" class="menu-link py-3">
+                                                <a th:href="@{/learning/B1-B2.html}" class="menu-link py-3">
                                                     <span class="menu-title">B1 - B2 Vocabulary</span>
                                                 </a>
                                             </div>
@@ -71526,10 +71526,10 @@
                                             </span>
                                             <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
                                                 
-                                                <a th:href="@{/exam/overview/{user_id}(user_id=${user.id})}" class="menu-link py-3">
+                                                <a th:href="@{/exam/overview.html}" class="menu-link py-3">
                                                     <span class="menu-title">Exam Overview</span>
                                                 </a>
-                                                <a th:href="@{/exam/test/{user_id}(user_id=${user.id})}" class="menu-link py-3"><span class="menu-title">Online English level test</span></a>
+                                                <a th:href="@{/exam/test.html}" class="menu-link py-3"><span class="menu-title">Online English level test</span></a>
                                             </div>
                                         </div>
               
@@ -73653,12 +73653,12 @@ data-popper-placement="bottom-end">
       <!--end::Avatar-->
       <!--begin::Username-->
       <div class="d-flex flex-column">
-          <div class="fw-bolder d-flex align-items-center fs-5">[[${user.fullname}]]
+          <div class="fw-bolder d-flex align-items-center fs-5">Max Smith
              <span
              class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
          </div>
          <a th:href="@{#}"
-         class="fw-bold text-muted text-hover-primary fs-7">[[${user.email}]]</a>
+         class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
      </div>
      <!--end::Username-->
  </div>
@@ -73669,7 +73669,7 @@ data-popper-placement="bottom-end">
 <!--end::Menu separator-->
 <!--begin::Menu item-->
 <div class="menu-item px-5">
-    <a th:href="@{/showViewUser/{user_id}(user_id=${user.id})}" class="menu-link px-5">My Profile</a>
+    <a th:href="@{/account/overview.html}" class="menu-link px-5">My Profile</a>
 </div>
 <!--end::Menu item-->
 <!--begin::Menu item-->
@@ -73749,13 +73749,13 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
 <!--end::Menu item-->
 <!--begin::Menu item-->
 <div class="menu-item px-5 my-1">
-    <a th:href="@{/update/{id}(id=${user.id})}" class="menu-link px-5">Account
+    <a th:href="@{/account/settings.html}" class="menu-link px-5">Account
     Settings</a>
 </div>
 <!--end::Menu item-->
 <!--begin::Menu item-->
 <div class="menu-item px-5">
-    <a th:href="@{/user/login}" class="menu-link px-5">Sign
+    <a th:href="@{/users/showForm}" class="menu-link px-5">Sign
     Out</a>
 </div>
 <!--end::Menu item-->
@@ -73842,7 +73842,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                                                 <a ><img th:src="@{/assets/images_home/content_img_1.jpg}" class="img-fuild" alt=""></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
-                                                <h2><a th:href="@{/exam/A1/{user_id}(user_id=${user.id})}">A1 Elementary</a></h2>
+                                                <h2><a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A1.html}">A1 Elementary</a></h2>
                                                 <p class="tag">Learners who achieve A1 Elementary level can communicate
                                                     using familiar everyday expressions and very basic phrases. They can
                                                     introduce themselves and others and ask and answer simple questions
@@ -73856,7 +73856,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                                                 <a ><img th:src="@{/assets/images_home/content_img_1.jpg}" class="img-fuild" alt=""></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
-                                                <h2><a th:href="@{/exam/A2/{user_id}(user_id=${user.id})}">A2 Pre-intermediate</a>
+                                                <h2><a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A2.html}">A2 Pre-intermediate</a>
                                                 </h2>
                                                 <p class="tag">Learners who achieve A2 Pre-intermediate level can
                                                     communicate using frequently used expressions in everyday
@@ -73872,7 +73872,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                                                 <a ><img th:src="@{/assets/images_home/content_img_1.jpg}" class="img-fuild" alt=""></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
-                                                <h2><a th:href="@{/exam/B1/{user_id}(user_id=${user.id})}">B1 Intermediate</a></h2>
+                                                <h2><a th:href="@{../WebLearnEL/src/main/resources/templates/exam/B1.html}">B1 Intermediate</a></h2>
                                                 <p class="tag">Learners who achieve B1 Intermediate level can understand
                                                     information about familiar topics. They can communicate in most
                                                     situations whilst travelling in an English-speaking area. They can
@@ -73886,7 +73886,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                                                 <a ><img th:src="@{/assets/images_home/content_img_1.jpg}" class="img-fuild" alt=""></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
-                                                <h2><a th:href="@{/exam/B2/{user_id}(user_id=${user.id})}">B2 Upper intermediate</a>
+                                                <h2><a th:href="@{../WebLearnEL/src/main/resources/templates/exam/B2.html}">B2 Upper intermediate</a>
                                                 </h2>
                                                 <p class="tag">Learners who achieve B2 Upper intermediate level can
                                                     understand the main ideas of complex texts. They can interact with
@@ -73901,7 +73901,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                                                 <a ><img th:src="@{/assets/images_home/content_img_1.jpg}" class="img-fuild" alt=""></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
-                                                <h2><a th:href="@{/exam/C1/{user_id}(user_id=${user.id})}">C1 Advanced</a></h2>
+                                                <h2><a th:href="@{../WebLearnEL/src/main/resources/templates/exam/C1.html}">C1 Advanced</a></h2>
                                                 <p class="tag">Learners who achieve C1 Advanced level can understand a
                                                     wide range of long, complex texts. They can interact and express
                                                     themselves fluently and spontaneously and use language flexibly and
@@ -73915,7 +73915,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                                                 <a ><img th:src="@{/assets/images_home/content_img_1.jpg}" class="img-fuild" alt=""></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
-                                                <h2><a th:href="@{/exam/C2/{user_id}(user_id=${user.id})}">C2 Proficiency</a></h2>
+                                                <h2><a th:href="@{../WebLearnEL/src/main/resources/templates/exam/C2.html}">C2 Proficiency</a></h2>
                                                 <p class="tag">Learners who achieve C2 Proficiency level can easily
                                                     understand almost everything they hear or read. They can express
                                                     themselves fluently and spontaneously with precision in complex
@@ -73932,37 +73932,37 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                             <h4>Exam</h4>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{/exam/A1/{user_id}(user_id=${user.id})}">
+                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A1.html}">
                                     A1 Elementary 
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{/exam/A2/{user_id}(user_id=${user.id})}">
+                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A2.html}">
                                     A2 Pre-intermediate
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{/exam/B1/{user_id}(user_id=${user.id})}">
+                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/B1.html}">
                                     B1 Intermediate
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{/exam/B2/{user_id}(user_id=${user.id})}">
+                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/B2.html}">
                                     B2 Upper intermediate
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{/exam/C1/{user_id}(user_id=${user.id})}">
+                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/C1.html}">
                                     C1 Advanced
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{/exam/C2/{user_id}(user_id=${user.id})}">
+                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/C2.html}">
                                     C2 Proficiency
                                 </a>
                             </div>
