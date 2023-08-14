@@ -71491,7 +71491,7 @@
         <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
         id="#kt_header_menu" data-kt-menu="true">
         <div class="menu-item me-lg-1">
-            <a th:href="@{index.html}" class="menu-link py-3">
+            <a th:href="@{/index/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                 <span class="menu-title">Home</span>
             </a>
         </div>
@@ -71510,10 +71510,10 @@
                                                         <span class="menu-title">A1 - A2 Vocabulary</span>
                                                     </a>
                                                 </div> -->
-                                                <a th:href="@{/learning/A1-A2.html}" class="menu-link py-3">
+                                                <a th:href="@{/learning/a1a2/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                     <span class="menu-title">A1 - A2 Vocabulary</span>
                                                 </a>
-                                                <a th:href="@{/learning/B1-B2.html}" class="menu-link py-3">
+                                                <a th:href="@{/learning/b1b2/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                     <span class="menu-title">B1 - B2 Vocabulary</span>
                                                 </a>
                                             </div>
@@ -71526,10 +71526,10 @@
                                             </span>
                                             <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
                                                 
-                                                <a th:href="@{/exam/overview.html}" class="menu-link py-3">
+                                                <a th:href="@{/exam/overview/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                     <span class="menu-title">Exam Overview</span>
                                                 </a>
-                                                <a th:href="@{/exam/test.html}" class="menu-link py-3"><span class="menu-title">Online English level test</span></a>
+                                                <a th:href="@{/exam/test/{user_id}(user_id=${user.id})}" class="menu-link py-3"><span class="menu-title">Online English level test</span></a>
                                             </div>
                                         </div>
               
@@ -73816,7 +73816,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                     <div class="ex-test">
                         <h1>How to access the test</h1>
                         <p>The level test is available to all users with a free account on LearnEnglish.</p>
-                        <div class="text-center"><a th:href="@{../WebLearnEL/src/main/resources/templates/exam/test-eng1.html}" class="btn" >
+                        <div class="text-center"><a th:href="@{/exam/{user_id}(user_id=${user.id})}" class="btn" >
                                                 Take the test
                                             </a></div>
 
@@ -73846,31 +73846,31 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A2.html}">
+                                <a th:href="@{/exam/A2/{user_id}(user_id=${user.id})}">
                                     A2 Pre-intermediate
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/B1.html}">
+                                <a th:href="@{/exam/B1/{user_id}(user_id=${user.id})}">
                                     B1 Intermediate
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/B2.html}">
+                                <a th:href="@{/exam/B2/{user_id}(user_id=${user.id})}">
                                     B2 Upper intermediate
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/C1.html}">
+                                <a th:href="@{/exam/C1/{user_id}(user_id=${user.id})}">
                                     C1 Advanced
                                 </a>
                             </div>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/C2.html}">
+                                <a th:href="@{/exam/C2/{user_id}(user_id=${user.id})}">
                                     C2 Proficiency
                                 </a>
                             </div>
