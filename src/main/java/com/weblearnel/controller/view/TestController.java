@@ -44,7 +44,7 @@ public class TestController {
         return "exam/test";
     }
 
-    @GetMapping("/exam/{user_id}/a1a2")
+    @GetMapping("/learning/{user_id}/a1a2")
     public String levelTestA1(@PathVariable("user_id") Long user_id, Model model){
         long level = 1;
         User user = userService.getUserById(user_id);
@@ -54,7 +54,7 @@ public class TestController {
         return "learning/A1-A2";
     }
 
-    @GetMapping("/exam/{user_id}/b1b2")
+    @GetMapping("/learning/{user_id}/b1b2")
     public String levelTestA2(@PathVariable("user_id") Long user_id, Model model){
         long level = 2;
         User user = userService.getUserById(user_id);
@@ -69,4 +69,8 @@ public class TestController {
         return "exam/test";
     }
 
+    @GetMapping("/exam/t")
+    public String t(){
+        return "exam/t";
+    }
 }
