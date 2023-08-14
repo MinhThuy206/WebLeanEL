@@ -117,25 +117,42 @@ $(function () {
     });
     // end:Task scripts
 
-    function checkAnswerFromDatabase(questionIndex, userAnswer, callback) {
-        const query = `SELECT answer FROM question WHERE question_id = ?`;
-        connection.query(query, [question_id], (error, results) => {
-            if (error) {
-                callback(error, null);
-                return;
-            }
+    $(document).ready(function () {
 
-            if (results.length === 0) {
-                callback(null, false);
-                return;
-            }
+        const UserAnswers = [];
+        $(".Quiz-confidence-buttons a").on("click", function () {
+            const selectedDegree = $(this).attr("data-degree"); // Lấy giá trị degree đã chọn
+            const questionIndex = $(this)
+                .closest(".Quiz-inner")
+                .attr("id")
+                .split("-")[1]; // Lấy chỉ số câu hỏi từ ID của phần tử
 
-            const answer = results[0].answer;
-            callback(null, userAnswer === answer);
+            // Thêm giá trị câu trả lời và độ tự tin vào mảng userAnswers
+            userAnswers.push({
+                questionIndex: questionIndex,
+                answer: $("input[name='question" + questionIndex + "']:checked").val(),
+                confidence: selectedDegree
+            });
         });
-    }
 
-
+        $("#submit-button"  ).on("click", function () {
+            fetch("/exam/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userAnswers)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Chuyển hướng người dùng đến trang kết quả
+                    window.location.href = "/exam/result"; // Đổi đường dẫn tới trang kết quả
+                })
+                .catch(error => {
+                    console.error("Lỗi khi gửi dữ liệu: ", error);
+                });
+        });
+    });
 });
 
 
