@@ -71496,7 +71496,7 @@ height: 200%;
                                     <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
                                         id="#kt_header_menu" data-kt-menu="true">
                                         <div class="menu-item me-lg-1">
-                                            <a th:href="@{index.html}" class="menu-link py-3">
+                                            <a th:href="@{/index/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                 <span class="menu-title">Home</span>
                                             </a>
                                         </div>
@@ -71516,11 +71516,11 @@ height: 200%;
                                                         <span class="menu-title">A1 - A2 Vocabulary</span>
                                                     </a>
                                                 </div> -->
-                                                <a th:href="@{src/main/resources/templates/learning/A1-A2.html}"
+                                                <a th:href="@{/learning/a1a2/{user_id}(user_id=${user.id})}"
                                                     class="menu-link py-3">
                                                     <span class="menu-title">A1 - A2 Vocabulary</span>
                                                 </a>
-                                                <a th:href="@{src/main/resources/templates/learning/B1-B2.html}"
+                                                <a th:href="@{/learning/b1b2/{user_id}(user_id=${user.id})}"
                                                     class="menu-link py-3">
                                                     <span class="menu-title">B1 - B2 Vocabulary</span>
                                                 </a>
