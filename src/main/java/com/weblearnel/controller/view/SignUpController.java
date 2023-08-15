@@ -43,22 +43,22 @@ public class SignUpController {
     // // Render trang chủ admin
     // @GetMapping("/admin")
     // public String adminPage() {
-    //     return "admin/home-page";
+    // return "admin/home-page";
     // }
 
     // // Render form tạo topic
     // @GetMapping("/admin/createTopic")
     // public String topicForm() {
-    //     return "admin/topic-page";
+    // return "admin/topic-page";
     // }
 
     // // Render form chọn tạo question hay word
     // @GetMapping("/admin/{topic_name}/create")
-    // public String createForm(@PathVariable("topic_name") String topic_name, Model model) {
-    //     model.addAttribute("topicName", topic_name);
-    //     return "admin/choice";
+    // public String createForm(@PathVariable("topic_name") String topic_name, Model
+    // model) {
+    // model.addAttribute("topicName", topic_name);
+    // return "admin/choice";
     // }
-    
 
     // Xử lý form tạo user và redirect về trang tạo user
     @PostMapping("/submitForm")
@@ -68,13 +68,13 @@ public class SignUpController {
             String password = user.getPassword();
             String email = user.getEmail();
             String fullname = user.getFullname();
-            String phone = "0123456789";
+            String phone = user.getMobile();
             // String phone = request.getParameter("phone");
             // String address = request.getParameter("address");
             // int level = Integer.parseInt(request.getParameter("level"));
-            String address = "Hà Nội";
+            String address = user.getAddress();
             int level = 1;
-            User newUser = new User(username, password, fullname,address,phone, email, level);
+            User newUser = new User(username, password, fullname, address, phone, email, level);
             registrationService.register(newUser); // đăng ký user mới vào database
             System.out.println("Đăng ký thành công");
             // String redirectUrl = "{\"redirect\": \"" + "/user/login" + "\"}";
@@ -83,87 +83,93 @@ public class SignUpController {
         } catch (Exception e) {
             System.out.println("Đăng ký thất bại");
             System.out.println(e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error submitting the form: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error submitting the form: " + e.getMessage());
             // return ResponseEntity.ok("redirect:/user/login");
         }
-        
-    // public String submitForm(HttpServletRequest request) {
-        
+
+        // public String submitForm(HttpServletRequest request) {
+
     }
 
     // // Render form tạo word
     // @GetMapping("/admin/{topic_name}/createWord")
-    // public String wordForm(@PathVariable("topic_name") String topic_name, Model model) {
-    //     model.addAttribute("topicName", topic_name);// thêm topic để biết từ dc tạo thuộc topic nào
-    //     return "admin/new-word";
+    // public String wordForm(@PathVariable("topic_name") String topic_name, Model
+    // model) {
+    // model.addAttribute("topicName", topic_name);// thêm topic để biết từ dc tạo
+    // thuộc topic nào
+    // return "admin/new-word";
     // }
 
     // // Xử lý form tạo word và redirect về trang tạo word
     // @PostMapping("/admin/{topic_name}/submitWord")
-    // public String submitWordForm(HttpServletRequest request, @PathVariable("topic_name") String topic_name, Model model) {
-    //     String name = request.getParameter("name");
-    //     String mean = request.getParameter("mean");
-    //     String attributes = request.getParameter("attributes");
-    //     String example = request.getParameter("example");
-    //     String imageUrl = "/assets/images/" + name + ".jpg";
-    //     String pronounce = "/assets/audio/" + name + ".mp3";
-    //     Word word = new Word(name, mean, attributes, example, imageUrl, pronounce);
-    //     Topic topic = topicService.getTopicByName(topic_name);
-    //     word.assignTopic(topic); // gán topic cho word
-    //     wordService.addWord(word); // thêm word vào database
+    // public String submitWordForm(HttpServletRequest request,
+    // @PathVariable("topic_name") String topic_name, Model model) {
+    // String name = request.getParameter("name");
+    // String mean = request.getParameter("mean");
+    // String attributes = request.getParameter("attributes");
+    // String example = request.getParameter("example");
+    // String imageUrl = "/assets/images/" + name + ".jpg";
+    // String pronounce = "/assets/audio/" + name + ".mp3";
+    // Word word = new Word(name, mean, attributes, example, imageUrl, pronounce);
+    // Topic topic = topicService.getTopicByName(topic_name);
+    // word.assignTopic(topic); // gán topic cho word
+    // wordService.addWord(word); // thêm word vào database
 
-    //     return "redirect:/admin/" + topic_name + "/createWord"; // redirect về trang tạo word
+    // return "redirect:/admin/" + topic_name + "/createWord"; // redirect về trang
+    // tạo word
     // }
-
-    
 
     // // Xử lý form tạo topic và redirect về trang tạo word cho topic đó
     // @PostMapping("/admin/submitTopic")
     // public String submitTopicForm(HttpServletRequest request, Model model) {
-    //     String topic_name = request.getParameter("name");
-    //     String description = request.getParameter("description");
-    //     Long level = Long.parseLong(request.getParameter("level"));
-    //     Level topicLevel = levelService.getLevelById(level);
-    //     Topic topic = new Topic(topic_name, description);
-    //     topic.assignLevel(topicLevel);
-    //     if(topicService.getTopicByName(topic_name) == null) {
-    //         topicService.addTopic(topic);
-    //     } 
-    //     model.addAttribute("topicName", topic_name);
-    //     return "redirect:/admin/" + topic_name + "/create";
+    // String topic_name = request.getParameter("name");
+    // String description = request.getParameter("description");
+    // Long level = Long.parseLong(request.getParameter("level"));
+    // Level topicLevel = levelService.getLevelById(level);
+    // Topic topic = new Topic(topic_name, description);
+    // topic.assignLevel(topicLevel);
+    // if(topicService.getTopicByName(topic_name) == null) {
+    // topicService.addTopic(topic);
+    // }
+    // model.addAttribute("topicName", topic_name);
+    // return "redirect:/admin/" + topic_name + "/create";
     // }
 
     // // Render form tạo question
     // @GetMapping("/admin/{topic_name}/createQuestion")
-    // public String questionForm(@PathVariable("topic_name") String topic_name, Model model) {
-    //     model.addAttribute("topicName", topic_name);
-        
-    //     return "admin/multi-choice";
+    // public String questionForm(@PathVariable("topic_name") String topic_name,
+    // Model model) {
+    // model.addAttribute("topicName", topic_name);
+
+    // return "admin/multi-choice";
     // }
 
     // @PostMapping("/admin/{topic_name}/submitQuestion")
-    // public String submitQuestionForm(HttpServletRequest request, @PathVariable("topic_name") String topic_name) {
-    //     String content = request.getParameter("content");
-    //     String option1 = request.getParameter("opt1");
-    //     String option2 = request.getParameter("opt2");
-    //     String option3 = request.getParameter("opt3");
-    //     String option4 = request.getParameter("opt4");
-    //     String answer = request.getParameter("answer");
-    //     String explain = request.getParameter("explain");
-    //     int type = Integer.parseInt(request.getParameter("type"));
+    // public String submitQuestionForm(HttpServletRequest request,
+    // @PathVariable("topic_name") String topic_name) {
+    // String content = request.getParameter("content");
+    // String option1 = request.getParameter("opt1");
+    // String option2 = request.getParameter("opt2");
+    // String option3 = request.getParameter("opt3");
+    // String option4 = request.getParameter("opt4");
+    // String answer = request.getParameter("answer");
+    // String explain = request.getParameter("explain");
+    // int type = Integer.parseInt(request.getParameter("type"));
 
-    //     Question question = new Question(content, option1, option2, option3, option4, answer, explain, type);
-    //     Topic topic = topicService.getTopicByName(topic_name);
-    //     question.assignTopic(topic);
-    //     System.out.println(answer);
-    //     // Word word = wordService.getWordByName(answer);
-    //     // System.out.println(word.getName());
-    //     // if (answer == wordService.getWordByName(answer).getName()) {
-    //     //     Word word = wordService.getWordByName(answer);
-    //     //     Level level = word.getLevel();
-    //     //     question.assignLevel(level);
-    //     // }
-    //     questionService.addQuestion(question);
-    //     return "redirect:/admin/" + topic_name + "/createQuestion";
+    // Question question = new Question(content, option1, option2, option3, option4,
+    // answer, explain, type);
+    // Topic topic = topicService.getTopicByName(topic_name);
+    // question.assignTopic(topic);
+    // System.out.println(answer);
+    // // Word word = wordService.getWordByName(answer);
+    // // System.out.println(word.getName());
+    // // if (answer == wordService.getWordByName(answer).getName()) {
+    // // Word word = wordService.getWordByName(answer);
+    // // Level level = word.getLevel();
+    // // question.assignLevel(level);
+    // // }
+    // questionService.addQuestion(question);
+    // return "redirect:/admin/" + topic_name + "/createQuestion";
     // }
 }
