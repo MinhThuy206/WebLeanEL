@@ -12,7 +12,6 @@ import com.weblearnel.model.ConfirmationToken;
 import com.weblearnel.model.User;
 import com.weblearnel.repository.UserRepository;
 
-
 @Service
 public class UserService {
     @Autowired
@@ -39,19 +38,19 @@ public class UserService {
         return userRepository.findByUsername(username).get();
     }
 
-    public User getUserById(long id){
+    public User getUserById(long id) {
         return userRepository.findById(id).get();
     }
 
-    public User getUserByEmail(String username){
+    public User getUserByEmail(String username) {
         return userRepository.findByEmail(username).get();
     }
 
     // update user
     @Transactional
-    public User updateUser(long id, User user){
+    public User updateUser(long id, User user) {
         String fullname = user.getFullname();
-        String phone = user.getMobile();
+        String phone = user.getPhone();
         String address = user.getAddress();
 
         User newUser = new User(fullname, phone, address);
@@ -67,6 +66,7 @@ public class UserService {
         }
         return false;
     }
+
     public String signUpUser(User user) {
         boolean userExists = userRepository.findByUsername(user.getUsername()).isPresent();
         boolean emailExists = userRepository.findByEmail(user.getEmail()).isPresent();

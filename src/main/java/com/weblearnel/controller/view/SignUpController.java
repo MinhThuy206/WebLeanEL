@@ -68,7 +68,7 @@ public class SignUpController {
             String password = user.getPassword();
             String email = user.getEmail();
             String fullname = user.getFullname();
-            String phone = user.getMobile();
+            String phone = user.getPhone();
             // String phone = request.getParameter("phone");
             // String address = request.getParameter("address");
             // int level = Integer.parseInt(request.getParameter("level"));
