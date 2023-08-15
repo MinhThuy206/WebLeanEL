@@ -38,4 +38,8 @@ public class ExamService {
         List<Question> questions = levelService.findQuestionFromLevel(level.getId());
         return questions;
     }
+
+    public Exam getExamById(Long exam_id){
+        return examRepository.findById(exam_id).get();
+    }
 }

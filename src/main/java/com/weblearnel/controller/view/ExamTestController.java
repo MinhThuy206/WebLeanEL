@@ -2,8 +2,8 @@ package com.weblearnel.controller.view;
 
 import java.util.List;
 
-import com.weblearnel.model.Question;
-import com.weblearnel.service.QuestionService;
+import com.weblearnel.model.*;
+import com.weblearnel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.weblearnel.model.Answer;
-import com.weblearnel.model.Result;
-import com.weblearnel.model.User;
-import com.weblearnel.service.AnswerService;
-import com.weblearnel.service.ResultService;
-import com.weblearnel.service.UserService;
 
 import lombok.AllArgsConstructor;
 
@@ -37,6 +30,9 @@ public class ExamTestController {
     @Autowired
     private QuestionService questionService;
 
+    @Autowired
+    private ExamService examService;
+
     @GetMapping("/exam/overview/{user_id}")
     public String showExamOverView(@PathVariable("user_id") Long user_id, Model model) {
         User user = userService.getUserById(user_id);
@@ -44,8 +40,10 @@ public class ExamTestController {
         return "/exam/overview";
     }
 
-    @GetMapping("/exam/test/{user_id}")
-    public String showExamTest(@PathVariable("user_id") Long user_id, Model model) {
+    @GetMapping("/exam/test/{user_id}/{exam_id}")
+    public String showExamTest(@PathVariable("user_id") Long user_id, Model model, @PathVariable("exam_id") Long exam_id) {
+        Exam exam = examService.getExamById(exam_id);
+        model.addAttribute("exam", exam);
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
         return "/exam/test";
@@ -93,15 +91,20 @@ public class ExamTestController {
         return "/exam/C2";
     }
 
-    @GetMapping("/exam/test_eng1/{user_id}")
-    public String Eng1Test(@PathVariable("user_id") Long user_id, Model model) {
+    @GetMapping("/exam/test_eng1/{user_id}/{exam_id}")
+    public String Eng1Test(@PathVariable("user_id") Long user_id, Model model, @PathVariable("exam_id" ) Long exam_id) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
+        Exam exam = examService.getExamById(exam_id);
+        model.addAttribute("exam", exam);
         return "/exam/test-eng1";
     }
 
-    @GetMapping("/exam/test_eng2/{user_id}")
-    public String Eng2Test(@PathVariable("user_id") Long user_id, Model model) {
+    @GetMapping("/exam/test_eng2/{user_id}/{exam_id}")
+    public String Eng2Test(@PathVariable("user_id") Long user_id, @PathVariable("question_id" ) Long question_id,@PathVariable("exam_id" ) Long exam_id
+                           ,Model model) {
+        List<Question> question1 = examService.getQuestions(exam_id);
+        model.addAttribute("questionList", question1);
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
         return "/exam/test-eng2";
@@ -130,11 +133,11 @@ public class ExamTestController {
         model.addAttribute("score", score);
         return "/exam/test-eng3";
     }
+//    @PostMapping("/exam/{question_id}")
+//    public String showQuestion(@PathVariable long question_id, Model model){
+//        Question question = questionService.getQuestionById(question_id);
+//        model.addAttribute("questionlist",  question);
+//        return "redirect:/exam/test-eng2";
+//    }
 
-    @PostMapping("/exam/{question_id}")
-    public String showQuestion(@PathVariable long question_id, Model model){
-        Question question = questionService.getQuestionById(question_id);
-        model.addAttribute("questionlist",  question);
-        return "redirect:/exam/test-eng2";
-    }
 }

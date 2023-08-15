@@ -73829,7 +73829,7 @@
                                         <p>You have 30 minutes to complete the quiz. When you finish, we will recommend
                                             courses based on your score.</p>
                                         <div class="text-center" id="start-test"><a
-                                                th:href="@{/exam/test_eng2/{user_id}(user_id=${user.id})}" class="btn">
+                                                th:href="@{/exam/test_eng2/{user_id}/{exam_id}(user_id=${user.id}, exam_id=${exam.examId})}" class="btn">
                                                 Start the level check
                                             </a></div>
 
