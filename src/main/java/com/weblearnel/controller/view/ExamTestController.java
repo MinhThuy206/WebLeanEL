@@ -134,7 +134,7 @@ public class ExamTestController {
     @PostMapping("/exam/{question_id}")
     public String showQuestion(@PathVariable long question_id, Model model){
         Question question = questionService.getQuestionById(question_id);
-        model.addAttribute("question",  question);
+        model.addAttribute("questionlist",  question);
         return "redirect:/exam/test-eng2";
     }
 }
