@@ -1,5 +1,7 @@
 package com.weblearnel.controller.view;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,14 +50,26 @@ public class UpdateProfileController {
     @PutMapping("/update")
     public ResponseEntity<String> updateProfile(@RequestBody User newUser) {
         try {
+            // String email = "";
+            // if(requestBody.containsKey("email")) {
+            //     email = requestBody.get("email").toString();
+            // } else {
+            //     email = session.getAttribute("email").toString();
+            // }
             User user = userService.getUserByEmail(newUser.getEmail());
             System.out.println(newUser.getEmail());
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-            } 
-            user.setFullname(newUser.getFullname());
-            user.setMobile(newUser.getMobile());
-            user.setAddress(newUser.getAddress());
+            }
+            if(newUser.getFullname() != null) {
+                user.setFullname(newUser.getFullname());
+            }
+            if(newUser.getMobile() != null) {
+                user.setMobile(newUser.getMobile());
+            }
+            if(newUser.getAddress() != null) {
+                user.setAddress(newUser.getAddress());
+            }
             userRepository.save(user);
         // User user = userService.getUserById(id);
         // if (user == null) {
@@ -70,6 +84,30 @@ public class UpdateProfileController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error submitting the form: " + e.getMessage());
         }
         
+    }
+
+    @PutMapping("/updateEmail")
+    public ResponseEntity<String> updateEmail(@RequestBody Map<String, Object> requestBody) {
+        try {
+            String newEmail = requestBody.get("newEmail").toString();
+            String oldEmail = requestBody.get("email").toString();
+            
+            User user = userService.getUserByEmail(oldEmail);
+            System.out.println(newEmail);
+            System.out.println(oldEmail);
+
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            }
+            user.setEmail(newEmail);
+            userRepository.save(user);
+            String redirectUrl = "/showViewUser/" + user.getId();
+            return ResponseEntity.ok("redirect:" + redirectUrl);
+        } catch (Exception e) {
+            System.out.println("Cập nhật thất bại");
+            System.out.println(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error submitting the form: " + e.getMessage());
+        }
     }
 }
 

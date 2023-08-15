@@ -111,7 +111,13 @@ public class ForgotController {
     @PostMapping("/updatePassword")
     public ResponseEntity<String> updatePassword(HttpSession session, @RequestBody Map<String, Object> requestBody) {
         try {
-            String email = session.getAttribute("email").toString();
+            String email = "";
+            if(requestBody.containsKey("email")) {
+                email = requestBody.get("email").toString();
+            } else {
+                email = session.getAttribute("email").toString();
+            }
+            
             Optional<User> user = userRepository.findByEmail(email);
             String password = requestBody.get("password").toString();
             String confirmPassword = requestBody.get("confirmPassword").toString();
@@ -138,23 +144,35 @@ public class ForgotController {
                     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                             .body("Error submitting the form: " + "user không tồn tại");
                 }
+            } else {
+                if (password.equals(confirmPassword)) {
+                    if (user.isPresent()) {
+                        User user1 = user.get();
+                        user1.setPassword(password);
+                        userRepository.save(user1);
+                    }
+                    return ResponseEntity.ok("redirect:/user/login");
+                } else {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                            .body("Error submitting the form: " + "confirm password không đúng");
+                }
             }
             // String password = requestBody.get("password").toString();
             // String confirmPassword = requestBody.get("confirmPassword").toString();
-            if (password.equals(confirmPassword)) {
-                // session = request.getSession();
-                // String email = session.getAttribute("email").toString();
-                // Optional<User> user = userRepository.findByEmail(email);
-                if (user.isPresent()) {
-                    User user1 = user.get();
-                    user1.setPassword(password);
-                    userRepository.save(user1);
-                }
-                return ResponseEntity.ok("redirect:/user/login");
-            } else {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                        .body("Error submitting the form: " + "confirm password không đúng");
-            }
+            // if (password.equals(confirmPassword)) {
+            //     // session = request.getSession();
+            //     // String email = session.getAttribute("email").toString();
+            //     // Optional<User> user = userRepository.findByEmail(email);
+            //     if (user.isPresent()) {
+            //         User user1 = user.get();
+            //         user1.setPassword(password);
+            //         userRepository.save(user1);
+            //     }
+            //     return ResponseEntity.ok("redirect:/user/login");
+            // } else {
+            //     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+            //             .body("Error submitting the form: " + "confirm password không đúng");
+            // }
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
