@@ -52,7 +52,7 @@ public class Question {
     private int type;
     
 
-    public Question(String content, String answer, String option1, String option2, String option3, String option4,
+    public Question(String content,  String option1, String option2, String option3, String option4, String answer,
             String explanation, int type2) {
         this.content = content;
         this.answer = answer;
