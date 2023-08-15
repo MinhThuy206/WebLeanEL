@@ -2,6 +2,8 @@ package com.weblearnel.controller.view;
 
 import java.util.List;
 
+import com.weblearnel.model.Question;
+import com.weblearnel.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,9 @@ public class ExamTestController {
 
     @Autowired
     private ResultService resultService;
+
+    @Autowired
+    private QuestionService questionService;
 
     @GetMapping("/exam/overview/{user_id}")
     public String showExamOverView(@PathVariable("user_id") Long user_id, Model model) {
@@ -120,9 +125,16 @@ public class ExamTestController {
         return "redirect:/exam/test-eng3";
     }
 
-    @GetMapping("exam/result")
+    @GetMapping("/exam/result")
     public String showResult(@RequestParam int score, Model model) {
         model.addAttribute("score", score);
         return "/exam/test-eng3";
+    }
+
+    @PostMapping("/exam/{question_id}")
+    public String showQuestion(@PathVariable long question_id, Model model){
+        Question question = questionService.getQuestionById(question_id);
+        model.addAttribute("question",  question);
+        return "redirect:/exam/test-eng2";
     }
 }
