@@ -148,6 +148,8 @@ var KTSignupGeneral = function() {
                         username: $("input[name=username]").val(),
                         email: $("input[name=email]").val(),
                         password: $("input[name=password]").val(),
+                        mobile: $("input[name=phone]").val(),
+                        address: $("input[name=address]").val(),
                         confirmPassword: $("input[name=confirm-password]").val(),
                         toc: $("input[name=toc]").is(":checked"),
                     };
