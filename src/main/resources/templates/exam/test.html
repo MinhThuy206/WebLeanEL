@@ -73816,7 +73816,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                     <div class="ex-test">
                         <h1>How to access the test</h1>
                         <p>The level test is available to all users with a free account on LearnEnglish.</p>
-                        <div class="text-center"><a th:href="@{/exam/test_eng1/{user_id}(user_id=${user.id})}" class="btn" >
+                        <div class="text-center"><a th:href="@{/exam/test_eng1/{user_id}/{exam_id}(user_id=${user.id},exam_id=${exam.examId})}" class="btn" >
                                                 Take the test
                                             </a></div>
 
