@@ -92,7 +92,7 @@ public class User {
         this.level = level;
     }
 
-    public User(String fullname, String mobile, String address){
+    public User(String fullname, String mobile, String address) {
         this.fullname = fullname;
         this.mobile = mobile;
         this.address = address;

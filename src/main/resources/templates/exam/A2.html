@@ -71492,7 +71492,7 @@
                                     <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
                                         id="#kt_header_menu" data-kt-menu="true">
                                         <div class="menu-item me-lg-1">
-                                            <a th:href="@{index.html}" class="menu-link py-3">
+                                            <a th:href="@{/index/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                 <span class="menu-title">Home</span>
                                             </a>
                                         </div>
@@ -71512,10 +71512,10 @@
                                                         <span class="menu-title">A1 - A2 Vocabulary</span>
                                                     </a>
                                                 </div> -->
-                                                <a th:href="@{/learning/A1-A2.html}" class="menu-link py-3">
+                                                <a th:href="@{/learning/a1a2/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                     <span class="menu-title">A1 - A2 Vocabulary</span>
                                                 </a>
-                                                <a th:href="@{/learning/B1-B2.html}" class="menu-link py-3">
+                                                <a th:href="@{/learning/b1b2/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                     <span class="menu-title">B1 - B2 Vocabulary</span>
                                                 </a>
                                             </div>
@@ -71529,10 +71529,10 @@
                                             <div
                                                 class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 
-                                                <a th:href="@{/exam/overview.html}" class="menu-link py-3">
+                                                <a th:href="@{/exam/overview/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                     <span class="menu-title">Exam Overview</span>
                                                 </a>
-                                                <a th:href="@{/exam/test.html}" class="menu-link py-3"><span
+                                                <a th:href="@{//exam/test/{user_id}(user_id=${user.id})}" class="menu-link py-3"><span
                                                         class="menu-title">Online English level test</span></a>
                                             </div>
                                         </div>
@@ -73657,12 +73657,12 @@
                                                     <!--end::Avatar-->
                                                     <!--begin::Username-->
                                                     <div class="d-flex flex-column">
-                                                        <div class="fw-bolder d-flex align-items-center fs-5">Max Smith
+                                                        <div class="fw-bolder d-flex align-items-center fs-5"> [[${user.fullname}]]
                                                             <span
                                                                 class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
                                                         </div>
                                                         <a th:href="@{#}"
-                                                            class="fw-bold text-muted text-hover-primary fs-7">max@kt.com</a>
+                                                            class="fw-bold text-muted text-hover-primary fs-7">[[${user.email}]]</a>
                                                     </div>
                                                     <!--end::Username-->
                                                 </div>
@@ -73673,7 +73673,7 @@
                                             <!--end::Menu separator-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
-                                                <a th:href="@{/account/overview.html}" class="menu-link px-5">My Profile</a>
+                                                <a th:href="@{/showViewUser/{user_id}(user_id=${user.id})}" class="menu-link px-5">My Profile</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -73753,13 +73753,13 @@
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5 my-1">
-                                                <a th:href="@{/account/settings.html}" class="menu-link px-5">Account
+                                                <a th:href="@{/update/{id}(id=${user.id})}" class="menu-link px-5">Account
                                                     Settings</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
-                                                <a th:href="@{/users/showForm}"
+                                                <a th:href="@{/user/login}"
                                                     class="menu-link px-5">Sign
                                                     Out</a>
                                             </div>
@@ -73831,7 +73831,7 @@
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                     <div class="levels"><img th:src="@{/assets/images_home/content_img_1.jpg}" alt="">
-                                        <p>The <a class="test" th:href="@{../WebLearnEL/src/main/resources/templates/exam/overview.html}">Common
+                                        <p>The <a class="test" th:href="@{/exam/overview/{user_id}(user_id=${user.id})}">Common
                                                 European Framework of Reference for Languages (CEFR)</a> has six levels,
                                             from A1 for beginners, up to C2 for users who are proficient in the
                                             language.</p>
@@ -73894,37 +73894,37 @@
                                         <h4>Exam</h4>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A1.html}">
+                                            <a th:href="@{/exam/A1/{user_id}(user_id=${user.id})}">
                                                 A1 Elementary
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/A2.html}">
+                                            <a th:href="@{/exam/A2/{user_id}(user_id=${user.id})}">
                                                 A2 Pre-intermediate
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/B1.html}">
+                                            <a th:href="@{/exam/B1/{user_id}(user_id=${user.id})}">
                                                 B1 Intermediate
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/B2.html}">
+                                            <a th:href="@{/exam/B2/{user_id}(user_id=${user.id})l}">
                                                 B2 Upper intermediate
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/C1.html}">
+                                            <a th:href="@{/exam/C1/{user_id}(user_id=${user.id})}">
                                                 C1 Advanced
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/C2.html}">
+                                            <a th:href="@{/exam/C2/{user_id}(user_id=${user.id})}">
                                                 C2 Proficiency
                                             </a>
                                         </div>
@@ -75877,9 +75877,8 @@ Guest">
                                     <!--end::Avatar-->
                                     <!--begin::Details-->
                                     <div class="ms-5">
-                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">Max
-                                            Smith</a>
-                                        <div class="fw-bold text-muted">max@kt.com</div>
+                                        <a th:href="@{#}" class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2">[[${user.fullname}]]</a>
+                                        <div class="fw-bold text-muted">[[${user.email}]]</div>
                                     </div>
                                     <!--end::Details-->
                                 </div>

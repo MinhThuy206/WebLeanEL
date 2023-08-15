@@ -1,5 +1,6 @@
 package com.weblearnel.model;
 
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -46,7 +47,7 @@ public class Level {
 
     @JsonIgnore
     @OneToMany(mappedBy = "level")
-    private Set<Question> questions;
+    private List<Question> questions;
 
     @JsonIgnore
     @OneToMany(mappedBy = "level")

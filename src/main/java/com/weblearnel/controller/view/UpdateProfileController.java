@@ -28,17 +28,15 @@ public class UpdateProfileController {
 
     private UserRepository userRepository;
 
-
-
     @GetMapping("/showViewUser/{user_id}")
-    public String showView(@PathVariable("user_id") Long id, Model model){
+    public String showView(@PathVariable("user_id") Long id, Model model) {
         User user = userService.getUserById(id);
         model.addAttribute("user", user);
         return "account/overview";
     }
 
     @GetMapping("/update/{id}")
-    public String viewProfile(@PathVariable Long id,  Model model) {
+    public String viewProfile(@PathVariable Long id, Model model) {
         User user = userService.getUserById(id);
         if (user == null) {
             return "redirect:/index"; // Return an error page if user not found
@@ -71,19 +69,20 @@ public class UpdateProfileController {
                 user.setAddress(newUser.getAddress());
             }
             userRepository.save(user);
-        // User user = userService.getUserById(id);
-        // if (user == null) {
-        //     return "index";
-        // }
-        // userService.updateUser(id, newUser);
+            // User user = userService.getUserById(id);
+            // if (user == null) {
+            // return "index";
+            // }
+            // userService.updateUser(id, newUser);
             String redirectUrl = "/showViewUser/" + user.getId();
             return ResponseEntity.ok("redirect:" + redirectUrl);
         } catch (Exception e) {
             System.out.println("Cập nhật thất bại");
             System.out.println(e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error submitting the form: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error submitting the form: " + e.getMessage());
         }
-        
+
     }
 
     @PutMapping("/updateEmail")
@@ -106,8 +105,11 @@ public class UpdateProfileController {
         } catch (Exception e) {
             System.out.println("Cập nhật thất bại");
             System.out.println(e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error submitting the form: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error submitting the form: " + e.getMessage());
         }
+        
     }
-}
 
+    
+}

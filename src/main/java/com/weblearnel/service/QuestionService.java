@@ -28,8 +28,14 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
+
+
     public void addQuestion(Question question) {
         questionRepository.save(question);
+    }
+
+    public Question getQuestionById(long id){
+        return questionRepository.findById(id).get();
     }
 
     public QuestionService(QuestionRepository questionRepository) {
