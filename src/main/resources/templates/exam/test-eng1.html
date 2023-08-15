@@ -73662,7 +73662,7 @@
                                                                 class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
                                                         </div>
                                                         <a th:href="@{#}"
-                                                            class="fw-bold text-muted text-hover-primary fs-7">[[${user.mail}]]</a>
+                                                            class="fw-bold text-muted text-hover-primary fs-7">[[${user.email}]]</a>
                                                     </div>
                                                     <!--end::Username-->
                                                 </div>
@@ -73829,7 +73829,7 @@
                                         <p>You have 30 minutes to complete the quiz. When you finish, we will recommend
                                             courses based on your score.</p>
                                         <div class="text-center" id="start-test"><a
-                                                th:href="@{../WebLearnEL/src/main/resources/templates/exam/test-eng2.html}" class="btn">
+                                                th:href="@{/exam/test_eng2/{user_id}(user_id=${user.id})}" class="btn">
                                                 Start the level check
                                             </a></div>
 
