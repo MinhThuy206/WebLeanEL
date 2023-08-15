@@ -50,7 +50,7 @@ public class UserService {
     @Transactional
     public User updateUser(long id, User user) {
         String fullname = user.getFullname();
-        String phone = user.getPhone();
+        String phone = user.getMobile();
         String address = user.getAddress();
 
         User newUser = new User(fullname, phone, address);

@@ -51,7 +51,7 @@ public class User {
     private String address;
 
     @Column(name = "mobile")
-    private String phone;
+    private String mobile;
 
     @Column(name = "email")
     private String email;
@@ -81,20 +81,20 @@ public class User {
         this.setRole(role.getValue());
     }
 
-    public User(String username, String password, String fullname, String address, String phone, String email,
+    public User(String username, String password, String fullname, String address, String mobile, String email,
             Integer level) {
         this.username = username;
         this.password = password;
         this.fullname = fullname;
         this.address = address;
-        this.phone = phone;
+        this.mobile = mobile;
         this.email = email;
         this.level = level;
     }
 
     public User(String fullname, String mobile, String address) {
         this.fullname = fullname;
-        this.phone = mobile;
+        this.mobile = mobile;
         this.address = address;
     }
 

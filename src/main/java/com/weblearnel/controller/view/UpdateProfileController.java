@@ -52,7 +52,7 @@ public class UpdateProfileController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
             }
             user.setFullname(newUser.getFullname());
-            user.setPhone(newUser.getPhone());
+            user.setMobile(newUser.getMobile());
             user.setAddress(newUser.getAddress());
             userRepository.save(user);
             // User user = userService.getUserById(id);

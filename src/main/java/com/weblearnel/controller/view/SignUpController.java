@@ -68,13 +68,13 @@ public class SignUpController {
             String password = user.getPassword();
             String email = user.getEmail();
             String fullname = user.getFullname();
-            String phone = user.getPhone();
+            String mobile = user.getMobile();
             // String phone = request.getParameter("phone");
             // String address = request.getParameter("address");
             // int level = Integer.parseInt(request.getParameter("level"));
             String address = user.getAddress();
             int level = 1;
-            User newUser = new User(username, password, fullname, address, phone, email, level);
+            User newUser = new User(username, password, fullname, address, mobile, email, level);
             registrationService.register(newUser); // đăng ký user mới vào database
             System.out.println("Đăng ký thành công");
             // String redirectUrl = "{\"redirect\": \"" + "/user/login" + "\"}";
