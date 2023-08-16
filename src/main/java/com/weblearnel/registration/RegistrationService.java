@@ -60,6 +60,7 @@ public class RegistrationService {
         }
 
         confirmationTokenService.setConfirmedAt(token);
+        confirmationToken.getUser().setEnabled(true);
         userService.enableUser(
                 confirmationToken.getUser().getEmail());
         return "confirmed";

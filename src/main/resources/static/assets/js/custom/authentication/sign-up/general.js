@@ -14,7 +14,7 @@ var KTSignupGeneral = function() {
     var validator;
     var passwordMeter;
     var iconMessage = "success";
-    var textMessage ="You have successfully registered!";
+    var textMessage ="You have successfully registered! Check your email to complete the registration process.";
     var waitTime;
 
     function isValidPhoneNumber(phoneNumber) {

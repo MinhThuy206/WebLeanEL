@@ -39,13 +39,16 @@ public class SignInController {
             String username = user.getUsername();
             String password = user.getPassword();
             User userCheck = userService.getUser(username);
-            if (userCheck.getPassword().equals(password)) {
+            if (userCheck.getPassword().equals(password) && userCheck.getEnabled() == true) {
                 System.out.println("login thanh cong");
                 model.addAttribute("user", userCheck);
                 // String redirectUrl = "/index/" + user.getId();
                 return ResponseEntity.ok("redirect:" + "/index/" + userCheck.getId());
+            } else if(userCheck.getEnabled() != true) {
+                System.out.println("login failed");
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Check your mail to activate your account");
             }
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Login failed");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Check username and password again");
         } catch (Exception e) {
             System.out.println("login failed ");
             System.out.println(e.getMessage());

@@ -34,12 +34,7 @@
                     submitButton.setAttribute('data-kt-indicator', 'on');
 
                     var formdata = {
-                        // otp1: $("input[name=first]").val(),
-                        // otp2: $("input[name=second]").val(),
-                        // otp3: $("input[name=third]").val(),
-                        // otp4: $("input[name=fourth]").val(),
-                        // otp5: $("input[name=fifth]").val(),
-                        // otp6: $("input[name=sixth]").val(),
+
                         otp: $("input[name=first]").val() +
                             $("input[name=second]").val() +
                             $("input[name=third]").val() +
