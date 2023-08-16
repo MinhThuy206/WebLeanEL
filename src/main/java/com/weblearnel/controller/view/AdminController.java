@@ -117,6 +117,8 @@ public class AdminController {
         Question question = new Question(content, option1, option2, option3, option4, answer, explain, type);
         Topic topic = topicService.getTopicByName(topic_name);
         question.assignTopic(topic);
+        Level level = topic.getLevel();
+        question.assignLevel(level);
         System.out.println(answer);
         // Word word = wordService.getWordByName(answer);
         // System.out.println(word.getName());

@@ -73932,7 +73932,7 @@ data-kt-menu-placement="left-start" data-kt-menu-flip="bottom, top">
                             <h4>Exam</h4>
                             <div class="item">
                                 <i class="fa-solid fa-check"></i>
-                                <a th:href="@{/exam/A1/{user_id}(user_id=${user.id})}">
+                                <a th:href="@{/exam/A1/{user_id}/{exam_id}(user_id=${user.id}, exam_id=${exam.examId})}">
                                     A1 Elementary 
                                 </a>
                             </div>

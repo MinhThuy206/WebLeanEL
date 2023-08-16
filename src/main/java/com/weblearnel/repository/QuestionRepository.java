@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
-    @Query(value = "SELECT * FROM level q WHERE q.fk_level_id = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM question q WHERE q.fk_level_id = ?1", nativeQuery = true)
     List<Question> findByLevel(Long level_id);
 
 }
