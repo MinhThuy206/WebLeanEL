@@ -33,11 +33,13 @@ public class ExamTestController {
     @Autowired
     private ExamService examService;
 
-    @GetMapping("/exam/overview/{user_id}")
-    public String showExamOverView(@PathVariable("user_id") Long user_id, Model model) {
+    @GetMapping("/exam/overview/{user_id}/{exam_id}")
+    public String showExamOverView(@PathVariable("user_id") Long user_id, Model model,@PathVariable("exam_id") Long exam_id) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/overview";
+        Exam exam = examService.getExamById(exam_id);
+        model.addAttribute("exam", exam);
+        return "exam/overview";
     }
 
     @GetMapping("/exam/test/{user_id}/{exam_id}")
@@ -46,49 +48,51 @@ public class ExamTestController {
         model.addAttribute("exam", exam);
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/test";
+        return "exam/test";
     }
 
-    @GetMapping("/exam/A1/{user_id}")
-    public String A1Test(@PathVariable("user_id") Long user_id, Model model) {
+    @GetMapping("/exam/A1/{user_id}/{exam_id}")
+    public String A1Test(@PathVariable("user_id") Long user_id, Model model, @PathVariable("exam_id") Long exam_id) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/A1";
+        Exam exam = examService.getExamById(exam_id);
+        model.addAttribute("exam", exam);
+        return "exam/A1";
     }
 
     @GetMapping("/exam/A2/{user_id}")
     public String A2Test(@PathVariable("user_id") Long user_id, Model model) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/A2";
+        return "exam/A2";
     }
 
     @GetMapping("/exam/B1/{user_id}")
     public String B1Test(@PathVariable("user_id") Long user_id, Model model) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/B1";
+        return "exam/B1";
     }
 
     @GetMapping("/exam/B2/{user_id}")
     public String B2Test(@PathVariable("user_id") Long user_id, Model model) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/B2";
+        return "exam/B2";
     }
 
     @GetMapping("/exam/C1/{user_id}")
     public String C1Test(@PathVariable Long user_id, Model model) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/C1";
+        return "exam/C1";
     }
 
     @GetMapping("/exam/C2/{user_id}")
     public String C2Test(@PathVariable("user_id") Long user_id, Model model) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/C2";
+        return "exam/C2";
     }
 
     @GetMapping("/exam/test_eng1/{user_id}/{exam_id}")
@@ -97,24 +101,30 @@ public class ExamTestController {
         model.addAttribute("user", user);
         Exam exam = examService.getExamById(exam_id);
         model.addAttribute("exam", exam);
-        return "/exam/test-eng1";
+        return "exam/test-eng1";
     }
 
     @GetMapping("/exam/test_eng2/{user_id}/{exam_id}")
-    public String Eng2Test(@PathVariable("user_id") Long user_id, @PathVariable("question_id" ) Long question_id,@PathVariable("exam_id" ) Long exam_id
+    public String Eng2Test(@PathVariable("user_id") Long user_id,@PathVariable("exam_id" ) Long exam_id
                            ,Model model) {
         List<Question> question1 = examService.getQuestions(exam_id);
         model.addAttribute("questionList", question1);
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/test-eng2";
+        for (Question q: question1
+             ) {
+            System.out.println(q.getAnswer());
+        }
+        return "exam/test-eng2";
     }
 
-    @GetMapping("/exam/test_eng3/{user_id}")
-    public String Eng3Test(@PathVariable("user_id") Long user_id, Model model) {
+    @GetMapping("/exam/test_eng3/{user_id}/{exam_id}")
+    public String Eng3Test(@PathVariable("user_id") Long user_id, Model model, @PathVariable("exam_id") Long exam_id) {
         User user = userService.getUserById(user_id);
         model.addAttribute("user", user);
-        return "/exam/test-eng3";
+        Exam exam = examService.getExamById(exam_id);
+        model.addAttribute("exam", exam);
+        return "exam/test-eng3";
     }
 
     @PostMapping("/exam/submit/{user_id}")
