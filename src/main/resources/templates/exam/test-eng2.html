@@ -73662,7 +73662,7 @@
                                                             <span
                                                                 class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
                                                         </div>
-                                                        <a th:href="@{#}"
+                                                        <a th:href="@{#}" id="email_link"
                                                             class="fw-bold text-muted text-hover-primary fs-7">[[${user.email}]]</a>
                                                     </div>
                                                     <!--end::Username-->
@@ -73858,10 +73858,10 @@
 
 <!--                                                             List Questtion-->
 
-                                                            <div th:each="item : ${questionList}" class="Quiz-inner" id="'question-' + ${itemStat.index + 1}"
-                                                                 style="display: block;" data-topic="2">
+                                                            <div th:each="item, itemStat : ${questionList}" class="Quiz-inner" id=""
+                                                                 style="display: none;" data-topic="2">
 
-                                                                <p th:text="'Question ' + ${itemStat.index + 1} + ' of ' + ${questionList.size()}"></p>
+                                                                <p class="question-id" th:text="'Question ' + ${itemStat.index + 1} + ' of ' + ${questionList.size()}"></p>
                                                                 <p><strong>A:</strong> Choose the best word or phrase to complete the sentence.</p>
                                                                 <div>
                                                                     <p class="rq-Question-instruction"></p>
@@ -73879,7 +73879,7 @@
                                                                         <div class="radio" tabindex="0">
                                                                             <input type="radio" id="radio2"
                                                                                 class="form-group btn btn-default block"
-                                                                                name="question2" value="2">
+                                                                                name="question1" value="2">
                                                                             <label for="radio2"><span
                                                                                     class="hidden glyphicon pull-right" th:text="${item.option2}"></span>
                                                                             </label>
@@ -73887,7 +73887,7 @@
                                                                         <div class="radio" tabindex="0">
                                                                             <input type="radio" id="radio3"
                                                                                 class="form-group btn btn-default block"
-                                                                                name="question3" value="3">
+                                                                                name="question1" value="3">
                                                                             <label for="radio3"><span
                                                                                     class="hidden glyphicon pull-right" th:text="${item.option3}"></span></label>
                                                                         </div>
@@ -73901,7 +73901,6 @@
 
                                                                 </div>
                                                                 </div>
-
 
                                                             </div>
 
@@ -79767,7 +79766,7 @@ Edit">Can
     <!--end::Main-->
     <!--begin::Javascript-->
     <!--begin::Global Javascript Bundle(used by all pages)-->
-    <script th:src="@{/assets/js/examCustom.js}"></script>
+    <script th:src="@{/assets/js/custom/examCustom.js}"></script>
     <script th:src="@{/assets/plugins/global/plugins.bundle.js}"></script>
     <script th:src="@{/assets/js/scripts.bundle.js}"></script>
     <!--end::Global Javascript Bundle-->

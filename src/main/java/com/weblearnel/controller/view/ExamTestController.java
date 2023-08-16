@@ -127,10 +127,11 @@ public class ExamTestController {
         return "exam/test-eng3";
     }
 
-    @PostMapping("/exam/submit/{user_id}")
-    public String submitExam(@RequestBody List<Answer> userAnswers, @PathVariable("user_id") Long user_id,
+    @GetMapping("/exam/submit/{email}")
+    public String submitExam(@RequestBody List<Answer> userAnswers, @PathVariable("email") String email,
             Model model) {
-        double score = answerService.checkAnswers(userAnswers, user_id);
+        User user = userService.getUserByEmail(email);
+        double score = answerService.checkAnswers(userAnswers, user.getId());
         Result result = new Result(score);
         resultService.addResult(result);
 

@@ -23,7 +23,7 @@ public class AnswerService {
         int correctCount = 0;
 
         for (Answer userAnswer : userAnswers) {
-            if(userAnswer.getUser().getId()== user_id) {
+            if(userAnswer.getUser().getId() == user_id) {
                 Question question = entityManager.find(Question.class, userAnswer.getQuestion());
                 if (question != null && question.getAnswer().equals(userAnswer.getUserAnswer())) {
                     correctCount++;

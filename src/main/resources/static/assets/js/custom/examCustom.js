@@ -11,6 +11,15 @@ $(function () {
         }
     }, 1000);
 
+    let list_id = $('.question-id');
+    list_id.each(function (index, l)
+    {
+        let parent = $(this).closest('div.Quiz-inner');
+        let id = "question-" + $(this).text().split(' ')[1]
+        parent.attr('id', id);
+    });
+    $(`#question-1.Quiz-inner`).css("display", "block");
+
     // begin: Task 1
     let question_index_current = 1;
     const total_questions = $('.Quiz-inner').length;
@@ -37,6 +46,15 @@ $(function () {
         $(`#question-${question_index_current}.Quiz-inner`).css("display", "block");
         ableButton(question_index_current);
         task_selectedData = null;
+        confirmSubmit();
+    });
+
+    $(".radio input").click(function () {
+        task_selectedData = $(this);
+        $('.selecting-answer').removeClass('selecting-answer');
+        $(this).addClass('selecting-answer');
+        $(`#question-${question_index_current} .Quiz-confidence-buttons .btn`).removeClass('disabled');
+        changeRemainingQuestions();
         confirmSubmit();
     });
 
@@ -83,6 +101,8 @@ $(function () {
                     var confirmSubmit = confirm('Bạn có muốn submit không?');
                     if (confirmSubmit) {
                         $('#submit-btn').click();
+                        var url = "/exam/submit/" + userEmail;
+                        // window.location.href = url
                     }
                 }
             }, 1000);
@@ -117,42 +137,51 @@ $(function () {
     });
     // end:Task scripts
 
-    $(document).ready(function () {
+    var userEmail = "";
+    document.addEventListener('DOMContentLoaded', function () {
+        const emailLink = document.getElementById('email_link');
+        userEmail = emailLink.textContent.trim();
 
-        const UserAnswers = [];
-        $(".Quiz-confidence-buttons a").on("click", function () {
-            const selectedDegree = $(this).attr("data-degree"); // Lấy giá trị degree đã chọn
-            const questionIndex = $(this)
-                .closest(".Quiz-inner")
-                .attr("id")
-                .split("-")[1]; // Lấy chỉ số câu hỏi từ ID của phần tử
-
-            // Thêm giá trị câu trả lời và độ tự tin vào mảng userAnswers
-            userAnswers.push({
-                questionIndex: questionIndex,
-                answer: $("input[name='question" + questionIndex + "']:checked").val(),
-                confidence: selectedDegree
-            });
-        });
-
-        $("#submit-button"  ).on("click", function () {
-            fetch("/exam/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(userAnswers)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    // Chuyển hướng người dùng đến trang kết quả
-                    window.location.href = "/exam/result"; // Đổi đường dẫn tới trang kết quả
-                })
-                .catch(error => {
-                    console.error("Lỗi khi gửi dữ liệu: ", error);
-                });
-        });
+        console.log('Email:', userEmail);
+        // You can use the email value in your JavaScript code
     });
+
+    // $(document).ready(function () {
+    //
+    //     const UserAnswers = [];
+    //     $(".Quiz-confidence-buttons a").on("click", function () {
+    //         const selectedDegree = $(this).attr("data-degree"); // Lấy giá trị degree đã chọn
+    //         const questionIndex = $(this)
+    //             .closest(".Quiz-inner")
+    //             .attr("id")
+    //             .split("-")[1]; // Lấy chỉ số câu hỏi từ ID của phần tử
+    //
+    //         // Thêm giá trị câu trả lời và độ tự tin vào mảng userAnswers
+    //         userAnswers.push({
+    //             questionIndex: questionIndex,
+    //             answer: $("input[name='question" + questionIndex + "']:checked").val(),
+    //             confidence: selectedDegree
+    //         });
+    //     });
+    //
+    //     $("#submit-button"  ).on("click", function () {
+    //         fetch("/exam/submit", {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify(userAnswers)
+    //         })
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 // Chuyển hướng người dùng đến trang kết quả
+    //                 window.location.href = "/exam/result"; // Đổi đường dẫn tới trang kết quả
+    //             })
+    //             .catch(error => {
+    //                 console.error("Lỗi khi gửi dữ liệu: ", error);
+    //             });
+    //     });
+    // });
 });
 
 
