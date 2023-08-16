@@ -27,7 +27,6 @@
 	<!--end::Page Vendor Stylesheets-->
 	<!--begin::Global Stylesheets Bundle(used by all pages)-->
 	<link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="admin/users/style.css">
 	<link th:href="@{/assets/css/style.bundle.css}" rel="stylesheet" type="text/css">
 	<!--end::Global Stylesheets Bundle-->
 	<style type="text/css">
@@ -3155,7 +3154,7 @@
 												<!--begin::Disclaimer-->
 												<div class="text-gray-600">If you lose your mobile device or security
 													key, you can
-													<a href='#' class="me-1">generate a backup code</a>to sign in to
+													<a th:href='@{#}'class="me-1">generate a backup code</a>to sign in to
 													your account.
 												</div>
 												<!--end::Disclaimer-->
@@ -3475,7 +3474,7 @@
 												data-kt-scroll-offset="300px">
 												<!--begin::User toggle-->
 												<div class="fw-boldest fs-3 rotate collapsible mb-7"
-													data-bs-toggle="collapse" href="#kt_modal_update_user_user_info"
+													data-bs-toggle="collapse" th:href='@{#kt_modal_update_user_user_info}'
 													role="button" aria-expanded="false"
 													aria-controls="kt_modal_update_user_user_info">User Information
 													<span class="ms-2 rotate-180">
@@ -3509,10 +3508,10 @@
 															<!--begin::Image input-->
 															<div class="image-input image-input-outline"
 																data-kt-image-input="true"
-																style="background-image: url(assets/media/avatars/blank.png)">
+																style="background-image: url(/assets/media/avatars/blank.png)">
 																<!--begin::Preview existing avatar-->
 																<div class="image-input-wrapper w-125px h-125px"
-																	style="background-image: url(assets/media/avatars/blank.png)">
+																	style="background-image: url(/assets/media/avatars/blank.png)">
 																</div>
 																<!--end::Preview existing avatar-->
 																<!--begin::Edit-->
@@ -4294,7 +4293,7 @@
 											<!--end::Label-->
 											<!--begin::QR code-->
 											<div class="d-flex flex-center" data-kt-add-auth-action="qr-code">
-												<img src="assets/media/misc/qr-code.png" alt="Scan this QR code" />
+												<img th:src='@{/assets/media/misc/qr-code.png}' alt="Scan this QR code" />
 											</div>
 											<!--end::QR code-->
 											<!--begin::Text code-->
@@ -4443,21 +4442,7 @@
 								class="text-gray-800 text-hover-primary">E-Word</a>
 						</div>
 						<!--end::Copyright-->
-						<!--begin::Menu-->
-						<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
-							<li class="menu-item">
-								<a th:href="@{https://E-Word.com}" target="_blank" class="menu-link px-2">About</a>
-							</li>
-							<li class="menu-item">
-								<a href="https://E-Word.com/support" target="_blank"
-									class="menu-link px-2">Support</a>
-							</li>
-							<li class="menu-item">
-								<a href="https://1.envato.market/EA4JP" target="_blank"
-									class="menu-link px-2">Purchase</a>
-							</li>
-						</ul>
-						<!--end::Menu-->
+						
 					</div>
 					<!--end::Container-->
 				</div>
@@ -4494,11 +4479,11 @@
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
 	<!-- <script src="/assets/js/custom/apps/words/update.js"></script> -->
-	<script src="assets/js/custom/apps/user-management/users/view/update-details.js"></script>
-	<script src="assets/js/custom/apps/user-management/users/view/update-email.js"></script>
-	<script src="assets/js/custom/apps/user-management/users/view/update-password.js"></script>
-	<script src="assets/js/custom/apps/user-management/users/view/update-role.js"></script>
-	<script src="assets/js/custom/apps/user-management/users/view//delete.js"></script>
+	<script th:src="@{/assets/js/custom/apps/user-management/users/view/update-details.js}"></script>
+	<script th:src='@{/assets/js/custom/apps/user-management/users/view/update-email.js}'></script>
+	<script th:src='@{/assets/js/custom/apps/user-management/users/view/update-password.js}'></script>
+	<script th:src='@{/assets/js/custom/apps/user-management/users/view/update-role.js}'></script>
+	<script th:src='@{/assets/js/custom/apps/user-management/users/view//delete.js}'></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>
