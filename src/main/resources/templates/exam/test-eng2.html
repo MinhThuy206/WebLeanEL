@@ -73858,10 +73858,10 @@
 
 <!--                                                             List Questtion-->
 
-                                                            <div th:each="item, itemStat : ${questionList}" class="Quiz-inner" id="question-[[${itemStat.question_id + 1}]]"
+                                                            <div th:each="item : ${questionList}" class="Quiz-inner" id="'question-' + ${itemStat.index + 1}"
                                                                  style="display: block;" data-topic="2">
 
-                                                                <p th:text="'Question ' + (${itemStat.index + 1}) + ' of ' + ${questionList.size()}"></p>
+                                                                <p th:text="'Question ' + ${itemStat.index + 1} + ' of ' + ${questionList.size()}"></p>
                                                                 <p><strong>A:</strong> Choose the best word or phrase to complete the sentence.</p>
                                                                 <div>
                                                                     <p class="rq-Question-instruction"></p>
@@ -73874,14 +73874,14 @@
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question1" value="1">
                                                                             <label for="radio1"><span
-                                                                                    class="hidden glyphicon pull-right"></span>${item.option1}</label>
+                                                                                    class="hidden glyphicon pull-right" th:text="${item.option1}"></span></label>
                                                                         </div>
                                                                         <div class="radio" tabindex="0">
                                                                             <input type="radio" id="radio2"
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question2" value="2">
                                                                             <label for="radio2"><span
-                                                                                    class="hidden glyphicon pull-right"></span>${item.option2}
+                                                                                    class="hidden glyphicon pull-right" th:text="${item.option2}"></span>
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio" tabindex="0">
@@ -73889,7 +73889,7 @@
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question3" value="3">
                                                                             <label for="radio3"><span
-                                                                                    class="hidden glyphicon pull-right"></span>${item.option3}</label>
+                                                                                    class="hidden glyphicon pull-right" th:text="${item.option3}"></span></label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
