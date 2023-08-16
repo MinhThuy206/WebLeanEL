@@ -38,7 +38,6 @@ License: For each use you must have a valid license purchased only from above li
 	<!--end::Page Vendor Stylesheets-->
 	<!--begin::Global Stylesheets Bundle(used by all pages)-->
 	<link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css">
-	<link th:href="@{/admin/questions/style.css}" rel="stylesheet" type="text/css">
 	<link th:href="@{/assets/css/style.bundle.css}" rel="stylesheet" type="text/css">
 	<!--end::Global Stylesheets Bundle-->
 	<style type="text/css">
@@ -1472,9 +1471,9 @@ License: For each use you must have a valid license purchased only from above li
 						<!--end::Heaeder menu toggle-->
 						<!--begin::Header Logo-->
 						<div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
-							<a th:href="@{index.html}">
-								<img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default w-284 h-35px">
-								<img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
+							<a th:href="@{/index.html}">
+								<img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}"class="logo-default w-284 h-35px">
+								<img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}"class="logo-sticky h-25px">
 							</a>
 						</div>
 						<!--end::Header Logo-->
@@ -1494,7 +1493,7 @@ License: For each use you must have a valid license purchased only from above li
 									<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
 										id="#kt_header_menu" data-kt-menu="true">
 										<div class="menu-item me-lg-1">
-											<a th:href="@{index.html}" class="menu-link py-3">
+											<a th:href="@{/index.html}" class="menu-link py-3">
 												<span class="menu-title">Home</span>
 											</a>
 										</div>
@@ -1622,62 +1621,11 @@ License: For each use you must have a valid license purchased only from above li
 															</a>
 														</div>
 														<div class="menu-item">
-															<a class="menu-link py-3" th:href="@{/admin/topics/view.html}">
+															<a class="menu-link py-3" th:href="@{admin/topics/view.html}">
 																<span class="menu-bullet">
 																	<span class="bullet bullet-dot"></span>
 																</span>
 																<span class="menu-title">Topic Details</span>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div data-kt-menu-trigger="{default:'click', lg: 'hover'}"
-													data-kt-menu-placement="right-start"
-													class="menu-item menu-lg-down-accordion">
-													<span class="menu-link py-3">
-														<span class="menu-icon">
-															<!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-															<span class="svg-icon svg-icon-2">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24"
-																	height="24" viewBox="0 0 24 24" fill="none">
-																	<path opacity="0.3"
-																		d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z"
-																		fill="black"></path>
-																	<path
-																		d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z"
-																		fill="black"></path>
-																</svg>
-															</span>
-															<!--end::Svg Icon-->
-														</span>
-														<span class="menu-title">Customers</span>
-														<span class="menu-arrow"></span>
-													</span>
-													<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg py-lg-4 w-lg-225px"
-														style="">
-														<div class="menu-item">
-															<a class="menu-link py-3"
-																th:href="@{/admin/customers/getting-started.html}">
-																<span class="menu-bullet">
-																	<span class="bullet bullet-dot"></span>
-																</span>
-																<span class="menu-title">Getting Started</span>
-															</a>
-														</div>
-														<div class="menu-item">
-															<a class="menu-link py-3" th:href="@{/admin/customers/list.html}">
-																<span class="menu-bullet">
-																	<span class="bullet bullet-dot"></span>
-																</span>
-																<span class="menu-title">Customer Listing</span>
-															</a>
-														</div>
-														<div class="menu-item">
-															<a class="menu-link py-3" th:href="@{/admin/customers/view.html}">
-																<span class="menu-bullet">
-																	<span class="bullet bullet-dot"></span>
-																</span>
-																<span class="menu-title">Customer Details</span>
 															</a>
 														</div>
 													</div>
@@ -1742,14 +1690,6 @@ License: For each use you must have a valid license purchased only from above li
 													class="menu-item here menu-lg-down-accordion">
 													<span class="menu-link py-3">
 														<span class="menu-icon">
-															<!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm002.svg-->
-															<!-- <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                  <path d="M21 10H13V11C13 11.6 12.6 12 12 12C11.4 12 11 11.6 11 11V10H3C2.4 10 2 10.4 2 11V13H22V11C22 10.4 21.6 10 21 10Z" fill="black" />
-                                  <path opacity="0.3" d="M12 12C11.4 12 11 11.6 11 11V3C11 2.4 11.4 2 12 2C12.6 2 13 2.4 13 3V11C13 11.6 12.6 12 12 12Z" fill="black" />
-                                  <path opacity="0.3" d="M18.1 21H5.9C5.4 21 4.9 20.6 4.8 20.1L3 13H21L19.2 20.1C19.1 20.6 18.6 21 18.1 21ZM13 18V15C13 14.4 12.6 14 12 14C11.4 14 11 14.4 11 15V18C11 18.6 11.4 19 12 19C12.6 19 13 18.6 13 18ZM17 18V15C17 14.4 16.6 14 16 14C15.4 14 15 14.4 15 15V18C15 18.6 15.4 19 16 19C16.6 19 17 18.6 17 18ZM9 18V15C9 14.4 8.6 14 8 14C7.4 14 7 14.4 7 15V18C7 18.6 7.4 19 8 19C8.6 19 9 18.6 9 18Z" fill="black" />
-                                </svg>
-                              </span> -->
 															<span class="svg-icon svg-icon-2">
 																<!--begin::Svg Icon | path:/var/www/preview.E-Word.com/metronic/releases/2021-05-14-112058/theme/html/demo8/dist/../src/media/svg/icons/Shopping/Wallet3.svg-->
 																<svg xmlns="http://www.w3.org/2000/svg"
@@ -2774,7 +2714,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5">
-												<a th:href="@{/authentication/sign-in.html}"
+												<a th:href="@{/../E-Word-Learning/authentication/sign-in.html}"
 													class="menu-link px-5">Sign
 													Out</a>
 											</div>
@@ -2815,7 +2755,7 @@ License: For each use you must have a valid license purchased only from above li
 							<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 								<!--begin::Item-->
 								<li class="breadcrumb-item text-white opacity-75">
-									<a th:href="@{index.html}" class="text-white text-hover-primary">Home</a>
+									<a th:href="@{/index.html}" class="text-white text-hover-primary">Home</a>
 								</li>
 								<!--end::Item-->
 								<!--begin::Item-->
@@ -3203,7 +3143,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Copyright-->
 						<div class="text-dark order-2 order-md-1">
 							<span class="text-muted fw-bold me-1">2023©</span>
-							<a  target="_blank"
+							<a th:href="@{https://E-Word.com}" target="_blank"
 								class="text-gray-800 text-hover-primary">E-Word</a>
 						</div>
 						<!--end::Copyright-->
@@ -5266,13 +5206,13 @@ License: For each use you must have a valid license purchased only from above li
 	<script th:src="@{/assets/plugins/custom/datatables/datatables.bundle.js}"></script>
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<!-- <script th:src="@{/assets/js/custom/apps/customers/list/list.js}"></script> -->
+	<!-- <script src="assets/js/custom/apps/customers/list/list.js"></script> -->
 	<script th:src="@{/assets/js/custom/apps/questions/add.js}"></script>
 	<script th:src="@{/assets/js/custom/apps/questions/list.js}"></script>
-	<!-- <script th:src="@{/assets/js/custom/widgets.js}"></script>
-	<script th:src="@{/assets/js/custom/apps/chat/chat.js}"></script>
-	<script th:src="@{/assets/js/custom/modals/create-app.js}"></script>
-	<script th:src="@{/assets/js/custom/modals/upgrade-plan.js}"></script> -->
+	<!-- <script src="assets/js/custom/widgets.js"></script>
+	<script src="assets/js/custom/apps/chat/chat.js"></script>
+	<script src="assets/js/custom/modals/create-app.js"></script>
+	<script src="assets/js/custom/modals/upgrade-plan.js"></script> -->
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>
