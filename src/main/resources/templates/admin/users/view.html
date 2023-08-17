@@ -2822,7 +2822,7 @@
 											<!--begin::Position-->
 											<div class="mb-9">
 												<!--begin::Badge-->
-												<div class="badge badge-lg badge-light-primary d-inline">Administrator
+												<div class="badge badge-lg badge-light-primary d-inline" th:text="${user.role == 1 ? 'Administrator' : 'User'}">
 												</div>
 												<!--begin::Badge-->
 											</div>
