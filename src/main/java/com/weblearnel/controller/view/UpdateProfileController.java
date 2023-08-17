@@ -68,6 +68,12 @@ public class UpdateProfileController {
             if(newUser.getAddress() != null) {
                 user.setAddress(newUser.getAddress());
             }
+            if(newUser.getUsername() != null) {
+                user.setUsername(newUser.getUsername());
+            }
+            if(newUser.getRole() != null) {
+                user.setRole(newUser.getRole());
+            }
             userRepository.save(user);
             // User user = userService.getUserById(id);
             // if (user == null) {

@@ -12,6 +12,18 @@ var KTUsersUpdateEmail = function () {
     const element = document.getElementById('kt_modal_update_email');
     const form = element.querySelector('#kt_modal_update_email_form');
     const modal = new bootstrap.Modal(element);
+    var userEmail = "";
+    var userId = "";
+    var redirectUrl = "";
+    document.addEventListener('DOMContentLoaded', function () {
+        const emailLink = document.getElementById('emailLink');
+        userEmail = emailLink.textContent.trim();
+        const userIDLink = document.getElementById('userId');
+        userId = userIDLink.textContent.trim();
+
+        // console.log('Email:', email);
+        // You can use the email value in your JavaScript code
+    });
 
     // Init add schedule modal
     var initUpdateEmail = () => {
@@ -128,30 +140,57 @@ var KTUsersUpdateEmail = function () {
                         submitButton.disabled = true;
 
                         // Simulate form submission. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                        setTimeout(function () {
-                            // Remove loading indication
-                            submitButton.removeAttribute('data-kt-indicator');
-
-                            // Enable button
-                            submitButton.disabled = false;
-
-                            // Show popup confirmation 
-                            Swal.fire({
-                                text: "Form has been successfully submitted!",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn btn-primary"
-                                }
-                            }).then(function (result) {
-                                if (result.isConfirmed) {
-                                    modal.hide();
-                                }
-                            });
-
-                            // form.submit(); // Submit form
-                        }, 2000);
+                        var formData = {
+                            username: $("input[name=user_name]").val(),
+                            email: userEmail
+                        }
+            
+                        fetch("/update", {
+                            method: "PUT",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                        .then(response => response.text())
+                        .then(data => {
+                            if (data.startsWith("redirect:")) {
+                                // Extract the URL from the response and perform the redirection
+                                redirectUrl = data.substring("redirect:".length);
+                                console.log("redirectUrl: " + redirectUrl);
+                            } else {
+                                console.log("data: " + data);
+                                textMessage = data;
+                                iconMessage = "error";
+                            }
+                            setTimeout(function () {
+                                // Remove loading indication
+                                submitButton.removeAttribute('data-kt-indicator');
+                
+                                // Enable button
+                                submitButton.disabled = false;
+                
+                                // Show popup confirmation 
+                                Swal.fire({
+                                    text: "Form has been successfully submitted!",
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                }).then(function (result) {
+                                    if (result.isConfirmed) {
+                                        modal.hide();
+                                        console.log("/admin/users/view/" + userId);
+                                        window.location.href = "/admin/users/view/" + userId;
+                                        
+                                    }
+                                });
+                
+                                // form.submit(); // Submit form
+                            }, 2000);
+                        })
                     }
                 });
             }

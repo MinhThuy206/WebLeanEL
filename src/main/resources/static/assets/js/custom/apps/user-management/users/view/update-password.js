@@ -12,7 +12,17 @@ var KTUsersUpdatePassword = function () {
     const element = document.getElementById('kt_modal_update_password');
     const form = element.querySelector('#kt_modal_update_password_form');
     const modal = new bootstrap.Modal(element);
+    var userEmail = "";
+    var userId = "";
+    document.addEventListener('DOMContentLoaded', function () {
+        const emailLink = document.getElementById('emailLink');
+        userEmail = emailLink.textContent.trim();
+        const userIDLink = document.getElementById('userId');
+        userId = userIDLink.textContent.trim();
 
+        // console.log('Email:', email);
+        // You can use the email value in your JavaScript code
+    });
     // Init add schedule modal
     var initUpdatePassword = () => {
 
@@ -160,8 +170,32 @@ var KTUsersUpdatePassword = function () {
 
                         // Disable button to avoid multiple click 
                         submitButton.disabled = true;
-
-                        // Simulate form submission. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                        var formdata = {
+                            password: $("input[name=new_password]").val(),
+                            confirmPassword: $("input[name=confirm_password]").val(),
+                            currentPassword: $("input[name=current_password]").val(),
+                            email: userEmail,
+                            
+                        };
+                        var redirectUrl = "";
+                    fetch("/updatePassword", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(formdata)
+                    })
+                    .then(response => response.text()
+                    .then(data => {
+                        if (data.startsWith("redirect:")) {
+                            // Extract the URL from the response and perform the redirection
+                            redirectUrl = data.substring("redirect:".length);
+                            console.log("redirectUrl: " + redirectUrl);
+                        } else {
+                            console.log("data: " + data);
+                            textMessage = data;
+                            iconMessage = "error";
+                        }
                         setTimeout(function () {
                             // Remove loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -181,11 +215,16 @@ var KTUsersUpdatePassword = function () {
                             }).then(function (result) {
                                 if (result.isConfirmed) {
                                     modal.hide();
+                                    window.location.href = "/admin/users/view/" + userId;
                                 }
                             });
 
-                            form.submit(); // Submit form
+                            // form.submit(); // Submit form
                         }, 2000);
+                    }));
+
+                        // Simulate form submission. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                        
                     }
                 });
             }
