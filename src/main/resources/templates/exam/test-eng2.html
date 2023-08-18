@@ -73830,7 +73830,7 @@
                                             class="block block-blockgroup block-block-groupmain-content clearfix">
                                             <div id="root">
                                                 <div data-reactroot="" class="TigerQuiz" dir="ltr">
-                                                    <form id="test-form">
+                                                    <form th:action="@{/exam/submit/{email}(email=${user.email})}" method="GET" id="test-form">
                                                         <div class="Quiz">
                                                             <div class="TimerContainer">
                                                                 <div id="time"></div>

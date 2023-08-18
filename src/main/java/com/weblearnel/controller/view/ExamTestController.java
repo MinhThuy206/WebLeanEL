@@ -118,14 +118,14 @@ public class ExamTestController {
         return "exam/test-eng2";
     }
 
-    @GetMapping("/exam/test_eng3/{user_id}/{exam_id}")
-    public String Eng3Test(@PathVariable("user_id") Long user_id, Model model, @PathVariable("exam_id") Long exam_id) {
-        User user = userService.getUserById(user_id);
-        model.addAttribute("user", user);
-        Exam exam = examService.getExamById(exam_id);
-        model.addAttribute("exam", exam);
-        return "exam/test-eng3";
-    }
+//    @GetMapping("/exam/test_eng3/{user_id}/{exam_id}")
+//    public String Eng3Test(@PathVariable("user_id") Long user_id, Model model, @PathVariable("exam_id") Long exam_id) {
+//        User user = userService.getUserById(user_id);
+//        model.addAttribute("user", user);
+//        Exam exam = examService.getExamById(exam_id);
+//        model.addAttribute("exam", exam);
+//        return "exam/test-eng3";
+//    }
 
     @GetMapping("/exam/submit/{email}")
     public String submitExam(@RequestBody List<Answer> userAnswers, @PathVariable("email") String email,
@@ -139,16 +139,5 @@ public class ExamTestController {
         return "redirect:/exam/test-eng3";
     }
 
-    @GetMapping("/exam/result")
-    public String showResult(@RequestParam int score, Model model) {
-        model.addAttribute("score", score);
-        return "/exam/test-eng3";
-    }
-//    @PostMapping("/exam/{question_id}")
-//    public String showQuestion(@PathVariable long question_id, Model model){
-//        Question question = questionService.getQuestionById(question_id);
-//        model.addAttribute("questionlist",  question);
-//        return "redirect:/exam/test-eng2";
-//    }
 
 }
