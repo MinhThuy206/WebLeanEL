@@ -12,11 +12,16 @@ $(function () {
     }, 1000);
 
     let list_id = $('.question-id');
-    list_id.each(function (index, l)
-    {
+    list_id.each(function (index, l) {
         let parent = $(this).closest('div.Quiz-inner');
-        let id = "question-" + $(this).text().split(' ')[1]
-        parent.attr('id', id);
+        let idDiv = "question-" + $(this).text().split(' ')[1];
+        parent.attr('id', idDiv);
+
+        let inputEle = $(`#question-${index + 1} input[type="radio"]`);
+        let idEle = "question" + (index + 1);
+        inputEle.each(function (index, l) {
+            $(this).attr('name', idEle);
+        });
     });
     $(`#question-1.Quiz-inner`).css("display", "block");
 
@@ -35,7 +40,6 @@ $(function () {
         ableButton(question_index_current);
         task_selectedData = null;
         confirmSubmit();
-
     });
 
 
@@ -49,38 +53,57 @@ $(function () {
         confirmSubmit();
     });
 
-    $(".radio input").click(function () {
+    $(".radio input").on('click', function () {
         task_selectedData = $(this);
         $('.selecting-answer').removeClass('selecting-answer');
-        $(this).addClass('selecting-answer');
+        ($(this)).addClass('selecting-answer');
         $(`#question-${question_index_current} .Quiz-confidence-buttons .btn`).removeClass('disabled');
+        $(`#question-${question_index_current} .Quiz-confidence-buttons .selecting-btn`).removeClass('selecting-btn');
+        resetValInput();
         changeRemainingQuestions();
         confirmSubmit();
     });
+
 
     $(".radio label").click(function () {
         task_selectedData = $(this);
         $('.selecting-answer').removeClass('selecting-answer');
         ($(this).prev()).addClass('selecting-answer');
         $(`#question-${question_index_current} .Quiz-confidence-buttons .btn`).removeClass('disabled');
+        $(`#question-${question_index_current} .Quiz-confidence-buttons .selecting-btn`).removeClass('selecting-btn');
+        resetValInput();
         changeRemainingQuestions();
         confirmSubmit();
     });
 
+    function resetValInput() {
+        list_input = $(`#question-${question_index_current} input`);
+        list_input.each(function (index, l) {
+            if (!$(this).hasClass('selecting-answer')) {
+                $(this).val(index + 1);
+            }
+        });
+    }
+
+    function resetValDefault() {
+        list_input = $(`#question-${question_index_current} input`);
+        list_input.each(function (index, l) {
+            $(this).val(index + 1);
+        });
+    }
 
     $(`.Quiz-confidence-buttons a`).click(function () {
         let data_topic = $(`#question-${question_index_current}`).attr('data-topic') + "_";
         let data_degree = "_" + $(this).attr('data-degree');
+        resetValDefault();
         let data_answer = $(`#question-${question_index_current} .selecting-answer`).val();
         $(`#question-${question_index_current} .Quiz-confidence-buttons .selecting-btn`).removeClass('selecting-btn');
         $(this).addClass('selecting-btn');
         $(this).css('background-color', '#DEDEDE');
-        // }
-        $(`#question-${question_index_current} .selecting-answer`).val(data_topic + data_answer[0] + data_degree);
+        $(`#question-${question_index_current} .selecting-answer`).val(data_topic + data_answer + data_degree);
         changeRemainingQuestions();
         confirmSubmit();
     });
-
 
     function ableButton(index) {
         if (index === 1) {
@@ -182,6 +205,50 @@ $(function () {
     //             });
     //     });
     // });
+    $("#saveButton").on("click", function () {
+        // Lấy danh sách các phần tử radio đã được chọn
+        const selectedAnswers = $("input[type='radio']:checked");
+
+        // Tạo mảng lưu trữ câu trả lời người dùng
+        const userAnswers = [];
+
+        // Duyệt qua từng phần tử radio đã chọn
+        selectedAnswers.each(function () {
+            const questionId = $(this).data("question_id"); // Lấy ID của câu hỏi
+            const selectedOption = $(this).val(); // Lấy giá trị của phần tử đã chọn
+
+            // Thêm câu trả lời vào mảng userAnswers
+            userAnswers.push({
+                questionId: questionId,
+                userAnswer: selectedOption
+            });
+        });
+
+
+        saveUserAnswersToDatabase(userAnswers);
+    });
+
+    function saveUserAnswersToDatabase(userAnswers) {
+        const apiUrl = '/submit-answers';
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userAnswers)
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('User answers saved successfully.');
+                } else {
+                    console.error('Failed to save user answers.');
+                }
+            })
+            .catch(error => {
+                console.error('Error saving user answers:', error);
+            });
+    }
 });
 
 

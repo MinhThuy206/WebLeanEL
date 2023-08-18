@@ -2817,13 +2817,12 @@
 											<!--end::Avatar-->
 											<!--begin::Name-->
 											<a th:href="@{#}"
-												class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3 us-name">Emma
-												Smith</a>
+												class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3 us-name">[[${user.fullname}]]</a>
 											<!--end::Name-->
 											<!--begin::Position-->
 											<div class="mb-9">
 												<!--begin::Badge-->
-												<div class="badge badge-lg badge-light-primary d-inline">Administrator
+												<div class="badge badge-lg badge-light-primary d-inline" th:text="${user.role == 1 ? 'Administrator' : 'User'}">
 												</div>
 												<!--begin::Badge-->
 											</div>
@@ -2878,8 +2877,6 @@
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Address</div>
 												<div class="text-gray-600">[[${user.address}]]
-													<br />
-													<br />
 												</div>
 												<!--begin::Details item-->
 												<!--begin::Details item-->
@@ -3954,7 +3951,7 @@
 												</label>
 												<!--end::Label-->
 												<!--begin::Input-->
-												<input class="form-control form-control-solid" th:placeholder="${user.email}"
+												<input class="form-control form-control-solid" th:placeholder="${user.username}"
 													name="user_name" value="" />
 												<!--end::Input-->
 											</div>
