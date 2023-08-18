@@ -228,8 +228,10 @@ $(function () {
         saveUserAnswersToDatabase(userAnswers);
     });
 
+
     function saveUserAnswersToDatabase(userAnswers) {
-        const apiUrl = '/submit-answers';
+        // const apiUrl = '/submit-answers';
+        const apiUrl = '/exam/submit/' + userEmail;
 
         fetch(apiUrl, {
             method: 'POST',

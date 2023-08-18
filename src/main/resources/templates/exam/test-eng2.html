@@ -73830,7 +73830,7 @@
                                             class="block block-blockgroup block-block-groupmain-content clearfix">
                                             <div id="root">
                                                 <div data-reactroot="" class="TigerQuiz" dir="ltr">
-                                                    <form th:action="@{/exam/submit/{email}(email=${user.email})}" method="GET" id="test-form">
+                                                    <form th:action="@{/exam/submit/{email}(email=${user.email})}" method="post" id="test-form" onsubmit="submitForm(event)" data-api-url-th="${'/exam/submit/' + user.email}">
                                                         <div class="Quiz">
                                                             <div class="TimerContainer">
                                                                 <div id="time"></div>
@@ -73903,157 +73903,6 @@
                                                                 </div>
 
                                                             </div>
-
-
-                                                            <!-- Question 1 -->
-<!--                                                            <div class="Quiz-inner" id="question-1"-->
-<!--                                                                style="display: block;" data-topic="2">-->
-
-<!--                                                                <p>Question 1 of 30</p>-->
-<!--                                                                <p><strong>A:</strong> Choose the best word or phrase to-->
-<!--                                                                    complete the sentence.</p>-->
-<!--                                                                <div>-->
-<!--                                                                    <p class="rq-Question-instruction"></p>-->
-<!--                                                                    <p class="rq-Question-text well"-->
-<!--                                                                        style="margin: 0px;">The big book is ________.-->
-<!--                                                                    </p>-->
-<!--                                                                    <div name="rq-Question-answerList"-->
-<!--                                                                        class="form-group btn-group0 btn-group-justified0 toggle-game-options"-->
-<!--                                                                        data-question-index="0">-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio1"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question1" value="1">-->
-<!--                                                                            <label for="radio1"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>mine</label>-->
-<!--                                                                        </div>-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio2"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question1" value="2">-->
-<!--                                                                            <label for="radio2"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>for-->
-<!--                                                                                my</label>-->
-<!--                                                                        </div>-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio3"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question1" value="3">-->
-<!--                                                                            <label for="radio3"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>me</label>-->
-<!--                                                                        </div>-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-<!--                                                                <p><strong>B:</strong> How sure are you about the answer-->
-<!--                                                                    you have given?</p>-->
-
-<!--                                                                <div class="Quiz-confidence-buttons text-center">-->
-<!--                                                                    <a class="btn btn-default" data-degree="certain">Certain</a>-->
-<!--                                                                    <a class="btn btn-default" data-degree="not">Not sure</a>-->
-<!--                                                                </div>-->
-
-<!--                                                            </div>-->
-                                                            <!-- end Question 1 -->
-
-<!--                                                            &lt;!&ndash; Question 2 &ndash;&gt;-->
-<!--                                                            <div class="Quiz-inner" id="question-2"-->
-<!--                                                                style="display: none;" data-topic="1">-->
-<!--                                                                <p>Question 2 of 30</p>-->
-<!--                                                                <p><strong>A:</strong> Choose the best word or phrase to-->
-<!--                                                                    complete the sentence.</p>-->
-<!--                                                                <div>-->
-<!--                                                                    <p class="rq-Question-instruction"></p>-->
-<!--                                                                    <p class="rq-Question-text well"-->
-<!--                                                                        style="margin: 0px;">The big book is ________.-->
-<!--                                                                    </p>-->
-<!--                                                                    <div name="rq-Question-answerList"-->
-<!--                                                                        class="form-group btn-group0 btn-group-justified0 toggle-game-options"-->
-<!--                                                                        data-question-index="0">-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio4"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question2" value="1">-->
-<!--                                                                            <label for="radio4"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>mine</label>-->
-<!--                                                                        </div>-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio5"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question2" value="2">-->
-<!--                                                                            <label for="radio5"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>for-->
-<!--                                                                                my</label>-->
-<!--                                                                        </div>-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio6"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question2" value="3">-->
-<!--                                                                            <label for="radio6"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>me</label>-->
-<!--                                                                        </div>-->
-<!--                                                                    </div>-->
-<!--                                                                </div>-->
-<!--                                                                <p><strong>B:</strong> How sure are you about the answer-->
-<!--                                                                    you have given?</p>-->
-
-<!--                                                                <div class="Quiz-confidence-buttons text-center">-->
-<!--                                                                    <a class="btn btn-default" data-degree="certain">Certain</a>-->
-<!--                                                                    <a class="btn btn-default" data-degree="not">Not sure</a>-->
-<!--                                                                </div>-->
-
-<!--                                                            </div>-->
-<!--                                                            &lt;!&ndash; end Question 2 &ndash;&gt;-->
-
-<!--                                                            &lt;!&ndash; Question 3 &ndash;&gt;-->
-<!--                                                            <div class="Quiz-inner" id="question-3"-->
-<!--                                                                style="display: none;" data-topic="3">-->
-
-<!--                                                                <p>Question 3 of 30</p>-->
-<!--                                                                <p><strong>A:</strong> Choose the best word or phrase to-->
-<!--                                                                    complete the sentence.</p>-->
-<!--                                                                <div>-->
-<!--                                                                    <p class="rq-Question-instruction"></p>-->
-<!--                                                                    <p class="rq-Question-text well"-->
-<!--                                                                        style="margin: 0px;">The big book is ________.-->
-<!--                                                                    </p>-->
-<!--                                                                    <div name="rq-Question-answerList"-->
-<!--                                                                        class="form-group btn-group0 btn-group-justified0 toggle-game-options"-->
-<!--                                                                        data-question-index="0">-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio7"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question3" value="1">-->
-<!--                                                                            <label for="radio7"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>mine</label>-->
-<!--                                                                        </div>-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio8"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question3" value="2">-->
-<!--                                                                            <label for="radio8"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>for-->
-<!--                                                                                my</label>-->
-<!--                                                                        </div>-->
-<!--                                                                        <div class="radio" tabindex="0">-->
-<!--                                                                            <input type="radio" id="radio9"-->
-<!--                                                                                class="form-group btn btn-default block"-->
-<!--                                                                                name="question3" value="3">-->
-<!--                                                                            <label for="radio9"><span-->
-<!--                                                                                    class="hidden glyphicon pull-right"></span>me</label>-->
-<!--                                                                        </div>-->
-<!--                                                                    </div>-->
-
-<!--                                                                </div>-->
-<!--                                                                <p><strong>B:</strong> How sure are you about the answer-->
-<!--                                                                    you have given?</p>-->
-
-<!--                                                                <div class="Quiz-confidence-buttons text-center">-->
-<!--                                                                    <a class="btn btn-default" data-degree="certain">Certain</a>-->
-<!--                                                                    <a class="btn btn-default" data-degree="not">Not sure</a>-->
-<!--                                                                </div>-->
-
-<!--                                                            </div>-->
-                                                            <!-- end Question 3 -->
                                                             <button type="submit" id="submit-btn"
                                                                 class="btn btn-success" style="display: none;">
                                                                 <i class="fa-regular fa-flag me-2"></i> Finish
@@ -79778,6 +79627,78 @@ Edit">Can
     <script th:src="@{/assets/js/custom/apps/chat/chat.js}"></script>
     <script th:src="@{/assets/js/custom/modals/create-app.js}"></script>
     <script th:src="@{/assets/js/custom/modals/upgrade-plan.js}"></script>
+    <script th:inline="javascript">
+        var userAnswers =[];
+        $(".Quiz-confidence-buttons a").on("click", function () {
+            const confidenceDegree = $(this).data("degree"); // Degree button value
+
+            // Traverse up the DOM to find the closest parent element with class 'Quiz-inner'
+            const quizInnerElement = $(this).closest(".Quiz-inner");
+
+            // Find the selected radio button within the same Quiz-inner container
+            const selectedRadio = quizInnerElement.find("input[type='radio']:checked");
+            var selectedOptionValue = "";
+            var selectedOptionText = "";
+            if (selectedRadio.length > 0) {
+                // Get the value of the selected radio button (1, 2, 3, etc.)
+                selectedOptionValue = selectedRadio.val();
+
+                // Get the associated option text using the selectedOptionValue
+                selectedOptionText = quizInnerElement.find(`label[for='${selectedRadio.attr('id')}']`).text();
+
+                console.log(`Confidence Degree: ${confidenceDegree}`);
+                console.log(`Selected Option Value: ${selectedOptionValue}`);
+                console.log(`Selected Option Text: ${selectedOptionText}`);
+            } else {
+                console.log("No radio button is selected.");
+            }
+            const selectedAnswers = $("input[type='radio']:checked");
+            selectedRadio.each(function () {
+            const questionId = $(this).data("question_id"); // Lấy ID của câu hỏi
+
+                // Thêm câu trả lời vào mảng userAnswers
+                userAnswers.push({
+                    questionId: questionId,
+                    userAnswer: selectedOptionText
+                });
+            });
+            }
+            );
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+            var userEmail = "";
+            
+            const emailLink = document.getElementById('email_link');
+            userEmail = emailLink.textContent.trim();
+            var userAnswers = [];
+
+            console.log('Email:', userEmail);
+            
+
+            
+    
+            const apiUrl = "/exam/submit/" + userEmail; // Read the API URL from the data attribute
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userAnswers)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('User answers saved successfully.');
+                } else {
+                    console.error('Failed to save user answers.');
+                }
+            })
+            .catch(error => {
+                console.error('Error saving user answers:', error);
+            });
+            // Rest of your fetch code remains the same
+        }
+    </script>
+    
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
 

@@ -2,8 +2,6 @@ package com.weblearnel.controller.view;
 
 import java.util.List;
 
-import com.weblearnel.model.*;
-import com.weblearnel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import com.weblearnel.model.Answer;
+import com.weblearnel.model.Exam;
+import com.weblearnel.model.Question;
+import com.weblearnel.model.Result;
+import com.weblearnel.model.User;
+import com.weblearnel.service.AnswerService;
+import com.weblearnel.service.ExamService;
+import com.weblearnel.service.QuestionService;
+import com.weblearnel.service.ResultService;
+import com.weblearnel.service.UserService;
 
 import lombok.AllArgsConstructor;
 
@@ -127,12 +135,14 @@ public class ExamTestController {
 //        return "exam/test-eng3";
 //    }
 
-    @GetMapping("/exam/submit/{email}")
+    @PostMapping("/exam/submit/{email}")
     public String submitExam(@RequestBody List<Answer> userAnswers, @PathVariable("email") String email,
             Model model) {
         User user = userService.getUserByEmail(email);
+        System.out.println(userAnswers);
         double score = answerService.checkAnswers(userAnswers, user.getId());
         Result result = new Result(score);
+        System.out.println(result);
         resultService.addResult(result);
 
         model.addAttribute("score", score);
