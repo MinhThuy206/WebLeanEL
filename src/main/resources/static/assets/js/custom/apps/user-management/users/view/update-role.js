@@ -12,6 +12,18 @@ var KTUsersUpdateRole = function () {
     const element = document.getElementById('kt_modal_update_role');
     const form = element.querySelector('#kt_modal_update_role_form');
     const modal = new bootstrap.Modal(element);
+    var userEmail = "";
+    var userId = "";
+    var redirectUrl = "";
+    document.addEventListener('DOMContentLoaded', function () {
+        const emailLink = document.getElementById('emailLink');
+        userEmail = emailLink.textContent.trim();
+        const userIDLink = document.getElementById('userId');
+        userId = userIDLink.textContent.trim();
+
+        // console.log('Email:', email);
+        // You can use the email value in your JavaScript code
+    });
 
     // Init add schedule modal
     var initUpdateRole = () => {
@@ -95,32 +107,62 @@ var KTUsersUpdateRole = function () {
 
             // Disable button to avoid multiple click 
             submitButton.disabled = true;
+            const radioInput = document.querySelector('#kt_modal_update_role_option_0');
+            var role = 0;
+            if (radioInput.checked) {
+                role = 1;
+            }
 
+            var formData = {
+                role: role, 
+                email: userEmail
+            }
+            fetch("/update", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.startsWith("redirect:")) {
+                    // Extract the URL from the response and perform the redirection
+                    redirectUrl = data.substring("redirect:".length);
+                    console.log("redirectUrl: " + redirectUrl);
+                } else {
+                    console.log("data: " + data);
+                    textMessage = data;
+                    iconMessage = "error";
+                }
+                setTimeout(function () {
+                    // Remove loading indication
+                    submitButton.removeAttribute('data-kt-indicator');
+    
+                    // Enable button
+                    submitButton.disabled = false;
+    
+                    // Show popup confirmation 
+                    Swal.fire({
+                        text: "Form has been successfully submitted!",
+                        icon: "success",
+                        buttonsStyling: false,
+                        confirmButtonText: "Ok, got it!",
+                        customClass: {
+                            confirmButton: "btn btn-primary"
+                        }
+                    }).then(function (result) {
+                        if (result.isConfirmed) {
+                            modal.hide();
+                            window.location.href = "/admin/users/view/" + userId;
+                        }
+                    });
+    
+                    // form.submit(); // Submit form
+                }, 2000);
+            })
             // Simulate form submission. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-            setTimeout(function () {
-                // Remove loading indication
-                submitButton.removeAttribute('data-kt-indicator');
-
-                // Enable button
-                submitButton.disabled = false;
-
-                // Show popup confirmation 
-                Swal.fire({
-                    text: "Form has been successfully submitted!",
-                    icon: "success",
-                    buttonsStyling: false,
-                    confirmButtonText: "Ok, got it!",
-                    customClass: {
-                        confirmButton: "btn btn-primary"
-                    }
-                }).then(function (result) {
-                    if (result.isConfirmed) {
-                        modal.hide();
-                    }
-                });
-
-                //form.submit(); // Submit form
-            }, 2000);
+            
         });
     }
 

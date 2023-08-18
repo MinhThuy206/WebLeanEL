@@ -1,5 +1,7 @@
 package com.weblearnel.controller.view;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.weblearnel.model.Level;
 import com.weblearnel.model.Question;
 import com.weblearnel.model.Topic;
+import com.weblearnel.model.User;
 import com.weblearnel.model.Word;
 import com.weblearnel.service.LevelService;
 import com.weblearnel.service.QuestionService;
 import com.weblearnel.service.TopicService;
+import com.weblearnel.service.UserService;
 import com.weblearnel.service.WordService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,6 +40,9 @@ public class AdminController {
 
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private UserService userService;
     // Render trang chủ admin
     @GetMapping("/admin")
     public String adminPage() {
@@ -129,6 +136,43 @@ public class AdminController {
         // }
         questionService.addQuestion(question);
         return "redirect:/admin/" + topic_name + "/createQuestion";
+    }
+
+    @GetMapping("admin/users/view/{user_id}")
+    public String viewUsers(@PathVariable("user_id") long id, Model model) {
+        User user = userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "admin/users/view";
+    }
+
+    @GetMapping("admin/users/list")
+    public String listUsers(Model model) {
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+
+        return "admin/users/list";
+    }
+
+    @PostMapping("admin/users/addUser")
+    public String handleAdminAddUser(HttpServletRequest request) {
+        String username = request.getParameter("user_name");
+        String password = request.getParameter("password");
+        Integer role;
+        if (request.getParameter("user_role") == "Administrator") {
+            role = 1;
+        } else {
+            role = 0;
+        }
+        String fullname = request.getParameter("full_name");
+        String email = request.getParameter("email");
+        String mobile = request.getParameter("phone");
+        String address = request.getParameter("address");
+        Integer level = 1;
+        User user = new User(username, password, fullname, address, mobile, email, level);
+        user.setRole(role);
+        userService.addUser(user);
+
+        return "redirect:/admin/users/list";
     }
     
 }

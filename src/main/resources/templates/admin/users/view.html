@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><!--begin::Head-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 
 <head>
 	<base href="../../static/">
@@ -27,7 +29,6 @@
 	<!--end::Page Vendor Stylesheets-->
 	<!--begin::Global Stylesheets Bundle(used by all pages)-->
 	<link th:href="@{/assets/plugins/global/plugins.bundle.css}" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="admin/users/style.css">
 	<link th:href="@{/assets/css/style.bundle.css}" rel="stylesheet" type="text/css">
 	<!--end::Global Stylesheets Bundle-->
 	<style type="text/css">
@@ -2816,13 +2817,12 @@
 											<!--end::Avatar-->
 											<!--begin::Name-->
 											<a th:href="@{#}"
-												class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3 us-name">Emma
-												Smith</a>
+												class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3 us-name">[[${user.fullname}]]</a>
 											<!--end::Name-->
 											<!--begin::Position-->
 											<div class="mb-9">
 												<!--begin::Badge-->
-												<div class="badge badge-lg badge-light-primary d-inline">Administrator
+												<div class="badge badge-lg badge-light-primary d-inline" th:text="${user.role == 1 ? 'Administrator' : 'User'}">
 												</div>
 												<!--begin::Badge-->
 											</div>
@@ -2861,24 +2861,22 @@
 											<div class="pb-5 fs-6">
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Account ID</div>
-												<div class="text-gray-600 account_id">45453423</div>
+												<div class="text-gray-600 account_id" id="userId">[[${user.id}]]</div>
 												<!--begin::Details item-->
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Email</div>
 												<div class="text-gray-600">
 													<a th:href="@{#}"
-														class="text-gray-600 text-hover-primary">info@E-Word.com</a>
+														class="text-gray-600 text-hover-primary" id="emailLink">[[${user.email}]]</a>
 												</div>
 												<!--begin::Details item-->
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Phone</div>
-												<div class="text-gray-600">+1(23) 456 7890</div>
+												<div class="text-gray-600">[[${user.mobile}]]</div>
 												<!--begin::Details item-->
 												<!--begin::Details item-->
 												<div class="fw-bolder mt-5">Address</div>
-												<div class="text-gray-600">101 Collin Street,
-													<br />Melbourne 3000 VIC
-													<br />Australia
+												<div class="text-gray-600">[[${user.address}]]
 												</div>
 												<!--begin::Details item-->
 												<!--begin::Details item-->
@@ -2954,7 +2952,7 @@
 														<tbody class="fs-6 fw-bold text-gray-600">
 															<tr>
 																<td>Username</td>
-																<td>e.smith@kpmg.com.au</td>
+																<td>[[${user.username}]]</td>
 																<td class="text-end">
 																	<button type="button"
 																		class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto"
@@ -2979,7 +2977,7 @@
 															</tr>
 															<tr>
 																<td>Password</td>
-																<td>******</td>
+																<td>[[${user.password}]]</td>
 																<td class="text-end">
 																	<button type="button"
 																		class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto"
@@ -3004,7 +3002,7 @@
 															</tr>
 															<tr>
 																<td>Role</td>
-																<td>Administrator</td>
+																<td th:text="${user.role == 1 ? 'Administrator' : 'User'}"></td>
 																<td class="text-end">
 																	<button type="button"
 																		class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto"
@@ -3155,7 +3153,7 @@
 												<!--begin::Disclaimer-->
 												<div class="text-gray-600">If you lose your mobile device or security
 													key, you can
-													<a href='#' class="me-1">generate a backup code</a>to sign in to
+													<a th:href='@{#}'class="me-1">generate a backup code</a>to sign in to
 													your account.
 												</div>
 												<!--end::Disclaimer-->
@@ -3475,7 +3473,7 @@
 												data-kt-scroll-offset="300px">
 												<!--begin::User toggle-->
 												<div class="fw-boldest fs-3 rotate collapsible mb-7"
-													data-bs-toggle="collapse" href="#kt_modal_update_user_user_info"
+													data-bs-toggle="collapse" th:href='@{#kt_modal_update_user_user_info}'
 													role="button" aria-expanded="false"
 													aria-controls="kt_modal_update_user_user_info">User Information
 													<span class="ms-2 rotate-180">
@@ -3509,10 +3507,10 @@
 															<!--begin::Image input-->
 															<div class="image-input image-input-outline"
 																data-kt-image-input="true"
-																style="background-image: url(assets/media/avatars/blank.png)">
+																style="background-image: url(/assets/media/avatars/blank.png)">
 																<!--begin::Preview existing avatar-->
 																<div class="image-input-wrapper w-125px h-125px"
-																	style="background-image: url(assets/media/avatars/blank.png)">
+																	style="background-image: url(/assets/media/avatars/blank.png)">
 																</div>
 																<!--end::Preview existing avatar-->
 																<!--begin::Edit-->
@@ -3953,8 +3951,8 @@
 												</label>
 												<!--end::Label-->
 												<!--begin::Input-->
-												<input class="form-control form-control-solid" placeholder=""
-													name="user_name" value="e.smith@kpmg.com.au" />
+												<input class="form-control form-control-solid" th:placeholder="${user.username}"
+													name="user_name" value="" />
 												<!--end::Input-->
 											</div>
 											<!--end::Input group-->
@@ -4012,7 +4010,7 @@
 									<!--end::Modal header-->
 									<!--begin::Modal body-->
 									<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-										<div class="d-none old-password">helloworld</div>
+										<div class="d-none old-password">[[${user.password}]]</div>
 										<!--begin::Form-->
 										<form id="kt_modal_update_password_form" class="form" action="#">
 											<!--begin::Label-->
@@ -4294,7 +4292,7 @@
 											<!--end::Label-->
 											<!--begin::QR code-->
 											<div class="d-flex flex-center" data-kt-add-auth-action="qr-code">
-												<img src="assets/media/misc/qr-code.png" alt="Scan this QR code" />
+												<img th:src='@{/assets/media/misc/qr-code.png}' alt="Scan this QR code" />
 											</div>
 											<!--end::QR code-->
 											<!--begin::Text code-->
@@ -4443,21 +4441,7 @@
 								class="text-gray-800 text-hover-primary">E-Word</a>
 						</div>
 						<!--end::Copyright-->
-						<!--begin::Menu-->
-						<ul class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
-							<li class="menu-item">
-								<a th:href="@{https://E-Word.com}" target="_blank" class="menu-link px-2">About</a>
-							</li>
-							<li class="menu-item">
-								<a href="https://E-Word.com/support" target="_blank"
-									class="menu-link px-2">Support</a>
-							</li>
-							<li class="menu-item">
-								<a href="https://1.envato.market/EA4JP" target="_blank"
-									class="menu-link px-2">Purchase</a>
-							</li>
-						</ul>
-						<!--end::Menu-->
+						
 					</div>
 					<!--end::Container-->
 				</div>
@@ -4494,11 +4478,11 @@
 	<!--end::Page Vendors Javascript-->
 	<!--begin::Page Custom Javascript(used by this page)-->
 	<!-- <script src="/assets/js/custom/apps/words/update.js"></script> -->
-	<script src="assets/js/custom/apps/user-management/users/view/update-details.js"></script>
-	<script src="assets/js/custom/apps/user-management/users/view/update-email.js"></script>
-	<script src="assets/js/custom/apps/user-management/users/view/update-password.js"></script>
-	<script src="assets/js/custom/apps/user-management/users/view/update-role.js"></script>
-	<script src="assets/js/custom/apps/user-management/users/view//delete.js"></script>
+	<script th:src="@{/assets/js/custom/apps/user-management/users/view/update-details.js}"></script>
+	<script th:src='@{/assets/js/custom/apps/user-management/users/view/update-email.js}'></script>
+	<script th:src='@{/assets/js/custom/apps/user-management/users/view/update-password.js}'></script>
+	<script th:src='@{/assets/js/custom/apps/user-management/users/view/update-role.js}'></script>
+	<script th:src='@{/assets/js/custom/apps/user-management/users/view//delete.js}'></script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>
