@@ -11,7 +11,7 @@ $(function () {
                 const eleName = $('.word-name').text();
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: "Are you sure you want to delete " + eleName + "?",
+                    text: "Are you sure you want to deleteeeeee " + eleName + "?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
@@ -37,7 +37,7 @@ $(function () {
                             var word_id = $('.py-5.fs-6 .word_id').text();
                             inputElement.val(word_id + "");
                             // Submit form
-                            form.submit();
+                            // form.submit();
                         });
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({

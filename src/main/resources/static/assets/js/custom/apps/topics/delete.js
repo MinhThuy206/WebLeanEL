@@ -12,7 +12,7 @@ $(function () {
                 const eleName = $('.us-name').text();
                 // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                 Swal.fire({
-                    text: "Are you sure you want to delete " + eleName + "?",
+                    text: "Are you sure you want to deleteeee " + eleName + "?",
                     icon: "warning",
                     showCancelButton: true,
                     buttonsStyling: false,
@@ -41,7 +41,7 @@ $(function () {
                             console.log(user_id);
                             inputElement.val(user_id + "");
                             // Submit form
-                            form.submit();
+                            // form.submit();
                         });
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({

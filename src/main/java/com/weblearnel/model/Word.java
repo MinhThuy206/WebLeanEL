@@ -63,6 +63,13 @@ public class Word {
         this.attribute = attribute;
         this.example = example;
     }
+    public Word(String name, String mean, String attribute, String example, String pronounce) {
+        this.name = name;
+        this.pronounce = pronounce;
+        this.mean = mean;
+        this.attribute = attribute;
+        this.example = example;
+    }
     @JsonIgnore
     @OneToMany(mappedBy = "word")
     private Set<Result> results;

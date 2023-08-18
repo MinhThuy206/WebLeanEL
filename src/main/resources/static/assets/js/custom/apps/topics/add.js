@@ -46,6 +46,10 @@ $(function () {
 
                         // Disable submit button whilst loading
                         submitButton.disabled = true;
+                        var formData = {
+                            name: form.querySelector('[name="name"]').value,
+                            description: form.querySelector('[name="description"]').value,
+                        };
 
                         setTimeout(function () {
                             submitButton.removeAttribute('data-kt-indicator');

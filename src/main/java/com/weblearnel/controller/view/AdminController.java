@@ -174,5 +174,69 @@ public class AdminController {
 
         return "redirect:/admin/users/list";
     }
+
+    @GetMapping("admin/topics/list")
+    public String listTopics(Model model) {
+        List<Topic> topics = topicService.getTopics();
+        model.addAttribute("topics", topics);
+
+        return "admin/topics/list";
+    }
+
+    @GetMapping("admin/topics/view/{topic_id}")
+    public String viewTopics(@PathVariable("topic_id") long id, Model model) {
+        Topic topic = topicService.getTopicById(id);
+        List<Word> words = wordService.getWordsByTopicId(id);
+        model.addAttribute("words", words);
+        model.addAttribute("topic", topic);
+        return "admin/topics/view";
+    }
+
+    @PostMapping("admin/topics/addTopic")
+    public String handleAdminAddTopic(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        Long level = Long.parseLong(request.getParameter("level"));
+        Level topicLevel = levelService.getLevelById(level);
+        Topic topic = new Topic(name, description);
+        topic.assignLevel(topicLevel);
+        if(topicService.getTopicByName(name) == null) {
+            topicService.addTopic(topic);
+        }
+
+        return "redirect:/admin/topics/list";
+    }
+
+    @PostMapping("admin/topics/addWord/{topic_id}")
+    public String handleAdminAddWord(HttpServletRequest request, @PathVariable("topic_id") long id) {
+        String name = request.getParameter("name");
+        String attribute = request.getParameter("attributes");
+        String pronounce = request.getParameter("pronounce");
+        String mean = request.getParameter("mean");
+        String example = request.getParameter("example");
+        Word word = new Word(name, mean, attribute, example, pronounce);
+        Topic topic = topicService.getTopicById(id);
+        word.assignTopic(topic);
+        Level topicLevel = topic.getLevel();
+        word.assignLevel(topicLevel);
+        wordService.addWord(word);
+
+        return "redirect:/admin/topics/view/" + id;
+    }
+
+    @GetMapping("admin/words/view/{word_id}")
+    public String viewWords(@PathVariable("word_id") long id, Model model) {
+        Word word = wordService.getOneWord(id);
+        model.addAttribute("word", word);
+        return "admin/words/view";
+    }
+
+    @GetMapping("admin/words/list")
+    public String listWords(Model model) {
+        List<Word> words = wordService.getAllWords();
+        model.addAttribute("words", words);
+
+        return "admin/words/list";
+    }
     
 }

@@ -73,5 +73,9 @@ public class WordService {
     public Word getWordByName(String content) {
         return wordRepository.findByName(content);
     }
+
+    public List<Word> getWordsByTopicId(Long topic_id) {
+        return wordRepository.findByTopic(topic_id);
+    }
 }
 

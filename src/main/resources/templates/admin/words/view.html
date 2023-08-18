@@ -2751,10 +2751,10 @@
                       </div>
                       <!--end::Avatar-->
                       <!--begin::Name-->
-                      <a th:href="@{#}" class="word-name fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">association</a>
+                      <a th:href="@{#}" class="word-name fs-3 text-gray-800 text-hover-primary fw-bolder mb-1">[[${word.name}]]</a>
                       <!--end::Name-->
                       <!--begin::Topic-->
-                      <div class="fs-5 fw-bold text-muted mb-6">Topic Association</div>
+                      <div class="fs-5 fw-bold text-muted mb-6">Topic [[${word?.topic?.getName()}]]</div>
                       <!--end::Topic-->
                     </div>
                     <!--end::Summary-->
@@ -2793,27 +2793,27 @@
                       <div class="py-5 fs-6">
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Word ID</div>
-                        <div class="text-gray-600 word_id">45453423</div>
+                        <div class="text-gray-600 word_id">[[${word.id}]]</div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Attributes</div>
-                        <div class="text-gray-600">noun</div>
+                        <div class="text-gray-600">[[${word.attribute}]]</div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Pronounce</div>
-                        <div class="text-gray-600">/əˌsoʊ.siˈeɪ.ʃən/</div>
+                        <div class="text-gray-600"><button class="fa-solid fa-volume-high" th:attr="onclick='playAudio(\'' + ${word.pronounce} + '\')'"></button></div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Meaning</div>
-                        <div class="text-gray-600">Công ty</div>
+                        <div class="text-gray-600">[[${word.mean}]]</div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Example</div>
-                        <div class="text-gray-600">I'm working at International association</div>
+                        <div class="text-gray-600">[[${word.example}]]</div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
-                        <div class="fw-bolder mt-5">Created Date</div>
-                        <div class="text-gray-600">14:34 pm, 20/10/2021</div>
+                        <div class="fw-bolder mt-5">Level</div>
+                        <div class="text-gray-600">[[${word?.level?.getName()}]]</div>
                         <!--end::Details item-->
                       </div>
                     </div>
@@ -3081,6 +3081,12 @@
   <!--begin::Page Custom Javascript(used by this page)-->
   <script th:src="@{/assets/js/custom/apps/words/update.js}"></script>
   <script th:src="@{/assets/js/custom/apps/words/delete.js}"></script>
+  <script th:inline="javascript">
+    function playAudio(filePath) {
+        var audio = new Audio(filePath);
+        audio.play();
+    }
+</script>
   <!--end::Page Custom Javascript-->
   <!--end::Javascript-->
 </body>
