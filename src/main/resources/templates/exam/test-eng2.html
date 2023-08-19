@@ -73859,27 +73859,26 @@
 <!--                                                             List Questtion-->
 
                                                             <div th:each="item, itemStat : ${questionList}" class="Quiz-inner" id=""
-                                                                 style="display: none;" data-topic="2">
-
+                                                                 style="display: none;" data-topic="2" >
                                                                 <p class="question-id" th:text="'Question ' + ${itemStat.index + 1} + ' of ' + ${questionList.size()}"></p>
-                                                                <p><strong>A:</strong> Choose the best word or phrase to complete the sentence.</p>
+                                                                <p><strong>A:</strong> Choose the best word question1or phrase to complete the sentence.</p>
                                                                 <div>
                                                                     <p class="rq-Question-instruction"></p>
-                                                                    <p class="rq-Question-text well" style="margin: 0px;" th:text="${item.content}"></p>
+                                                                    <p class="rq-Question-text well" style="margin: 0px;" th:text="${item.content}" th:value="${item.question_id}"></p>
                                                                     <div name="rq-Question-answerList"
                                                                         class="form-group btn-group0 btn-group-justified0 toggle-game-options"
                                                                         data-question-index="0">
                                                                         <div class="radio" tabindex="0">
                                                                             <input type="radio" id="radio1"
                                                                                 class="form-group btn btn-default block"
-                                                                                name="question1" value="1">
+                                                                                name="question1" th:value="${item.question_id}">
                                                                             <label for="radio1"><span
                                                                                     class="hidden glyphicon pull-right" th:text="${item.option1}"></span></label>
                                                                         </div>
                                                                         <div class="radio" tabindex="0">
                                                                             <input type="radio" id="radio2"
                                                                                 class="form-group btn btn-default block"
-                                                                                name="question1" value="2">
+                                                                                name="question1" th:value="${item.question_id}">
                                                                             <label for="radio2"><span
                                                                                     class="hidden glyphicon pull-right" th:text="${item.option2}"></span>
                                                                             </label>
@@ -73887,7 +73886,7 @@
                                                                         <div class="radio" tabindex="0">
                                                                             <input type="radio" id="radio3"
                                                                                 class="form-group btn btn-default block"
-                                                                                name="question1" value="3">
+                                                                                name="question1" th:value="${item.question_id}">
                                                                             <label for="radio3"><span
                                                                                     class="hidden glyphicon pull-right" th:text="${item.option3}"></span></label>
                                                                         </div>
@@ -79629,11 +79628,22 @@ Edit">Can
     <script th:src="@{/assets/js/custom/modals/upgrade-plan.js}"></script>
     <script th:inline="javascript">
         var userAnswers =[];
+        var questionId ;
+        const emailLink = document.getElementById('email_link');
+            userEmail = emailLink.textContent.trim();
+            // var userAnswers = [];
+
+            console.log('Email:', userEmail);
         $(".Quiz-confidence-buttons a").on("click", function () {
             const confidenceDegree = $(this).data("degree"); // Degree button value
 
             // Traverse up the DOM to find the closest parent element with class 'Quiz-inner'
             const quizInnerElement = $(this).closest(".Quiz-inner");
+            // const itemDataString = quizInnerElement.attr("data-question-item");
+            // const itemData = JSON.parse(itemDataString.replace(/&quot;/g, '"'));
+            // console.log(itemData)
+            // questionId = $("input[name='question1']:checked").val();
+            
 
             // Find the selected radio button within the same Quiz-inner container
             const selectedRadio = quizInnerElement.find("input[type='radio']:checked");
@@ -79642,6 +79652,9 @@ Edit">Can
             if (selectedRadio.length > 0) {
                 // Get the value of the selected radio button (1, 2, 3, etc.)
                 selectedOptionValue = selectedRadio.val();
+                questionId = selectedOptionValue;
+                console.log(`Question ID: ${questionId}`);
+
 
                 // Get the associated option text using the selectedOptionValue
                 selectedOptionText = quizInnerElement.find(`label[for='${selectedRadio.attr('id')}']`).text();
@@ -79654,7 +79667,7 @@ Edit">Can
             }
             const selectedAnswers = $("input[type='radio']:checked");
             selectedRadio.each(function () {
-            const questionId = $(this).data("question_id"); // Lấy ID của câu hỏi
+            // const questionId = $(this).data("question_id"); // Lấy ID của câu hỏi
 
                 // Thêm câu trả lời vào mảng userAnswers
                 userAnswers.push({
@@ -79663,20 +79676,13 @@ Edit">Can
                 });
             });
             }
-            );
+        );
         function submitForm(event) {
             event.preventDefault(); // Prevent the default form submission
             var userEmail = "";
             
-            const emailLink = document.getElementById('email_link');
-            userEmail = emailLink.textContent.trim();
-            var userAnswers = [];
-
-            console.log('Email:', userEmail);
             
-
-            
-    
+            console.log('User answers:', userAnswers);
             const apiUrl = "/exam/submit/" + userEmail; // Read the API URL from the data attribute
             fetch(apiUrl, {
                 method: 'POST',
@@ -79695,7 +79701,30 @@ Edit">Can
             .catch(error => {
                 console.error('Error saving user answers:', error);
             });
+            saveUserAnswersToDatabase(userAnswers);
             // Rest of your fetch code remains the same
+        }
+        function saveUserAnswersToDatabase(userAnswers) {
+        // const apiUrl = '/submit-answers';
+            const apiUrl = '/exam/submit/' + userEmail;
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userAnswers)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('User answers saved successfully.');
+                } else {
+                    console.error('Failed to save user answers.');
+                }
+            })
+            .catch(error => {
+                console.error('Error saving user answers:', error);
+            });
         }
     </script>
     

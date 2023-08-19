@@ -1,6 +1,7 @@
 package com.weblearnel.controller.view;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -136,12 +137,31 @@ public class ExamTestController {
 //    }
 
     @PostMapping("/exam/submit/{email}")
-    public String submitExam(@RequestBody List<Answer> userAnswers, @PathVariable("email") String email,
+    public String submitExam(@RequestBody List<Map<String, Object>> userAnswers, @PathVariable("email") String email,
             Model model) {
         User user = userService.getUserByEmail(email);
         System.out.println(userAnswers);
-        double score = answerService.checkAnswers(userAnswers, user.getId());
+        for (Map<String, Object> userAnswer: userAnswers) {
+            Answer answer = new Answer();
+            if (userAnswer.containsKey("questionId")) {
+                Long questionId = Long.valueOf(userAnswer.get("questionId").toString());
+                Question question = questionService.getQuestionById(questionId);
+                answer.assignQuestion(question);
+                answer.setUserAnswer(userAnswer.get("userAnswer").toString());
+                answer.assignUser(user);
+                answerService.addAnswer(answer);
+                // Do something with the questionId, e.g., store it in a database or perform further processing
+                // System.out.println("Question ID: " + questionId);
+            }
+            // userAnswer.assignUser(user);
+            // answerService.addAnswer(userAnswer);
+        }
+        List<Answer> userAnswersCheck = answerService.getAnswersByUserId(user.getId());
+        double score = answerService.checkAnswers(userAnswersCheck, user.getId());
         Result result = new Result(score);
+        result.assignUser(user);
+        result.setResultType(1);// 1 la exam 0 la hoc word
+        //làm đoạn lấy exam id gán vào result nữa
         System.out.println(result);
         resultService.addResult(result);
 

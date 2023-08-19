@@ -66,4 +66,9 @@ public class Result {
         Result result = examToAssign.getResults().stream().filter(x -> x.getResultid() == this.resultid).findFirst().orElse(null);
         examToAssign.getResults().add(result);
     }
+
+    public void assignUser(User userToAssign) {
+        this.user = userToAssign;
+        
+    }
 }

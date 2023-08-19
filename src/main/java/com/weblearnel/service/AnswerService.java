@@ -1,14 +1,16 @@
 package com.weblearnel.service;
 
-import com.weblearnel.model.Answer;
-import com.weblearnel.model.Question;
-import com.weblearnel.repository.AnswerRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.weblearnel.model.Answer;
+import com.weblearnel.model.Question;
+import com.weblearnel.repository.AnswerRepository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 @Service
 public class AnswerService {
@@ -39,6 +41,10 @@ public class AnswerService {
 
     public void addAnswer(Answer answer){
         answerRepository.save(answer);
+    }
+
+    public List<Answer> getAnswersByUserId(long user_id) {
+        return answerRepository.findByUserId(user_id);
     }
 
 }
