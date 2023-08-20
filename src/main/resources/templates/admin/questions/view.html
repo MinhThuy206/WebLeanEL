@@ -2778,21 +2778,21 @@
                       <div class="py-5 fs-6">
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Question ID</div>
-                        <div class="text-gray-600 question_id">45453422</div>
+                        <div class="text-gray-600 question_id">[[${question.question_id}]]</div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Question Content</div>
                         <div class="">
-                          <a th:href="@{#}" class="text-gray-600 text-hover-primary question-content">This __ a book</a>
+                          <a th:href="@{#}" class="text-gray-600 text-hover-primary question-content">[[${question.content}]]</a>
                         </div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Answer</div>
-                        <div class="text-gray-600">is</div>
+                        <div class="text-gray-600">[[${question.answer}]]</div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Explanation</div>
-                        <div class="text-gray-600">Some explanation...</div>
+                        <div class="text-gray-600">[[${question.explanation}]]</div>
                         <!--end::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder rotate collapsible mt-5" data-bs-toggle="collapse"
@@ -2812,17 +2812,17 @@
                           </span>
                         </div>
                         <div class="collapse show row" id="kt_option_view_details">
-                          <div class="fw-bolder mt-5">Option 1Delet
-                            <span class="text-gray-600 ms-5">is</span>
+                          <div class="fw-bolder mt-5">Option 1
+                            <span class="text-gray-600 ms-5">[[${question.option1}]]</span>
                           </div>
                           <div class="fw-bolder mt-5 ">Option 2
-                            <span class="text-gray-600 ms-5">are</span>
+                            <span class="text-gray-600 ms-5">[[${question.option2}]]</span>
                           </div>
                           <div class="fw-bolder mt-5">Option 3
-                            <span class="text-gray-600 ms-5">am</span>
+                            <span class="text-gray-600 ms-5">[[${question.option3}]]</span>
                           </div>
-                          <div class="fw-bolder mt-5">Option 4
-                            <span class="text-gray-600 ms-5">be</span>
+                          <div class="fw-bolder mt-5">Topic
+                            <span class="text-gray-600 ms-5">[[${question?.topic?.getName()}]]</span>
                           </div>
                         </div>
                         <!--end::Details item-->
@@ -2849,7 +2849,7 @@
                 <!--begin::Modal content-->
                 <div class="modal-content">
                   <!--begin::Form-->
-                  <form class="form" action="#" id="kt_modal_update_question_form">
+                  <form class="form" th:action="@{/admin/questions/updateQuestion/{question_id}(question_id=${question.question_id})}" method="post" id="kt_modal_update_question_form">
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_update_question_header">
                       <!--begin::Modal title-->
@@ -3002,10 +3002,10 @@
                               <!--begin::Col-->
                               <div class="col-md-6 fv-row">
                                 <!--begin::Label-->
-                                <label class="required fs-6 fw-bold mb-2">Option 4</label>
+                                <label class="required fs-6 fw-bold mb-2">Topic Name</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input class="form-control form-control-solid" placeholder="" name="option4" value="" />
+                                <input class="form-control form-control-solid" placeholder="" name="topicName" value="" />
                                 <!--end::Input-->
                               </div>
                               <!--end::Col-->

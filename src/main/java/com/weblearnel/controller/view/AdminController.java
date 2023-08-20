@@ -238,5 +238,67 @@ public class AdminController {
 
         return "admin/words/list";
     }
+
+    @GetMapping("admin/questions/list")
+    public String listQuestions(Model model) {
+        List<Question> questions = questionService.findQuestions();
+        model.addAttribute("questions", questions);
+
+        return "admin/questions/list";
+    }
+
+    @GetMapping("admin/questions/view/{question_id}")
+    public String viewQuestions(@PathVariable("question_id") long id, Model model) {
+        Question question = questionService.getQuestionById(id);
+        model.addAttribute("question", question);
+        return "admin/questions/view";
+    }
+
+    @PostMapping("admin/questions/addQuestion")
+    public String handleAdminAddQuestion(HttpServletRequest request ) {
+        String content = request.getParameter("content");
+        String answer = request.getParameter("answer");
+        String option1 = request.getParameter("option1");
+        String option2 = request.getParameter("option2");
+        String option3 = request.getParameter("option3");
+        String topicName = request.getParameter("topicName");
+        String explain = request.getParameter("explanation");
+        String option4 = "";
+        // int type = Integer.parseInt(request.getParameter("type"));
+
+        Question question = new Question(content, option1, option2, option3, option4, answer, explain);
+        Topic topic = topicService.getTopicByName(topicName);
+        question.assignTopic(topic);
+        Level level = topic.getLevel();
+        question.assignLevel(level);
+        questionService.addQuestion(question);
+
+        return "redirect:/admin/questions/list";
+    }
+
+    @PostMapping("admin/questions/updateQuestion/{question_id}")
+    public String handleAdminUpdateQuestion(HttpServletRequest request, @PathVariable("question_id") long id) {
+        String content = request.getParameter("content");
+        String answer = request.getParameter("answer");
+        String option1 = request.getParameter("option1");
+        String option2 = request.getParameter("option2");
+        String option3 = request.getParameter("option3");
+        String topicName = request.getParameter("topicName");
+        String explain = request.getParameter("explanation");
+        String option4 = "";
+        // int type = Integer.parseInt(request.getParameter("type"));
+
+        Question question = questionService.getQuestionById(id);
+        question.setContent(content);
+        question.setAnswer(answer);
+        question.setOption1(option1);
+        question.setOption2(option2);
+        question.setOption3(option3);
+        question.setOption4(option4);
+        question.setExplanation(explain);
+        questionService.addQuestion(question);
+
+        return "redirect:/admin/questions/view/" + id;
+    }
     
 }

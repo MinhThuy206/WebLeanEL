@@ -2875,7 +2875,7 @@ License: For each use you must have a valid license purchased only from above li
 											<th class="min-w-200px">Question Content</th>
 											<th class="min-w-125px">Answer</th>
 											<th class="min-w-200px">Explanation</th>
-											<th class="min-w-125px">Created Date</th>
+											<th class="min-w-125px">Topic</th>
 											<th class="text-end min-w-70px">Actions</th>
 										</tr>
 										<!--end::Table row-->
@@ -2883,7 +2883,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--end::Table head-->
 									<!--begin::Table body-->
 									<tbody class="fw-bold text-gray-600">
-										<tr>
+										<tr th:each="question:${questions}">
 											<!--begin::Checkbox-->
 											<td>
 												<div
@@ -2895,17 +2895,17 @@ License: For each use you must have a valid license purchased only from above li
 											<!--begin::Question Content=-->
 											<td>
 												<a th:href="@{/admin/questions/view.html}"
-													class="text-gray-800 text-hover-primary mb-1">This __ a book</a>
+													class="text-gray-800 text-hover-primary mb-1">[[${question.content}]]</a>
 											</td>
 											<!--end::Question Content-->
 											<!--begin::Answer=-->
-											<td>is</td>
+											<td>[[${question.answer}]]</td>
 											<!--end::Answer=-->
 											<!--begin::Explanation=-->
-											<td>Some explanation...</td>
+											<td>[[${question.explanation}]]</td>
 											<!--end::Explanation=-->
 											<!--begin::Date=-->
-											<td>14 Dec 2020, 8:43 pm</td>
+											<td>[[${question?.topic?.getName()}]]</td>
 											<!--end::Date=-->
 											<!--begin::Action=-->
 											<td class="text-end">
@@ -2927,7 +2927,7 @@ License: For each use you must have a valid license purchased only from above li
 													data-kt-menu="true">
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<a th:href="@{/admin/questions/view.html}"
+														<a th:href="@{/admin/questions/view/{questionId}(questionId=${question.question_id})}"
 															class="menu-link px-3">Edit</a>
 													</div>
 													<!--end::Menu item-->
@@ -2958,7 +2958,7 @@ License: For each use you must have a valid license purchased only from above li
 								<!--begin::Modal content-->
 								<div class="modal-content">
 									<!--begin::Form-->
-									<form class="form" action="#" id="kt_modal_add_question_form"
+									<form class="form" th:action="@{/admin/questions/addQuestion}" method="post" id="kt_modal_add_question_form"
 										data-kt-redirect="admin/customers/list.html">
 										<!--begin::Modal header-->
 										<div class="modal-header" id="kt_modal_add_question_header">
@@ -3092,11 +3092,11 @@ License: For each use you must have a valid license purchased only from above li
 														<!--begin::Col-->
 														<div class="col-md-6 fv-row">
 															<!--begin::Label-->
-															<label class="required fs-6 fw-bold mb-2">Option 4</label>
+															<label class="required fs-6 fw-bold mb-2">Topic Name</label>
 															<!--end::Label-->
 															<!--begin::Input-->
 															<input class="form-control form-control-solid"
-																placeholder="" name="option4" value="" />
+																placeholder="" name="topicName" value="" />
 															<!--end::Input-->
 														</div>
 														<!--end::Col-->
