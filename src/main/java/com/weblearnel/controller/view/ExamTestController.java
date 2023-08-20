@@ -1,4 +1,5 @@
 package com.weblearnel.controller.view;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -162,6 +163,7 @@ public class ExamTestController {
         User user = userService.getUserByEmail(email);
         System.out.println(userAnswers);
         try {
+            List<Answer> userAnswersCheck = new ArrayList<>();
             for (Map<String, Object> userAnswer : userAnswers) {
                 Answer answer = new Answer();
                 examId = Long.valueOf(userAnswer.get("examId").toString());
@@ -172,11 +174,12 @@ public class ExamTestController {
                     answer.assignQuestion(question);
                     answer.setUserAnswer(userAnswer.get("userAnswer").toString());
                     answer.assignUser(user);
+                    userAnswersCheck.add(answer);
                     answerService.addAnswer(answer);
                 }
             }
             Exam exam = examService.getExamById(examId);
-            List<Answer> userAnswersCheck = answerService.getAnswersByUserId(user.getId());
+            // List<Answer> userAnswersCheck = answerService.getAnswersByUserId(user.getId());
             double score = answerService.checkAnswers(userAnswersCheck, user.getId());
             Result result = new Result(score);
             result.assignUser(user);
