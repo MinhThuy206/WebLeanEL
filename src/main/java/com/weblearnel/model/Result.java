@@ -63,8 +63,8 @@ public class Result {
 
     public void assignExam(Exam examToAssign) {
         this.exam = examToAssign;
-        Result result = examToAssign.getResults().stream().filter(x -> x.getResultid() == this.resultid).findFirst().orElse(null);
-        examToAssign.getResults().add(result);
+        // Result result = examToAssign.getResults().stream().filter(x -> x.getResultid() == this.resultid).findFirst().orElse(null);
+        // examToAssign.getResults().add(result);
     }
 
     public void assignUser(User userToAssign) {

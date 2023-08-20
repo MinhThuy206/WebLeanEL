@@ -71524,7 +71524,7 @@
                                         <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
                                             class="menu-item menu-lg-down-accordion me-lg-1 here">
                                             <span class="menu-link py-3">
-                                                <span class="menu-title">Exam</span>
+                                                <span class="menu-title"  id="examMenuTitle" th:value="${exam.examId}">Exam</span>
                                                 <span class="menu-arrow d-lg-none"></span>
                                             </span>
                                             <div
@@ -73795,7 +73795,7 @@
                         <!--begin::Page title-->
                         <div class="page-title d-flex flex-column me-3">
                             <!--begin::Title-->
-                            <h1 class="d-flex text-white fw-bolder my-1 fs-3">Test your English</h1>
+                            <h1 class="d-flex text-white fw-bolder my-1 fs-3">Test your English </h1>
                             <!--end::Title-->
 
                         </div>
@@ -73830,7 +73830,7 @@
                                             class="block block-blockgroup block-block-groupmain-content clearfix">
                                             <div id="root">
                                                 <div data-reactroot="" class="TigerQuiz" dir="ltr">
-                                                    <form th:action="@{/exam/submit/{email}(email=${user.email})}" method="post" id="test-form" onsubmit="submitForm(event)" data-api-url-th="${'/exam/submit/' + user.email}">
+                                                    <form th:action="@{/exam/submit/{email}/{examId}(email=${user.email},examId=${exam.examId})}" method="post" id="test-form" onsubmit="submitForm(event)" data-api-url-th="${'/exam/submit/' + user.email}">
                                                         <div class="Quiz">
                                                             <div class="TimerContainer">
                                                                 <div id="time"></div>
@@ -73868,14 +73868,14 @@
                                                                     <div name="rq-Question-answerList"
                                                                         class="form-group btn-group0 btn-group-justified0 toggle-game-options"
                                                                         data-question-index="0">
-                                                                        <div class="radio" tabindex="0">
+                                                                        <div class="radio" tabindex="0" th:attr="data-question-id=${item.question_id}">
                                                                             <input type="radio" id="radio1"
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question1" th:value="${item.question_id}">
                                                                             <label for="radio1"><span
                                                                                     class="hidden glyphicon pull-right" th:text="${item.option1}"></span></label>
                                                                         </div>
-                                                                        <div class="radio" tabindex="0">
+                                                                        <div class="radio" tabindex="0" th:attr="data-question-id=${item.question_id}">
                                                                             <input type="radio" id="radio2"
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question1" th:value="${item.question_id}">
@@ -73883,7 +73883,7 @@
                                                                                     class="hidden glyphicon pull-right" th:text="${item.option2}"></span>
                                                                             </label>
                                                                         </div>
-                                                                        <div class="radio" tabindex="0">
+                                                                        <div class="radio" tabindex="0" th:attr="data-question-id=${item.question_id}">
                                                                             <input type="radio" id="radio3"
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question1" th:value="${item.question_id}">
@@ -79628,31 +79628,50 @@ Edit">Can
     <script th:src="@{/assets/js/custom/modals/upgrade-plan.js}"></script>
     <script th:inline="javascript">
         var userAnswers =[];
-        var questionId ;
+        const currentURL = window.location.href;
+        const parts = currentURL.split('/');
+        const examValue = parts[parts.length - 1]; 
+        var redirectUrl = "";
+        // var questionId =0;
         const emailLink = document.getElementById('email_link');
-            userEmail = emailLink.textContent.trim();
+        userEmail = emailLink.textContent.trim();
             // var userAnswers = [];
+        console.log('Email:', userEmail);
+        // JavaScript code
+        // const menuTitleElement = document.getElementById('examMenuTitle');
+        // const examValue = menuTitleElement.getAttribute('value');
+        // console.log(examValue);
 
-            console.log('Email:', userEmail);
+// Now, examValue contains the value of the "menu-title" element.
+
         $(".Quiz-confidence-buttons a").on("click", function () {
             const confidenceDegree = $(this).data("degree"); // Degree button value
-
+            // questionId = 0;
             // Traverse up the DOM to find the closest parent element with class 'Quiz-inner'
             const quizInnerElement = $(this).closest(".Quiz-inner");
             // const itemDataString = quizInnerElement.attr("data-question-item");
             // const itemData = JSON.parse(itemDataString.replace(/&quot;/g, '"'));
             // console.log(itemData)
             // questionId = $("input[name='question1']:checked").val();
-            
+            // JavaScript code
+            // const radioElement = document.querySelector('.radio');
+            // const questionId = radioElement.getAttribute('data-question-id');
+
+// Now, 'questionId' contains the value of the "data-question-id" attribute.
+
 
             // Find the selected radio button within the same Quiz-inner container
             const selectedRadio = quizInnerElement.find("input[type='radio']:checked");
+            // const questionId = selectedRadio.val();
             var selectedOptionValue = "";
             var selectedOptionText = "";
             if (selectedRadio.length > 0) {
                 // Get the value of the selected radio button (1, 2, 3, etc.)
                 selectedOptionValue = selectedRadio.val();
-                questionId = selectedOptionValue;
+                // if (questionId == 0) {
+                    questionId = selectedOptionValue;
+                // }
+                
                 console.log(`Question ID: ${questionId}`);
 
 
@@ -79672,18 +79691,19 @@ Edit">Can
                 // Thêm câu trả lời vào mảng userAnswers
                 userAnswers.push({
                     questionId: questionId,
-                    userAnswer: selectedOptionText
+                    userAnswer: selectedOptionText,
+                    examId: examValue
                 });
             });
             }
         );
         function submitForm(event) {
             event.preventDefault(); // Prevent the default form submission
-            var userEmail = "";
+            // var userEmail = "";
             
             
             console.log('User answers:', userAnswers);
-            const apiUrl = "/exam/submit/" + userEmail; // Read the API URL from the data attribute
+            const apiUrl = "/exam/submit/" + userEmail + "/" + examValue; // Read the API URL from the data attribute
             fetch(apiUrl, {
                 method: 'POST',
                 headers: {
@@ -79691,41 +79711,47 @@ Edit">Can
                 },
                 body: JSON.stringify(userAnswers)
             })
-            .then(response => {
-                if (response.ok) {
-                    console.log('User answers saved successfully.');
+            .then(response => response.text())
+            .then(data =>{
+                if (data.startsWith("redirect:")) {
+                    // Extract the URL from the response and perform the redirection
+                    redirectUrl = data.substring("redirect:".length);
+                    console.log("redirectUrl: " + redirectUrl);
+                    window.location.href = redirectUrl;
                 } else {
-                    console.error('Failed to save user answers.');
+                    console.log("data: " + data);
+                    textMessage = data;
+                    iconMessage = "error";
                 }
             })
             .catch(error => {
                 console.error('Error saving user answers:', error);
             });
-            saveUserAnswersToDatabase(userAnswers);
+            // saveUserAnswersToDatabase(userAnswers);
             // Rest of your fetch code remains the same
         }
-        function saveUserAnswersToDatabase(userAnswers) {
-        // const apiUrl = '/submit-answers';
-            const apiUrl = '/exam/submit/' + userEmail;
+        // function saveUserAnswersToDatabase(userAnswers) {
+        // // const apiUrl = '/submit-answers';
+        //     const apiUrl = '/exam/submit/' + userEmail;
 
-            fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userAnswers)
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('User answers saved successfully.');
-                } else {
-                    console.error('Failed to save user answers.');
-                }
-            })
-            .catch(error => {
-                console.error('Error saving user answers:', error);
-            });
-        }
+        //     fetch(apiUrl, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(userAnswers)
+        //     })
+        //     .then(response => {
+        //         if (response.ok) {
+        //             console.log('User answers saved successfully.');
+        //         } else {
+        //             console.error('Failed to save user answers.');
+        //         }
+        //     })
+        //     .catch(error => {
+        //         console.error('Error saving user answers:', error);
+        //     });
+        // }
     </script>
     
     <!--end::Page Custom Javascript-->

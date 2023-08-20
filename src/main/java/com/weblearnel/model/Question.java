@@ -14,12 +14,14 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "question")
 public class Question {

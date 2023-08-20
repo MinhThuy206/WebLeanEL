@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -124,25 +126,30 @@ public class ExamTestController {
              ) {
             System.out.println(q.getAnswer());
         }
+        Exam exam = examService.getExamById(exam_id);
+        model.addAttribute("exam", exam);
         return "exam/test-eng2";
     }
 
-//    @GetMapping("/exam/test_eng3/{user_id}/{exam_id}")
-//    public String Eng3Test(@PathVariable("user_id") Long user_id, Model model, @PathVariable("exam_id") Long exam_id) {
-//        User user = userService.getUserById(user_id);
-//        model.addAttribute("user", user);
-//        Exam exam = examService.getExamById(exam_id);
-//        model.addAttribute("exam", exam);
-//        return "exam/test-eng3";
-//    }
+   @GetMapping("/exam/test_eng3/{user_id}/{exam_id}")
+   public String Eng3Test(@PathVariable("user_id") Long user_id, Model model, @PathVariable("exam_id") Long exam_id) {
+       User user = userService.getUserById(user_id);
+       model.addAttribute("user", user);
+       Exam exam = examService.getExamById(exam_id);
+       model.addAttribute("exam", exam);
+       return "exam/test-eng3";
+   }
 
-    @PostMapping("/exam/submit/{email}")
-    public String submitExam(@RequestBody List<Map<String, Object>> userAnswers, @PathVariable("email") String email,
-            Model model) {
+    @PostMapping("/exam/submit/{email}/{examId}")
+    public ResponseEntity<String> submitExam(@RequestBody List<Map<String, Object>> userAnswers, @PathVariable("email") String email,
+            Model model, @PathVariable("examId") Long examId) {
         User user = userService.getUserByEmail(email);
         System.out.println(userAnswers);
-        for (Map<String, Object> userAnswer: userAnswers) {
+        try {
+            for (Map<String, Object> userAnswer: userAnswers) {
             Answer answer = new Answer();
+            examId = Long.valueOf(userAnswer.get("examId").toString());
+
             if (userAnswer.containsKey("questionId")) {
                 Long questionId = Long.valueOf(userAnswer.get("questionId").toString());
                 Question question = questionService.getQuestionById(questionId);
@@ -150,23 +157,25 @@ public class ExamTestController {
                 answer.setUserAnswer(userAnswer.get("userAnswer").toString());
                 answer.assignUser(user);
                 answerService.addAnswer(answer);
-                // Do something with the questionId, e.g., store it in a database or perform further processing
-                // System.out.println("Question ID: " + questionId);
             }
-            // userAnswer.assignUser(user);
-            // answerService.addAnswer(userAnswer);
         }
-        List<Answer> userAnswersCheck = answerService.getAnswersByUserId(user.getId());
-        double score = answerService.checkAnswers(userAnswersCheck, user.getId());
-        Result result = new Result(score);
-        result.assignUser(user);
-        result.setResultType(1);// 1 la exam 0 la hoc word
-        //làm đoạn lấy exam id gán vào result nữa
-        System.out.println(result);
-        resultService.addResult(result);
+            Exam exam = examService.getExamById(examId);
+            List<Answer> userAnswersCheck = answerService.getAnswersByUserId(user.getId());
+            double score = answerService.checkAnswers(userAnswersCheck, user.getId());
+            Result result = new Result(score);
+            result.assignUser(user);
+            result.assignExam(exam);
+            result.setResultType(1);// 1 la exam 0 la hoc word
+            resultService.addResult(result);
 
-        model.addAttribute("score", score);
-        return "redirect:/exam/test-eng3";
+            model.addAttribute("score", score);
+            return ResponseEntity.ok("redirect:/exam/test_eng3" + "/" + user.getId() + "/" + examId);
+            // return "redirect:/exam/test-eng3" + "/" + user.getId() + "/" + examId;
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error submitting the form: " );
+        }
+        
     }
 
 

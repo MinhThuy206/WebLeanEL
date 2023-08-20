@@ -2,13 +2,12 @@ package com.weblearnel.service;
 
 import java.util.List;
 
-import com.weblearnel.model.Level;
-import com.weblearnel.model.Question;
-import com.weblearnel.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.weblearnel.model.Exam;
+import com.weblearnel.model.Level;
+import com.weblearnel.model.Question;
 import com.weblearnel.repository.ExamRepository;
 
 @Service
@@ -39,7 +38,7 @@ public class ExamService {
         return questions;
     }
 
-    public Exam getExamById(Long exam_id){
+    public Exam getExamById(long exam_id){
         return examRepository.findById(exam_id).get();
     }
 }
