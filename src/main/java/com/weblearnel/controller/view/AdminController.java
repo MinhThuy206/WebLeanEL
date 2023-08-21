@@ -239,6 +239,40 @@ public class AdminController {
         return "admin/words/list";
     }
 
+    @PostMapping("admin/words/addWord")
+    public String handleAdminAddWord(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        String attribute = request.getParameter("attributes");
+        String pronounce = request.getParameter("pronounce");
+        String mean = request.getParameter("mean");
+        String example = request.getParameter("example");
+        Word word = new Word(name, mean, attribute, example, pronounce);
+        // Topic topic = topicService.getTopicByName(request.getParameter("topicName"));
+        // word.assignTopic(topic);
+        // Level topicLevel = topic.getLevel();
+        // word.assignLevel(topicLevel);
+        wordService.addWord(word);
+
+        return "redirect:/admin/words/list";
+    }
+
+    @PostMapping("admin/words/updateWord/{word_id}")
+    public String handleAdminUpdateWord(HttpServletRequest request, @PathVariable("word_id") long id) {
+        String name = request.getParameter("name");
+        String attribute = request.getParameter("attributes");
+        String pronounce = request.getParameter("pronounce");
+        String mean = request.getParameter("mean");
+        String example = request.getParameter("example");
+        Word word = wordService.getOneWord(id);
+        word.setName(name);
+        word.setAttribute(attribute);
+        word.setPronounce(pronounce);
+        word.setMean(mean);
+        word.setExample(example);
+        wordService.addWord(word);
+
+        return "redirect:/admin/words/view/" + id;
+    }
     @GetMapping("admin/questions/list")
     public String listQuestions(Model model) {
         List<Question> questions = questionService.findQuestions();
@@ -300,5 +334,9 @@ public class AdminController {
 
         return "redirect:/admin/questions/view/" + id;
     }
+
+
+
+    
     
 }

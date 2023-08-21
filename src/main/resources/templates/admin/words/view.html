@@ -2834,7 +2834,7 @@
                 <!--begin::Modal content-->
                 <div class="modal-content">
                   <!--begin::Form-->
-                  <form class="form" action="#" id="kt_modal_update_word_form">
+                  <form class="form" th:action="@{/admin/words/updateWord/{wordId}(wordId=${word.id})}" method="post" id="kt_modal_update_word_form">
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_update_word_header">
                       <!--begin::Modal title-->
