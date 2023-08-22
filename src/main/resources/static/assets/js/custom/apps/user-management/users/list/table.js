@@ -13,7 +13,9 @@
         var toolbarBase;
         var toolbarSelected;
         var selectedCount;
-
+        var redirectUrl;
+        var iconMessage = "success";
+        var textMessage = "delete successfully";
 
         // Private functions
         var initUserTable = function () {
@@ -139,6 +141,8 @@
             const deleteButtons = table.querySelectorAll('[data-kt-users-table-filter="delete_row"]');
 
             deleteButtons.forEach(d => {
+                var username = d.closest('tr').querySelector('.badge[data-username]').getAttribute('data-username');
+                d.setAttribute('data-username', username);
                 // Delete button on click
                 d.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -147,15 +151,20 @@
                     const parent = e.target.closest('tr');
 
                     // Get user name
-                    const userName = parent.querySelectorAll('td')[1].querySelectorAll('a')[1].innerText;
+                    const userName = parent.querySelectorAll('td')[4].innerText;
+                    console.log(userName);
+                    // var element = document.querySelector('.badge.badge-light.fw-bolder');
+                    // var usernameValue = this.getAttribute('data-username');
+                    // console.log(usernameValue);
+                    
 
                     // SweetAlert2 pop up --- official docs reference: https://sweetalert2.github.io/
                     Swal.fire({
-                        text: "Are you sure you want to delete " + userName + "?",
+                        text: "Are you sure you want to unable " + userName + "?",
                         icon: "warning",
                         showCancelButton: true,
                         buttonsStyling: false,
-                        confirmButtonText: "Yes, delete!",
+                        confirmButtonText: "Yes, Lock!",
                         cancelButtonText: "No, cancel",
                         customClass: {
                             confirmButton: "btn fw-bold btn-danger",
@@ -163,26 +172,68 @@
                         }
                     }).then(function (result) {
                         if (result.value) {
-                            Swal.fire({
-                                text: "You have deleted " + userName + "!.",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary",
+                            var formData = {
+                                username: userName
+                            }
+                            fetch("/admin/users/deleteUser", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(formData)
+                            })
+                            .then(response => response.text()
+                            .then(data => {
+                                if (data.startsWith("redirect:")) {
+                                    // Extract the URL from the response and perform the redirection
+                                    redirectUrl = data.substring("redirect:".length);
+                                    console.log("redirectUrl: " + redirectUrl);
+                                } else {
+                                    console.log("data: " + data);
+                                    textMessage = data;
+                                    iconMessage = "error";
                                 }
-                            }).then(function () {
-                                // Remove current row
-                                datatable.row($(parent)).remove().draw();
-                                var formElement = $('.form-deleted');
-                                var inputElement = $('input[name="user_deleted"]');
-                                inputElement.val(parent.querySelectorAll('td input[type="checkbox"]')[0].value + "");
-                                // Submit form
-                                formElement.submit();
-                            }).then(function () {
-                                // Detect checked checkboxes
-                                toggleToolbars();
-                            });
+                                Swal.fire({
+                                    text: textMessage,
+                                    icon: iconMessage,
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn fw-bold btn-primary",
+                                    }
+                                    
+                                }).then(function (result) {
+                                    if (result.isConfirmed) { 
+                                        // form.querySelector('[name="email"]').value= "";                          
+                                        //form.submit();
+                                        // form.reset(); // reset form
+                                        if(iconMessage == "success") {
+                                            window.location.href = redirectUrl;}
+                                        
+                                    }
+                                });
+                            }))
+                            
+                            // Swal.fire({
+                            //     text: "You have deleted " + userName + "!.",
+                            //     icon: "success",
+                            //     buttonsStyling: false,
+                            //     confirmButtonText: "Ok, got it!",
+                            //     customClass: {
+                            //         confirmButton: "btn fw-bold btn-primary",
+                            //     }
+                            // }).then(function () {
+                            //     // Remove current row
+                            //     datatable.row($(parent)).remove().draw();
+                            //     var formElement = $('.form-deleted');
+                            //     var inputElement = $('input[name="user_deleted"]');
+                            //     inputElement.val(parent.querySelectorAll('td input[type="checkbox"]')[0].value + "");
+                            //     // Submit form
+                            //     // formElement.submit();
+                            // }).then(function () {
+                            //     // Detect checked checkboxes
+                            //     toggleToolbars();
+                            // });
                         } else if (result.dismiss === 'cancel') {
                             Swal.fire({
                                 text: customerName + " was not deleted.",

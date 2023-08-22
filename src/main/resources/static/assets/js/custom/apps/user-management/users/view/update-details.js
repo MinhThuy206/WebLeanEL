@@ -14,6 +14,7 @@ var KTUsersUpdateDetails = function () {
     const modal = new bootstrap.Modal(element);
     var userEmail = "";
     var userId = "";
+    var redirectUrl = "";
     document.addEventListener('DOMContentLoaded', function () {
         const emailLink = document.getElementById('emailLink');
         userEmail = emailLink.textContent.trim();

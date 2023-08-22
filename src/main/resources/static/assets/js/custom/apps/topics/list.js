@@ -1,6 +1,8 @@
 $(function () {
     // Define variables
     const table = document.querySelector('#kt_topics_table');
+    var iconMessage = "success";
+    var textMessage = "delete successfully";
 
     // Private functions
     var initTopicList = function () {
@@ -67,25 +69,48 @@ $(function () {
                     }
                 }).then(function (result) {
                     if (result.value) {
-                        Swal.fire({
-                            text: "You have deleted " + eleName + "!.",
-                            icon: "success",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn fw-bold btn-primary",
+                        var formData = {
+                            topicName: eleName
+                        }
+                        fetch("/admin/topics/deleteTopic", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                        .then(response => response.text()
+                        .then(data => {
+                            if (data.startsWith("redirect:")) {
+                                // Extract the URL from the response and perform the redirection
+                                redirectUrl = data.substring("redirect:".length);
+                                console.log("redirectUrl: " + redirectUrl);
+                            } else {
+                                console.log("data: " + data);
+                                textMessage = data;
+                                iconMessage = "error";
                             }
-                        }).then(function () {
-                            // Change input value to delete
-                            // var formElement = $('table tbody')
-                            var formElement = $('.card-toolbar form')
-                            // console.log(formElement); 
-                            // console.log("value: " + parent.querySelectorAll('td input[type="checkbox"]')[0].value + "");
-                            var inputElement = $('input[name="topic_deleted"]');
-                            inputElement.val(parent.querySelectorAll('td input[type="checkbox"]')[0].value + "");
-                            // Submit form
-                            formElement.submit();
-                        });
+                            Swal.fire({
+                                text: textMessage,
+                                icon: iconMessage,
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn fw-bold btn-primary",
+                                }
+                                
+                            }).then(function (result) {
+                                if (result.isConfirmed) { 
+                                    // form.querySelector('[name="email"]').value= "";                          
+                                    //form.submit();
+                                    // form.reset(); // reset form
+                                    if(iconMessage == "success") {
+                                        window.location.href = redirectUrl;
+                                    }
+                                    
+                                }
+                            });
+                        }))
                     } else if (result.dismiss === 'cancel') {
                         Swal.fire({
                             text: eleName + " was not deleted.",

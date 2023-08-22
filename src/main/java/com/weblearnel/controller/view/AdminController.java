@@ -1,13 +1,16 @@
 package com.weblearnel.controller.view;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.weblearnel.model.Level;
@@ -127,13 +130,7 @@ public class AdminController {
         Level level = topic.getLevel();
         question.assignLevel(level);
         System.out.println(answer);
-        // Word word = wordService.getWordByName(answer);
-        // System.out.println(word.getName());
-        // if (answer == wordService.getWordByName(answer).getName()) {
-        //     Word word = wordService.getWordByName(answer);
-        //     Level level = word.getLevel();
-        //     question.assignLevel(level);
-        // }
+
         questionService.addQuestion(question);
         return "redirect:/admin/" + topic_name + "/createQuestion";
     }
@@ -148,8 +145,9 @@ public class AdminController {
     @GetMapping("admin/users/list")
     public String listUsers(Model model) {
         List<User> users = userService.getAllUsers();
+        User admin = userService.getUserById(50);
         model.addAttribute("users", users);
-
+        model.addAttribute("admin", admin);
         return "admin/users/list";
     }
 
@@ -174,6 +172,23 @@ public class AdminController {
 
         return "redirect:/admin/users/list";
     }
+    @PostMapping("admin/users/deleteUser")
+    public ResponseEntity<String> handleAdminDeleteUser(@RequestBody Map<String, Object> requestbody) {
+        String userName = requestbody.get("username").toString();
+        User user = userService.getUser(userName);
+        user.setEnabled(false);
+        userService.addUser(user);
+        return ResponseEntity.ok("redirect:/admin/users/list");
+    }
+
+    // @GetMapping("admin/users/deleteUser/{user_id}")
+    // public String handleAdminDeleteUser(@PathVariable("user_id") long id) {
+    //     // String userName = requestbody.get("username").toString();
+    //     User user = userService.getUserById(id);
+    //     user.setEnabled(false);
+    //     userService.addUser(user);
+    //     return "redirect:/admin/users/list";
+    // }
 
     @GetMapping("admin/topics/list")
     public String listTopics(Model model) {
@@ -207,6 +222,30 @@ public class AdminController {
         return "redirect:/admin/topics/list";
     }
 
+    @PostMapping("admin/topics/updateTopic/{topic_id}")
+    public String handleAdminUpdateTopic(HttpServletRequest request, @PathVariable("topic_id") long id) {
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        Long level = Long.parseLong(request.getParameter("level"));
+        Level topicLevel = levelService.getLevelById(level);
+        Topic topic = topicService.getTopicById(id);
+        topic.setName(name);
+        topic.setDescription(description);
+        topic.assignLevel(topicLevel);
+        topicService.addTopic(topic);
+
+        return "redirect:/admin/topics/view/" + id;
+    }
+
+    @PostMapping("admin/topics/deleteTopic")
+    public ResponseEntity<String> handleAdminDeleteTopic(@RequestBody Map<String, Object> requestbody) {
+        String topicName = requestbody.get("topicName").toString();
+        Topic topic = topicService.getTopicByName(topicName);
+        topic.setOutdated(true);
+        topicService.addTopic(topic);
+        return ResponseEntity.ok("redirect:/admin/topics/list");
+    }
+
     @PostMapping("admin/topics/addWord/{topic_id}")
     public String handleAdminAddWord(HttpServletRequest request, @PathVariable("topic_id") long id) {
         String name = request.getParameter("name");
@@ -229,6 +268,11 @@ public class AdminController {
         Word word = wordService.getOneWord(id);
         model.addAttribute("word", word);
         return "admin/words/view";
+    }
+
+    @GetMapping("admin/words/gettingStarted")
+    public String gettingStarted() {
+        return "admin/words/getting-started";
     }
 
     @GetMapping("admin/words/list")
@@ -286,6 +330,11 @@ public class AdminController {
         Question question = questionService.getQuestionById(id);
         model.addAttribute("question", question);
         return "admin/questions/view";
+    }
+
+    @GetMapping("admin/questions/gettingStarted")
+    public String gettingStartedQuestion() {
+        return "admin/questions/getting-started";
     }
 
     @PostMapping("admin/questions/addQuestion")

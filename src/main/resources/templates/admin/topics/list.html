@@ -2894,7 +2894,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!-- <th class="min-w-125px">Email</th> -->
 											<th class="min-w-200px">Description</th>
 											<!-- <th class="min-w-125px">Payment Method</th> -->
-											<th class="min-w-200px">Level</th>
+											<th class="min-w-200px">Outdated</th>
 											<th class="min-w-20px">Actions</th>
 										</tr>
 										<!--end::Table row-->
@@ -2924,7 +2924,7 @@ License: For each use you must have a valid license purchased only from above li
 											<td>[[${topic.description}]]</td>
 											<!--end::Description=-->
 											<!--begin::Date=-->
-											<td th:text="${topic?.level?.getName()}"></td>
+											<td th:text="${topic.outdated == true ? 'Outdated' : 'In use'}"></td>
 
 											<!--end::Date=-->
 											<!--begin::Action=-->

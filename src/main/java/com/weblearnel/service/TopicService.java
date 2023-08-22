@@ -77,4 +77,8 @@ public class TopicService {
     public List<Topic> findTopicFromLevel(Long level_id) {
         return topicRepository.findByLevel(level_id);
     }
+
+    public void deleteTopic(Long topic_id) {
+        topicRepository.deleteById(topic_id);
+    }
 }

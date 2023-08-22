@@ -42,6 +42,9 @@ public class Topic {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "outdated")
+    private boolean outdated = false;
+
     public Topic(String name, String description) {
         this.name = name;
         this.description = description;
