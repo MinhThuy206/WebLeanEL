@@ -73872,23 +73872,20 @@
                                                                             <input type="radio" id="radio1"
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question1" th:value="${item.question_id}">
-                                                                            <label for="radio1"><span
-                                                                                    class="hidden glyphicon pull-right" th:text="${item.option1}"></span></label>
+                                                                            <label for="radio1"><span class="hidden glyphicon pull-right" th:text="${item.option1}"></span></label>
                                                                         </div>
                                                                         <div class="radio" tabindex="0" th:attr="data-question-id=${item.question_id}">
                                                                             <input type="radio" id="radio2"
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question1" th:value="${item.question_id}">
-                                                                            <label for="radio2"><span
-                                                                                    class="hidden glyphicon pull-right" th:text="${item.option2}"></span>
+                                                                            <label for="radio2"><span class="hidden glyphicon pull-right" th:text="${item.option2}"></span>
                                                                             </label>
                                                                         </div>
                                                                         <div class="radio" tabindex="0" th:attr="data-question-id=${item.question_id}">
                                                                             <input type="radio" id="radio3"
                                                                                 class="form-group btn btn-default block"
                                                                                 name="question1" th:value="${item.question_id}">
-                                                                            <label for="radio3"><span
-                                                                                    class="hidden glyphicon pull-right" th:text="${item.option3}"></span></label>
+                                                                            <label for="radio3"><span class="hidden glyphicon pull-right" th:text="${item.option3}"></span></label>
                                                                         </div>
                                                                     </div>
 
@@ -73898,8 +73895,6 @@
                                                                         <a class="btn btn-default" data-degree="not">Not sure</a>
                                                                     </div>
 
-                                                                </div>
-                                                                </div>
 
                                                             </div>
                                                             <button type="submit" id="submit-btn"
@@ -79676,7 +79671,7 @@ Edit">Can
 
 
                 // Get the associated option text using the selectedOptionValue
-                selectedOptionText = quizInnerElement.find(`label[for='${selectedRadio.attr('id')}']`).text();
+                selectedOptionText = quizInnerElement.find(`label[for='${selectedRadio.attr('id')}']`).text().trim();
 
                 console.log(`Confidence Degree: ${confidenceDegree}`);
                 console.log(`Selected Option Value: ${selectedOptionValue}`);
