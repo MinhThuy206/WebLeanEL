@@ -35,7 +35,7 @@ public class SignUpController {
     private LevelService levelService;
 
     // Render form tạo user
-    @GetMapping("/users/showForm")
+    @GetMapping("/users/sign-up")
     public String showForm() {
         return "authentication/sign-up";
     }

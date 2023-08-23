@@ -1472,7 +1472,7 @@ License: For each use you must have a valid license purchased only from above li
 						<!--end::Heaeder menu toggle-->
 						<!--begin::Header Logo-->
 						<div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
-							<a th:href="@{/index/50}">
+							<a th:href="@{/index/{userId}(userId=${admin.id})}">
 								<img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}"class="logo-default w-284 h-35px">
 								<img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}"class="logo-sticky h-25px">
 							</a>
@@ -1494,7 +1494,7 @@ License: For each use you must have a valid license purchased only from above li
 									<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
 										id="#kt_header_menu" data-kt-menu="true">
 										<div class="menu-item me-lg-1">
-											<a th:href="@{/index/50}" class="menu-link py-3">
+											<a th:href="@{/index/{userId}(userId=${admin.id})}" class="menu-link py-3">
 												<span class="menu-title">Home</span>
 											</a>
 										</div>
@@ -1514,10 +1514,10 @@ License: For each use you must have a valid license purchased only from above li
                                                         <span class="menu-title">A1 - A2 Vocabulary</span>
                                                     </a>
                                                 </div> -->
-												<a th:href="@{/learning/a1a2/50}" class="menu-link py-3">
+												<a th:href="@{/learning/a1a2/{userId}(userId=${admin.id})}" class="menu-link py-3">
 													<span class="menu-title">A1 - A2 Vocabulary</span>
 												</a>
-												<a th:href="@{/learning/b1b2/50}" class="menu-link py-3">
+												<a th:href="@{/learning/b1b2/{userId}(userId=${admin.id})}" class="menu-link py-3">
 													<span class="menu-title">B1 - B2 Vocabulary</span>
 												</a>
 											</div>
@@ -1531,7 +1531,7 @@ License: For each use you must have a valid license purchased only from above li
 											<div
 												class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 
-												<a th:href="@{/exam/overview/50/1}" class="menu-link py-3">
+												<a th:href="@{/exam/overview/{userId}/1(userId=${admin.id})}" class="menu-link py-3">
 													<span class="menu-title">Exam Overview</span>
 												</a>
 												<!-- <a th:href="@{/exam/test.html}" class="menu-link py-3"><span
@@ -2637,7 +2637,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Menu separator-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5">
-												<a th:href="@{/update/50}" class="menu-link px-5">My Profile</a>
+												<a th:href="@{/update/{userId}(userId=${admin.id})}" class="menu-link px-5">My Profile</a>
 											</div>
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
@@ -2717,7 +2717,7 @@ License: For each use you must have a valid license purchased only from above li
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5 my-1">
-												<a th:href="@{/admin/users/view/50}" class="menu-link px-5">Account
+												<a th:href="@{/admin/users/view/{userId}(userId=${admin.id})}" class="menu-link px-5">Account
 													Settings</a>
 											</div>
 											<!--end::Menu item-->
@@ -2764,7 +2764,7 @@ License: For each use you must have a valid license purchased only from above li
 							<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 								<!--begin::Item-->
 								<li class="breadcrumb-item text-white opacity-75">
-									<a th:href="@{/index/50}" class="text-white text-hover-primary">Home</a>
+									<a th:href="@{/index/{userId}(userId=${admin.id})}" class="text-white text-hover-primary">Home</a>
 								</li>
 								<!--end::Item-->
 								<!--begin::Item-->

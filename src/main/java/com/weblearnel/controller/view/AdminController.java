@@ -145,9 +145,9 @@ public class AdminController {
     @GetMapping("admin/users/list")
     public String listUsers(Model model) {
         List<User> users = userService.getAllUsers();
-        User admin = userService.getUserById(50);
-        model.addAttribute("users", users);
+        User admin = userService.getUserById(53);
         model.addAttribute("admin", admin);
+        model.addAttribute("users", users);
         return "admin/users/list";
     }
 
@@ -194,6 +194,8 @@ public class AdminController {
     public String listTopics(Model model) {
         List<Topic> topics = topicService.getTopics();
         model.addAttribute("topics", topics);
+        User admin = userService.getUserById(53);
+        model.addAttribute("admin", admin);
 
         return "admin/topics/list";
     }
@@ -279,7 +281,8 @@ public class AdminController {
     public String listWords(Model model) {
         List<Word> words = wordService.getAllWords();
         model.addAttribute("words", words);
-
+        User admin = userService.getUserById(53);
+        model.addAttribute("admin", admin);
         return "admin/words/list";
     }
 
@@ -321,7 +324,8 @@ public class AdminController {
     public String listQuestions(Model model) {
         List<Question> questions = questionService.findQuestions();
         model.addAttribute("questions", questions);
-
+        User admin = userService.getUserById(53);
+        model.addAttribute("admin", admin);
         return "admin/questions/list";
     }
 
@@ -344,15 +348,15 @@ public class AdminController {
         String option1 = request.getParameter("option1");
         String option2 = request.getParameter("option2");
         String option3 = request.getParameter("option3");
-        String topicName = request.getParameter("topicName");
+        String levelName = request.getParameter("topicName");
         String explain = request.getParameter("explanation");
         String option4 = "";
         // int type = Integer.parseInt(request.getParameter("type"));
 
         Question question = new Question(content, option1, option2, option3, option4, answer, explain);
-        Topic topic = topicService.getTopicByName(topicName);
-        question.assignTopic(topic);
-        Level level = topic.getLevel();
+        // Topic topic = topicService.getTopicByName(topicName);
+        // question.assignTopic(topic);
+        Level level = levelService.findLevelById(levelName);
         question.assignLevel(level);
         questionService.addQuestion(question);
 
@@ -366,11 +370,11 @@ public class AdminController {
         String option1 = request.getParameter("option1");
         String option2 = request.getParameter("option2");
         String option3 = request.getParameter("option3");
-        String topicName = request.getParameter("topicName");
+        String levelName = request.getParameter("topicName");
         String explain = request.getParameter("explanation");
         String option4 = "";
         // int type = Integer.parseInt(request.getParameter("type"));
-
+        Level level = levelService.findLevelById(levelName);
         Question question = questionService.getQuestionById(id);
         question.setContent(content);
         question.setAnswer(answer);
@@ -379,6 +383,7 @@ public class AdminController {
         question.setOption3(option3);
         question.setOption4(option4);
         question.setExplanation(explain);
+        question.assignLevel(level);
         questionService.addQuestion(question);
 
         return "redirect:/admin/questions/view/" + id;

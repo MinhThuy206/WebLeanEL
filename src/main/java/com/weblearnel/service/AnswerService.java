@@ -29,6 +29,7 @@ public class AnswerService {
                 Question question = entityManager.find(Question.class, userAnswer.getQuestion().getQuestion_id());
                 if (question != null && question.getAnswer().equals(userAnswer.getUserAnswer())) {
                     correctCount++;
+                    System.out.println(correctCount);
                 }
             }
         }

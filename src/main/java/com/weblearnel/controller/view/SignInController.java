@@ -42,7 +42,7 @@ public class SignInController {
             if (userCheck.getPassword().equals(password) && userCheck.getEnabled() == true) {
 
                 System.out.println("login thanh cong");
-                if(userCheck.getRole() == 1) {
+                if(userCheck.getRole() != null && userCheck.getRole() == 1) {
                     return ResponseEntity.ok("redirect:" + "/admin/" + userCheck.getId());
                 }
                 model.addAttribute("user", userCheck);

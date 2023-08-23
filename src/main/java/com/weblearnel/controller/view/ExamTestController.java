@@ -179,6 +179,7 @@ public class ExamTestController {
                     answerService.addAnswer(answer);
                 }
             }
+            // System.out.println(userAnswersCheck);
             Exam exam = examService.getExamById(examId);
             // List<Answer> userAnswersCheck = answerService.getAnswersByUserId(user.getId());
             double score = answerService.checkAnswers(userAnswersCheck, user.getId());

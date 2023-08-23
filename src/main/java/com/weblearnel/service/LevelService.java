@@ -2,13 +2,13 @@ package com.weblearnel.service;
 
 import java.util.List;
 
-import com.weblearnel.model.Question;
-import com.weblearnel.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.weblearnel.model.Level;
+import com.weblearnel.model.Question;
 import com.weblearnel.repository.LevelRepository;
+import com.weblearnel.repository.QuestionRepository;
 
 @Service
 public class LevelService {
@@ -20,6 +20,10 @@ public class LevelService {
 
     public LevelService(LevelRepository levelRepository) {
         this.levelRepository = levelRepository;
+    }
+
+    public Level findLevelById(String id) {
+        return levelRepository.findById(Long.parseLong(id)).orElse(null);
     }
 
     public List<Level> getLevels() {

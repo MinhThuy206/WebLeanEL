@@ -71474,10 +71474,10 @@ height: 200%;
                         <!--end::Heaeder menu toggle-->
                         <!--begin::Header Logo-->
                         <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
-                            <a th:href="@{index.html}">
-    <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default w-284 h-35px">
-    <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
-</a>
+                            <a th:href="@{/index/{userId}(userId=${user.id})}">
+								<img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default w-284 h-35px">
+								<img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
+							</a>
                         </div>
                         <!--end::Header Logo-->
                         <!--begin::Wrapper-->
@@ -73897,7 +73897,7 @@ class="menu-link d-flex px-5 active">
 					</div>
 					<div class="col-xs-12 col-sm-12 col-md-6 text">
 						<p style="font-size: 14px; padding-right: 20px; text-align: justify;">Free English level test. Get an indicator of your English level to help you choose the right level of study material.</p>
-						<a th:href="@{/exam/t}"  class="btn btn-primary">Click me</a>
+						<a th:href="@{/exam/overview/{userId}/1(userId=${user.id})}"  class="btn btn-primary">Click me</a>
 					</div>
 				</div>
 			</div>
