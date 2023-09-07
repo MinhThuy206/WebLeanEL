@@ -71472,10 +71472,17 @@
 						<!--end::Heaeder menu toggle-->
 						<!--begin::Header Logo-->
 						<div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
+<<<<<<< Updated upstream
 							<a th:href="@{index.html}">
 								<img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default h-25px">
 								<img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
 							</a>
+=======
+							<a th:href="@{/index/{user_id}(user_id=${user.id})}">
+    <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default w-284 h-35px">
+    <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
+</a>
+>>>>>>> Stashed changes
 						</div>
 						<!--end::Header Logo-->
 						<!--begin::Wrapper-->
@@ -71494,7 +71501,7 @@
 									<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
 										id="#kt_header_menu" data-kt-menu="true">
 										<div class="menu-item me-lg-1">
-											<a th:href="@{index.html}" class="menu-link py-3">
+											<a th:href="@{/index/{user_id}(user_id=${user.id})}" class="menu-link py-3">
 												<span class="menu-title">Home</span>
 											</a>
 										</div>
@@ -71505,14 +71512,14 @@
 												<span class="menu-arrow d-lg-none"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-												<a th:href="@{/learning/A1-A2.html}" class="menu-link py-3 active">
-													<span class="menu-title">A1
-														- A2 Vocabulary</span>
-												</a>
-												<a th:href="@{/learning/B1-B2.html}" class="menu-link py-3">
-													<span class="menu-title">B1
-														- B2 Vocabulary</span>
-												</a>
+												<a th:href="@{/learning/a1a2/{user_id}(user_id=${user.id})}"
+                                                    class="menu-link py-3">
+                                                    <span class="menu-title">A1 - A2 Vocabulary</span>
+                                                </a>
+                                                <a th:href="@{/learning/b1b2/{user_id}(user_id=${user.id})}"
+                                                    class="menu-link py-3">
+                                                    <span class="menu-title">B1 - B2 Vocabulary</span>
+                                                </a>
 											</div>
 										</div>
 										<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
@@ -71522,11 +71529,11 @@
 												<span class="menu-arrow d-lg-none"></span>
 											</span>
 											<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-												<a th:href="@{/exam/overview.html}" class="menu-link py-3">
+												<a th:href="@{/exam/overview/{userId}/1(userId=${user.id})}" class="menu-link py-3">
 													<span class="menu-title">Exam
 														Overview</span>
 												</a>
-												<a th:href="@{/exam/test.html}" class="menu-link py-3"><span
+												<a th:href="@{/exam/test/{userId}/1(userId=${user.id})}" class="menu-link py-3"><span
 														class="menu-title">Online
 														English level test</span></a>
 											</div>
@@ -73757,8 +73764,7 @@
 											<!--end::Menu separator-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5">
-												<a th:href="@{/account/overview.html}" class="menu-link px-5">My
-													Profile</a>
+												<a th:href="@{/showViewUser/{user_id}(user_id=${user.id})}" class="menu-link px-5">My Profile</a>
 											</div>
 											<div class="separator my-2"></div>
 											<!--end::Menu separator-->
@@ -73827,15 +73833,14 @@
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5 my-1">
-												<a th:href="@{/account/settings.html}" class="menu-link px-5">Account
-													Settings</a>
+												<a th:href="@{/update/{user_id}(user_id=${user.id})}" class="menu-link px-5">Account
+                                                    Settings</a>
 											</div>
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5">
-												<a th:href="@{/users/showForm}"
-													class="menu-link px-5">Sign
-													Out</a>
+												<a th:href="@{/user/login}" class="menu-link px-5">Sign
+                                                    Out</a>
 											</div>
 										</div>
 										<!--end::Menu-->
@@ -73867,7 +73872,7 @@
 							<ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
 								<!--begin::Item-->
 								<li class="breadcrumb-item text-white opacity-75">
-									<a th:href="@{index.html}" class="text-white text-hover-primary">Vocabulary</a>
+									<a th:href="@{/index/{user_id}(user_id=${user.id})}" class="text-white text-hover-primary">Vocabulary</a>
 								</li>
 								<!--end::Item-->
 								<!--begin::Item-->
@@ -73925,12 +73930,24 @@
                                         <h1>Choose a vocabulary lesson</h1>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+<<<<<<< Updated upstream
                                                 <a th:href="@{src/main/resources/templates/topic/topic1.html}"><img th:src="@{/assets/images_home/content_img_1.jpg}"
                                                         class="img-fuild" alt=""></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
                                                 <h2><a th:href="@{src/main/resources/templates/topic/topic1.html}">Title</a></h2>
                                                 <p>Descreption Title</p>
+=======
+                                                <a th:href="@{/topic/{topic_id}/words/{userId}(topic_id=${topic.topicId},userId=${user.id})}">
+                                                    <img th:src="@{/assets/images_home/content_img_1.jpg}" class="img-fuild" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cont">
+                                                <h2>
+                                                    <a th:href="@{/topic/{topic_id}/words/{userId}(topic_id=${topic.topicId},userId=${user.id})}" th:text="${topic.name}"></a>
+                                                </h2>
+                                                <p th:text="${topic.description}"></p>
+>>>>>>> Stashed changes
                                             </div>
                                         </div>
                                     </div>
@@ -73945,13 +73962,13 @@
                                         <h4>Vocabulary</h4>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{/learning/A1-A2.html}">
+                                            <a th:href="@{/learning/a1a2/{user_id}(user_id=${user.id})}">
                                                 A1-A2 Vocalbulary
                                             </a>
                                         </div>
                                         <div class="item">
                                             <i class="fa-solid fa-check"></i>
-                                            <a th:href="@{/learning/B1-B2.html}">
+                                            <a th:href="@{/learning/b1b2/{user_id}(user_id=${user.id})}">
                                                 B1-B2 Vocalbulary
                                             </a>
                                         </div>

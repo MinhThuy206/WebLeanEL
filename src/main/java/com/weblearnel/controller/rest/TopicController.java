@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.weblearnel.model.Topic;
 import com.weblearnel.model.User;
 import com.weblearnel.service.TopicService;
+import com.weblearnel.service.UserService;
 
 import lombok.AllArgsConstructor;
 
@@ -22,6 +23,17 @@ public class TopicController {
     @Autowired
     private TopicService topicService;
 
+<<<<<<< Updated upstream
+=======
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/topic")
+    public String getTopic() {
+        return "topic/topic1";
+    }
+
+>>>>>>> Stashed changes
     @GetMapping("/topics")
     public List<Topic> getAllTopics() {
         return topicService.getTopics();
@@ -50,4 +62,18 @@ public class TopicController {
     public List<User> findUsersFromTopic(@PathVariable("topic_id") Long topic_id) {
         return topicService.findUsersFromTopic(topic_id);
     }
+<<<<<<< Updated upstream
+=======
+
+    @GetMapping("/topic/{topic_id}/words/{user_id}")
+    public String findWordsFromTopic(@PathVariable("topic_id") Long topic_id, Model model, @PathVariable("user_id") Long user_id) {
+        List<Word> words = topicService.findWordsFromTopic(topic_id);
+        model.addAttribute("wordList", words);
+        User user = userService.getUserById(user_id);
+        model.addAttribute("user", user);
+        return "topic/topic1";
+    }
+
+    
+>>>>>>> Stashed changes
 }

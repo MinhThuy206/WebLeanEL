@@ -71471,10 +71471,17 @@
                         <!--end::Heaeder menu toggle-->
                         <!--begin::Header Logo-->
                         <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
+<<<<<<< Updated upstream
                             <a th:href="@{index.html}">
                                 <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default h-25px">
                                 <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
                             </a>
+=======
+                            <a th:href="@{/index/{user_id}(user_id=${user.id})}">
+    <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default w-284 h-35px">
+    <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
+</a>
+>>>>>>> Stashed changes
                         </div>
                         <!--end::Header Logo-->
                         <!--begin::Wrapper-->
@@ -73673,7 +73680,7 @@
                                             <!--end::Menu separator-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
-                                                <a th:href="@{/account/overview.html}" class="menu-link px-5">My Profile</a>
+                                                <a th:href="@{/showViewUser/{user_id}(user_id=${user.id})}" class="menu-link px-5">My Profile</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -73800,7 +73807,7 @@
                             <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                                 <!--begin::Item-->
                                 <li class="breadcrumb-item text-white opacity-75">
-                                    <a th:href="@{index.html}" class="text-white text-hover-primary">Exam</a>
+                                    <a th:href="@{/index/{user_id}(user_id=${user.id})}" class="text-white text-hover-primary">Exam</a>
                                 </li>
                                 <!--end::Item-->
                                 <!--begin::Item-->
@@ -73830,8 +73837,13 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+<<<<<<< Updated upstream
                                     <div class="levels"><img th:src="@{/assets/images_home/content_img_1.jpg}" alt="">
                                         <p>The <a class="test" th:href="@{../WebLearnEL/src/main/resources/templates/exam/overview.html}">Common
+=======
+                                    <div class="levels"><img th:src="@{/assets/images_home/C1.png}" alt="">
+                                        <p>The <a class="test" th:href="@{/exam/overview/{userId}/1(userId=${user.id})}">Common
+>>>>>>> Stashed changes
                                                 European Framework of Reference for Languages (CEFR)</a> has six levels,
                                             from A1 for beginners, up to C2 for users who are proficient in the
                                             language.</p>
@@ -73864,9 +73876,10 @@
                                             your level.</p>
 
 
-                                        <a th:href="@{../WebLearnEL/src/main/resources/templates/exam/test.html}" class="btn">
-                                            Take our English level test
-                                        </a>
+                                            <a th:href="@{/exam/test_eng1/{userId}/{examId}(userId=${user.id},examId=${examId})}" class="btn">
+                                                Take our English level test
+                                            </a>
+    
 
 
                                     </div>

@@ -71472,10 +71472,17 @@
                         <!--end::Heaeder menu toggle-->
                         <!--begin::Header Logo-->
                         <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
+<<<<<<< Updated upstream
                             <a th:href="@{index.html}">
                                 <img alt="Logo" src="assets/media/logos/logo-4.png" class="logo-default h-25px">
                                 <img alt="Logo" src="assets/media/logos/logo-5.png" class="logo-sticky h-25px">
                             </a>
+=======
+                            <a th:href="@{/index/{user_id}(user_id=${user.id})}">
+    <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default w-284 h-35px">
+    <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
+</a>
+>>>>>>> Stashed changes
                         </div>
                         <!--end::Header Logo-->
                         <!--begin::Wrapper-->
@@ -71494,7 +71501,7 @@
                                     <div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
                                         id="#kt_header_menu" data-kt-menu="true">
                                         <div class="menu-item me-lg-1">
-                                            <a th:href="@{index.html}" class="menu-link py-3">
+                                            <a th:href="@{/index/{user_id}(user_id=${user.id})}" class="menu-link py-3">
                                                 <span class="menu-title">Home</span>
                                             </a>
                                         </div>
@@ -71514,10 +71521,19 @@
                                                         <span class="menu-title">A1 - A2 Vocabulary</span>
                                                     </a>
                                                 </div> -->
+<<<<<<< Updated upstream
                                                 <a th:href="@{src/main/resources/templates/learning/A1-A2.html}" class="menu-link py-3">
                                                     <span class="menu-title">A1 - A2 Vocabulary</span>
                                                 </a>
                                                 <a th:href="@{src/main/resources/templates/learning/B1-B2.html}" class="menu-link py-3">
+=======
+                                                <a th:href="@{/learning/a1a2/{user_id}(user_id=${user.id})}"
+                                                    class="menu-link py-3">
+                                                    <span class="menu-title">A1 - A2 Vocabulary</span>
+                                                </a>
+                                                <a th:href="@{/learning/b1b2/{user_id}(user_id=${user.id})}"
+                                                    class="menu-link py-3">
+>>>>>>> Stashed changes
                                                     <span class="menu-title">B1 - B2 Vocabulary</span>
                                                 </a>
                                             </div>
@@ -71531,11 +71547,21 @@
                                             <div
                                                 class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 
+<<<<<<< Updated upstream
                                                 <a th:href="@{src/main/resources/templates/exam/overview.html}" class="menu-link py-3">
                                                     <span class="menu-title">Exam Overview</span>
                                                 </a>
                                                 <a th:href="@{src/main/resources/templates/exam/test.html}" class="menu-link py-3"><span
                                                         class="menu-title">Online English level test</span></a>
+=======
+                                                <a th:href="@{/exam/overview/{userId}/1(userId=${user.id})}"
+                                                    class="menu-link py-3">
+                                                    <span class="menu-title">Exam Overview</span>
+                                                </a>
+                                                <a th:href="@{/exam/test/{userId}/1(userId=${user.id})}"
+                                                    class="menu-link py-3"><span class="menu-title">Online English level
+                                                        test</span></a>
+>>>>>>> Stashed changes
                                             </div>
                                         </div>
 
@@ -73674,7 +73700,12 @@
                                             <!--end::Menu separator-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
+<<<<<<< Updated upstream
                                                 <a th:href="@{src/main/resources/templates/account/overview.html}" class="menu-link px-5">My Profile</a>
+=======
+                                                <a th:href="@{/showViewUser/{user_id}(user_id=${user.id})}"
+                                                    class="menu-link px-5">My Profile</a>
+>>>>>>> Stashed changes
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -73754,13 +73785,18 @@
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5 my-1">
+<<<<<<< Updated upstream
                                                 <a th:href="@{src/main/resources/templates/account/settings.html}" class="menu-link px-5">Account
+=======
+                                                <a th:href="@{/update/{user_id}(user_id=${user.id})}"
+                                                    class="menu-link px-5">Account
+>>>>>>> Stashed changes
                                                     Settings</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
-                                                <a th:href="@{../WebLearnEL/src/main/resources/templates/authentication/sign-in.html}"
+                                                <a th:href="@{/user/login}"
                                                     class="menu-link px-5">Sign
                                                     Out</a>
                                             </div>
@@ -73801,7 +73837,7 @@
                             <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                                 <!--begin::Item-->
                                 <li class="breadcrumb-item text-white opacity-75">
-                                    <a th:href="@{index.html}" class="text-white text-hover-primary">Accessories</a>
+                                    <a th:href="@{/index/{user_id}(user_id=${user.id})}" class="text-white text-hover-primary">Accessories</a>
                                 </li>
 
                             </ul>
@@ -73859,6 +73895,7 @@
                                         </a>
                                     </div>
 
+<<<<<<< Updated upstream
         <div class="sub-text">
             <h1>Exercise</h1>
             <p>Are you ready to do your exercise? Let's start.</p>
@@ -73874,6 +73911,16 @@
                 Try another vocabulary lesson
             </a>
         </div>
+=======
+                                    <div class="sub-text">
+                                        <h1>Discussion</h1>
+                                        <p>Do you have an accessory that is special in some way? Tell us about it.</p>
+                                        <a th:href="@{../WebLearnEL/src/main/resources/templates/learning/A1-A2.html}"
+                                            class="btn">
+                                            Try another vocabulary lesson
+                                        </a>
+                                    </div>
+>>>>>>> Stashed changes
 
                                     <div class="sub-text">
                                         <h1>Language level</h1>

@@ -71472,10 +71472,17 @@
                         <!--end::Heaeder menu toggle-->
                         <!--begin::Header Logo-->
                         <div class="header-logo me-5 me-md-10 flex-grow-1 flex-lg-grow-0">
+<<<<<<< Updated upstream
                             <a th:href="@{index.html}">
                                 <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default h-25px">
                                 <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
                             </a>
+=======
+                            <a th:href="@{/index/{user_id}(user_id=${user.id})}">
+    <img alt="Logo" th:src="@{/assets/media/logos/logo-4.png}" class="logo-default w-284 h-35px">
+    <img alt="Logo" th:src="@{/assets/media/logos/logo-5.png}" class="logo-sticky h-25px">
+</a>
+>>>>>>> Stashed changes
                         </div>
                         <!--end::Header Logo-->
                         <!--begin::Wrapper-->
@@ -73674,7 +73681,7 @@
                                             <!--end::Menu separator-->
                                             <!--begin::Menu item-->
                                             <div class="menu-item px-5">
-                                                <a th:href="@{/account/overview.html}" class="menu-link px-5">My Profile</a>
+                                                <a th:href="@{/showViewUser/{user_id}(user_id=${user.id})}" class="menu-link px-5">My Profile</a>
                                             </div>
                                             <!--end::Menu item-->
                                             <!--begin::Menu item-->
@@ -73823,7 +73830,7 @@
                                             </li>
                                             <li>
                                                 <p><b>B:</b> where you tell us how sure you are about your answer to A -
-                                                    certain, fairly sure or not sure.</p>
+                                                    certain or not sure.</p>
                                             </li>
                                         </ul>
                                         <p>You must complete both parts to progress to the next question.</p>
