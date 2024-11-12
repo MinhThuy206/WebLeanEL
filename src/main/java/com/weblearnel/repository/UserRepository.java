@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
     @Query(value = "SELECT * FROM user WHERE username = ?1", nativeQuery = true)

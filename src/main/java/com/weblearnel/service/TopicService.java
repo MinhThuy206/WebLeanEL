@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.weblearnel.model.Topic;
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.model.Word;
 import com.weblearnel.repository.TopicRepository;
 import com.weblearnel.repository.UserRepository;

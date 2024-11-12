@@ -2,6 +2,7 @@ package com.weblearnel.model;
 
 import java.time.LocalDate;
 
+import com.weblearnel.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

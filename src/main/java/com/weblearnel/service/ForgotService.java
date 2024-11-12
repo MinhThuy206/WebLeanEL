@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.weblearnel.email.EmailSender;
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.repository.UserRepository;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 // import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.stereotype.Service;
 
-// import com.weblearnel.model.User;
+// import com.weblearnel.user.entity.User;
 // import com.weblearnel.repository.ForgotRepository;
 
 @Service

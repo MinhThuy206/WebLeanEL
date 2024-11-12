@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.repository.UserRepository;
 import com.weblearnel.service.ForgotService;
 

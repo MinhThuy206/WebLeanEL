@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.repository.UserRepository;
-import com.weblearnel.service.UserService;
+import com.weblearnel.service.UserServiceOld;
 
 import lombok.AllArgsConstructor;
 
@@ -24,20 +24,20 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UpdateProfileController {
     @Autowired
-    private UserService userService;
+    private UserServiceOld userServiceOld;
 
     private UserRepository userRepository;
 
     @GetMapping("/showViewUser/{user_id}")
     public String showView(@PathVariable("user_id") Long id, Model model) {
-        User user = userService.getUserById(id);
+        User user = userServiceOld.getUserById(id);
         model.addAttribute("user", user);
         return "account/overview";
     }
 
     @GetMapping("/update/{id}")
     public String viewProfile(@PathVariable Long id, Model model) {
-        User user = userService.getUserById(id);
+        User user = userServiceOld.getUserById(id);
         if (user == null) {
             return "redirect:/index"; // Return an error page if user not found
         }
@@ -54,7 +54,7 @@ public class UpdateProfileController {
             // } else {
             //     email = session.getAttribute("email").toString();
             // }
-            User user = userService.getUserByEmail(newUser.getEmail());
+            User user = userServiceOld.getUserByEmail(newUser.getEmail());
             System.out.println(newUser.getEmail());
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
@@ -97,7 +97,7 @@ public class UpdateProfileController {
             String newEmail = requestBody.get("newEmail").toString();
             String oldEmail = requestBody.get("email").toString();
             
-            User user = userService.getUserByEmail(oldEmail);
+            User user = userServiceOld.getUserByEmail(oldEmail);
             System.out.println(newEmail);
             System.out.println(oldEmail);
 

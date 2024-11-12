@@ -2,6 +2,7 @@ package com.weblearnel.model;
 
 import java.time.LocalDateTime;
 
+import com.weblearnel.user.entity.User;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
