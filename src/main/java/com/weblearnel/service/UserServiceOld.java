@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.weblearnel.model.ConfirmationToken;
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.repository.UserRepository;
 
 @Service
-public class UserService {
+public class UserServiceOld {
     @Autowired
     private UserRepository userRepository;
 

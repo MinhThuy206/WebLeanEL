@@ -1,12 +1,16 @@
-package com.weblearnel.model;
+package com.weblearnel.user.entity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import com.weblearnel.model.Log;
+import com.weblearnel.model.Result;
+import com.weblearnel.model.Role;
+import com.weblearnel.model.Topic;
+import com.weblearnel.utils.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,12 +22,9 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,11 +33,11 @@ import lombok.Setter;
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private long id;
+    private Long id;
 
     @Column(name = "username")
     private String username;
@@ -55,9 +56,6 @@ public class User {
 
     @Column(name = "email")
     private String email;
-
-    @Column(name = "created_date", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP", updatable = false, insertable = false)
-    private Date createDate;
 
     @Column(name = "level")
     private Integer level;
@@ -96,14 +94,6 @@ public class User {
         this.fullname = fullname;
         this.mobile = mobile;
         this.address = address;
-    }
-
-    public LocalDateTime getTokenCreationDate() {
-        return tokenCreationDate;
-    }
-
-    public void setTokenCreationDate(LocalDateTime tokenCreationDate) {
-        this.tokenCreationDate = tokenCreationDate;
     }
 
     @JsonIgnore

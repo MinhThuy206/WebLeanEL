@@ -7,9 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.weblearnel.email.EmailSender;
 import com.weblearnel.model.ConfirmationToken;
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.service.ConfirmationTokenService;
-import com.weblearnel.service.UserService;
+import com.weblearnel.service.UserServiceOld;
 
 import lombok.AllArgsConstructor;
 
@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class RegistrationService {
 
-    private final UserService userService;
+    private final UserServiceOld userServiceOld;
     private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
@@ -29,7 +29,7 @@ public class RegistrationService {
             throw new IllegalStateException("email not valid");
         }
 
-        String token = userService.signUpUser(user); // tạo token
+        String token = userServiceOld.signUpUser(user); // tạo token
 
         // gửi email kèm token khi click  vào trc khi token hết hạn sẽ tạo get request để confirm token
         // và active user
@@ -61,7 +61,7 @@ public class RegistrationService {
 
         confirmationTokenService.setConfirmedAt(token);
         confirmationToken.getUser().setEnabled(true);
-        userService.enableUser(
+        userServiceOld.enableUser(
                 confirmationToken.getUser().getEmail());
         return "confirmed";
     }

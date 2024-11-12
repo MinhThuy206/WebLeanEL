@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.weblearnel.model.User;
-import com.weblearnel.service.UserService;
+import com.weblearnel.user.entity.User;
+import com.weblearnel.service.UserServiceOld;
 
 @Controller
 @RequestMapping
 public class SignInController {
     @Autowired
-    private UserService userService;
+    private UserServiceOld userServiceOld;
 
     @GetMapping("/user/login")
     public String ShowsignIn() {
@@ -27,7 +27,7 @@ public class SignInController {
 
     @GetMapping("/index/{user_id}")
     public String index(@PathVariable("user_id") Long id, Model model) {
-        User user = userService.getUserById(id);
+        User user = userServiceOld.getUserById(id);
         model.addAttribute("user", user);
         System.out.println("index");
         return "index";
@@ -38,7 +38,7 @@ public class SignInController {
         try {
             String username = user.getUsername();
             String password = user.getPassword();
-            User userCheck = userService.getUser(username);
+            User userCheck = userServiceOld.getUser(username);
             if (userCheck.getPassword().equals(password) && userCheck.getEnabled() == true) {
 
                 System.out.println("login thanh cong");

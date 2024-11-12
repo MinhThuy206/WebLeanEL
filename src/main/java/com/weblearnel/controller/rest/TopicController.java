@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.weblearnel.model.Topic;
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.model.Word;
 import com.weblearnel.service.TopicService;
 

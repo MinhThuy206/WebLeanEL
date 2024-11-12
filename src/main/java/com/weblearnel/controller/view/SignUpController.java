@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.registration.RegistrationService;
 import com.weblearnel.service.LevelService;
 import com.weblearnel.service.QuestionService;

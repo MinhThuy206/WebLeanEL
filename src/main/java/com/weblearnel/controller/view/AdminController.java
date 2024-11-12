@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.weblearnel.model.Level;
 import com.weblearnel.model.Question;
 import com.weblearnel.model.Topic;
-import com.weblearnel.model.User;
+import com.weblearnel.user.entity.User;
 import com.weblearnel.model.Word;
 import com.weblearnel.service.LevelService;
 import com.weblearnel.service.QuestionService;
 import com.weblearnel.service.TopicService;
-import com.weblearnel.service.UserService;
+import com.weblearnel.service.UserServiceOld;
 import com.weblearnel.service.WordService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,7 +45,7 @@ public class AdminController {
     private QuestionService questionService;
 
     @Autowired
-    private UserService userService;
+    private UserServiceOld userServiceOld;
     // Render trang chủ admin
     @GetMapping("/admin")
     public String adminPage() {
@@ -137,15 +137,15 @@ public class AdminController {
 
     @GetMapping("admin/users/view/{user_id}")
     public String viewUsers(@PathVariable("user_id") long id, Model model) {
-        User user = userService.getUserById(id);
+        User user = userServiceOld.getUserById(id);
         model.addAttribute("user", user);
         return "admin/users/view";
     }
 
     @GetMapping("admin/users/list")
     public String listUsers(Model model) {
-        List<User> users = userService.getAllUsers();
-        User admin = userService.getUserById(53);
+        List<User> users = userServiceOld.getAllUsers();
+        User admin = userServiceOld.getUserById(53);
         model.addAttribute("admin", admin);
         model.addAttribute("users", users);
         return "admin/users/list";
@@ -168,16 +168,16 @@ public class AdminController {
         Integer level = 1;
         User user = new User(username, password, fullname, address, mobile, email, level);
         user.setRole(role);
-        userService.addUser(user);
+        userServiceOld.addUser(user);
 
         return "redirect:/admin/users/list";
     }
     @PostMapping("admin/users/deleteUser")
     public ResponseEntity<String> handleAdminDeleteUser(@RequestBody Map<String, Object> requestbody) {
         String userName = requestbody.get("username").toString();
-        User user = userService.getUser(userName);
+        User user = userServiceOld.getUser(userName);
         user.setEnabled(false);
-        userService.addUser(user);
+        userServiceOld.addUser(user);
         return ResponseEntity.ok("redirect:/admin/users/list");
     }
 
@@ -194,7 +194,7 @@ public class AdminController {
     public String listTopics(Model model) {
         List<Topic> topics = topicService.getTopics();
         model.addAttribute("topics", topics);
-        User admin = userService.getUserById(53);
+        User admin = userServiceOld.getUserById(53);
         model.addAttribute("admin", admin);
 
         return "admin/topics/list";
@@ -281,7 +281,7 @@ public class AdminController {
     public String listWords(Model model) {
         List<Word> words = wordService.getAllWords();
         model.addAttribute("words", words);
-        User admin = userService.getUserById(53);
+        User admin = userServiceOld.getUserById(53);
         model.addAttribute("admin", admin);
         return "admin/words/list";
     }
@@ -324,7 +324,7 @@ public class AdminController {
     public String listQuestions(Model model) {
         List<Question> questions = questionService.findQuestions();
         model.addAttribute("questions", questions);
-        User admin = userService.getUserById(53);
+        User admin = userServiceOld.getUserById(53);
         model.addAttribute("admin", admin);
         return "admin/questions/list";
     }
