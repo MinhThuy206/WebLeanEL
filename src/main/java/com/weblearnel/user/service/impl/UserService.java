@@ -98,4 +98,9 @@ public class UserService implements IUserService {
         response.setData(userMapper.toUserResponse(userRepo.save(user)));
         return response;
     }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepo.findByUsername(username);
+    }
 }

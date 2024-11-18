@@ -11,15 +11,7 @@ import com.weblearnel.model.Result;
 import com.weblearnel.model.Role;
 import com.weblearnel.model.Topic;
 import com.weblearnel.utils.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -68,16 +60,13 @@ public class User extends BaseEntity {
 
     private String token;
 
-    private Role getERole() {
-        return Role.getRole(this.role);
-    }
-
     @Column(name = "role")
-    private Integer role;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private Set<String> roles;
 
-    private void setERole(Role role) {
-        this.setRole(role.getValue());
-    }
+
+
+
 
     public User(String username, String password, String fullname, String address, String mobile, String email,
             Integer level) {

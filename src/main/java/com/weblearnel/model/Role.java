@@ -1,24 +1,18 @@
 package com.weblearnel.model;
 
+import com.weblearnel.user.entity.User;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 
-public enum Role {
-    ADMIN(0), USER(1);
+@Entity
+public class Role {
+    private Long id;
+    private String role;
 
-    @Getter
-    private final Integer value;
-
-    Role(Integer value) {
-        this.value = value;
-    }
-
-    public static Role getRole(Integer value) {
-        for (Role role : Role.values()) {
-            if (role.getValue().equals(value)) {
-                return role;
-            }
-        }
-        throw new IllegalArgumentException("Invalid role");
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

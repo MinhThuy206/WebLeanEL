@@ -26,6 +26,8 @@ public class SecurityConfig {
                 .formLogin(form -> form.loginPage("/login").permitAll()
                         .defaultSuccessUrl("/Word-Learning", true)
                         .failureUrl("/login?error=true")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
                 )
                 .csrf(AbstractHttpConfigurer::disable);
         return http.build();
