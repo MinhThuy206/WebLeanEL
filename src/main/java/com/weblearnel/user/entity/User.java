@@ -62,7 +62,7 @@ public class User extends BaseEntity {
 
     @Column(name = "role")
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<String> roles;
+    private Set<Role> roles;
 
 
 

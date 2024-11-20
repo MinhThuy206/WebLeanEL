@@ -167,7 +167,7 @@ public class AdminController {
         String address = request.getParameter("address");
         Integer level = 1;
         User user = new User(username, password, fullname, address, mobile, email, level);
-        user.setRole(role);
+//        user.setRole(role);
         userServiceOld.addUser(user);
 
         return "redirect:/admin/users/list";
