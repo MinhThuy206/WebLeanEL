@@ -18,12 +18,11 @@ var KTSignupGeneral = function() {
     var waitTime;
 
     function isValidPhoneNumber(phoneNumber) {
-  // Biểu thức chính quy để kiểm tra định dạng số điện thoại
       var phoneRegex = /^[0-9]{10}$/;
 
   // Kiểm tra giá trị với biểu thức chính quy
       return phoneRegex.test(phoneNumber);
-  }
+    }
 
     // Handle form
     var handleForm  = function(e) {

@@ -61,7 +61,8 @@ public class User extends BaseEntity {
     private String token;
 
     @Column(name = "role")
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<Role> roles;
 
 
