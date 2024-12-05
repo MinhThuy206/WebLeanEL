@@ -13,12 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.weblearnel.user.entity.User;
 import com.weblearnel.service.UserServiceOld;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping
 public class SignInController {
     @Autowired
     private UserServiceOld userServiceOld;
+
+    @GetMapping(value = {"/", "/login"})
+    public ModelAndView login() {
+        return new ModelAndView("authentication/sign-in");
+    }
 
     @GetMapping("/user/login")
     public String ShowsignIn() {
@@ -42,9 +47,9 @@ public class SignInController {
             if (userCheck.getPassword().equals(password) && userCheck.getEnabled() == true) {
 
                 System.out.println("login thanh cong");
-                if(userCheck.getRole() != null && userCheck.getRole() == 1) {
-                    return ResponseEntity.ok("redirect:" + "/admin/" + userCheck.getId());
-                }
+//                if(userCheck.getRole() != null && userCheck.getRole() == 1) {
+//                    return ResponseEntity.ok("redirect:" + "/admin/" + userCheck.getId());
+//                }
                 model.addAttribute("user", userCheck);
                 // String redirectUrl = "/index/" + user.getId();
                 return ResponseEntity.ok("redirect:" + "/index/" + userCheck.getId());

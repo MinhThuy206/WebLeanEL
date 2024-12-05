@@ -71,9 +71,9 @@ public class UpdateProfileController {
             if(newUser.getUsername() != null) {
                 user.setUsername(newUser.getUsername());
             }
-            if(newUser.getRole() != null) {
-                user.setRole(newUser.getRole());
-            }
+//            if(newUser.getRole() != null) {
+//                user.setRole(newUser.getRole());
+//            }
             userRepository.save(user);
             // User user = userService.getUserById(id);
             // if (user == null) {

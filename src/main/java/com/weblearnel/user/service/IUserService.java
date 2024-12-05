@@ -7,6 +7,7 @@ import com.weblearnel.user.dto.response.UserResponse;
 import com.weblearnel.user.dto.response.DeleteResponse;
 import com.weblearnel.user.dto.request.UpdateRequest;
 import com.weblearnel.user.dto.response.UpdateResponse;
+import com.weblearnel.user.entity.User;
 import org.springframework.stereotype.Service;
 
 
@@ -22,4 +23,6 @@ public interface IUserService {
     DeleteResponse deleteUser(Long id);
 
     UpdateResponse<UserResponse> updateUser(Long id, UpdateRequest updateInfo);
+
+    User getUserByUsername(String username);
 }
